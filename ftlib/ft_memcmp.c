@@ -6,17 +6,17 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:30:02 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/05 13:32:24 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/05 17:33:31 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	memcmp(const void *s1, const void *s2, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int		i;
-	char	*ptr1;
-	char	*ptr2;
+	size_t		i;
+	const char	*ptr1;
+	const char	*ptr2;
 
 	ptr1 = s1;
 	ptr2 = s2;

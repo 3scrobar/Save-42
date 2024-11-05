@@ -6,22 +6,22 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:36:16 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/05 13:32:59 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/05 17:54:35 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	bzero(void *s, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
 	char	*ptr;
 	size_t	i;
 
 	i = 0;
 	ptr = s;
-	while (i <= n)
+	while (i < n)
 	{
-		ptr[i] = "\0";
+		ptr[i] = 0;
 		i++;
 	}
 }

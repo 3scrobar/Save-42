@@ -6,11 +6,13 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:31:43 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/05 14:22:11 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/05 17:25:25 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*strchr(const char *s, int c)
+#include "libft.h"
+
+char	*ft_strchr(const char *s, int c)
 {
 	int	i;
 

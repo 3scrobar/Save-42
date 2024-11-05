@@ -6,13 +6,13 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 16:46:53 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/05 16:58:42 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/05 17:39:54 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*strdup(const char *s)
+char	*ft_strdup(const char *s)
 {
 	char	*dest;
 	size_t	i;
