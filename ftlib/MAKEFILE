@@ -1,0 +1,47 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    MAKEFILE                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/11/05 17:01:24 by tle-saut          #+#    #+#              #
+#    Updated: 2024/11/05 17:01:37 by tle-saut         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# Nom de la bibliothèque
+NAME = libft.a
+
+# Compilateur et options de compilation
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
+
+# Fichiers source et objets
+SRC = ft_strlen.c ft_strcpy.c ft_strcmp.c ft_memset.c ft_bzero.c ft_calloc.c # Ajoutez tous les fichiers .c nécessaires
+OBJ = $(SRC:.c=.o)
+
+# Règle par défaut (target par défaut si on lance `make` sans argument)
+all: $(NAME)
+
+# Création de la bibliothèque
+$(NAME): $(OBJ)
+	ar rcs $(NAME) $(OBJ)
+
+# Compilation des fichiers objets
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Nettoyage des fichiers objets
+clean:
+	rm -f $(OBJ)
+
+# Nettoyage complet (fichiers objets + bibliothèque)
+fclean: clean
+	rm -f $(NAME)
+
+# Recompiler entièrement la bibliothèque
+re: fclean all
+
+# Permet d'éviter que les noms de règles comme "clean" soient interprétés comme des fichiers
+.PHONY: all clean fclean re
