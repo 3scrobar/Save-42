@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 16:23:28 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/06 14:10:53 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/06 14:17:12 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	size_t	total_size;
 
 	if (nmemb == 0 || size == 0)
-		return (NULL);
+		return (0);
 	total_size = nmemb * size;
 	ptr = malloc(total_size);
 	if (ptr == NULL)
