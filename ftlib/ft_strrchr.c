@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:48:17 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/05 17:48:17 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/06 11:54:39 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ char	*ft_strrchr(const char *s, size_t c)
 	size_t	i;
 
 	i = 0;
-	while (s[i])
-		i++;
 	while (i != 0)
 	{
 		if (s[i] == (char)c)
