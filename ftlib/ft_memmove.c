@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 14:40:37 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/06 13:54:50 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/06 13:56:23 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	size_t	c;
 
 	c = 0;
-	if (n <= 0)
 	if (dest > src)
 	{
 		while (n > 0)
