@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:54:57 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/06 14:53:40 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/06 15:14:15 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	ft_strncmp(const char *s1, const char *s2, int n)
 {
 	int	i;
 
+	if 
 	i = 0;
 	if (n <= 0)
 		return (0);
