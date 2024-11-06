@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 16:23:28 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/06 14:03:26 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/06 14:10:53 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,3 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	ft_memset(ptr, 0, total_size);
 	return (ptr);
 }
-
