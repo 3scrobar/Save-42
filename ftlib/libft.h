@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:50:09 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/06 16:51:35 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/06 17:02:05 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len);
 char	*ft_strrchr(const char *s, size_t c);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
-char *ft_substr(char const *s, unsigned int start,size_t len);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 #endif
