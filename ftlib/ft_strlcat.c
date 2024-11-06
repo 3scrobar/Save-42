@@ -6,11 +6,11 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 11:47:40 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/06 11:47:50 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/06 11:49:55 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
+#include "libft.h"
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
@@ -21,11 +21,11 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	dst_len = ft_strlen(dst);
 	src_len = ft_strlen(src);
 
-	// Si `size` est inférieur ou égal à la longueur de `dst`, on retourne `size + src_len`
+	// Si size est inférieur ou egal à la longueur de dst, on retourne size + src_len
 	if (size <= dst_len)
 		return (size + src_len);
 
-	// On copie les caractères de `src` dans `dst`, sans dépasser `size - 1` pour garder la place du `\0`
+	// On copie les caractère de s rc dans dst
 	i = 0;
 	while (src[i] && (dst_len + i) < (size - 1))
 	{
