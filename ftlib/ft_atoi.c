@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 15:56:04 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/05 17:23:31 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/06 13:37:49 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_atoi(const char *nptr)
 	int	neg;
 
 	i = 0;
-	neg = 0;
+	neg = 2;
 	while (nptr[i])
 	{
 		if (nptr[i] == '-' )
@@ -29,10 +29,15 @@ int	ft_atoi(const char *nptr)
 		}
 		while (nptr[i] >= '0' && nptr[i] <= '9')
 		{
+			neg = 0;
 			c = (c * 10) + (nptr[i] - '0');
 			i++;
 		}
-		return (c);
+		if (neg == 1)
+			return (c * -1);
+		if (neg == 0)
+			return (c);
+		i++;
 	}
 	return (0);
 }
