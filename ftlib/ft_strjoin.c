@@ -6,21 +6,21 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 16:52:17 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/06 17:11:58 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/07 16:29:25 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char *ft_strjoin(char const *s1, char const *s2)
 {
-	size_t			i;
-	size_t			j;
-	unsigned char	*dest;
+	size_t i;
+	size_t j;
+	unsigned char *dest;
 
 	i = 0;
 	j = 0;
-	dest = malloc(sizeof(char) * (ft_strlen(s2) + ft_strlen(s1)));
+	dest = malloc(sizeof(char) * (ft_strlen(s2) + ft_strlen(s1) + 1));
 	if (!dest)
 		return (NULL);
 	while (!s1[i])
@@ -35,4 +35,13 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	dest[i + j] = 0;
 	return ((char *)dest);
+}
+
+int main(void)
+{
+	char *test;
+	char *test2;
+
+	test = "test test test test"
+	test2 =
 }
