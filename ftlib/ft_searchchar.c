@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_searchchar.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 16:30:02 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/06 22:43:10 by root             ###   ########.fr       */
+/*   Created: 2024/11/07 20:41:25 by root              #+#    #+#             */
+/*   Updated: 2024/11/07 20:44:56 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+int ft_searchchar(char c, char *str)
 {
-	size_t				i;
-	const unsigned char	*ptr1;
-	const unsigned char	*ptr2;
+    int i;
+    int yes;
 
-	ptr1 = (const unsigned char *)s1;
-	ptr2 = (const unsigned char *)s2;
-	i = 0;
-	while (i < n)
-	{
-		if (ptr1[i] != ptr2[i])
-			return (ptr1[i] - ptr2[i]);
-		i++;
-	}
-	return (0);
+    i = 0;
+    yes = 0;
+
+    while (str[i])
+    {
+        if (str[i] == c)
+            yes = 1;
+        i++;
+    }
+    return (yes);
 }

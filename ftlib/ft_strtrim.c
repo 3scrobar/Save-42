@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:18:59 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/07 17:42:52 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/07 20:49:32 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,22 @@ char *ft_strtrim(char const *s1, char const *set)
 {
 	char	*res;
 	size_t	i;
-	size_t	j;
-	size_t	k;
+	size_t	yes;
+	size_t	loc;
 
+	loc = 0;
+	yes = 0;
 	i = 0;
-	j = 0;
-	k = 0;
 	res = ft_malloc_trim(s1,set);
 	if (res == NULL)
 		return (NULL);
-	while (s1[i] && k != NULL)
+	while (s1[i])
 	{
-		k = ft_strchr(set,s1[i]);
+		yes = ft_searchchar(s1[i],set);
+		if (yes)
+			loc = i;
 		i++;
 	}
-	k ="";
-	while (k == NULL)
-	{
-		k = ft_strchr(set,s1[i]);
-		res[j] = s1[i+j];
-		j++;
-	}
-	res[j] = 0;
 	return (res);
 }
 static char	*ft_malloc_trim(char * s1, char const *set)
