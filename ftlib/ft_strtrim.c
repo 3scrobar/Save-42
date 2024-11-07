@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:18:59 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/07 20:49:32 by root             ###   ########.fr       */
+/*   Updated: 2024/11/07 21:19:04 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ char *ft_strtrim(char const *s1, char const *set)
 	size_t	i;
 	size_t	yes;
 	size_t	loc;
+	size_t	stop;
 
+	stop = 0;
 	loc = 0;
 	yes = 0;
 	i = 0;
@@ -28,11 +30,27 @@ char *ft_strtrim(char const *s1, char const *set)
 	while (s1[i])
 	{
 		yes = ft_searchchar(s1[i],set);
-		if (yes)
-			loc = i;
+		stop = ft_searchchar(s&[i + 1],set);
+		if (yes == 1 && stop == 0)
+			loc = i + 1;
+		if (stop == '\0' && yes == 1)
+			stop = i + 1
 		i++;
 	}
-	return (res);
+	return (ft_movestr(s1,loc,stop));
+}
+static char *ft_movestr(char *str, size_t start ,size_t stop)
+{
+	size_t	i;
+
+	i =0;
+	while (i <= stop)
+	{
+		str[i] = str[i +start];
+		i++;
+	}
+	str[i] = '\0'
+	return (str);
 }
 static char	*ft_malloc_trim(char * s1, char const *set)
 {
