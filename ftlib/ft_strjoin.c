@@ -6,11 +6,13 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 16:52:17 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/07 16:29:25 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/07 16:42:31 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
+
 
 char *ft_strjoin(char const *s1, char const *s2)
 {
@@ -42,6 +44,8 @@ int main(void)
 	char *test;
 	char *test2;
 
-	test = "test test test test"
-	test2 =
+	test = "test test test test";
+	test2 ="ceci est un test";
+	char *res = ft_strjoin(test,test2);
+	printf("%s",res);
 }
