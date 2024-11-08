@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:46:21 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/08 17:50:48 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/08 17:53:21 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	main(void)
 	char **tab;
 	int i = 0;
 
-	str = "l r m";
+	str = "l     r m";
 	c = ' ';
 
 	tab = ft_split(str,c);
