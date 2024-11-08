@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:18:59 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/07 21:19:04 by root             ###   ########.fr       */
+/*   Updated: 2024/11/08 12:57:38 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*res;
 	size_t	i;
@@ -29,12 +29,12 @@ char *ft_strtrim(char const *s1, char const *set)
 		return (NULL);
 	while (s1[i])
 	{
-		yes = ft_searchchar(s1[i],set);
-		stop = ft_searchchar(s&[i + 1],set);
+		yes = ft_searchchar(s1[i], set);
+		stop = ft_searchchar(s1[i + 1],set);
 		if (yes == 1 && stop == 0)
 			loc = i + 1;
 		if (stop == '\0' && yes == 1)
-			stop = i + 1
+			stop = i + 1;
 		i++;
 	}
 	return (ft_movestr(s1,loc,stop));
