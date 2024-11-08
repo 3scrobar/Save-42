@@ -6,11 +6,11 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:22:13 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/08 16:27:46 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/08 16:33:36 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strindex(char const * str, char c)
+int	ft_strindex(const char * str, char c)
 {
 	int	i;
 
