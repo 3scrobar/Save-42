@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:46:21 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/08 17:23:53 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/08 17:28:11 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,17 @@ static int	ft_countword(char *s, char c)
 
 char	**ft_split(char const *s, char c)
 {
-	size_t	i;
+	int		i;
 	char	**tab;
 	size_t	index;
 	int		word;
 
 	word = ft_countword((char *)s, c);
-	tab = (char **)malloc((word + 1 )* (sizeof(char *)));
+	tab = (char **)malloc((word + 1 )* (sizeof(char)));
 	if (tab == NULL)
 		return (NULL);
 	i = 0;
-	while (tab[i])
+	while (i < word)
 	{
 		index = ft_strindex((char *)s, c);
 		tab[i] = ft_substr(s, index, (unsigned long)ft_strchr(s + 1, c));
