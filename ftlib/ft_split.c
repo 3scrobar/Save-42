@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:46:21 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/08 16:39:39 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/08 16:45:09 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,18 @@ char	**ft_split(char const *s, char c)
 	{
 		if (s[i] == c)
 			cpt++;
+		while (s[i] == c)
+			i++;
 		i++;
 	}
 	tab = malloc(cpt + 2 * (sizeof(char *)));
 	i = 0;
 	tab[cpt + 2] = 0;
 	while (tab[i])
-		{
-			index = ft_strindex(s,c);
-			s = s + index;
-			tab[i] = ft_substr(s,index, ft_strchr(s + 1, c));
-		}
+	{
+		index = ft_strindex(s, c);
+		s = s + index;
+		tab[i] = ft_substr(s, index, ft_strchr(s + 1, c));
+	}
 	return (tab);
 }
