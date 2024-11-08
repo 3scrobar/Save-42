@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:18:59 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/08 13:02:29 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/08 13:07:41 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,20 @@ static char	*ft_malloc_trim(char *s1, char const *set)
 	size_t	cpt;
 	size_t	i;
 	char	*res;
+	size_t	check;
 
 	i = 0;
 	cpt = 0;
+	check = 0;
 	while (s1[i])
 	{
-		if (s1[i] == set)
-			cpt++;
-		i++;
+		
 	}
+	
 	res = malloc(sizeof(char) * (ft_strlen(s1) - cpt));
 	if (res == NULL)
 		return (NULL);
+	return (res);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
