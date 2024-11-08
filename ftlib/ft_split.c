@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:46:21 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/08 17:38:27 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/08 17:42:47 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,11 @@ char	**ft_split(char const *s, char c)
 	i = 0;
 	while (i < word)
 	{
-		index = ft_strindex((char *)s, c);
-		if (i == 0)
+		if (i != 0)
+			index = ft_strindex((char *)s, c);
+		else if (i == 0)
 			index = 0;
-		tab[i] = ft_substr(s, index, (unsigned long)ft_strchr(s + 1, c));
+		tab[i] = ft_substr(s, index, (unsigned long)ft_strchr(s, c));
 		if (tab[i] == NULL)
 			return (tab);
 		s = s + index;
