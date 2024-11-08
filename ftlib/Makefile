@@ -6,7 +6,7 @@
 #    By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/05 17:01:24 by tle-saut          #+#    #+#              #
-#    Updated: 2024/11/06 17:09:40 by tle-saut         ###   ########.fr        #
+#    Updated: 2024/11/08 12:49:49 by tle-saut         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SRC = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 		ft_isdigit.c ft_isprint.c ft_memchr.c ft_memcmp.c ft_memcpy.c \
 		ft_memmove.c ft_memset.c ft_strchr.c ft_strdup.c ft_strlcat.c \
 		ft_strlcpy.c ft_strlen.c ft_strncmp.c ft_strnstr.c ft_strrchr.c \
-		ft_tolower.c ft_toupper.c ft_substr.c ft_strjoin.c	# Ajoutez tous les fichiers .c nécessaires
+		ft_tolower.c ft_toupper.c ft_substr.c ft_strjoin.c ft_searchchar.c \
+		# Ajoutez tous les fichiers .c nécessaires
 OBJ = $(SRC:.c=.o)
 
 # Règle par défaut (target par défaut si on lance `make` sans argument)
