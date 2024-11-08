@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:46:21 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/08 17:42:47 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/08 17:50:48 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	ft_countword(char *s, char c)
 			i++;
 		i++;
 	}
-	return (i + 1);
+	return (cpt + 1);
 }
 
 char	**ft_split(char const *s, char c)
@@ -82,10 +82,11 @@ int	main(void)
 	char **tab;
 	int i = 0;
 
-	str = "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse";
+	str = "l r m";
 	c = ' ';
 
 	tab = ft_split(str,c);
+	printf("%d \n",ft_countword(str,c));
 	while (tab[i])
 	{
 		printf("%s \n",tab[i]);
