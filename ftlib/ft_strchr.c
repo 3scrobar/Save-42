@@ -6,12 +6,13 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:31:43 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/06 14:01:04 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/08 14:52:13 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//permet de chercher un charactere dans la chaine
+//retourne la premiere occurence
 char	*ft_strchr(const char *s, int c)
 {
 	int	i;

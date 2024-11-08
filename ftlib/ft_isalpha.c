@@ -6,12 +6,12 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:36:17 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/05 17:17:59 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/08 14:49:25 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//permet de sqvoir si c est une lettre
 int	ft_isalpha(int c)
 {
 	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));

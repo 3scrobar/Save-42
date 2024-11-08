@@ -6,12 +6,12 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:49:28 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/05 17:52:08 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/08 14:50:28 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//permet de sqvoir si c est un nombre
 int	ft_isalnum(int c)
 {
 	return ((c >= '0' && c <= '9')
