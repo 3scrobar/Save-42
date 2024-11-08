@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:18:59 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/08 13:07:41 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/08 13:12:34 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,19 @@ static char	*ft_malloc_trim(char *s1, char const *set)
 	size_t	i;
 	char	*res;
 	size_t	check;
+	char	c;
 
 	i = 0;
 	cpt = 0;
 	check = 0;
 	while (s1[i])
 	{
-		
+		c = s1[i];
+		check = ft_searchchar(c, (char *)set);
+		if (check == 0)
+			cpt++;
+		check = 0;
+		i++;
 	}
 	
 	res = malloc(sizeof(char) * (ft_strlen(s1) - cpt));
@@ -59,13 +65,14 @@ char	*ft_strtrim(char const *s1, char const *set)
 	loc = 0;
 	yes = 0;
 	i = 0;
-	res = ft_malloc_trim(s1, set);
+	res = (char *)s1;
+	res = ft_malloc_trim(res, (char *)set);
 	if (res == NULL)
 		return (NULL);
 	while (s1[i])
 	{
-		yes = ft_searchchar(s1[i], set);
-		stop = ft_searchchar(s1[i + 1], set);
+		yes = ft_searchchar(s1[i], (char *)set);
+		stop = ft_searchchar(s1[i + 1], (char *)set);
 		if (yes == 1 && stop == 0)
 			loc = i + 1;
 		if (stop == 0 && yes == 1)
