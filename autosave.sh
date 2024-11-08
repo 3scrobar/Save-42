@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-DATE = $(DATE)
+DATE = date -u
 
 while true; do
 git add .
