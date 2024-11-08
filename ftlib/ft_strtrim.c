@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:18:59 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/08 13:12:34 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/08 13:13:01 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,5 @@ char	*ft_strtrim(char const *s1, char const *set)
 			stop = i + 1;
 		i++;
 	}
-	return (ft_movestr(s1, loc, stop));
+	return (ft_movestr((char *)s1, loc, stop));
 }
