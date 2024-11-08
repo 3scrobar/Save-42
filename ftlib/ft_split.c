@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:46:21 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/08 16:59:10 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/08 17:02:18 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,16 @@ char	**ft_split(char const *s, char c)
 		i++;
 	}
 	return (tab);
+}
+
+int	main(void)
+{
+	char * str;
+	char 	c;
+
+	str = "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse";
+	c = ' ';
+
+	printf("%s",ft_split(str,c));
+	
 }
