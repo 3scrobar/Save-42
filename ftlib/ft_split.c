@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:46:21 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/08 17:02:18 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/08 17:09:43 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,23 @@ char	**ft_split(char const *s, char c)
 	return (tab);
 }
 
+#include <stdio.h>
+
 int	main(void)
 {
 	char * str;
 	char 	c;
+	char **tab;
+	int i = 0;
 
 	str = "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse";
 	c = ' ';
 
-	printf("%s",ft_split(str,c));
-	
+	tab = ft_split(str,c);
+	while (tab[i])
+	{
+		printf("%s \n",tab[i]);
+		i++;
+	}
 }
+
