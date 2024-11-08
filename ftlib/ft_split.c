@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:46:21 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/08 15:32:53 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/08 16:27:36 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char **ft_split(char const *s, char c)
 	tab[cpt + 2] = 0;
 	while (tab[i])
 		{
-			index = ft_strchr(s,c);
+			index = ft_strindex(s,c);
 			s = s + index;
 			tab[i] = ft_substr(s,index, ft_strchr(s + 1, c));
 		}
