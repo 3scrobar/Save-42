@@ -6,12 +6,12 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 16:23:28 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/06 16:42:55 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/08 14:48:55 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+// permet de malloc et de set 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*ptr;
