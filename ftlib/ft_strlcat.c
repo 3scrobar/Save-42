@@ -6,12 +6,12 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 11:47:40 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/06 11:50:54 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/08 14:56:50 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//concaten deux chaine en utlisant size retourne une longueur
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t	dst_len;

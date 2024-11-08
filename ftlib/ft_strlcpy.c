@@ -6,12 +6,12 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 15:25:00 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/05 18:12:06 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/08 14:57:04 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//copier 2 chaine de charactere
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	size_t	s;

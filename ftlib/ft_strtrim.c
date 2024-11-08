@@ -6,12 +6,12 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:18:59 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/08 13:59:00 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/08 14:58:58 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//remplace les charactere set trouver au debut et a la fin
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	i;

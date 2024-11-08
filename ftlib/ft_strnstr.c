@@ -6,12 +6,12 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:39:15 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/06 13:33:25 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/08 14:58:09 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//chercher little dans big sur len longueur
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;

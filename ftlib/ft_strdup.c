@@ -6,12 +6,12 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 16:46:53 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/06 13:49:29 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/08 14:55:04 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+// duplique une chaine de charactere dans une nouvelle avec malloc
 char	*ft_strdup(const char *s)
 {
 	char	*dest;

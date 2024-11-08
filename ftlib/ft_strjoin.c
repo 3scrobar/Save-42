@@ -6,12 +6,12 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 16:52:17 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/07 17:18:07 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/08 14:55:31 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//permet de joindre plusieurs chqine
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t			i;
