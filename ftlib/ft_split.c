@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:47:33 by root              #+#    #+#             */
-/*   Updated: 2024/11/09 14:30:36 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/09 15:15:08 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ char	**ft_split(const char *s, char c)
 			tab[j] = ft_extract_word(s, i, ft_lenword(s, i, c));
 			if (!tab[j++])
 				return (ft_free(tab, j - 1));
-			i += ft_lenword(s, i, c);
+			i = i + ft_lenword(s, i, c);
 		}
 	}
 	tab[j] = NULL;
@@ -104,7 +104,7 @@ char	**ft_split(const char *s, char c)
 
 // // Fonction principale pour tester
 // int main(void) {
-// 	char *str = "l     r m fr ";
+// 	char *str = "lx     r m fr ";
 // 	char c = ' ';
 // 	char **tab = ft_split(str, c);
 // 	size_t i = 0;
