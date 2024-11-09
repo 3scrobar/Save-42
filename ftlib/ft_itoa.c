@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 14:38:30 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/09 16:16:45 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/09 16:21:02 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*ft_itoa(int n)
 	i = 0;
 	negative = 0;
 	if (n == 0)
-		str[i++] = "0";
+		str = "0";
 	else if (n == -2147483648)
 		str = "-2147483648";
 	else if (n < 0)
@@ -52,7 +52,6 @@ char	*ft_itoa(int n)
 		str[i++] = (n % 10) + '0';
 		n /= 10;
 	}
-	if (i != 0)
 		str[i + 1] = 0;
 	return (ft_reverse(str, i, negative));
 }
