@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:47:33 by root              #+#    #+#             */
-/*   Updated: 2024/11/08 20:58:41 by root             ###   ########.fr       */
+/*   Updated: 2024/11/09 13:21:41 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,25 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+size_t	ft_freeline(char **tab)
+{
+	size_t	i;
+	size_t	j;
+
+	j = 0;
+	i = 0;
+	while (tab[i])
+	{
+		while (tab[i][j])
+		{
+			free(tab[i][j]);
+			j++;
+		}
+		free(tab[i]);
+		i++;
+	}
+	return (0);
+}
 // Fonction pour compter le nombre de mots séparés par le caractère 'c'
 static size_t ft_countword(const char *str, char c)
 {
@@ -49,7 +68,7 @@ static char *ft_extract_word(const char *s, size_t start, size_t len)
 	size_t i;
 
 	i = 0;
-	word = malloc(len + 1);
+	word = malloc(sizeof(char) * (len + 1));
 	if (!word)
 		return NULL;
 	while (i < len)
@@ -66,7 +85,6 @@ char	**ft_split(const char *s, char c)
 {
 	size_t	i;
 	size_t	j;
-	size_t	word_count;
 	char **tab;
 	size_t word_len;
 
@@ -74,10 +92,9 @@ char	**ft_split(const char *s, char c)
 	j = 0;
 	if (!s)
 		return NULL;
-	word_count = ft_countword(s, c);
-	tab = malloc(sizeof(char *) * (word_count + 1));
+	tab = malloc(sizeof(char *) * (ft_countword(s, c) + 1));
 	if (!tab)
-		return NULL;
+		return (NULL);
 	while (s[i])
 	{
 		if (s[i] == c)
@@ -85,11 +102,8 @@ char	**ft_split(const char *s, char c)
 		else
 		{
 			word_len = ft_lenword(s, i, c);
-			tab[j] = ft_extract_word(s, i, word_len);
-			if (!tab[j])
-				return NULL;
+			tab[j++] = ft_extract_word(s, i, word_len);
 			i += word_len;
-			j++;
 		}
 	}
 	tab[j] = NULL;  // Terminer le tableau par NULL
