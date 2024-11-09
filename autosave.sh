@@ -3,7 +3,6 @@
 while true; do
 	echo "Auto save a $(date "+%Y-%m-%d %H:%M:%S")"
 	echo "Accee au dossier Personelle"
-	echo "\n\n\n"
 	cd /home/tle-saut/Gitperso
 	git add .  # Ajoute tous les fichiers modifiés au staging area
 	echo "Tout a ete add "
