@@ -6,32 +6,12 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 14:38:30 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/09 16:57:01 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/09 17:00:11 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*ft_reverse(char *str, int i, int neg)
-{
-	int		start;
-	int		end;
-	char	temp;
-
-	start = 0;
-	end = i;
-	if (neg == 1)
-		str[end - 1] = '-';
-	while (start < end)
-	{
-		temp = str[start];
-		str[start] = str[end];
-		str[end] = temp;
-		start++;
-		end--;
-	}
-	return (str);
-}
 int	ft_nlen(int n)
 {
 	int	len;
@@ -53,10 +33,12 @@ char	*ft_itoa(int n)
 	char	*str;
 	int		negative;
 	int		i;
+	int		len;
 
+	len = ft_nlen(n);
 	i = 0;
 	negative = 0;
-	str = malloc(sizeof(char) * (ft_nlen(n) + 1));
+	str = malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (NULL);
 	else if (n == -2147483648)
@@ -65,11 +47,10 @@ char	*ft_itoa(int n)
 		negative = 1;
 	while (n != 0)
 	{
-		str[ft_nlen(n)] = (n % 10) + '0';
+		str[len - i] = (n % 10) + '0';
 		n /= 10;
 	}
 		str[i + 1] = 0;
-	str = ft_reverse(str, i, negative);
 	return (str);
 }
 
