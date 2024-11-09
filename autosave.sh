@@ -2,18 +2,11 @@
 
 while true; do
 	echo "Auto save a $(date "+%Y-%m-%d %H:%M:%S")"
-	\n
-	\n
 	echo "Accee au dossier Personelle"
-	\n
-	\n
+	echo "\n\n\n"
 	cd /home/tle-saut/Gitperso
 	git add .  # Ajoute tous les fichiers modifiés au staging area
-	\n
-	\n
 	echo "Tout a ete add "
-	\n
-	\n
 	sleep 1  # Attendre 1 seconde (facultatif)
 	# Utilisation de 'date' pour formater l'heure et la date
 	# $(date "+%Y-%m-%d %H:%M:%S") : format personnalisé pour inclure année, mois, jour, heure, minute et seconde
