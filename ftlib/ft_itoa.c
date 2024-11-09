@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 14:38:30 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/09 15:51:29 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/09 15:56:23 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,30 +28,30 @@ static char	*ft_reverse(char *str, int i)
 		start++;
 		end--;
 	}
-	return (temp);
+	return (str);
 }
 
 char	*ft_itoa(int n)
 {
 	char	*str;
-	int		isNegative;
+	int		negative;
 	int		i;
 
 	i = 0;
-	isNegative = 1;
-	if (n ==-2147483648 )
+	negative = 1;
+	if (n == -2147483648)
 		str = "-2147483648";
 	if (n < 0)
 	{
-		isNegative = 1;
+		negative = 1;
 		n = n * -1;
 	}
-	if (isNegative)
+	if (negative)
 		str[i++] = '-';
 	while (n != 0)
 	{
-		str[i++] = (n % 10) + '0';// Récupère le dernier chiffre et l'ajoute à la chaîne
-		n /= 10;// Divise la valeur par 10
+		str[i++] = (n % 10) + '0';
+		n /= 10;
 	}
 	str[i] = '\0';
 	return (ft_reverse(str, i));
