@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:47:33 by root              #+#    #+#             */
-/*   Updated: 2024/11/09 14:29:25 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/09 14:30:36 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,26 +50,26 @@ static size_t	ft_lenword(const char *s, size_t i, char c)
 	len = 0;
 	while (s[i + len] && s[i + len] != c)
 		len++;
-	return len;
+	return (len);
 }
 
 // Fonction qui extrait un mot de la chaîne en utilisant ft_substr
 static char	*ft_extract_word(const char *s, size_t start, size_t len)
 {
-	char *word;
-	size_t i;
+	char	*word;
+	size_t	i;
 
 	i = 0;
 	word = malloc(sizeof(char) * (len + 1));
 	if (!word)
-		return NULL;
+		return (NULL);
 	while (i < len)
 	{
 		word[i] = s[start + i];
 		i++;
 	}
 	word[i] = '\0';
-	return word;
+	return (word);
 }
 
 // Fonction pour découper la chaîne en mots
@@ -77,12 +77,12 @@ char	**ft_split(const char *s, char c)
 {
 	size_t	i;
 	size_t	j;
-	char **tab;
+	char	**tab;
 
 	i = 0;
 	j = 0;
 	if (!s)
-		return NULL;
+		return (NULL);
 	tab = malloc(sizeof(char *) * (ft_countword(s, c) + 1));
 	if (!tab)
 		return (NULL);
@@ -98,7 +98,7 @@ char	**ft_split(const char *s, char c)
 			i += ft_lenword(s, i, c);
 		}
 	}
-	tab[j] = NULL;  // Terminer le tableau par NULL
+	tab[j] = NULL;
 	return (tab);
 }
 
