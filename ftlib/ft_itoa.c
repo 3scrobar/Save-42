@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 14:38:30 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/09 16:47:00 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/09 16:49:19 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static char	*ft_reverse(char *str, int i, int neg)
 	start = 0;
 	end = i;
 	if (neg == 1)
-		str[end - 1] == '-';
+		str[end - 1] = '-';
 	while (start < end)
 	{
 		temp = str[start];
@@ -63,7 +63,7 @@ char	*ft_itoa(int n)
 		str = ft_strdup("-2147483648");
 	else if (n < 0)
 		negative = 1;
-	while (n != 0 && str != "-2147483648")
+	while (n != 0)
 	{
 		str[i++] = (n % 10) + '0';
 		n /= 10;
