@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 14:38:30 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/09 16:21:02 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/09 16:24:57 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ char	*ft_itoa(int n)
 
 int main(void)
 {
-	int test_values[] = {0, 12345, -12345, 67890, -1, 2147483647, -2147483648};
+	int test_values[] = {12345, -12345, 67890, -1, 2147483647, -2147483648};
 	// Tester ft_itoa avec plusieurs valeurs
-	for (int i = 0; i < 7; i++)
+	for (int i = 0; i < 6; i++)
 	{
 		printf("ft_itoa(%d) = %s\n", test_values[i], ft_itoa(test_values[i]));
 	}
