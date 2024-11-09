@@ -6,13 +6,13 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 14:38:30 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/09 15:00:18 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/09 15:28:23 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_reverse(char *str, int i)
+static char	*ft_reverse(char *str, int i)
 {
 	int start;
 	int end;
@@ -29,6 +29,7 @@ char	*ft_reverse(char *str, int i)
 		start++;
 		end--;
 	}
+	return (temp);
 }
 char *ft_itoa(int n)
 {
