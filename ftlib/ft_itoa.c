@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 14:38:30 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/09 17:00:11 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/09 17:06:41 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,25 @@ char	*ft_itoa(int n)
 	int		i;
 	int		len;
 
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
 	len = ft_nlen(n);
-	i = 0;
+	i = 1;
 	negative = 0;
 	str = malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (NULL);
-	else if (n == -2147483648)
-		str = ft_strdup("-2147483648");
-	else if (n < 0)
+	if (n < 0)
+	{
 		negative = 1;
+		str[0] = '-';
+	}
 	while (n != 0)
 	{
 		str[len - i] = (n % 10) + '0';
 		n /= 10;
 	}
-		str[i + 1] = 0;
+		str[len] = 0;
 	return (str);
 }
 
