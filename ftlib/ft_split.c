@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:47:33 by root              #+#    #+#             */
-/*   Updated: 2024/11/09 13:37:18 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/09 13:43:11 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,10 @@
 size_t	ft_freeline(char **tab)
 {
 	size_t	i;
-	size_t	j;
 
-	j = 0;
 	i = 0;
 	while (tab[i])
 	{
-		while (tab[i][j])
-		{
-			free(tab[i][j]);
-			j++;
-		}
 		free(tab[i]);
 		i++;
 	}
@@ -86,7 +79,6 @@ char	**ft_split(const char *s, char c)
 	size_t	i;
 	size_t	j;
 	char **tab;
-	size_t word_len;
 
 	i = 0;
 	j = 0;
@@ -101,9 +93,10 @@ char	**ft_split(const char *s, char c)
 			i++;
 		else
 		{
-			word_len = ft_lenword(s, i, c);
-			tab[j++] = ft_extract_word(s, i, word_len);
-			i += word_len;
+			tab[j++] = ft_extract_word(s, i, ft_lenword(s, i, c));
+			if (!tab[j])
+				return (ft_freeline(tab[j]));
+			i += ft_lenword(s, i, c);
 		}
 	}
 	tab[j] = NULL;  // Terminer le tableau par NULL
