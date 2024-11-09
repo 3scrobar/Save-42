@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:47:33 by root              #+#    #+#             */
-/*   Updated: 2024/11/09 15:15:08 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/09 15:21:12 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-char	**ft_free(char **tab, int i)
+static char	**ft_free(char **tab, int i)
 {
 	while (i >= 0)
 	{
