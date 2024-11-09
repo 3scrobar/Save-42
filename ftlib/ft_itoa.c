@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 14:38:30 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/09 16:36:57 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/09 16:42:00 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,17 @@ int	ft_nlen(int n)
 {
 	int	len;
 	
-	
+	len = 0;
 	if (n <= 0)
+		len++;
+	if (n < 0)
+		n = -n;
+	while (n)
+	{
+		n /= 10;
+		len++;
+	}
+	return (len);
 }
 char	*ft_itoa(int n)
 {
@@ -47,6 +56,8 @@ char	*ft_itoa(int n)
 
 	i = 0;
 	negative = 0;
+	str = malloc(sizeof(char) * (ft_nlen(n) + 1));
+	if ()
 	if (n == 0)
 		str = "0";
 	else if (n == -2147483648)
