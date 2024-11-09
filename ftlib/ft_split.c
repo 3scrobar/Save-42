@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:47:33 by root              #+#    #+#             */
-/*   Updated: 2024/11/09 13:21:41 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/09 13:26:17 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ char	**ft_split(const char *s, char c)
 		return NULL;
 	tab = malloc(sizeof(char *) * (ft_countword(s, c) + 1));
 	if (!tab)
-		return (NULL);
+		return (ft_freeline(tab));
 	while (s[i])
 	{
 		if (s[i] == c)
