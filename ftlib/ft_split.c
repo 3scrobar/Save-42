@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:47:33 by root              #+#    #+#             */
-/*   Updated: 2024/11/09 14:24:11 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/09 14:29:25 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void	ft_free(char **tab, int i)
+char	**ft_free(char **tab, int i)
 {
 	while (i >= 0)
 	{
@@ -22,12 +22,14 @@ void	ft_free(char **tab, int i)
 		i--;
 	}
 	free(tab);
+	return (0);
 }
+
 // Fonction pour compter le nombre de mots séparés par le caractère 'c'
-static size_t ft_countword(const char *str, char c)
+static size_t	ft_countword(const char *str, char c)
 {
-	size_t i; 
-	size_t count;
+	size_t	i;
+	size_t	count;
 
 	i = 0;
 	count = 0;
@@ -37,13 +39,13 @@ static size_t ft_countword(const char *str, char c)
 			count++;
 		i++;
 	}
-	return count;
+	return (count);
 }
 
 // Fonction pour calculer la longueur du mot à partir de l'index 'i'
-static size_t ft_lenword(const char *s, size_t i, char c)
+static size_t	ft_lenword(const char *s, size_t i, char c)
 {
-	size_t len;
+	size_t	len;
 
 	len = 0;
 	while (s[i + len] && s[i + len] != c)
@@ -52,7 +54,7 @@ static size_t ft_lenword(const char *s, size_t i, char c)
 }
 
 // Fonction qui extrait un mot de la chaîne en utilisant ft_substr
-static char *ft_extract_word(const char *s, size_t start, size_t len)
+static char	*ft_extract_word(const char *s, size_t start, size_t len)
 {
 	char *word;
 	size_t i;
@@ -91,13 +93,9 @@ char	**ft_split(const char *s, char c)
 		else
 		{
 			tab[j] = ft_extract_word(s, i, ft_lenword(s, i, c));
-			if (!tab[j])
-			{
-				ft_free(tab, j);
-				return (NULL);
-			}
+			if (!tab[j++])
+				return (ft_free(tab, j - 1));
 			i += ft_lenword(s, i, c);
-			j++;
 		}
 	}
 	tab[j] = NULL;  // Terminer le tableau par NULL
