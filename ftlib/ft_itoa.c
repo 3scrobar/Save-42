@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 14:38:30 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/09 14:48:12 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/09 14:53:16 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,19 @@
 char *ft_itoa(int n)
 {
 	char	*str;
-	int	
+	int		isNegative;
+	int		i;
 
+	i = 0;
+	isNegative = 1;
 	if (n ==-2147483648 )
 		str = "-2147483648";
-	 if (n == 0)
-	 {
-		str[i++] = '0';
-		str[i] = '\0';
-		return;
-	}
-	if (n < 0) {
+	if (n < 0)
+	{
 		isNegative = 1;
-		n = -n;
+		n = n * -1;
 	}
 	if (isNegative)
 		str[i++] = '-';
-	int start = 0;
-	int end = i - 1;
-	while (start < end)
-	{
-		char temp = str[start];
-		str[start] = str[end];
-		str[end] = temp;
-		start++;
-		end--;
+		
 }
