@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:47:33 by root              #+#    #+#             */
-/*   Updated: 2024/11/09 14:18:26 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/09 14:24:11 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void	ft_free(char **tab, size_t i)
+void	ft_free(char **tab, int i)
 {
 	while (i >= 0)
 	{
 		free(tab[i]);
 		i--;
 	}
+	free(tab);
 }
 // Fonction pour compter le nombre de mots séparés par le caractère 'c'
 static size_t ft_countword(const char *str, char c)
@@ -89,13 +90,14 @@ char	**ft_split(const char *s, char c)
 			i++;
 		else
 		{
-			tab[j++] = ft_extract_word(s, i, ft_lenword(s, i, c));
+			tab[j] = ft_extract_word(s, i, ft_lenword(s, i, c));
 			if (!tab[j])
 			{
 				ft_free(tab, j);
 				return (NULL);
 			}
 			i += ft_lenword(s, i, c);
+			j++;
 		}
 	}
 	tab[j] = NULL;  // Terminer le tableau par NULL
