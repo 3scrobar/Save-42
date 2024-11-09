@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 14:38:30 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/09 16:24:57 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/09 16:36:57 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,13 @@ static char	*ft_reverse(char *str, int i, int neg)
 	}
 	return (str);
 }
-
+int	ft_nlen(int n)
+{
+	int	len;
+	
+	
+	if (n <= 0)
+}
 char	*ft_itoa(int n)
 {
 	char	*str;
@@ -53,7 +59,8 @@ char	*ft_itoa(int n)
 		n /= 10;
 	}
 		str[i + 1] = 0;
-	return (ft_reverse(str, i, negative));
+	str = ft_reverse(str, i, negative);
+	return (ft_strdup(str));
 }
 
 #include <stdio.h>
