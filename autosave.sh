@@ -13,9 +13,11 @@ while true; do
 	sleep 1  # Attendre 1 seconde avant de pousser (facultatif)
 	echo "Le commit a ete fait"
 	git push  # Pousser les changements vers le dépôt distant
+	clear
 	echo "tout a ete mise a jour"
 	echo " 5 minute avant la prochaine auto save............"
 	sleep 60
+	clear
 	echo " 4 minute avant la prochaine auto save............"
 	sleep 60	
 	echo " 3 minute avant la prochaine auto save............"
