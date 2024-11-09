@@ -20,10 +20,13 @@ while true; do
 	clear
 	echo " 4 minute avant la prochaine auto save............"
 	sleep 60	
+	clear
 	echo " 3 minute avant la prochaine auto save............"
 	sleep 60	
+	clear
 	echo " 2 minute avant la prochaine auto save............"
 	sleep 60
+	clear
 	echo " 1 minute avant la prochaine auto save............"
 	sleep 60
 done
