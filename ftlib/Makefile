@@ -6,7 +6,7 @@
 #    By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/05 17:01:24 by tle-saut          #+#    #+#              #
-#    Updated: 2024/11/12 14:22:50 by tle-saut         ###   ########.fr        #
+#    Updated: 2024/11/12 14:23:19 by tle-saut         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ bonus: $(OBJ) $(SRCBONUS:.c=.o)
 
 # Nettoyage des fichiers objets
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJ) $(SRCBONUS:.c=.o)
 
 # Nettoyage complet (fichiers objets + bibliothèque)
 fclean: clean
