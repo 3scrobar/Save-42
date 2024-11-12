@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:18:59 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/08 14:58:58 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/12 15:55:58 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	while (i > 0 && ft_strrchr(set, s1[i]) != NULL)
 		i--;
 	return (ft_substr(s1, 0, i + 1));
+
+	\
 }
