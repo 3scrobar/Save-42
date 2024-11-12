@@ -6,13 +6,13 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 19:30:30 by root              #+#    #+#             */
-/*   Updated: 2024/11/12 13:35:46 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/12 13:58:54 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_striteri(char *s, void (*f)(unsigned int,
+void	ft_striteri(char *s, void (*f)(unsigned int,
 char*))
 {
 	size_t	i;
@@ -22,9 +22,8 @@ char*))
 	{
 		while (s[i] != '\0')
 		{
-			f(i, s + i);  // Applique la fonction f à chaque caractère
+			f(i, s + i);
 			i++;
 		}
 	}
-
 }
