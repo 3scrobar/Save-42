@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: toto <toto@student.42.fr>                  +#+  +:+       +#+         #
+#    By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/05 17:01:24 by tle-saut          #+#    #+#              #
-#    Updated: 2024/11/10 23:18:51 by toto             ###   ########.fr        #
+#    Updated: 2024/11/12 13:36:59 by tle-saut         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRC = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 		ft_memmove.c ft_memset.c ft_strchr.c ft_strdup.c ft_strlcat.c \
 		ft_strlcpy.c ft_strlen.c ft_strncmp.c ft_strnstr.c ft_strrchr.c \
 		ft_tolower.c ft_toupper.c ft_substr.c ft_strjoin.c ft_strtrim.c \
-		ft_split.c ft_itoa.c ft_strmapi.c# Ajoutez tous les fichiers .c nécessaires
+		ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c# Ajoutez tous les fichiers .c nécessaires
 OBJ = $(SRC:.c=.o)
 
 # Règle par défaut (target par défaut si on lance `make` sans argument)
