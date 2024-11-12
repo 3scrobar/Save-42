@@ -6,7 +6,7 @@
 #    By: tle_saut <tle-saut@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/05 17:01:24 by tle-saut          #+#    #+#              #
-#    Updated: 2024/11/12 18:59:30 by tle_saut         ###   ########.fr        #
+#    Updated: 2024/11/12 19:03:57 by tle_saut         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ SRC = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 		ft_putstr_fd.c ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c# Ajoutez tous les fichiers .c nécessaires
 
 SRCBONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
-			ft_lstdelone.c ft_lstclear.c ft_lstiter.c
+			ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c \
+
 
 OBJ = $(SRC:.c=.o)
 
