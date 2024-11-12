@@ -6,7 +6,7 @@
 #    By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/05 17:01:24 by tle-saut          #+#    #+#              #
-#    Updated: 2024/11/12 14:13:27 by tle-saut         ###   ########.fr        #
+#    Updated: 2024/11/12 14:22:50 by tle-saut         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,9 @@ SRC = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 		ft_tolower.c ft_toupper.c ft_substr.c ft_strjoin.c ft_strtrim.c \
 		ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c \
 		ft_putstr_fd.c ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c# Ajoutez tous les fichiers .c nécessaires
+
+SRCBONUS =
+
 OBJ = $(SRC:.c=.o)
 
 # Règle par défaut (target par défaut si on lance `make` sans argument)
@@ -37,6 +40,9 @@ $(NAME): $(OBJ)
 # Compilation des fichiers objets
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
+
+bonus: $(OBJ) $(SRCBONUS:.c=.o)
+	ar rcs $(NAME) $(OBJ) $(SRCBONUS:.c=.o)
 
 # Nettoyage des fichiers objets
 clean:
