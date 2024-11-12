@@ -6,7 +6,7 @@
 /*   By: tle_saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 19:01:34 by tle_saut          #+#    #+#             */
-/*   Updated: 2024/11/12 19:25:06 by tle_saut         ###   ########.fr       */
+/*   Updated: 2024/11/12 19:30:35 by tle_saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,12 @@ t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	final;
 
-	final = ft_lstnew()
-	while (lst != NULL)
+	final = lst;
+	while (final != NULL)
 	{
-		
+		final = ft_lstnew(f(lst -> content));
+		final -> next = lst -> next;
+		del(lst);
 	}
+	
 }
