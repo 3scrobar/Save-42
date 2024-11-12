@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tle_saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:10:51 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/12 16:44:42 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/12 19:22:10 by tle_saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//nouvelle liste
 t_list	*ft_lstnew(void *content)
 {
 	t_list	*new_node;

@@ -6,12 +6,12 @@
 /*   By: tle_saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 18:52:05 by root              #+#    #+#             */
-/*   Updated: 2024/11/12 18:59:57 by tle_saut         ###   ########.fr       */
+/*   Updated: 2024/11/12 19:20:48 by tle_saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+// aplique la fonction a chaque element
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
 	while (lst != NULL)
