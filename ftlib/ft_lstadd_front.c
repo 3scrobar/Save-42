@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:18:10 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/12 16:20:08 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/12 16:44:50 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,4 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 {
 	new -> next = *lst;
 	*lst = new;
-
 }

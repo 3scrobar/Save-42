@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:23:18 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/12 16:24:54 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/12 16:45:04 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 int	ft_lstsize(t_list *lst)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
-	
 	while (lst != NULL)
 	{
 		lst = lst -> next;
