@@ -1,22 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tle_saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/12 18:52:05 by root              #+#    #+#             */
-/*   Updated: 2024/11/12 18:59:57 by tle_saut         ###   ########.fr       */
+/*   Created: 2024/11/12 19:01:34 by tle_saut          #+#    #+#             */
+/*   Updated: 2024/11/12 19:02:03 by tle_saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+t_list *ft_lstmap(t_list *lst, void *(*f)(void *),
+void (*del)(void *))
 {
-	while (lst != NULL)
-	{
-		f(lst -> content);
-		lst = lst -> next;
-	}
 }
