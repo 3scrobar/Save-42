@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:58:05 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/14 14:09:27 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/14 14:12:56 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,15 @@ char	ft_check(char *str)
 	{
 		if (str[i] != '%')
 			i++;
-		else
-			if (str[i] == 'd')
-				return ('d');
-			else if (str)
+		if (str[i] == '%')
+		{
+			i++;
+			if (str[i] != '%')
+				return (str[i]);
+		}
 	}
+}
+int	ft_printchar()
+{
 	
 }
