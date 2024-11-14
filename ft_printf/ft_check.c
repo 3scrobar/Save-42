@@ -6,10 +6,23 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:58:05 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/14 13:59:21 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/14 14:04:26 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int	ft_check()
+int	ft_check(char *str)
+{
+	int	nbr;
+	int	i;
+
+	i = 0;
+	nbr = 0;
+	
+	while (str[i])
+	{
+		if (str[i])
+	}
+	
+}
