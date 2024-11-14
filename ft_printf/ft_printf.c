@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:37:33 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/14 15:59:15 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/14 16:02:47 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,11 @@ int ft_printf(const char *str, ...)
 		else
 			selec = ft_check((char *)str, (int)i);
 		if (selec == 'c')
-			cpt = cpt + ft_printchar(va_arg(args, char));
+			cpt = cpt + ft_printchar(va_arg(args, int));
 		if (selec == 's')
 			cpt = cpt + ft_printstr(va_arg(args, char *));
 	}
+	return (i);
 }
 #include <stdio.h>
 
@@ -42,7 +43,7 @@ int main(void)
 	char *str = "test";
 	int cpt = 0;
 	
-	cpt = ft_printf("je te le char %c, et je teste le string",c);
+	cpt = ft_printf("je te le char %c, et je teste le string %s",c,str);
 	printf(" \njai ecrit %i", cpt);
 	return (0);
 }
