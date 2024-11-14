@@ -1,34 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check.c                                         :+:      :+:    :+:   */
+/*   ft_printchar.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/14 13:58:05 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/14 14:47:04 by tle-saut         ###   ########.fr       */
+/*   Created: 2024/11/14 14:47:17 by tle-saut          #+#    #+#             */
+/*   Updated: 2024/11/14 14:48:33 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-char	ft_check(char *str)
+int	ft_printchar(char c)
 {
-	int	nbr;
-	int	i;
-
-	i = 0;
-	nbr = 0;
-	
-	while (str[i])
-	{
-		if (str[i] != '%')
-			i++;
-		if (str[i] == '%')
-		{
-			i++;
-			if (str[i] != '%')
-				return (str[i]);
-		}
-	}
+	write(1,&c,1);
+	return (1);
 }
