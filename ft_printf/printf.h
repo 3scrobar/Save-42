@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:38:24 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/14 14:52:02 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/14 15:58:43 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <unistd.h>
 
 int		ft_printchar(char c);
-char	ft_check(char *str);
+char	ft_check(char *str, int i);
 int		ft_printstr(char *str);
 
 #endif
