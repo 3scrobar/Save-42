@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:37:33 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/14 15:44:23 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/14 15:49:30 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,9 @@ int ft_printf(const char *str, ...)
 		if (selec == 's')
 			cpt = cpt + ft_printstr(va_arg(args, char *));
 	}
+}
+
+int main(void)
+{
+	char c =
 }
