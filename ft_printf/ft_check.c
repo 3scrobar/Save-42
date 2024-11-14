@@ -6,13 +6,13 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:58:05 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/14 14:04:26 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/14 14:09:27 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int	ft_check(char *str)
+char	ft_check(char *str)
 {
 	int	nbr;
 	int	i;
@@ -22,7 +22,12 @@ int	ft_check(char *str)
 	
 	while (str[i])
 	{
-		if (str[i])
+		if (str[i] != '%')
+			i++;
+		else
+			if (str[i] == 'd')
+				return ('d');
+			else if (str)
 	}
 	
 }
