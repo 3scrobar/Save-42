@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 14:16:10 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/15 16:53:32 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/15 17:31:25 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_printfnumb(int n)
 {
-	int cpt;
+	int	cpt;
 
 	cpt = 0;
 	if (n == -2147483648)
@@ -35,5 +35,5 @@ int	ft_printfnumb(int n)
 		n = (n % 10) + 48;
 		cpt += write(1, &n, 1);
 	}
-	return(cpt);
+	return (cpt);
 }
