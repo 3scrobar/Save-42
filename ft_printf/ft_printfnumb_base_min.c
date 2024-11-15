@@ -6,13 +6,13 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 14:31:57 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/15 17:04:11 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/15 17:12:19 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-unsigned int	ft_printfnumb_base_min(unsigned int nbr)
+size_t	ft_printfnumb_base_min(size_t nbr)
 {
 	unsigned int	cpt;
 	char 			*str;
