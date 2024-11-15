@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 14:49:48 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/15 13:58:09 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/15 15:58:52 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 int	ft_printstr(char *str)
 {
+	if (str == NULL)
+		ft_printstr("(null)");
 	return (write(1, str,ft_strlen(str)));
 }
