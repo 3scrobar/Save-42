@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 14:49:48 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/15 13:49:47 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/15 13:58:09 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,5 @@
 
 int	ft_printstr(char *str)
 {
-	size_t len = ft_strlen(str);
-	write(1, str, len);
-	return (len);
+	return (write(1, str,ft_strlen(str)));
 }

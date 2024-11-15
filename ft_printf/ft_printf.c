@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:37:33 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/15 13:52:47 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/15 14:00:48 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,16 @@ int ft_printf(const char *str, ...)
 {
 	va_list	args;
 	va_start(args, str);
+	while (str)
+		{
+			if (&str != '%')
+				str++;
+			else
+			{
+				str++;
+				
+			}
+		}
 
 }
 
