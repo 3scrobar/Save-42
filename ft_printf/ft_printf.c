@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:37:33 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/15 15:47:59 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/15 15:53:38 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ unsigned int ft_printf(const char *str, ...)
 
 int main(void)
 {
+	char *q = "ab";
 	int cpt = 0;
 	
-	printf("%s %p", (char *)NULL, 1575448);
-	//cpt = ft_printf("%s %p", (char *)NULL, NULL);
+	cpt = ft_printf(" %p", &q);
 	printf("jai ecrit %i", cpt);
 	return (0);
 }
