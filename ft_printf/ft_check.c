@@ -6,13 +6,13 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:58:05 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/15 15:08:45 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/15 15:15:25 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_check(va_list args, char c, int i)
+int	ft_check(va_list args, char c)
 {
 	unsigned int	cpt;
 
@@ -30,6 +30,6 @@ int	ft_check(va_list args, char c, int i)
 	else if (c == 'X')
 		cpt += ft_printfnumb_base_maj(va_arg(args, unsigned int));
 	else if (c == '%')
-		cpt += write(1,'%',1);
-
+		cpt += write(1,"%",1);
+	return (cpt);
 }
