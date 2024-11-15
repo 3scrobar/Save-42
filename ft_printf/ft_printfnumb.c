@@ -1,32 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check.c                                         :+:      :+:    :+:   */
+/*   ft_printfnumb.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/14 13:58:05 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/15 14:20:41 by tle-saut         ###   ########.fr       */
+/*   Created: 2024/11/15 14:16:10 by tle-saut          #+#    #+#             */
+/*   Updated: 2024/11/15 14:17:59 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_check(va_list args, char c, int i)
+int	ft_putnbr_fd(int n, int fd)
 {
-	unsigned int	cpt;
+	int cpt;
 
 	cpt = 0;
-	if (c == 'c')
-		cpt += ft_printchar(va_arg(args, int));
-	else if (c == 's')
-		cpt += ft_printstr(va_arg(args, char *));
-	else if (c == 'd' || c == 'i')
-		cpt += ft_print
-	else if (c == 'u')
-	else if (c == 'x')
-	else if (c == 'X')
-	else if (c == '%')
-		cpt += write(1,'%',1);
-
+	if (n == -2147483648)
+	{
+		cpt += write(fd, "-2147483648", 11);
+	}
+	else
+	{
+		if (n < 0)
+		{
+			n = n * -1;
+			cpt += write(fd, "-", 1);
+		}
+		if (n >= 10)
+		{
+			ft_putnbr_fd(n / 10, fd);
+		}
+		n = (n % 10) + 48;
+		cpt += write(fd, &n, 1);
+	}
+	return(cpt);
 }
