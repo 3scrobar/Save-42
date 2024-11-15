@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:37:33 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/15 15:55:14 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/15 15:59:38 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int main(void)
 	char *q = "ab";
 	int cpt = 0;
 	
-	cpt = ft_printf(" %p", &q);
+	cpt = ft_printf(" %s", (char *)NULL);
 	printf("jai ecrit %i", cpt);
 	return (0);
 }

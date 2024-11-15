@@ -1,20 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printstr.c                                      :+:      :+:    :+:   */
+/*   ft_printpointer.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/14 14:49:48 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/15 15:59:04 by tle-saut         ###   ########.fr       */
+/*   Created: 2024/11/15 16:01:49 by tle-saut          #+#    #+#             */
+/*   Updated: 2024/11/15 16:03:53 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printstr(char *str)
-{
-	if (str == NULL)
-		return (ft_printstr("(null)"));
-	return (write(1, str,ft_strlen(str)));
-}
+int	ft_printpointer(size_t point)

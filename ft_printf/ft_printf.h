@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:38:24 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/15 15:14:24 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/15 16:03:38 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <stdarg.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 int				ft_printchar(char c);
 int				ft_check(va_list args, char c);
