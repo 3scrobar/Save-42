@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:58:05 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/15 14:31:14 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/15 15:08:45 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ int	ft_check(va_list args, char c, int i)
 	else if (c == 'u')
 		cpt += ft_printfnumb(va_arg(args, unsigned int));
 	else if (c == 'x')
+		cpt += ft_printfnumb_base_min(va_arg(args, unsigned int));
 	else if (c == 'X')
+		cpt += ft_printfnumb_base_maj(va_arg(args, unsigned int));
 	else if (c == '%')
 		cpt += write(1,'%',1);
 

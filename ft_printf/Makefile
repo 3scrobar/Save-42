@@ -6,7 +6,7 @@
 #    By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/14 13:38:38 by tle-saut          #+#    #+#              #
-#    Updated: 2024/11/14 13:44:20 by tle-saut         ###   ########.fr        #
+#    Updated: 2024/11/15 15:10:52 by tle-saut         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,9 @@ CC = cc
 
 FLAGS = -Wall -Werror -Wextra
 
-SRC = 
+SRC = ft_check.c ft_printchar.c ft_printf.c ft_printfnum_base_maj.c \
+		ft_printfnum_base_min.c ft_printfnumb.c ft_printstr.c \
+		ft_strlen.c
 
 OBJ:$(SRC:.c=.o)
 

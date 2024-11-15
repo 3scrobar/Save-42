@@ -6,11 +6,11 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 14:31:57 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/15 15:05:39 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/15 15:07:45 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_printfnumb_base_min(unsigned int nbr)
+unsigned int	ft_printfnumb_base_min(unsigned int nbr)
 {
 	unsigned int	cpt;
 	char 			*str;
@@ -20,5 +20,5 @@ int	ft_printfnumb_base_min(unsigned int nbr)
 	if (nbr > 16)
 		ft_printfnumb_base_min(nbr / 16);
 	cpt += write(1, &str[nbr % 16], 1);
-	return (nbr);
+	return (cpt);
 }
