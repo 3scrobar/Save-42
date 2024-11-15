@@ -6,21 +6,15 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 14:49:48 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/14 14:51:28 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/15 13:49:47 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 int	ft_printstr(char *str)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		write(1,&str[i],1);
-		i++;
-	}
-	return (i);
+	size_t len = ft_strlen(str);
+	write(1, str, len);
+	return (len);
 }

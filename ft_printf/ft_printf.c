@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:37:33 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/14 16:13:25 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/15 13:44:03 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,7 @@ int ft_printf(const char *str, ...)
 	va_list	args;
 	va_start(args, str);
 
-	i = 0;
-	cpt = 0;
-	while (str[i])
-	{
-		if (str[i]!= '%')
-			write(1, &str[i], 1);
-		else
-		{
-			selec = ft_check((char *)str, (int)i);
-		if (selec == 'c')
-			cpt = cpt - 1 + ft_printchar(va_arg(args, int));
-		if (selec == 's')
-			cpt = cpt - 1 + ft_printstr(va_arg(args, char *));
-		i++;
-		}
-		i++;
 	}
-	return (i + cpt);
 }
 #include <stdio.h>
 
