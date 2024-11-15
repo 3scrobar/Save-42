@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:37:33 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/15 15:28:17 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/15 15:38:05 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int main(void)
 	char *str = "test";
 	int cpt = 0;
 	
-	cpt = ft_printf("je test le char \n%c\nje teste le string \n%s\nje teste les nombre\n%d\n%i\n",c,str,42,21);
+	cpt = ft_printf("je test le char \n%c\nje teste le string \n%s\nje teste les nombre\n%d\n%i\n les bases\n%x\n%X\n et pourcent \n%%\n",c,str,42,21,17,17);
 	printf("jai ecrit %i", cpt);
 	return (0);
 }
