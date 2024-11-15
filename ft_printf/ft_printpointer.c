@@ -6,15 +6,15 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:01:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/15 16:42:32 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/15 16:56:22 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printpointer(unsigned int	nbr)
+int	ft_printpointer(int	nbr)
 {
-	unsigned int	cpt;
+	int	cpt;
 	
 	cpt = 0;
 	cpt += write(1, "0x", 2);
