@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:37:33 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/15 16:55:01 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/15 17:04:44 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,17 @@ unsigned int ft_printf(const char *str, ...)
 	return (cpt);
 }
 
-#include <stdio.h>
+// #include <stdio.h>
 
-int main(void)
-{
+// int main(void)
+// {
 
-	int cpt = 0;
+// 	int cpt = 0;
 
-	cpt = ft_printf("1 printf %p ", 16);
-	printf("                    jai ecrit %i\n", cpt);
-	cpt = printf("2 printf %p ", 16);
-	printf("                    jai ecrit %i\n", cpt);
+// 	cpt = ft_printf("1 printf %p ", 16);
+// 	printf("                    jai ecrit %i\n", cpt);
+// 	cpt = printf("2 printf %p ", 16);
+// 	printf("                    jai ecrit %i\n", cpt);
 
-	return (0);
-}
+// 	return (0);
+// }

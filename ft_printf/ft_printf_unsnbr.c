@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printfnum_base_maj.c                            :+:      :+:    :+:   */
+/*   ft_printf_unsnbr.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/15 15:06:05 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/15 17:04:20 by tle-saut         ###   ########.fr       */
+/*   Created: 2024/11/15 17:06:34 by tle-saut          #+#    #+#             */
+/*   Updated: 2024/11/15 17:08:37 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-unsigned int	ft_printfnumb_base_maj(unsigned int nbr)
+int	ft_printf_unsnbr(unsigned int n)
 {
-	unsigned int	cpt;
-	char 			*str;
-	
+	unsigned int cpt;
+
 	cpt = 0;
-	str = "0123456789ABCDEF";
-	if (nbr >= 16)
-		cpt += ft_printfnumb_base_maj(nbr / 16);
-	cpt += write(1, &str[nbr % 16], 1);
-	return (cpt);
+	if (n >= 10)
+	{
+		cpt += ft_printf_unsnbr(n / 10);
+	}
+	n = (n % 10) + 48;
+	cpt += write(1, &n, 1);
+	return(cpt);
 }

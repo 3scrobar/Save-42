@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:38:24 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/15 16:56:46 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/15 17:09:06 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ unsigned int	ft_printfnumb_base_maj(unsigned int nbr);
 unsigned int	ft_printfnumb_base_min(unsigned int nbr);
 unsigned int	ft_printf(const char *str, ...);
 int				ft_printpointer(int	nbr);
-
-
-
+int				ft_printf_unsnbr(unsigned int n);
 
 #endif
