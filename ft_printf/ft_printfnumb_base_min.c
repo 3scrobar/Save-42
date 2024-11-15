@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 14:31:57 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/15 15:54:46 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/15 17:04:11 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ unsigned int	ft_printfnumb_base_min(unsigned int nbr)
 	
 	cpt = 0;
 	str = "0123456789abcdef";
-	if (nbr > 16)
+	if (nbr >= 16)
 		cpt += ft_printfnumb_base_min(nbr / 16);
-	cpt += write(1, (&str[nbr % 16]), 1);
+	cpt += write(1, &str[nbr % 16], 1);
 	return (cpt);
 }
