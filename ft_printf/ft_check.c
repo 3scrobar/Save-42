@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:58:05 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/15 16:01:27 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/15 16:38:45 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ int	ft_check(va_list args, char c)
 		cpt += write(1,"%",1);
 	else if (c == 'p')
 	{
-		cpt += write(1, "0x", 2);
-		cpt += ft_printfnumb_base_min(va_arg(args, unsigned int));
+		
 	}
 	return (cpt);
 }
