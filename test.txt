@@ -1,0 +1,183 @@
+Introduction
+Merci de respecter les règles suivantes :
+
+- Restez polis, courtois, respectueux et constructifs pendant le processus
+d'évaluation. Le bien-être de la communauté repose là-dessus.
+
+- Identifiez avec la personne évaluée ou le groupe évalué les éventuels
+dysfonctionnements de son travail. Prenez le temps d'en discuter et
+débattez des problèmes identifiés.
+
+- Vous devez prendre en compte qu'il peut y avoir de légères différences
+d'interprétation entre les instructions du projet, son scope et ses
+fonctionnalités. Gardez un esprit ouvert et notez de la manière la plus
+honnête possible. La pédagogie n'est valide que si la peer-évaluation
+est faite sérieusement.
+
+Guidelines
+- Ne notez que ce qui est contenu dans le dépôt Git cloné de l'étudiant(e)
+ou du groupe.
+
+- Vérifiez que le dépôt Git appartient bien à l'étudiant(e) ou au groupe,
+que le projet est bien celui attendu, et que "git clone" est utilisé
+dans un dossier vide.
+
+- Vérifiez scrupuleusement qu'aucun alias n'a été utilisé pour vous tromper
+et assurez-vous que vous évaluez bien le rendu officiel.
+
+- Afin d'éviter toute surprise, vérifiez avec l'étudiant(e) ou le groupe les
+potentiels scripts utilisés pour faciliter l'évaluation (par exemple, des
+scripts de tests ou d'automatisation).
+
+- Si vous n'avez pas fait le projet que vous allez évaluer, vous devez lire
+le sujet en entier avant de commencer l'évaluation.
+
+- Utilisez les flags disponibles pour signaler un rendu vide, un programme
+ne fonctionnant pas, une erreur de Norme, de la triche... Dans ces
+situations, l'évaluation est terminée et la note est 0, ou -42 en cas de
+triche. Cependant, à l'exception des cas de triche, vous êtes encouragé(e)s
+à continuer la discussion sur le travail rendu, même si ce dernier est
+incomplet. Ceci afin d'identifier les erreurs à ne pas reproduire dans le
+futur.
+
+Attachments
+ subject.pdf
+Préliminaires
+Si un cas de triche est suspecté, la notation et l'évaluation prennent fin immédiatement. Pour le signaler, sélectionnez le flag "Cheat". Faites attention à l'utiliser avec calme, précaution et discernement.
+
+Tests préliminaires
+
+Vérifiez les points suivants :
+
+Les conditions d'accès à la soutenance sont respectées : personne(s) évaluée(s) présente(s), un rendu non vide lui appartenant bien, etc...
+Pour ce projet, vous devez cloner le dépôt Git sur l'ordinateur de la personne évaluée.
+Consignes générales
+Consignes générales
+
+Durant la soutenance, dès que vous avez besoin d'aide pour vérifier un point, la personne évaluée doit vous aider.
+Vérifiez que le fichier "signature.txt" est bien présent à la racine du dépôt cloné.
+Vérifiez que la signature contenue dans "signature.txt" est identique à celle du fichier ".vdi" de la machine virtuelle à évaluer. Un simple diff doit vous permettre de comparer les deux signatures. Si besoin, demandez à la personne évaluée où se trouve son fichier ".vdi".
+Par précaution, vous pouvez dupliquer la machine virtuelle initiale afin d'en garder une copie.
+Lancez la machine virtuelle à évaluer.
+Si quelque chose ne fonctionne pas comme prévu ou que les deux signatures diffèrent, l'évaluation s'arrête ici.
+Partie obligatoire
+Le projet consiste à créer et configurer une machine virtuelle en suivant des règles strictes. La personne évaluée va devoir vous aider durant la soutenance. Assurez-vous que tous les points suivants sont respectés.
+
+Vue d'ensemble du projet
+
+La personne évaluée doit vous expliquer simplement :
+Le fonctionnement basique de sa machine virtuelle
+Son choix de système d'exploitation
+Les différences basiques entre Rocky et Debian
+L'intérêt des machines virtuelles
+Si le système d'exploitation choisi est Rocky, elle doit vous expliquer ce que sont SELinux et DNF.
+Si le système d'exploitation choisi est Debian, elle doit vous expliquer la différence entre aptitude et apt, et ce qu'est APPArmor. Durant la soutenance, un script doit afficher des informations toutes les 10 minutes. Son fonctionnement sera vérifié en détails plus tard. Si les explications ne sont pas claires, l'évaluation s'arrête ici.
+Configuration simple
+
+Rappel : dès que vous avez besoin d'aide pour vérifier un point, la
+personne évaluée doit pouvoir vous aider.
+
+Vérifiez que la machine ne possède pas d'environnement graphique au lancement. Un mot de passe sera demandé avant toute tentative de connection sur cette machine. Connectez-vous avec un utilisateur non root. Vérifiez que le mot de passe choisi respecte les règles imposées dans le sujet. Ensuite, avec l'aide de l'évaluateur, assurez-vous que :
+Le système d'exploitation choisi est bien Debian ou Rocky
+Le service UFW est bien lancé
+Le service SSH est bien lancé. Si quelque chose ne fonctionne pas comme prévu ou n'est pas clairement expliqué, l'évaluation s'arrête ici.
+Utilisateur
+
+Rappel : dès que vous avez besoin d'aide pour vérifier un point, la
+personne évaluée doit pouvoir vous aider.
+
+Le sujet demande qu'un utilisateur ayant comme nom le login de la
+personne évaluée soit présent sur la machine virtuelle. Vérifiez qu'il
+a bien été ajouté et qu'il appartient aux groupes "sudo" et "user42".
+
+Assurez-vous les règles imposées dans le sujet concernant la politique
+de mot de passe ont bien été mises en place en suivant les étapes
+suivantes.
+Premièrement, créez un nouvel utilisateur. Assignez-lui un mot de passe
+de votre choix en respectant les règles du sujet.
+La personne évaluée doit maintenant vous expliquer comment elle a pu
+mettre en place les règles demandées dans le sujet sur sa machine
+virtuelle.
+Normalement, il devrait y avoir un ou deux fichiers modifiés.
+S'il y a le moindre problème, l'évaluation s'arrête ici.
+
+Maintenant que vous avez un nouvel utilisateur, demandez à la personne
+évaluée de créer un groupe nommé "evaluating" devant vous et de
+l'assigner à cet utilisateur.
+Enfin, vérifiez que cet utilisateur appartient bien au groupe
+"evaluating".
+
+Pour finir, demandez à la personne évaluée de vous exposer l'intérêt
+de cette politique de mot de passe, ainsi que les avantages et les
+inconvénients de sa mise en place. Bien entendu, répondre que c'est
+parce le sujet le demande ne compte pas.
+Si quelque chose ne fonctionne pas comme prévu ou n'est pas clairement
+expliqué, l'évaluation s'arrête ici.
+
+Hostname et partitions.
+
+Rappel : dès que vous avez besoin d'aide pour vérifier un point, la
+personne évaluée doit pouvoir vous aider.
+
+Vérifiez que le hostname de la machine est bien formatté ainsi : login42 (login de la personne évaluée).
+Modifiez ce hostname en remplaçant le login par le vôtre, puis relancez la machine. Si au redémarrage, le hostname n'a pas été mis à jour, l'évaluation s'arrête ici.
+Vous pouvez maintenant restaurer le hostname original de la machine.
+Demandez à la personne évaluée comment afficher les partitions de sa machine virtuelle.
+Comparez la sortie avec l'exemple donné dans le sujet. Attention : si la personne évaluée a fait les bonus, il faudra se référer à l'exemple de la partie bonus.
+Cette partie est l'occasion de discuter des partitions ! La personne
+évaluée doit vous donner une petite explication sur le fonctionnement
+et l'intérêt de LVM.
+Si quelque chose ne fonctionne pas comme prévu ou n'est pas clairement
+expliqué, l'évaluation s'arrête ici.
+
+SUDO
+
+Rappel : dès que vous avez besoin d'aide pour vérifier un point, la
+personne évaluée doit pouvoir vous aider.
+
+Vérifiez que le programme "sudo" est bien installé sur la machine virtuelle.
+La personne évaluée doit maintenant montrer assigner votre nouvel utilisateur au groupe "sudo".
+Le sujet impose des règles strictes pour sudo. La personne évaluée doit, dans premier temps, expliquer l'intérêt et le fonctionnement de sudo par des exemples de son choix. Dans un second temps, elle doit vous démontrer la mise en place des règles imposées par le sujet.
+Vérifiez que le dossier "/var/log/sudo/" existe et possède au moins un fichier. Vérifiez le contenu des fichiers de ce dossier, Vous devriez voir un historique des commandes utilisées avec sudo. Enfin, tentez de lancer une commande via sudo. Regardez si le(s) fichier(s) du dossier "/var/log/sudo/" ont été mis à jour. Si quelque chose ne fonctionne pas comme prévu ou n'est pas clairement expliqué, l'évaluation s'arrête ici.
+UFW / Firewalld
+
+Rappel : dès que vous avez besoin d'aide pour vérifier un point, la
+personne évaluée doit pouvoir vous aider.
+
+Vérifiez que le programme "UFW" (ou "Firewalld" pour rocky) est bien installé sur la machine virtuelle.
+Vérifiez qu'il fonctionne correctement.
+La personne évaluée doit vous expliquer basiquement ce qu'est UFW (ou "Firewalld") et l'intérêt de l'utiliser.
+Listez les règles actives dans UFW (ou "Firewalld"). Une règle doit exister pour le port 4242.
+Ajoutez une nouvelle règle pour ouvrir le port 8080. Vérifiez que celle-ci a bien été ajoutée en listant les règles actives.
+Pour finir, supprimez cette nouvelle règle avec l'aide de la personne évaluée. Si quelque chose ne fonctionne pas comme prévu ou n'est pas clairement expliqué, l'évaluation s'arrête ici.
+SSH
+
+Rappel : dès que vous avez besoin d'aide pour vérifier un point, la
+personne évaluée doit pouvoir vous aider.
+
+Vérifiez que le service SSH est bien installé sur la machine virtuelle.
+Vérifiez qu'il fonctionne correctement.
+La personne évaluée doit vous expliquer basiquement ce qu'est SSH et l'intérêt de l'utiliser.
+Vérifiez que le service SSH utilise uniquement le port 4242 dans la machine virtuelle.
+La personne évaluée doit vous aider à utiliser SSH afin de vous connecter avec le nouvel utilisateur créé. Pour ce faire, vous pouvez utiliser une clef ou un simple mot de passe. Cela dépendra de la personne évaluée. Bien entendu, vous devez vous assurez que l'on ne peut pas utiliser SSH avec l'utilisateur "root" comme indiqué dans le sujet. Si quelque chose ne fonctionne pas comme prévu ou n'est pas clairement expliqué, l'évaluation s'arrête ici.
+Script monitoring
+
+Rappel : dès que vous avez besoin d'aide pour vérifier un point, la
+personne évaluée doit pouvoir vous aider.
+
+La personne évaluée doit vous expliquer simplement :
+
+Le fonctionnement de son script en affichant le code de celui-ci
+Ce qu'est "cron"
+Comment elle a mis en place son script afin qu'il s'exécute toutes les 10 minutes dès le lancement du serveur. Une fois le bon fonctionnement du script vérifié, la personne évaluée doit faire en sorte que ce script s'exécute toute les minutes. Vous pouvez lancer ce que vous souhaitez afin de vous assurer que le script s'exécute correctement avec des valeurs dynamiques. Enfin, la personne évaluée doit faire en sorte que le script cesse de s'exécuter au lancement du serveur, sans toutefois modifier le script en lui-même. Pour vérifier ce point, il faudra redémarrer le serveur une dernière fois. Au démarrage, il faudra bien vérifier que le script existe toujours au même endroit, que ses droits sont restés inchangés, et qu'il n'a pas subi de modification. Si un des points ci-dessus n'est pas correct, l'évaluation s'arrête ici.
+Bonus
+Les bonus ne seront examinés que si la partie obligatoire est excellente. Cela signifie que la partie obligatoire doit avoir été réalisée du début à la fin, avec une gestion d'erreur parfaite même en cas d'usage inattendu. Si tous les points obligatoires n'ont pas été attribués pendant cette soutenance, aucun point bonus ne sera comptabilisé.
+
+Bonus
+
+Vérifiez avec l'aide du sujet et de la personne évaluée les bonus
+disponibles pour ce projet :
+
+La mise en place des partitions vaudra 2 points
+La mise en place de WordPress, avec les services listés dans le sujet uniquement, vaudra 2 points
+Le service dont le choix est laissé libre vaudra 1 point. Vérifiez et testez le bon fonctionnement et l'implémentation de chaque service supplémentaire. Pour le service bonus dont le choix est laissé libre, la personne évaluée doit vous fournir une explication simple du service et expliquer les raisons de son choix. Attention : NGINX et Apache2 sont interdits.
