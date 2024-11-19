@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:52:35 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/19 16:01:51 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/19 16:05:50 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ char *ft_cut(char **pSRC)
 						temp[j] = pSRC[i + j];
 						j++;
 					}
-				j++;
+					pSRC[i] = 0;
+					return (temp);
 			}
 		i++;
 	}
-	pSRC[]
 	return (temp);
 }
 char *ft_stack(char *src, char *dest)
@@ -72,10 +72,10 @@ char	*get_next_line(int fd)
 		toprint = ft_stack(strtemp, toprint);
 	}
 	//cut and manage into final temp
-	toprint = ft_cut(&strtemp);
+	strtemp = ft_cut(&strtemp);
 	//check if the ready is finiched
 	//return final temp
-	
+	return (toprint);
 }
 int main(void)
 {
