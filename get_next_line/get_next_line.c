@@ -6,11 +6,12 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:52:35 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/19 16:05:50 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/19 16:08:07 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
 char *ft_cut(char **pSRC)
 {
 	size_t	i;
@@ -44,7 +45,7 @@ char *ft_stack(char *src, char *dest)
 
 	i = 0;
 	j = 0;
-	while(dest[i])
+	while(dest[i] != 0)
 		i++;
 	while (src[j])
 	{
