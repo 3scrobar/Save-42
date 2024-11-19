@@ -6,12 +6,28 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:52:35 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/19 15:36:41 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:41:43 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
+char *ft_stack(char *src, char *dest)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	j = 0;
+	while(dest[i])
+		i++;
+	while (src[j])
+	{
+		dest[i + j] = src[j];
+		j++;
+	}
+	return (dest);
+}
 
 char	*get_next_line(int fd)
 {
@@ -22,12 +38,12 @@ char	*get_next_line(int fd)
 	if (fd == 0 || BUFFER_SIZE < 0)
 		return (NULL);
 	//read if everything is good
+	//stack in temp str
 	while (i > 0)
 	{
-		i = read(fd, strtemp, BUFFER_SIZE);
-		
+		i = read(fd, strtemp, BUFFER_SIZE);	
+		toprint = ft_stack(strtemp, )
 	}
-	//stack in temp str
 	//cut and manage into final str
 	//check if the ready is finiched
 	//return final str
