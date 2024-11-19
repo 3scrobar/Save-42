@@ -6,77 +6,16 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:52:35 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/19 16:08:07 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/19 17:07:29 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char *ft_cut(char **pSRC)
-{
-	size_t	i;
-	size_t	j;
-	
-	char 	*temp;
-	
-	j = 0;
-	temp = "";
-	i = 0;
-	while (pSRC[i])
-	{
-		if (pSRC[i] == 92 && pSRC[i + 1] == 'n')
-			{
-				while (pSRC[i + j])
-					{
-						temp[j] = pSRC[i + j];
-						j++;
-					}
-					pSRC[i] = 0;
-					return (temp);
-			}
-		i++;
-	}
-	return (temp);
-}
-char *ft_stack(char *src, char *dest)
-{
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	j = 0;
-	while(dest[i] != 0)
-		i++;
-	while (src[j])
-	{
-		dest[i + j] = src[j];
-		j++;
-	}
-	dest[i + j] = 0;
-	return (dest);
-
-}
 
 char	*get_next_line(int fd)
 {
-	static char *strtemp;
-	static char *toprint;
-	size_t		i;
 	
-	if (fd == 0 || BUFFER_SIZE < 0)
-		return (NULL);
-	//read if everything is good
-	//stack in temp temp and stack in the final temp
-	while (i > 0)
-	{
-		i = read(fd, strtemp, BUFFER_SIZE);	
-		toprint = ft_stack(strtemp, toprint);
-	}
-	//cut and manage into final temp
-	strtemp = ft_cut(&strtemp);
-	//check if the ready is finiched
-	//return final temp
-	return (toprint);
 }
 int main(void)
 {
