@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:52:35 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/19 15:31:40 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:36:41 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,22 @@
 char	*get_next_line(int fd)
 {
 	static char *strtemp;
-	static char *
+	static char *toprint;
+	size_t		i;
+	
+	if (fd == 0 || BUFFER_SIZE < 0)
+		return (NULL);
+	//read if everything is good
+	while (i > 0)
+	{
+		i = read(fd, strtemp, BUFFER_SIZE);
+		
+	}
+	//stack in temp str
+	//cut and manage into final str
+	//check if the ready is finiched
+	//return final str
+	
 }
 int main(void)
 {
