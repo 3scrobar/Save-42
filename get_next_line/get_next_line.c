@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:52:35 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/19 14:56:26 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/19 14:59:27 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,8 @@ char	*get_next_line(int fd)
 	toprint = malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (toprint == NULL)
 		return (NULL);
-	if (read(fd, toprint, BUFFER_SIZE) > 0);
-		return (toprint);
-	free(toprint);
-	return (NULL);
+	read(fd, toprint, BUFFER_SIZE);
+	return (toprint);
 }
 int main(void)
-{
-	int fd;
-	char *line;
 
-	fd = open("essai.txt", O_RDONLY);
-	line = get_next_line(fd);
-	printf("%s\n", line);
-	free(line);
-	close(fd);
-	return (0);
-}
