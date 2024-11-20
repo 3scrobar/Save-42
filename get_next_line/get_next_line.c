@@ -1,22 +1,12 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/18 15:52:35 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/20 16:32:23 by toto             ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "get_next_line.h"
+#include <unistd.h>
+#include <stdlib.h>
+#include <fcntl.h>
+#include <stdio.h>
 
 size_t	ft_strlen(const char *s)
 {
-	size_t	i;
-
-	i = 0;
+	size_t	i = 0;
 	while (s[i])
 		i++;
 	return (i);
@@ -24,10 +14,8 @@ size_t	ft_strlen(const char *s)
 
 char	*ft_strchr(const char *s, int c)
 {
-	int	i;
-
-	i = 0;
-	while (s[i] != 0)
+	int	i = 0;
+	while (s[i])
 	{
 		if (s[i] == (char)c)
 			return ((char *)s + i);
@@ -38,35 +26,13 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-char *ft_splits(char **temp)
-{
-	size_t	i;
-	size_t	j;
-	char	*final;
-
-	i = 0;
-	j = 0;
-	while (temp[i] != 10)
-		i++;
-	final = malloc(sizeof(char) * (i + 1));
-	final[i + 1] = 0;
-	while (temp[j + i])
-	{
-		temp[j] = &temp[j + i];
-		j++;
-	}
-	return (final);
-}
-
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t			i;
-	size_t			j;
-	unsigned char	*dest;
+	size_t	i = 0;
+	size_t	j = 0;
+	char	*dest;
 
-	i = 0;
-	j = 0;
-	dest = malloc(sizeof(char) * (ft_strlen(s2) + ft_strlen(s1) + 1));
+	dest = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!dest)
 		return (NULL);
 	while (s1[i])
@@ -79,34 +45,59 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		dest[i + j] = s2[j];
 		j++;
 	}
-	free(s1);
-	dest[i + j] = 0;
-	return ((char *)dest);
+	dest[i + j] = '\0';
+	return (dest);
 }
+
 char	*get_next_line(int fd)
 {
-	char		*finalstr;
-	const char	*temp;
-	size_t		i;
+	static char	*remaining = NULL;
+	char		buffer[BUFFER_SIZE + 1];
+	char		*line;
+	int			bytes_read;
+	char		*temp;
 
-	i = 0;
-	finalstr = malloc(sizeof(char) * BUFFER_SIZE);
-	temp = malloc(sizeof(char) * 8000);
-	while (read(fd, temp, BUFFER_SIZE) > 0)
+	line = NULL;
+	while ((bytes_read = read(fd, buffer, BUFFER_SIZE)) > 0)
 	{
-		temp = read(fd, temp, BUFFER_SIZE);
-		while (temp[i])
+		buffer[bytes_read] = '\0'; // Assurez-vous que le buffer est bien nul-terminé
+		if (remaining)
 		{
-			if (temp[i] == 10)
-					finalstr = ft_splits(&temp);
-			if (ft_strchr(temp, 10) == NULL)
-				finalstr = ft_strjoin(finalstr, temp);
-			i++;
+			temp = ft_strjoin(remaining, buffer);
+			free(remaining);
+			remaining = temp;
+		}
+		else
+			remaining = ft_strdup(buffer);
+		// Si un '\n' est trouvé, on sépare la ligne
+		if (ft_strchr(remaining, '\n'))
+			break ;
+	}
+	// Si on a lu quelque chose ou si la chaîne n'est pas vide
+	if (remaining)
+	{
+		// Chercher le premier '\n' ou la fin de la chaîne
+		char *newline = ft_strchr(remaining, '\n');
+		if (newline)
+		{
+			// Créer la ligne à partir du début jusqu'à '\n'
+			line = ft_substr(remaining, 0, newline - remaining + 1);
+			// Sauvegarder le reste dans `remaining`
+			temp = ft_strdup(newline + 1);
+			free(remaining);
+			remaining = temp;
+		}
+		else
+		{
+			// Si il n'y a pas de '\n', la ligne entière est `remaining`
+			line = ft_strdup(remaining);
+			free(remaining);
+			remaining = NULL;
 		}
 	}
-	return (finalstr);
-	
+	return (line);
 }
+
 int main(void)
 {
 	int fd;
@@ -123,7 +114,7 @@ int main(void)
 	// Lire et afficher chaque ligne
 	while ((line = get_next_line(fd)) != NULL)
 	{
-		printf("%s\n", line);
+		printf("%s", line);
 		free(line); // N'oubliez pas de libérer la mémoire allouée par get_next_line
 	}
 
