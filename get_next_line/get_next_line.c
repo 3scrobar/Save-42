@@ -26,6 +26,48 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	size_t	j;
+	char	*str;
+
+	if (!s)
+		return (NULL);
+	if (start >= ft_strlen(s))
+		len = 0;
+	if (len > ft_strlen(s) - start)
+		len = ft_strlen(s) - start;
+	str = malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (NULL);
+	j = 0;
+	while (j < len)
+	{
+		str[j] = s[start + j];
+		j++;
+	}
+	str[j] = '\0';
+	return (str);
+}
+
+char	*ft_strdup(const char *s)
+{
+	char	*dest;
+	size_t	i;
+
+	i = 0;
+	dest = malloc((ft_strlen(s) + 1) * sizeof(char));
+	if (dest == NULL)
+		return (NULL);
+	while (s[i])
+	{
+		dest[i] = s[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
+
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t	i = 0;
