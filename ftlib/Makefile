@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tle_saut <tle-saut@student.42.fr>          +#+  +:+       +#+         #
+#    By: toto <toto@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/05 17:01:24 by tle-saut          #+#    #+#              #
-#    Updated: 2024/11/13 12:15:45 by tle_saut         ###   ########.fr        #
+#    Updated: 2024/11/20 16:30:57 by toto             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,8 @@ SRCBONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 			ft_lstadd_back.c
 
 OBJ = $(SRC:.c=.o)
+
+
 
 # Règle par défaut (target par défaut si on lance `make` sans argument)
 all: $(NAME)

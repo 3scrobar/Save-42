@@ -6,11 +6,21 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:52:35 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/20 16:26:18 by toto             ###   ########.fr       */
+/*   Updated: 2024/11/20 16:32:23 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
 
 char	*ft_strchr(const char *s, int c)
 {
@@ -40,9 +50,9 @@ char *ft_splits(char **temp)
 		i++;
 	final = malloc(sizeof(char) * (i + 1));
 	final[i + 1] = 0;
-	while (*temp[j + i])
+	while (temp[j + i])
 	{
-		*temp[j] = *temp[j + i];
+		temp[j] = &temp[j + i];
 		j++;
 	}
 	return (final);
@@ -75,7 +85,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 }
 char	*get_next_line(int fd)
 {
-	const char	*finalstr;
+	char		*finalstr;
 	const char	*temp;
 	size_t		i;
 
