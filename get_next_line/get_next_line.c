@@ -1,8 +1,5 @@
 #include "get_next_line.h"
-#include <unistd.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include <stdio.h>
+
 
 size_t	ft_strlen(const char *s)
 {
@@ -102,7 +99,7 @@ char	*get_next_line(int fd)
 	line = NULL;
 	while ((bytes_read = read(fd, buffer, BUFFER_SIZE)) > 0)
 	{
-		buffer[bytes_read] = '\0'; // Assurez-vous que le buffer est bien nul-terminé
+		buffer[bytes_read] = 0; 
 		if (remaining)
 		{
 			temp = ft_strjoin(remaining, buffer);
