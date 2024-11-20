@@ -108,7 +108,7 @@ char	*get_next_line(int fd)
 		}
 		else
 			remaining = ft_strdup(buffer);
-		// Si un '\n' est trouvé, on sépare la ligne
+		// Si un \n est trouve, on separe la ligne
 		if (ft_strchr(remaining, '\n'))
 			break ;
 	}
@@ -128,7 +128,7 @@ char	*get_next_line(int fd)
 		}
 		else
 		{
-			// Si il n'y a pas de '\n', la ligne entière est `remaining`
+			// Si il ny a pas de \n
 			line = ft_strdup(remaining);
 			free(remaining);
 			remaining = NULL;
