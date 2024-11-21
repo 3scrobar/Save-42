@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:52:41 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/21 11:45:34 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/21 13:15:07 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,18 +76,18 @@ char	*ft_strdup(const char *s)
 	return (dest);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char const **s1, char const *s2)
 {
 	size_t	i = 0;
 	size_t	j = 0;
 	char	*dest;
 
-	dest = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	dest = malloc(sizeof(char) * (ft_strlen(*s1) + ft_strlen(s2) + 1));
 	if (!dest)
 		return (NULL);
-	while (s1[i])
+	while (*s1[i])
 	{
-		dest[i] = s1[i];
+		dest[i] = *s1[i];
 		i++;
 	}
 	while (s2[j])
@@ -96,5 +96,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		j++;
 	}
 	dest[i + j] = '\0';
+	free(*s1);
 	return (dest);
 }
