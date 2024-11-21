@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 11:58:12 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/21 14:36:25 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/21 14:45:49 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ char	*get_next_line(int fd)
 			remaining = ft_strdup(buffer);
 		if (ft_strchr(remaining, '\n'))
 			break ;
+		else if (bytes_read == 0)
+			remaining[ft_strlen(remaining) + 1] = "\n";
 	}
 	if (remaining)
 		ft_if(&remaining, &line);
