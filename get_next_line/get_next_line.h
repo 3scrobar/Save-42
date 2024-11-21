@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:52:38 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/21 14:12:27 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/21 14:31:04 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 100000
+# endif
+# if BUFFER_SIZE < 1
+#  undef BUFFER_SIZE
+#  define BUFFER_SIZE 1
 # endif
 
 # include <unistd.h>
