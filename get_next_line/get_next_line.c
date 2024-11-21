@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 11:58:12 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/21 13:22:57 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/21 13:45:46 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*get_next_line(int fd)
 	char		*line;
 	int			bytes_read;
 	char		*newline;
-
+	
 	remaining = NULL;
 	line = NULL;
 	while ((bytes_read = read(fd, buffer, BUFFER_SIZE)) > 0)
@@ -53,27 +53,4 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-int main(void)
-{
-	int fd;
-	char *line;
 
-	// Ouvrir le fichier en lecture
-	fd = open("essai.txt", O_RDONLY);
-	if (fd == -1)
-	{
-		perror("Erreur lors de l'ouverture du fichier");
-		return (1);
-	}
-
-	// Lire et afficher chaque ligne
-	while ((line = get_next_line(fd)) != NULL)
-	{
-		printf("%s", line);
-		free(line); // N'oubliez pas de libérer la mémoire allouée par get_next_line
-	}
-
-	// Fermer le fichier
-	close(fd);
-	return (0);
-}
