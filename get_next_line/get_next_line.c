@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 11:58:12 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/21 15:02:33 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/21 15:41:24 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ char	*get_next_line(int fd)
 	}
 	if (remaining)
 		ft_if(&remaining, &line);
-	if (bytes_read == 0)
-		return (NULL);
+	if (bytes_read == NULL)
+		return ()
 	return (line);
 }
 // int main(void)
