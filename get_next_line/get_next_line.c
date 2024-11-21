@@ -6,21 +6,19 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 11:58:12 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/21 13:13:03 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/21 13:18:01 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	ft_if(char **newline, char **remaining, char **line, char **temp)
+void	ft_if(char **newline, char **remaining, char **line)
 {
 	*newline = ft_strchr(*remaining, '\n');
 	if (*newline)
 	{
 		*line = ft_substr(*remaining, 0, *newline - *remaining + 1);
-		*temp = ft_strdup(*newline + 1);
-		free(*remaining);
-		*remaining = *temp;
+		*remaining = ft_strdup(*newline + 1);
 	}
 	else
 	{
@@ -36,7 +34,6 @@ char	*get_next_line(int fd)
 	char		buffer[BUFFER_SIZE + 1];
 	char		*line;
 	int			bytes_read;
-	char		*temp;
 	char		*newline;
 
 	line = NULL;
@@ -51,7 +48,7 @@ char	*get_next_line(int fd)
 			break ;
 	}
 	if (remaining)
-		ft_if(&newline, &remaining, &line, &temp);
+		ft_if(&newline, &remaining, &line);
 	return (line);
 }
 
