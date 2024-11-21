@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 11:58:12 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/21 16:01:04 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/21 16:06:27 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ char	*ft_if(char **remaining, char **line)
 		free(*remaining);
 		*remaining = NULL;
 	}
+	return (*line);
 }
 
 char	*get_next_line(int fd)
@@ -43,14 +44,14 @@ char	*get_next_line(int fd)
 	while (1)
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		if (bytes_read == 0)
-			return (ft_if(&remaining, &line));
+		if (bytes_read < 0)
+			return (NULL);
 		buffer[bytes_read] = 0;
 		if (remaining)
 			remaining = ft_strjoin(&remaining, buffer);
 		else
 			remaining = ft_strdup(buffer);
-		if (ft_strchr(remaining, '\n'))
+		if (ft_strchr(remaining, '\n') || bytes_read == 0)
 			break ;
 	}
 	if ((ft_strlen(remaining)) > 0)
@@ -61,50 +62,51 @@ char	*get_next_line(int fd)
 	else
 		return (NULL);
 }
-// int main(void)
-// {
-//     int fd;
-//     char *line;
+int main(void)
+{
+    int fd;
+    char *line;
 
-//     // Ouvrir le fichier en lecture
-//     fd = open("essai.txt", O_RDONLY);
-//     if (fd == -1)
-//     {
-//         perror("Erreur lors de l'ouverture du fichier");
-//         return (1);
-//     }
+    // Ouvrir le fichier en lecture
+    fd = open("essai.txt", O_RDONLY);
+    if (fd == -1)
+    {
+        perror("Erreur lors de l'ouverture du fichier");
+        return (1);
+    }
 
-//     // Lire et afficher chaque ligne
-//     while ((line = get_next_line(fd)) != NULL)
-//     {
-//         printf("%s", line);
-//         free(line);
-//     }
+    // Lire et afficher chaque ligne
+    while ((line = get_next_line(fd)) != NULL)
+    {
+        printf("%s", line);
+        free(line);
+    }
 
-//     // Fermer le fichier
-//     close(fd);
-//     return (0);
-// }// int main(void)
-// {
-//     int fd;
-//     char *line;
+    // Fermer le fichier
+    close(fd);
+    return (0);
+}
+int main(void)
+{
+    int fd;
+    char *line;
 
-//     // Ouvrir le fichier en lecture
-//     fd = open("essai.txt", O_RDONLY);
-//     if (fd == -1)
-//     {
-//         perror("Erreur lors de l'ouverture du fichier");
-//         return (1);
-//     }
+    // Ouvrir le fichier en lecture
+    fd = open("essai.txt", O_RDONLY);
+    if (fd == -1)
+    {
+        perror("Erreur lors de l'ouverture du fichier");
+        return (1);
+    }
 
-//     // Lire et afficher chaque ligne
-//     while ((line = get_next_line(fd)) != NULL)
-//     {
-//         printf("%s", line);
-//         free(line);
-//     }
+    // Lire et afficher chaque ligne
+    while ((line = get_next_line(fd)) != NULL)
+    {
+        printf("%s", line);
+        free(line);
+    }
 
-//     // Fermer le fichier
-//     close(fd);
-//     return (0);
-// }
+    // Fermer le fichier
+    close(fd);
+    return (0);
+}
