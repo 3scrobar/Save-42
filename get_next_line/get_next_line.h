@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:52:38 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/21 13:38:27 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/21 13:55:45 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ char	*ft_strdup(const char *s);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strchr(const char *s, int c);
 size_t	ft_strlen(const char *s);
-void	ft_if(char **newline, char **remaining, char **line);
+void	ft_if(char **remaining, char **line);
 
 #endif
