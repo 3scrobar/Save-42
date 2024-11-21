@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 11:58:12 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/21 14:10:59 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/21 14:15:53 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,17 @@ void	ft_if(char **remaining, char **line)
 
 char	*get_next_line(int fd)
 {
-	static char	*remaining;
+	static char	*remaining = NULL;
 	char		buffer[BUFFER_SIZE + 1];
-	static char	*line;
+	char	*line;
 	int			bytes_read;
 
-
-	if (line != 0)
-		remaining = NULL;
 	line = NULL;
-	while (() > 0)
+	while (1)
 	{
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
+		if (bytes_read <= 0)
+			break ;
 		buffer[bytes_read] = 0; 
 		if (remaining)
 			remaining = ft_strjoin(&remaining, buffer);
