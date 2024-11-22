@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 11:58:12 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/22 14:42:56 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/11/22 14:50:43 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ char	*get_next_line(int fd)
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read < 0)
-			return (NULL);
+		{
+			return (free(line), line = NULL, NULL);
+		}
 		buffer[bytes_read] = 0;
 		if (remaining)
 			remaining = ft_strjoin(&remaining, buffer);
@@ -63,27 +65,50 @@ char	*get_next_line(int fd)
 		return (free(remaining), remaining = NULL, line = NULL, NULL);
 }
 
-int main(void)
-{
-    int fd;
-    char *line;
+// int main(void)
+// {
+//     int fd;
+//     char *line;
 
-    // Ouvrir le fichier en lecture
-    fd = open("essai.txt", O_RDONLY);
-    if (fd == -1)
-    {
-        perror("Erreur lors de l'ouverture du fichier");
-        return (1);
-    }
+//     // Ouvrir le fichier en lecture
+//     fd = open("essai.txt", O_RDONLY);
+//     if (fd == -1)
+//     {
+//         perror("Erreur lors de l'ouverture du fichier");
+//         return (1);int main(void)
+// {
+//     int fd;
+//     char *line;
 
-    // Lire et afficher chaque ligne
-    while ((line = get_next_line(fd)) != NULL)
-    {
-        printf("%s", line);
-        free(line);
-    }
+//     // Ouvrir le fichier en lecture
+//     fd = open("essai.txt", O_RDONLY);
+//     if (fd == -1)
+//     {
+//         perror("Erreur lors de l'ouverture du fichier");
+//         return (1);
+//     }
 
-    // Fermer le fichier
-    close(fd);
-    return (0);
-}
+//     // Lire et afficher chaque ligne
+//     while ((line = get_next_line(fd)) != NULL)
+//     {
+//         printf("%s", line);
+//         free(line);
+//     }
+
+//     // Fermer le fichier
+//     close(fd);
+//     return (0);
+// }
+//     }
+
+//     // Lire et afficher chaque ligne
+//     while ((line = get_next_line(fd)) != NULL)
+//     {
+//         printf("%s", line);
+//         free(line);
+//     }
+
+//     // Fermer le fichier
+//     close(fd);
+//     return (0);
+// }
