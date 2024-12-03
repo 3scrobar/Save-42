@@ -6,13 +6,13 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/03 17:31:22 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/03 17:33:21 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_init_map(t_map *map, char *path)
+int	ft_init_map(t_map *map, char *path)
 {
 	char	**tab;
 	int		fd;
@@ -20,7 +20,7 @@ void	ft_init_map(t_map *map, char *path)
 
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
-		return (write(2, "Error from map reading", 22), 0);
+		return (write(2, "Error from map reading", 22),0);
 	while (fd != 0)
 		{
 			tab[i] = get_next_line(fd);
