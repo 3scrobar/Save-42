@@ -6,13 +6,11 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/03 14:36:19 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/03 15:04:11 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-
-
 
 #endif
