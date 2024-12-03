@@ -6,12 +6,18 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/03 16:56:15 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/03 17:01:18 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
+void	ft_init_map(t_map *map)
+{
+	map.map = NULL;
+	map.player = 0;
+	map.exit = 0;
+	map.collectible = 0;
+}
 int	ft_parsing(t_map map)
 {
 	int	i;
@@ -27,7 +33,7 @@ int	ft_parsing(t_map map)
 				len = ft_strlen(map.map[i]);
 				if (map.map[0][j] != '1' || map.map[i][0] != '1'
 				 || map.map[i][len - 1] != '1' || map.map[i][0] != '1')
-					return (write(1, "Error from map\n", 16),0);
+					return (0);
 				j++;
 			}
 			i++;
