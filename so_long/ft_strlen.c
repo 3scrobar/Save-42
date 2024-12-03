@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/03 16:55:40 by tle-saut         ###   ########.fr       */
+/*   Created: 2024/11/04 14:06:29 by tle-saut          #+#    #+#             */
+/*   Updated: 2024/12/03 16:54:35 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
-
-typedef struct s_map
+#include "so_long.h"
+//trouver la longueur d une chaine
+size_t	ft_strlen(const char *s)
 {
-	char	**map;
-	int		player;
-	int		exit;
-	int		collectible;
-}	t_map;
+	size_t	i;
 
-# include <stdlib.h>
-# include <string.h>
-# include <unistd.h>
-
-int	ft_checkmap_line(t_map map);
-int	ft_parsing(t_map map);
-size_t	ft_strlen(const char *s);
-
-
-#endif
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
