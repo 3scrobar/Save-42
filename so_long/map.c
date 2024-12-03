@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/03 14:50:39 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/03 14:54:44 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,11 @@ int	ft_checkmap(char *map)
 	cursor = 0;
 	while (map[cursor])
 	{
-		if (map[cursor] != "1" && line ==0)
+		if (map[0] != '0')
+			return (write(1, "Error, Map is invalide",22),1);
+		else if (map[cursor] == '\n')
+			line++;
+		else if (map[cursor] != "1" && line ==0)
 			return (0);
 		else if (map[cursor] == "P")
 			player++;
@@ -33,5 +37,5 @@ int	ft_checkmap(char *map)
 		cursor++;
 	}
 	if (player != 1 || exit != 1 || collectible == 0)
-		return (0);
+		return (write(1, "Error, Map is invalide",22),1);
 }
