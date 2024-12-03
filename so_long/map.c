@@ -6,7 +6,20 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/03 14:34:45 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/03 14:40:31 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+int	ft_checkmap(char *map)
+{
+	int	cursor;
+	int	line;
+
+	line = 0;
+	cursor = 0;
+	while (map[cursor])
+	{
+		if (map[0] && )
+		cursor++;
+	}	
+}
