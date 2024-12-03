@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/03 17:21:23 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/03 17:23:45 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,12 @@ int	ft_checkmap_line(t_map *map)
 	}
 	return (1);
 }
+
 int	ft_total_check(t_map *map)
 {
 	if (map->player > 1 || map->exit > 1)
-		return (write(1, "Error from map", 14), 0);
+		return (write(2, "Error from map", 14), 0);
 	else if (map->collectible == 0)
-		return (write(1, "Error from map", 14), 0);
+		return (write(2, "Error from map", 14), 0);
 	return (1);
 }
