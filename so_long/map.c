@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/03 16:20:52 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/03 16:22:34 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ int	ft_parsing(t_map map)
 		{
 			while (map.map[i][j])
 			{
-
+				if (map.map[0][j] != '0')
+					return (write(1, "Error from map\n", 16));
+				
 			}
 		}
 	return (1);
