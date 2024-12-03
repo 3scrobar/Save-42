@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map->c                                              :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/03 17:02:50 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/03 17:21:23 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,27 @@ void	ft_init_map(t_map *map, char *path)
 	map->exit = 0;
 	map->collectible = 0;
 }
+
 int	ft_parsing(t_map *map)
 {
 	int	i;
 	int	j;
 	int	len;
 
-	j= 0;
+	j = 0;
 	i = 0;
-		while (map->map[i])
+	while (map->map[i])
+	{
+		while (map->map[i][j])
 		{
-			while (map->map[i][j])
-			{
-				len = ft_strlen(map->map[i]);
-				if (map->map[0][j] != '1' || map->map[i][0] != '1'
-				 || map->map[i][len - 1] != '1' || map->map[i][0] != '1')
-					return (0);
-				j++;
-			}
-			i++;
+			len = ft_strlen(map->map[i]);
+			if (map->map[0][j] != '1' || map->map[i][0] != '1'
+				|| map->map[i][len - 1] != '1' || map->map[i][0] != '1')
+				return (0);
+			j++;
 		}
+		i++;
+	}
 	return (ft_checkmap_line(map), 1);
 }
 
