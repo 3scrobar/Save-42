@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/03 16:58:31 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/03 17:05:16 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(void)
 	t_map	map;
 
 	if (ft_parsing(map) == 0)
-		return ((write(1, "Error from map\n", 16),0);
+		return (write(1, "Error from map\n", 16),0);
 	
 	return (0);
 }

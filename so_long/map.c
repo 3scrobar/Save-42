@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   map->c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/03 17:01:18 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/03 17:02:50 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 void	ft_init_map(t_map *map)
 {
-	map.map = NULL;
-	map.player = 0;
-	map.exit = 0;
-	map.collectible = 0;
+	map->map = NULL;
+	map->player = 0;
+	map->exit = 0;
+	map->collectible = 0;
 }
-int	ft_parsing(t_map map)
+int	ft_parsing(t_map *map)
 {
 	int	i;
 	int	j;
@@ -26,13 +26,13 @@ int	ft_parsing(t_map map)
 
 	j= 0;
 	i = 0;
-		while (map.map[i])
+		while (map->map[i])
 		{
-			while (map.map[i][j])
+			while (map->map[i][j])
 			{
-				len = ft_strlen(map.map[i]);
-				if (map.map[0][j] != '1' || map.map[i][0] != '1'
-				 || map.map[i][len - 1] != '1' || map.map[i][0] != '1')
+				len = ft_strlen(map->map[i]);
+				if (map->map[0][j] != '1' || map->map[i][0] != '1'
+				 || map->map[i][len - 1] != '1' || map->map[i][0] != '1')
 					return (0);
 				j++;
 			}
@@ -42,26 +42,32 @@ int	ft_parsing(t_map map)
 	return (ft_checkmap_line(map), 1);
 }
 
-int	ft_checkmap_line(t_map map)
+int	ft_checkmap_line(t_map *map)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 0;
-	while (map.map[i])
+	while (map->map[i])
 	{
-		while (map.map[i][j])
+		while (map->map[i][j])
 		{
-			if (map.map[i][j] == 'P')
-				map.player += 1;
-			else if (map.map[i][j] == 'E')
-				map.exit += 1;
-			else if (map.map[i][j] == 'C')
-				map.collectible += 1;
+			if (map->map[i][j] == 'P')
+				map->player += 1;
+			else if (map->map[i][j] == 'E')
+				map->exit += 1;
+			else if (map->map[i][j] == 'C')
+				map->collectible += 1;
 			j++;
 		}
 		i++;
 	}
+	return (1);
+}
+int	ft_total_check(t_map *map)
+{
+	if (map->player != 1 || map->exit != 1 || map->collectible == 0)
+		return (0);
 	return (1);
 }
