@@ -11,7 +11,8 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
-void	ft_init_map(t_map *map)
+
+void	ft_init_map(t_map *map, char *path)
 {
 	map->map = NULL;
 	map->player = 0;
@@ -38,7 +39,6 @@ int	ft_parsing(t_map *map)
 			}
 			i++;
 		}
-		
 	return (ft_checkmap_line(map), 1);
 }
 
@@ -67,7 +67,9 @@ int	ft_checkmap_line(t_map *map)
 }
 int	ft_total_check(t_map *map)
 {
-	if (map->player != 1 || map->exit != 1 || map->collectible == 0)
-		return (0);
+	if (map->player > 1 || map->exit > 1)
+		return (write(1, "Error from map", 14), 0);
+	else if (map->collectible == 0)
+		return (write(1, "Error from map", 14), 0);
 	return (1);
 }
