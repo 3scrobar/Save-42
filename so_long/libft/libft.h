@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:50:09 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/04 14:29:35 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/04 15:40:39 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
-void	ft_putnbr_fd(int n, int fd);
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
@@ -71,29 +70,19 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 void	ft_lstadd_back(t_list **lst, t_list *new);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-void	ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(char *s, int fd);
-void	ft_putendl_fd(char *s, int fd);
-void	ft_putnbr_fd(int n, int fd);
-int		ft_printf(const char *str, ...);
-int		ft_check(va_list args, char c);
-int		ft_printchar(char c);
-int		ft_printstr(char *str);
-int		ft_printfnumb(int n);
-int		ft_printf_unsnbr(unsigned int n);
-int		ft_printfnumb_base_min(unsigned long nbr);
-int		ft_printfnumb_base_maj(unsigned int nbr);
-int		ft_printpointer(unsigned long nbr);
 char	*get_next_line(int fd);
+char	*ft_strjoinfree(char **s1, char const *s2);
 char	*ft_if(char **remaining, char **line);
-int		ft_countword(const char *s, char c);
-size_t	ft_lenword(const char *s, size_t i, char c);
-char	**ft_free(char **tab, size_t j);
-char	*get_next_line(int fd);
-char	*ft_strdup(const char *s);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*ft_strchr(const char *s, int c);
-size_t	ft_strlen(const char *s);
-char	*ft_if(char **remaining, char **line);
+int				ft_printchar(char c);
+int				ft_check(va_list args, char c);
+int				ft_printstr(char *str);
+int				ft_putnbr_fd(int n, int fd);
+int				ft_printfnumb(int n);
+unsigned int	ft_printfnumb_base_maj(unsigned int nbr);
+size_t			ft_printfnumb_base_min(unsigned long nbr);
+unsigned int	ft_printf(const char *str, ...);
+int				ft_printpointer(unsigned long nbr);
+int				ft_printf_unsnbr(unsigned int n);
+
 
 #endif

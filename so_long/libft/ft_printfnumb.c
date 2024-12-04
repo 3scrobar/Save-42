@@ -6,11 +6,12 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 14:16:10 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/04 14:11:47 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/04 15:38:56 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 
 int	ft_printfnumb(int n)
 {

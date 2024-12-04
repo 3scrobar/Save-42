@@ -6,11 +6,12 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 13:38:26 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/04 14:12:09 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/04 15:39:07 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 
 void	ft_putchar_fd(char c, int fd)
 {

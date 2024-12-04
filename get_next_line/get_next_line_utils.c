@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:52:41 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/21 14:34:55 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/04 15:34:17 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ char	*ft_strdup(const char *s)
 	return (dest);
 }
 
-char	*ft_strjoin(char **s1, char const *s2)
+char	*ft_strjoinfree(char **s1, char const *s2)
 {
 	size_t	i;
 	size_t	j;
