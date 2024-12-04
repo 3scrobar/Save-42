@@ -6,7 +6,7 @@
 #    By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/05 17:01:24 by tle-saut          #+#    #+#              #
-#    Updated: 2024/12/04 14:50:08 by tle-saut         ###   ########.fr        #
+#    Updated: 2024/12/04 14:53:15 by tle-saut         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,10 @@ SRC = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 		ft_putstr_fd.c ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
 		ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 		ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c \
-		ft_lstadd_back.c get_next_line_utils.c get_next_line.c # Ajoutez tous les fichiers .c nécessaires
+		ft_lstadd_back.c get_next_line_utils.c get_next_line.c \
+		ft_check.c ft_printf_unsnbr.c ft_printf.c ft_printfchar.c \
+		ft_printfnum_base_maj.c ft_printfnum_base_min.c ft_printfnumb.c \
+		ft_printpointer.c ft_printstr.c # Ajoutez tous les fichiers .c nécessaires
 
 OBJ = $(SRC:.c=.o)
 
