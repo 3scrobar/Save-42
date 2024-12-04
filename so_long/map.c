@@ -6,13 +6,14 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/03 17:33:21 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/04 14:19:13 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 int	ft_init_map(t_map *map, char *path)
+//initialize the map structure with the map file
 {
 	char	**tab;
 	int		fd;
@@ -33,6 +34,7 @@ int	ft_init_map(t_map *map, char *path)
 }
 
 int	ft_parsing(t_map *map)
+//check if the map is valid
 {
 	int	i;
 	int	j;
@@ -56,6 +58,7 @@ int	ft_parsing(t_map *map)
 }
 
 int	ft_checkmap_line(t_map *map)
+//check if the map is valid
 {
 	int	i;
 	int	j;
@@ -80,6 +83,7 @@ int	ft_checkmap_line(t_map *map)
 }
 
 int	ft_total_check(t_map *map)
+//check if the map as the right number of player, exit and collectible
 {
 	if (map->player > 1 || map->exit > 1)
 		return (write(2, "Error from map", 14), 0);
