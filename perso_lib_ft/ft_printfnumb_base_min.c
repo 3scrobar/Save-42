@@ -6,11 +6,12 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 14:31:57 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/15 17:31:43 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/04 14:11:39 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
+
 
 size_t	ft_printfnumb_base_min(unsigned long nbr)
 {

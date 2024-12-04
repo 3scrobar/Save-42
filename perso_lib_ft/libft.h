@@ -6,12 +6,16 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:50:09 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/04 14:10:07 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/04 14:14:05 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1000000
+# endif
 
 # include <stdlib.h>
 # include <string.h>
@@ -67,12 +71,21 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 void	ft_lstadd_back(t_list **lst, t_list *new);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-void	ft_lstiter(t_list *lst, void (*f)(void *));
-void	ft_lstclear(t_list **lst, void (*del)(void *));
-void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
-
+void	ft_putendl_fd(char *s, int fd);
+void	ft_putnbr_fd(int n, int fd);
+int		ft_printf(const char *str, ...);
+int		ft_check(va_list args, char c);
+int		ft_printchar(char c);
+int		ft_printstr(char *str);
+int		ft_printfnumb(int n);
+int		ft_printf_unsnbr(unsigned int n);
+int		ft_printfnumb_base_min(unsigned long nbr);
+int		ft_printfnumb_base_maj(unsigned int nbr);
+int		ft_printpointer(unsigned long nbr);
+char	*get_next_line(int fd);
+char	*ft_if(char **remaining, char **line);
 
 
 #endif

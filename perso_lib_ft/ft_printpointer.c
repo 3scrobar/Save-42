@@ -6,11 +6,12 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:01:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/11/15 17:32:50 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/04 14:11:51 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
+
 
 int	ft_printpointer(unsigned long nbr)
 {
