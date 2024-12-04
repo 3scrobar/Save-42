@@ -6,14 +6,14 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/04 14:24:48 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/04 14:26:09 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ft_init_map(t_map *map, char *path)
 //initialize the map structure with the map file
+int	ft_init_map(t_map *map, char *path)
 {
 	char	**tab;
 	int		fd;
@@ -34,9 +34,8 @@ int	ft_init_map(t_map *map, char *path)
 	map->column = 0;
 	map->line = 0;
 }
-
-int	ft_parsing(t_map *map)
 //check if the map is valid with check of border
+int	ft_parsing(t_map *map)
 {
 
 	int	len;
@@ -55,9 +54,8 @@ int	ft_parsing(t_map *map)
 	}
 	return (ft_checkmap_line(map), 1);
 }
-
-int	ft_checkmap_line(t_map *map)
 //check if the map is valid with the collectible, player and exit
+int	ft_checkmap_line(t_map *map)
 {
 	int	i;
 	int	j;
@@ -80,9 +78,8 @@ int	ft_checkmap_line(t_map *map)
 	}
 	return (1);
 }
-
-int	ft_total_check(t_map *map)
 //check if the map as the right number of player, exit and collectible
+int	ft_total_check(t_map *map)
 {
 	if (map->player > 1 || map->exit > 1)
 		return (write(2, "Error from map", 14), 0);
