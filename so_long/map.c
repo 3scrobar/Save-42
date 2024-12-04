@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/04 14:19:13 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/04 14:24:48 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,34 +31,33 @@ int	ft_init_map(t_map *map, char *path)
 	map->player = 0;
 	map->exit = 0;
 	map->collectible = 0;
+	map->column = 0;
+	map->line = 0;
 }
 
 int	ft_parsing(t_map *map)
-//check if the map is valid
+//check if the map is valid with check of border
 {
-	int	i;
-	int	j;
+
 	int	len;
 
-	j = 0;
-	i = 0;
-	while (map->map[i])
+	while (map->map[map->line])
 	{
-		while (map->map[i][j])
+		while (map->map[map->line][map->column])
 		{
-			len = ft_strlen(map->map[i]);
-			if (map->map[0][j] != '1' || map->map[i][0] != '1'
-				|| map->map[i][len - 1] != '1' || map->map[i][0] != '1')
+			len = ft_strlen(map->map[map->line]);
+			if (map->map[0][map->column] != '1' || map->map[map->line][0] != '1'
+				|| map->map[map->line][len - 1] != '1' || map->map[map->line][0] != '1')
 				return (0);
-			j++;
+			map->column += 1;
 		}
-		i++;
+		map->line += 1;
 	}
 	return (ft_checkmap_line(map), 1);
 }
 
 int	ft_checkmap_line(t_map *map)
-//check if the map is valid
+//check if the map is valid with the collectible, player and exit
 {
 	int	i;
 	int	j;
