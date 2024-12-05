@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/05 14:20:17 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/05 14:21:40 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ typedef struct s_map
 
 int		ft_checkmap_line(t_map *map);
 int		ft_parsing(t_map *map);
-size_t	ft_strlen(const char *s);
 int		ft_total_check(t_map *map);
 int		ft_init_map(t_map *map, char *path);
 char	*ft_strchr(const char *s, int c);

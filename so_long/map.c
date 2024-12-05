@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/05 14:19:26 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/05 14:22:01 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int	ft_init_map(t_map *map, char *path)
 {
 	char	**tab;
-	size_t		fd;
+	int		fd;
 	int		i;
 	
 	i = 0;
