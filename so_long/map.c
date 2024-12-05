@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/04 16:19:13 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/05 13:49:41 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,14 @@ int	ft_init_map(t_map *map, char *path)
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 		return (write(2, "Error from file reading\n", 24),0);
-	while (fd != 0)
-		{
-			tab[i] = get_next_line(fd);
-			i++;
-		}
+
 	map->map = tab;
 	map->player = 0;
 	map->exit = 0;
 	map->collectible = 0;
 	map->column = 0;
 	map->line = 0;
+	close(fd);
 	return (1);
 }
 //check if the map is valid with check of border
