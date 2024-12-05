@@ -6,13 +6,13 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:52:41 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/05 14:33:42 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/05 14:39:52 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoinfree(char **s1, char const *s2)
+char	*ft_strjoinfree(char **s1, char *s2)
 {
 	size_t	i;
 	size_t	j;
