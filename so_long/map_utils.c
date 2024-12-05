@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:31:14 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/05 14:00:01 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/05 14:14:11 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,28 @@
 
 int	ft_get_tabsize(int fd)
 {
-	char	*line;
+	int		a;
 	char	buffer[BUFFER_SIZE + 1];
 	int		i;
 	int		cpt;
+	char	*line;
 
+	line = NULL;
 	cpt = 0;
 	i = 0;
 	while (1)
 	{
-		line = read(fd, buffer, BUFFER_SIZE);
-		if (line == NULL)
+		a = read(fd, buffer, BUFFER_SIZE);
+		if (a < 1)
 			break ;
+		line = ft_strjoinfree(&line, buffer);
 	}
 	while (line[i])
 	{
 		if (line[i] == '\n')
 			cpt++;
 	}
-	return (cpt);
+	return (free(line), line = NULL, cpt);
 }
 
 char ** ft_fill_tab(int fd)
