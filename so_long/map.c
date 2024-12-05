@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/04 14:26:09 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/04 16:19:13 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@ int	ft_init_map(t_map *map, char *path)
 	char	**tab;
 	int		fd;
 	int		i;
-
+	
+	i = 0;
+	tab = NULL;
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
-		return (write(2, "Error from map reading", 22),0);
+		return (write(2, "Error from file reading\n", 24),0);
 	while (fd != 0)
 		{
 			tab[i] = get_next_line(fd);
@@ -33,6 +35,7 @@ int	ft_init_map(t_map *map, char *path)
 	map->collectible = 0;
 	map->column = 0;
 	map->line = 0;
+	return (1);
 }
 //check if the map is valid with check of border
 int	ft_parsing(t_map *map)
@@ -81,9 +84,11 @@ int	ft_checkmap_line(t_map *map)
 //check if the map as the right number of player, exit and collectible
 int	ft_total_check(t_map *map)
 {
-	if (map->player > 1 || map->exit > 1)
-		return (write(2, "Error from map", 14), 0);
+	if (map->player > 1)
+		return (write(2, "Error from map, no starting pos", 31), 0);
 	else if (map->collectible == 0)
-		return (write(2, "Error from map", 14), 0);
+		return (write(2, "Error from map , no collectible", 31), 0);
+	else if (map->exit > 1)
+		return (write(2, "Error from map, no exit pos", 27), 0);
 	return (1);
 }

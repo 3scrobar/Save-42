@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/04 16:11:10 by tle-saut         ###   ########.fr       */
+/*   Created: 2024/12/04 16:31:14 by tle-saut          #+#    #+#             */
+/*   Updated: 2024/12/04 16:36:18 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int ac, char **av)
+char ** ft_malloc_tab(int fd)
 {
-	t_map	map;
-	int		i;
+	int len;
 
-	if (ac != 2)
-		return (write(2, "Error from argument\n", 21), 1);
-	i = ft_init_map(&map, av[1]);
-	if (i == 0)
-		return (1);
-	if (ft_parsing(&map) == 0 || ft_total_check(&map) == 0)
-		return (write(2, "Error from map\n", 16), 1);
-	return (0);
+	len = 0;
+	
+}
+
+char ** ft_fill_tab(int fd)
+{
+	char	**tab;
+	int		i;
+	
+	i = 0;
+	tab = NULL;
+	while (fd != 0)
+	{
+		tab[i] = get_next_line(fd);
+		i++;
+	}
+	return (tab);
 }
