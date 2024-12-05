@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:52:41 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/04 15:38:22 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/05 14:33:42 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ char	*ft_strjoinfree(char **s1, char const *s2)
 		j++;
 	}
 	dest[i + j] = '\0';
-	free(*s1);
+	if (*s1 != NULL)
+		free(*s1);
 	return (dest);
 }
