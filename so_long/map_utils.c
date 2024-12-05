@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:31:14 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/05 15:43:04 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/05 15:44:06 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,10 @@ char	**ft_init_tab(int fd)
 {
 	int		a;
 	char	buffer[BUFFER_SIZE + 1];
-	int		i;
-	int		cpt;
+	char	**tab;
 	char	*line;
 
 	line = NULL;
-	cpt = 0;
-	i = 0;
 	while (1)
 	{
 		a = read(fd, buffer, BUFFER_SIZE);
@@ -33,12 +30,9 @@ char	**ft_init_tab(int fd)
 		else
 			line = ft_strjoinfree(&line, buffer);
 	}
-	while (line[i])
-	{
-		if (line[i++] == '\n')
-			cpt++;
-	}
-	return (free(line), line = NULL, cpt);
+	tab = ft_split(line, '\n');
+	free(line);
+	return (tab);
 }
 
 

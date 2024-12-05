@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/05 14:23:39 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/05 15:44:40 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,7 @@ char	*ft_strdup(const char *s);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*get_next_line(int fd);
 char	*ft_if(char **remaining, char **line);
-char	**ft_fill_tab(int fd);
-int		ft_get_tabsize(int fd);
+char	**ft_init_tab(int fd);
 
 
 #endif
