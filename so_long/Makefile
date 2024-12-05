@@ -6,7 +6,7 @@
 #    By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/03 14:34:47 by tle-saut          #+#    #+#              #
-#    Updated: 2024/12/04 16:22:49 by tle-saut         ###   ########.fr        #
+#    Updated: 2024/12/05 14:03:17 by tle-saut         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = cc
 
 CFLAGS = -Wall -Werror -Wextra -g
 
-SRC = map.c so_long.c
+SRC = map.c so_long.c maps_utils.c 
 
 OBJ = $(SRC:.c=.o)
 
