@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:31:14 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/05 15:11:44 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/05 15:36:39 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,11 @@ char	**ft_fill_tab(int fd)
 	
 	i = 0;
 	tab = malloc(sizeof(char *) * (ft_get_tabsize(fd) + 1));
-	while (fd > 0)
+	while (1)
 	{
 		temp = get_next_line(fd);
+		if (temp == NULL)
+			break ;
 		tab[i] = malloc(sizeof(char) * ft_strlen(temp) + 1);
 		tab[i] = temp;
 		i++;
