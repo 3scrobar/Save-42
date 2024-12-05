@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:52:41 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/05 15:07:54 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/05 15:10:12 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ char	*ft_strjoinfree(char **s1, char *s2)
 
 	i = 0;
 	j = 0;
-	if (s1 == NULL)
 	dest = malloc(sizeof(char) * (ft_strlen(*s1) + ft_strlen(s2) + 1));
 	if (!dest)
 		return (NULL);
