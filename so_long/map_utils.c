@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:31:14 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/05 14:21:15 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/05 14:23:21 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	ft_get_tabsize(int fd)
 	return (free(line), line = NULL, cpt);
 }
 
-char **ft_fill_tab(int fd)
+char	**ft_fill_tab(int fd)
 {
 	char	**tab;
 	int		i;
