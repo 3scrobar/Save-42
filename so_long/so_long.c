@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/04 16:11:10 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/05 15:54:34 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ int	main(int ac, char **av)
 	if (i == 0)
 		return (1);
 	if (ft_parsing(&map) == 0 || ft_total_check(&map) == 0)
-		return (write(2, "Error from map\n", 16), 1);
+		return (1);
 	return (0);
 }
