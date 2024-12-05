@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/05 13:49:41 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/05 14:19:26 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int	ft_init_map(t_map *map, char *path)
 {
 	char	**tab;
-	int		fd;
+	size_t		fd;
 	int		i;
 	
 	i = 0;
@@ -24,7 +24,7 @@ int	ft_init_map(t_map *map, char *path)
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 		return (write(2, "Error from file reading\n", 24),0);
-
+	tab = ft_fill_tab(fd);
 	map->map = tab;
 	map->player = 0;
 	map->exit = 0;
