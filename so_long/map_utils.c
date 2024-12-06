@@ -6,12 +6,16 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:31:14 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/05 15:44:06 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/06 17:06:59 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
+void	ft_pos_check(t_list *map)
+void	ft_path_check(t_map *map)
+{
+	
+}
 char	**ft_init_tab(int fd)
 {
 	int		a;

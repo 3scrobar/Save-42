@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/05 15:44:40 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/06 17:02:54 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ typedef struct s_map
 	int		collectible;
 	int		column;
 	int		line;
+	int		xStart;
+	int		yStart;
 }	t_map;
 
 int		ft_checkmap_line(t_map *map);
