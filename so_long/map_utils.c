@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:31:14 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/06 17:31:47 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/06 17:36:55 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,30 +27,14 @@ void	ft_pos_check(t_map *map)
 }
 int	ft_flood_path(t_map map)
 {
-	if (map.map[map.yStart][map.xStart] != 'C')
-	{
-		map.collectible -= 1;
-		map.map[map.yStart][map.xStart] = '1';
-	}
-	else if (map.map[map.yStart][map.xStart] != 'E')
-	{
-		map.exit -= 1;
-		map.map[map.yStart][map.xStart] = '1';
-	}
-	else if (map.map[map.yStart][map.xStart] != '1')
-		map.map[map.yStart][map.xStart] = '1';
-	if (map.yStart > 0)
-	{
-		map.yStart -= 1;
-		ft_flood_path(map);
-	}
+
+
 }
 void	ft_path_check(t_map *map)
 {
-	t_map	mapcopy;
-	
-	mapcopy = *map;
-	ft_pos_check(&map);
+
+	ft_pos_check(map);
+	ft_flood_path(map);
 	
 }
 char	**ft_init_tab(int fd)
