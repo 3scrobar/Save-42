@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:31:14 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/06 17:57:14 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/06 18:00:14 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_pos_check(t_map *map)
 }
 int	ft_flood_path(t_map *map, int xstart, int ystart)
 {
-	if (map->yStart < 0 || map>xstart < 0 || map->yStart >= map->line || map>xstart >= map->column)
+	if (map->yStart < 0 || map->xStart < 0 || map->yStart >= map->line || map->xStart >= map->column)
 		return (0);
 	if (map->map[ystart][xstart] == '0')
 		map->map[ystart][xstart] = '1';
@@ -40,10 +40,10 @@ int	ft_flood_path(t_map *map, int xstart, int ystart)
 		return (0);
 	if (map->exit < 0 || map->collectible < 0 || map->exit > 1)
 		return (1);
-	ft_flood_path(*map,map>xstart + 1, map->yStart);
-	ft_flood_path(*map,map>xstart - 1, map->yStart);
-	ft_flood_path(*map,map>xstart, map->yStart + 1);
-	ft_flood_path(*map,map>xstart, map->yStart - 1);	
+	ft_flood_path(map,map->xStart + 1, map->yStart);
+	ft_flood_path(map,map->xStart - 1, map->yStart);
+	ft_flood_path(map,map->xStart, map->yStart + 1);
+	ft_flood_path(map,map->xStart, map->yStart - 1);	
 	return (0);
 }
 int	ft_path_check(t_map *map)
