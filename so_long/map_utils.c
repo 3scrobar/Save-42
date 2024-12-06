@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:31:14 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/06 17:36:55 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/06 17:42:07 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,24 @@ void	ft_pos_check(t_map *map)
 }
 int	ft_flood_path(t_map map)
 {
-
+	if (map.yStart < 0 || map.xStart < 0 || map.yStart >= map.line || map.xStart >= map.column)
+		return (0);
+	if (map.map[map.yStart][map.xStart] == '0')
+		map.map[map.yStart][map.xStart] = '1';
+	else if (map.map[map.yStart][map.xStart] == 'E')
+		map.exit -= 1;
+	else if (map.map[map.yStart][map.xStart] == 'C')
+		map.collectible -= 1;
+	
+		return (0);
 
 }
-void	ft_path_check(t_map *map)
+int	ft_path_check(t_map *map)
 {
 
-	ft_pos_check(map);
-	ft_flood_path(map);
+	ft_pos_check(&map);
+	if (ft_flood_path(*map) == 1)
+		return (ft_printf("Error from path\n"));
 	
 }
 char	**ft_init_tab(int fd)
