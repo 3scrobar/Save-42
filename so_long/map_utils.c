@@ -6,12 +6,25 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:31:14 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/06 17:06:59 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/06 17:11:47 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-void	ft_pos_check(t_list *map)
+void	ft_pos_check(t_map *map)
+{
+	while (map->map[map->yStart])
+	{
+		map->xStart = 0;
+		while (map->map[map->yStart][map->xStart])
+		{
+			if (map->map[map->yStart][map->xStart] == 'P')
+				break;
+			map->xStart += 1;
+		}
+		map->yStart += 1;
+	}
+}
 void	ft_path_check(t_map *map)
 {
 	
