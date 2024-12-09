@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printfchar.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
+/*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 14:47:17 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/04 15:38:45 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/09 21:12:11 by groot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
 
 int	ft_printchar(char c)
 {

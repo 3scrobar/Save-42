@@ -6,7 +6,7 @@
 /*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/09 19:38:58 by groot            ###   ########.fr       */
+/*   Updated: 2024/12/09 21:10:34 by groot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@
 
 typedef struct s_map
 {
-	char	**map;
-	int		player;
-	int		exit;
-	int		collectible;
-	int		column;
-	int		line;
-	int		xStart;
-	int		yStart;
+	char		**map;
+	int			player;
+	int			exit;
+	int			collectible;
+	size_t		column;
+	size_t		line;
+	int			xbegin;
+	int			ybegin;
 }	t_map;
 
 int		ft_checkmap_line(t_map *map);
@@ -48,8 +48,6 @@ char	*ft_if(char **remaining, char **line);
 char	**ft_init_tab(int fd);
 int		ft_pos_check(t_map *map);
 int		ft_path_check(t_map *map);
-int		ft_flood_path(t_map *map, int ystart, int xstart);
-
-
+int		ft_flood_path(t_map *map, size_t ystart, size_t xstart);
 
 #endif

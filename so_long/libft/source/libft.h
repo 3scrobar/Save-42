@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
+/*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:50:09 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/05 14:41:39 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/09 21:11:33 by groot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,5 @@ size_t			ft_printfnumb_base_min(unsigned long nbr);
 unsigned int	ft_printf(const char *str, ...);
 int				ft_printpointer(unsigned long nbr);
 int				ft_printf_unsnbr(unsigned int n);
-
 
 #endif
