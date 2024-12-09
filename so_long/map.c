@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/09 16:08:55 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:12:39 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ int	ft_total_check(t_map *map)
 	else if (map->exit != 1)
 		return (ft_putstr_fd("Error from map, NO Exit POS\n",2), 0);
 	ft_printf("end total check\n");
+	ft_path_check(map);
 
 	return (1);
 }
