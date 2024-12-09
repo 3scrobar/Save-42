@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:31:14 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/09 16:51:51 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:57:06 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ void	ft_pos_check(t_map *map)
 		map->yStart += 1;
 	}
 }
-int	ft_flood_path(t_map *map, int xstart, int ystart)
+int	ft_flood_path(t_map *map)
 {
 	ft_printf("test du flood\n");
-	if (map->yStart < 0 || map->xStart < 0 || map->yStart >= map->line || map->xStart >= map->column)
-		return (0);
+	// if (map->yStart < 0 || map->xStart < 0 || map->yStart > map->line || map->xStart > map->column)
+	// 	return (0);
 	if (map->map[ystart][xstart] == '0')
 		map->map[ystart][xstart] = '1';
 	if (map->map[ystart][xstart] == 'E')
