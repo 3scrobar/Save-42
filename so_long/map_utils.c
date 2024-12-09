@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:31:14 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/09 17:11:56 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:17:07 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,27 +25,28 @@ int	ft_pos_check(t_map *map)
 		}
 		map->yStart += 1;
 	}
+	return (0);
 }
-int	ft_flood_path(t_map *map)
+int	ft_flood_path(t_map *map, int ystart, int xstart)
 {
 	ft_printf("test du flood\n");
-	// if (map->yStart < 0 || map->xStart < 0 || map->yStart > map->line || map->xStart > map->column)
-	// 	return (0);
-	if (map->map[map->yStart][map->xStart] == '0')
-		map->map[map->yStart][map->xStart] = '1';
-	if (map->map[map->yStart][map->xStart] == 'E')
+	if (ystart < 0 || xstart < 0 || ystart > map->line || xstart > map->column)
+		return (0);
+	if (map->map[ystart][xstart] == '0')
+		map->map[ystart][xstart] = '1';
+	if (map->map[ystart][xstart] == 'E')
 		map->exit -= 1;
-	if (map->map[map->xStart][map->xStart] == 'C')
+	if (map->map[ystart][xstart] == 'C')
 		map->collectible -= 1;
 	ft_printf("debut recurcive\n");
-	if (map->xStart > 0)
-		ft_flood_path(map);
-	if (map->xStart < map->column)
-		ft_flood_path(map);
-	if (map->xStart > 0)
-		ft_flood_path(map);
-	if (map->xStart < map->line)
-		ft_flood_path(map);
+	if (xstart > 0)
+		ft_flood_path(map, ystart, xstart - 1);
+	if (xstart < map->column)
+		ft_flood_path(map, ystart, xstart + 1);
+	if (ystart > 0)
+		ft_flood_path(map, ystart - 1, xstart);
+	if (ystart < map->line)
+		ft_flood_path(map, ystart + 1, xstart);
 	ft_printf("fin du flood\n");
 	return (0);
 }
