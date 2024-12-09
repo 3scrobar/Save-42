@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:31:14 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/06 18:00:14 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:06:51 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	ft_pos_check(t_map *map)
 		}
 		map->yStart += 1;
 	}
+	ft_printf("recuperation posotion joeur");
 }
 int	ft_flood_path(t_map *map, int xstart, int ystart)
 {
@@ -48,8 +49,11 @@ int	ft_flood_path(t_map *map, int xstart, int ystart)
 }
 int	ft_path_check(t_map *map)
 {
+	ft_printf("check path");
 
 	ft_pos_check(map);
+	if (ft_flood_path(map, map->xStart, map->yStart) == 1)
+		return (ft_printf("Error from path\n"));
 	if (ft_flood_path(map, map->xStart, map->yStart) == 1)
 		return (ft_printf("Error from path\n"));
 	return (0);
@@ -62,6 +66,7 @@ char	**ft_init_tab(int fd)
 	char	*line;
 
 	line = NULL;
+	ft_printf("debut initialisation");
 	while (1)
 	{
 		a = read(fd, buffer, BUFFER_SIZE);
@@ -74,6 +79,8 @@ char	**ft_init_tab(int fd)
 	}
 	tab = ft_split(line, '\n');
 	free(line);
+	ft_printf("check path");
+
 	return (tab);
 }
 
