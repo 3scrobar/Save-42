@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+         #
+#    By: groot <groot@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/03 14:34:47 by tle-saut          #+#    #+#              #
-#    Updated: 2024/12/09 15:41:24 by tle-saut         ###   ########.fr        #
+#    Updated: 2024/12/09 19:38:06 by groot            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,9 @@ OBJ = $(SRC:%.c=$(OBJDIR)%.o)
 
 OBJDIR = object/
 
+$(OBJDIR):
+	mkdir -p $(OBJDIR)
+
 $(NAME): libft/libft.a $(OBJDIR) $(OBJ)
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) libft/libft.a
 
@@ -30,7 +33,7 @@ libft/libft.a:
 
 all: $(NAME)
 
-$(OBJDIR)%.o: %.c
+$(OBJDIR)%.o: $(SRCDIR)%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
+/*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/09 17:06:40 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/09 20:12:30 by groot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 int	main(int ac, char **av)
 {
 	t_map	map;
-	int		i;
 
 	if (ac != 2)
-		return (write(2, "Error from argument\n", 21), 1);
-	i = ft_init_map(&map, av[1]);
-	if (i == 0)
-		return (ft_printf("Error from map"), 1);
+		return (ft_putstr_fd("Error from Arguments\n",2), 1);
+	if (ft_init_map(&map, av[1]) == 1)
+		return (1);
+	else
+		ft_printf("Map Valide, Launch The Game .....\n");
 	return (0);
 }

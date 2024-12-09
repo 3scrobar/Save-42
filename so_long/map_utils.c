@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
+/*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:31:14 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/09 17:20:45 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/09 20:20:00 by groot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,34 +29,36 @@ int	ft_pos_check(t_map *map)
 }
 int	ft_flood_path(t_map *map, int ystart, int xstart)
 {
-	ft_printf("test du flood\n");
-	if (ystart <= 0 || xstart <= 0 || ystart >= map->line || xstart >= map->column)
+	if (ystart < 0 || xstart < 0 || ystart >= map->line || xstart >= map->column)
 		return (0);
-	if (map->map[ystart][xstart] == '0')
+	if (map->map[ystart][xstart] == '1')
+		return (0);
+	if (map->map[ystart][xstart] == '0' || map->map[ystart][xstart] == 'P')
 		map->map[ystart][xstart] = '1';
 	if (map->map[ystart][xstart] == 'E')
 		map->exit -= 1;
 	if (map->map[ystart][xstart] == 'C')
 		map->collectible -= 1;
-	ft_printf("debut recurcive\n");
-	if (xstart > 0)
-		ft_flood_path(map, ystart, xstart - 1);
-	if (xstart < map->column)
-		ft_flood_path(map, ystart, xstart + 1);
-	if (ystart > 0)
-		ft_flood_path(map, ystart - 1, xstart);
-	if (ystart < map->line)
-		ft_flood_path(map, ystart + 1, xstart);
-	ft_printf("fin du flood\n");
+	ft_flood_path(map, ystart, xstart - 1);
+	ft_flood_path(map, ystart, xstart + 1);
+	ft_flood_path(map, ystart - 1, xstart);
+	ft_flood_path(map, ystart + 1, xstart);
+	ystart = 0;
+	while (ystart < map->line)
+	{
+		if(ft_strchr(map->map[ystart],'E') != 0 || ft_strchr(map->map[ystart],'C') != 0 ||
+			ft_strchr(map->map[ystart],'P') != 0)
+			return (1);
+		ystart++;
+	}
 	return (0);
 }
+
 int	ft_path_check(t_map *map)
 {
-	ft_printf("check path\n");
-	ft_pos_check(map);
+	ft_pos_check(*&map);
 	if (ft_flood_path(map, map->yStart, map->xStart) == 1)
-		return (ft_printf("Error from path\n"));
-	ft_printf("end check path");
+		return (ft_putstr_fd("Error from map, No Path\n",2),1);
 	return (0);
 }
 char	**ft_init_tab(int fd)
@@ -67,7 +69,6 @@ char	**ft_init_tab(int fd)
 	char	*line;
 
 	line = NULL;
-	ft_printf("debut initialisation\n");
 	while (1)
 	{
 		a = read(fd, buffer, BUFFER_SIZE);
@@ -80,7 +81,6 @@ char	**ft_init_tab(int fd)
 	}
 	tab = ft_split(line, '\n');
 	free(line);
-	ft_printf("fin initialisation\n");
 	return (tab);
 }
 

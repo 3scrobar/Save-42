@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
+/*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/09 17:18:37 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/09 19:38:58 by groot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <string.h>
 # include <unistd.h>
 # include <fcntl.h>
-# include "libft/libft.h"
+# include "libft/source/libft.h"
 
 typedef struct s_map
 {
@@ -48,8 +48,7 @@ char	*ft_if(char **remaining, char **line);
 char	**ft_init_tab(int fd);
 int		ft_pos_check(t_map *map);
 int		ft_path_check(t_map *map);
-int		ft_flood_path(t_map *map, int ystart, int xstart)
-;
+int		ft_flood_path(t_map *map, int ystart, int xstart);
 
 
 
