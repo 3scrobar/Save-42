@@ -6,13 +6,13 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:31:14 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/09 17:00:23 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:11:56 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_pos_check(t_map *map)
+int	ft_pos_check(t_map *map)
 {
 	while (map->map[map->yStart])
 	{
@@ -20,7 +20,7 @@ void	ft_pos_check(t_map *map)
 		while (map->map[map->yStart][map->xStart])
 		{
 			if (map->map[map->yStart][map->xStart] == 'P')
-				break;
+				return (0);
 			map->xStart += 1;
 		}
 		map->yStart += 1;

@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/09 17:04:02 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:09:15 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,9 @@ int	ft_checkmap_line(t_map *map)
 //check if the map as the right number of player, exit and collectible
 int	ft_total_check(t_map *map)
 {
-
+	ft_checkmap_line(map);
+	if (ft_parsing(map) == 1)
+		return (ft_printf("Error from border"), 1);
 	if (map->player != 1)
 		return (ft_putstr_fd("Error from map, No Starting POS\n",2), 1);
 	else if (map->collectible == 0)
@@ -88,6 +90,5 @@ int	ft_total_check(t_map *map)
 	else if (map->exit != 1)
 		return (ft_putstr_fd("Error from map, NO Exit POS\n",2), 1);
 	ft_path_check(map);
-	ft_checkmap_line(map);
 	return (0);
 }
