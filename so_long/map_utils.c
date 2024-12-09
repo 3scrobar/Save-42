@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:31:14 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/09 16:10:15 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:42:02 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	ft_pos_check(t_map *map)
 		}
 		map->yStart += 1;
 	}
-	ft_printf("recuperation posotion joeur\n");
 }
 int	ft_flood_path(t_map *map, int xstart, int ystart)
 {
@@ -43,10 +42,15 @@ int	ft_flood_path(t_map *map, int xstart, int ystart)
 		return (0);
 	if (map->exit < 0 || map->collectible < 0 || map->exit > 1)
 		return (1);
-	ft_flood_path(map,map->xStart + 1, map->yStart);
-	ft_flood_path(map,map->xStart - 1, map->yStart);
-	ft_flood_path(map,map->xStart, map->yStart + 1);
-	ft_flood_path(map,map->xStart, map->yStart - 1);
+	if (map->xStart > 0)
+		ft_flood_path(map,map->xStart - 1, map->yStart);
+	if (map->xStart < map->column)
+		ft_flood_path(map,map->xStart + 1, map->yStart);
+	if (map->xStart > 0)
+	if (map->xStart < map->line)
+		ft_flood_path(map,map->xStart, map->yStart + 1);
+
+
 	ft_printf("fin du flood\n");
 
 	return (0);
