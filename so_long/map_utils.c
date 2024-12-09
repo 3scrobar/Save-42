@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:31:14 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/09 16:46:55 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:51:51 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ void	ft_pos_check(t_map *map)
 int	ft_flood_path(t_map *map, int xstart, int ystart)
 {
 	ft_printf("test du flood\n");
-	static int	pass = 0;
-
 	if (map->yStart < 0 || map->xStart < 0 || map->yStart >= map->line || map->xStart >= map->column)
 		return (0);
 	if (map->map[ystart][xstart] == '0')
@@ -39,9 +37,7 @@ int	ft_flood_path(t_map *map, int xstart, int ystart)
 		map->exit -= 1;
 	if (map->map[ystart][xstart] == 'C')
 		map->collectible -= 1;
-	if ((map->exit < 0 || map->collectible < 0 || map->exit > 1) && pass == 1)
-		return (1);
-	pass = 1;
+	ft_printf("debut recurcive\n");
 	if (map->xStart > 0)
 		ft_flood_path(map,map->xStart - 1, map->yStart);
 	if (map->xStart < map->column)
@@ -56,12 +52,10 @@ int	ft_flood_path(t_map *map, int xstart, int ystart)
 int	ft_path_check(t_map *map)
 {
 	ft_printf("check path\n");
-
 	ft_pos_check(map);
 	if (ft_flood_path(map, map->xStart, map->yStart) == 1)
 		return (ft_printf("Error from path\n"));
-	if (ft_flood_path(map, map->xStart, map->yStart) == 1)
-		return (ft_printf("Error from path\n"));
+	ft_printf("end check path");
 	return (0);
 }
 char	**ft_init_tab(int fd)
