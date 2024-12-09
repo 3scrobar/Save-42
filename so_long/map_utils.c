@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:31:14 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/09 16:57:06 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:00:23 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,21 @@ int	ft_flood_path(t_map *map)
 	ft_printf("test du flood\n");
 	// if (map->yStart < 0 || map->xStart < 0 || map->yStart > map->line || map->xStart > map->column)
 	// 	return (0);
-	if (map->map[ystart][xstart] == '0')
-		map->map[ystart][xstart] = '1';
-	if (map->map[ystart][xstart] == 'E')
+	if (map->map[map->yStart][map->xStart] == '0')
+		map->map[map->yStart][map->xStart] = '1';
+	if (map->map[map->yStart][map->xStart] == 'E')
 		map->exit -= 1;
-	if (map->map[ystart][xstart] == 'C')
+	if (map->map[map->xStart][map->xStart] == 'C')
 		map->collectible -= 1;
 	ft_printf("debut recurcive\n");
 	if (map->xStart > 0)
-		ft_flood_path(map,map->xStart - 1, map->yStart);
+		ft_flood_path(map);
 	if (map->xStart < map->column)
-		ft_flood_path(map,map->xStart + 1, map->yStart);
+		ft_flood_path(map);
 	if (map->xStart > 0)
-		ft_flood_path(map,map->xStart, map->yStart - 1);
+		ft_flood_path(map);
 	if (map->xStart < map->line)
-		ft_flood_path(map,map->xStart, map->yStart + 1);
+		ft_flood_path(map);
 	ft_printf("fin du flood\n");
 	return (0);
 }
@@ -53,7 +53,7 @@ int	ft_path_check(t_map *map)
 {
 	ft_printf("check path\n");
 	ft_pos_check(map);
-	if (ft_flood_path(map, map->xStart, map->yStart) == 1)
+	if (ft_flood_path(map) == 1)
 		return (ft_printf("Error from path\n"));
 	ft_printf("end check path");
 	return (0);

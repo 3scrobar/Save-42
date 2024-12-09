@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/09 16:38:55 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:02:10 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ int	ft_parsing(t_map *map)
 			len = ft_strlen(map->map[map->line]);
 			if (map->map[0][map->column] != '1' || map->map[map->line][0] != '1'
 				|| map->map[map->line][len - 1] != '1' || map->map[map->line][0] != '1')
-				return (0);
+				return (1);
 			map->column += 1;
 		}
 		map->line += 1;
 	}
-	return (ft_checkmap_line(map), 1);
+	return (ft_checkmap_line(map), 0);
 }
 //check if the map is valid with the collectible, player and exit
 int	ft_checkmap_line(t_map *map)
@@ -75,7 +75,7 @@ int	ft_checkmap_line(t_map *map)
 		}
 		i++;
 	}
-	return (1);
+	return (0);
 }
 //check if the map as the right number of player, exit and collectible
 int	ft_total_check(t_map *map)
@@ -88,5 +88,5 @@ int	ft_total_check(t_map *map)
 	else if (map->exit != 1)
 		return (ft_putstr_fd("Error from map, NO Exit POS\n",2), 0);
 	ft_path_check(map);
-	return (1);
+	return (0);
 }
