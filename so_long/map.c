@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/09 15:31:37 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:08:55 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	ft_parsing(t_map *map)
 {
 
 	int	len;
+	ft_printf("parsing\n");
 
 	while (map->map[map->line])
 	{
@@ -52,6 +53,8 @@ int	ft_parsing(t_map *map)
 		}
 		map->line += 1;
 	}
+	ft_printf("end parsing\n");
+
 	return (ft_checkmap_line(map), 1);
 }
 //check if the map is valid with the collectible, player and exit
@@ -61,6 +64,8 @@ int	ft_checkmap_line(t_map *map)
 	int	j;
 
 	i = 0;
+	ft_printf("comptage des items\n");
+
 	while (map->map[i])
 	{
 		j = 0;
@@ -76,16 +81,22 @@ int	ft_checkmap_line(t_map *map)
 		}
 		i++;
 	}
+	ft_printf("fin comptage\n");
+	
 	return (1);
 }
 //check if the map as the right number of player, exit and collectible
 int	ft_total_check(t_map *map)
 {
+	ft_printf("debut total check\n");
+
 	if (map->player != 1)
 		return (ft_putstr_fd("Error from map, No Starting POS\n",2), 0);
 	else if (map->collectible == 0)
 		return (ft_putstr_fd("Error from map, NO Collectible\n",2), 0);
 	else if (map->exit != 1)
 		return (ft_putstr_fd("Error from map, NO Exit POS\n",2), 0);
+	ft_printf("end total check\n");
+
 	return (1);
 }

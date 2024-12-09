@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:31:14 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/09 16:06:51 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:10:15 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,12 @@ void	ft_pos_check(t_map *map)
 		}
 		map->yStart += 1;
 	}
-	ft_printf("recuperation posotion joeur");
+	ft_printf("recuperation posotion joeur\n");
 }
 int	ft_flood_path(t_map *map, int xstart, int ystart)
 {
+	ft_printf("test du flood\n");
+
 	if (map->yStart < 0 || map->xStart < 0 || map->yStart >= map->line || map->xStart >= map->column)
 		return (0);
 	if (map->map[ystart][xstart] == '0')
@@ -44,12 +46,14 @@ int	ft_flood_path(t_map *map, int xstart, int ystart)
 	ft_flood_path(map,map->xStart + 1, map->yStart);
 	ft_flood_path(map,map->xStart - 1, map->yStart);
 	ft_flood_path(map,map->xStart, map->yStart + 1);
-	ft_flood_path(map,map->xStart, map->yStart - 1);	
+	ft_flood_path(map,map->xStart, map->yStart - 1);
+	ft_printf("fin du flood\n");
+
 	return (0);
 }
 int	ft_path_check(t_map *map)
 {
-	ft_printf("check path");
+	ft_printf("check path\n");
 
 	ft_pos_check(map);
 	if (ft_flood_path(map, map->xStart, map->yStart) == 1)
@@ -66,7 +70,7 @@ char	**ft_init_tab(int fd)
 	char	*line;
 
 	line = NULL;
-	ft_printf("debut initialisation");
+	ft_printf("debut initialisation\n");
 	while (1)
 	{
 		a = read(fd, buffer, BUFFER_SIZE);
@@ -79,8 +83,7 @@ char	**ft_init_tab(int fd)
 	}
 	tab = ft_split(line, '\n');
 	free(line);
-	ft_printf("check path");
-
+	ft_printf("fin initialisation\n");
 	return (tab);
 }
 
