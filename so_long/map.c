@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/09 17:02:10 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:04:02 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_init_map(t_map *map, char *path)
 	i = 0;
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
-		return (write(2, "Error from file reading\n", 24),0);
+		return (write(2, "Error from file reading\n", 24),1);
 	map->map = ft_init_tab(fd);
 	map->player = 0;
 	map->exit = 0;
@@ -31,7 +31,7 @@ int	ft_init_map(t_map *map, char *path)
 	map->xStart  = 0;
 	map->yStart = 0;
 	close(fd);
-	return (1);
+	return (ft_total_check(map));
 }
 //check if the map is valid with check of border
 int	ft_parsing(t_map *map)
@@ -51,7 +51,7 @@ int	ft_parsing(t_map *map)
 		}
 		map->line += 1;
 	}
-	return (ft_checkmap_line(map), 0);
+	return (0);
 }
 //check if the map is valid with the collectible, player and exit
 int	ft_checkmap_line(t_map *map)
@@ -82,11 +82,12 @@ int	ft_total_check(t_map *map)
 {
 
 	if (map->player != 1)
-		return (ft_putstr_fd("Error from map, No Starting POS\n",2), 0);
+		return (ft_putstr_fd("Error from map, No Starting POS\n",2), 1);
 	else if (map->collectible == 0)
-		return (ft_putstr_fd("Error from map, NO Collectible\n",2), 0);
+		return (ft_putstr_fd("Error from map, NO Collectible\n",2), 1);
 	else if (map->exit != 1)
-		return (ft_putstr_fd("Error from map, NO Exit POS\n",2), 0);
+		return (ft_putstr_fd("Error from map, NO Exit POS\n",2), 1);
 	ft_path_check(map);
+	ft_checkmap_line(map);
 	return (0);
 }
