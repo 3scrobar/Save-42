@@ -6,7 +6,7 @@
 #    By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/03 14:34:47 by tle-saut          #+#    #+#              #
-#    Updated: 2024/12/09 15:36:31 by tle-saut         ###   ########.fr        #
+#    Updated: 2024/12/09 15:41:24 by tle-saut         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CFLAGS = -Wall -Werror -Wextra -g
 
 SRC = map.c so_long.c map_utils.c 
 
-OBJ = $(SRC:.c=.o)
+OBJ = $(SRC:%.c=$(OBJDIR)%.o)
 
 OBJDIR = object/
 
@@ -30,7 +30,7 @@ libft/libft.a:
 
 all: $(NAME)
 
-%.o: %.c
+$(OBJDIR)%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
