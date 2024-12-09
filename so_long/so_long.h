@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/09 17:12:03 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:18:37 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*get_next_line(int fd);
 char	*ft_if(char **remaining, char **line);
 char	**ft_init_tab(int fd);
-int	ft_pos_check(t_map *map);
+int		ft_pos_check(t_map *map);
 int		ft_path_check(t_map *map);
-int		ft_flood_path(t_map *map);
+int		ft_flood_path(t_map *map, int ystart, int xstart)
+;
 
 
 

@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:31:14 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/09 17:17:07 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:20:45 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_pos_check(t_map *map)
 int	ft_flood_path(t_map *map, int ystart, int xstart)
 {
 	ft_printf("test du flood\n");
-	if (ystart < 0 || xstart < 0 || ystart > map->line || xstart > map->column)
+	if (ystart <= 0 || xstart <= 0 || ystart >= map->line || xstart >= map->column)
 		return (0);
 	if (map->map[ystart][xstart] == '0')
 		map->map[ystart][xstart] = '1';
@@ -54,7 +54,7 @@ int	ft_path_check(t_map *map)
 {
 	ft_printf("check path\n");
 	ft_pos_check(map);
-	if (ft_flood_path(map) == 1)
+	if (ft_flood_path(map, map->yStart, map->xStart) == 1)
 		return (ft_printf("Error from path\n"));
 	ft_printf("end check path");
 	return (0);
