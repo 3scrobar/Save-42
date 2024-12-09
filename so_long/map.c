@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/06 17:03:28 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/09 15:31:37 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	ft_parsing(t_map *map)
 
 	while (map->map[map->line])
 	{
+		map->column = 0;
 		while (map->map[map->line][map->column])
 		{
 			len = ft_strlen(map->map[map->line]);
