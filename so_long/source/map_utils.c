@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:31:14 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/10 18:13:58 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/10 18:14:49 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ int	ft_path_check(t_map *map)
 {
 	t_map map2;
 	
-	map2 = map;
+	map2 = *map;
 	ft_pos_check(*&map);
-	if (ft_flood_path(map, map->ybegin, map->xbegin) == 1)
+	if (ft_flood_path(&map2, map2.ybegin, map2.xbegin) == 1)
 		return (ft_putstr_fd("Error from map, No Path\n", 2), 1);
 	if (map->line == map->column)
 		return (ft_putstr_fd("Error from map, Map is a square\n", 2), 1);
