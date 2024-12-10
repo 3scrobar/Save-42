@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/10 17:27:34 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/10 17:41:14 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ typedef struct	s_vars {
 int		ft_checkmap_line(t_map *map);
 int		ft_parsing(t_map *map);
 int		ft_total_check(t_map *map);
-int		ft_init_map(t_map *map, char *path);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strdup(const char *s);
@@ -70,5 +69,6 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		key_hook(int keycode, t_vars *vars);
 int		key_press(int keycode, void *param);
 void	draw_map(void *mlx, void *win,t_map *map, int tile_size);
+int		ft_init_map(t_map *map, char *path, t_vars *mlx, t_data *img);
 
 #endif
