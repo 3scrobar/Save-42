@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/10 17:41:45 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/10 17:51:09 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int ac, char **av)
 	
 
 
-	mlx.win = mlx_new_window(mlx.mlx, 1920, 1080, "Hello world!");
+	mlx.win = mlx_new_window(mlx.mlx, map.column * 70, map.line * 70, "Hello world!");
 	mlx_key_hook(mlx.win, key_press, mlx.mlx);
 	draw_map(mlx.mlx, mlx.win, &map, img.tyle_size);
 	mlx_loop(mlx.mlx);
