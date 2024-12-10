@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/10 15:30:30 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/10 15:34:40 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,6 @@ int		ft_path_check(t_map *map);
 int		ft_flood_path(t_map *map, size_t ystart, size_t xstart);
 int		ft_tablen(char **tab);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+
 
 #endif
