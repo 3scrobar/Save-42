@@ -6,11 +6,12 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/10 14:16:07 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/10 17:00:41 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
 
 //initialize the map structure with the map file
 int	ft_init_map(t_map *map, char *path)

@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/10 16:09:39 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/10 16:59:42 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_map
 	size_t		line;
 	int			xbegin;
 	int			ybegin;
+	void		*texture[2];
 }	t_map;
 
 typedef struct	s_data {
