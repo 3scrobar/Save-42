@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/10 15:26:41 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/10 15:32:13 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,10 @@
 int	main(int ac, char **av)
 {
 	t_map	map;
-	void	*mlx;
-	void	*window;
+	t_vars	mlx;
 	t_data	img;
 
-	mlx = mlx_init();
+	mlx.mlx = mlx_init();
 	if (ac != 2)
 		return (ft_putstr_fd("Error from Arguments\n", 2), 1);
 	if (ft_init_map(&map, av[1]) == 1)
@@ -28,14 +27,14 @@ int	main(int ac, char **av)
 		ft_printf("Map Valide, Launch The Game .....\n");
 
 		
-	mlx = mlx_init();
-	window = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	img.img = mlx_new_image(mlx, 1920, 1080);
+	mlx.mlx = mlx_init();
+	mlx.win = mlx_new_window(mlx.mlx, 1920, 1080, "Bomber So Long");
+	img.img = mlx_new_image(mlx.mlx, 1920, 1080);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 								&img.endian);
 	my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
-	mlx_put_image_to_window(mlx, window, img.img, 0, 0);
-	mlx_loop(mlx);
+	mlx_put_image_to_window(mlx.mlx, mlx.win, img.img, 0, 0);
+	mlx_loop(mlx.mlx);
 
 		
 	return (0);

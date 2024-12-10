@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/10 15:25:37 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/10 15:30:30 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,11 @@ typedef struct	s_data {
 	int		line_length;
 	int		endian;
 }				t_data;
+
+typedef struct	s_vars {
+	void	*mlx;
+	void	*win;
+}				t_vars;
 
 int		ft_checkmap_line(t_map *map);
 int		ft_parsing(t_map *map);
