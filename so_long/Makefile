@@ -6,7 +6,7 @@
 #    By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/03 14:34:47 by tle-saut          #+#    #+#              #
-#    Updated: 2024/12/10 14:41:08 by tle-saut         ###   ########.fr        #
+#    Updated: 2024/12/10 14:47:44 by tle-saut         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = so_long
 
 CC = cc
 
-CFLAGS = -Wall -Werror -Wextra -I/minilibx -L/minilibx -lmlx -lX11 -lm -g
+CFLAGS = -Wall -Werror -Wextra -g
 
 SRC = map.c so_long.c map_utils.c 
 
@@ -26,10 +26,10 @@ SRCDIR = source/
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
 
-$(NAME): libft/libft.a minilib/libmlx.a $(OBJDIR) $(OBJ)
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) libft/libft.a minilib/libmlx.a
+$(NAME): libft/libft.a mlx_linux/libmlx.a $(OBJDIR) $(OBJ)
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) libft/libft.a mlx_linux/libmlx.a
 
-minilib/libmlx.a:
+mlx_linux/libmlx.a:
 	@make -C libft
 
 
@@ -39,7 +39,7 @@ libft/libft.a:
 all: $(NAME)
 
 $(OBJDIR)%.o: $(SRCDIR)%.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
 clean:
 	rm -f $(OBJ)
