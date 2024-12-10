@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/10 17:18:21 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/10 17:23:06 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 #define WALL 1
 #define FREE 0
-#define TILE_SIZE 70
 
 int	main(int ac, char **av)
 {
@@ -22,6 +21,7 @@ int	main(int ac, char **av)
 	t_vars	mlx;
 	t_data	img;
 
+	img.tyle_size = 70;
 	mlx.mlx = mlx_init();
 	if (ac != 2)
 		return (ft_putstr_fd("Error from Arguments\n", 2), 1);
@@ -30,11 +30,12 @@ int	main(int ac, char **av)
 	else
 		ft_printf("Map Valide, Launch The Game .....\n");
 
-	map.texture[WALL] = mlx_xpm_file_to_image(mlx.mlx, "img/sandCenter.xpm", TILE_SIZE, TILE_SIZE);
-    map.texture[FREE] = mlx_xpm_file_to_image(mlx.mlx, "img/snowCenter.xpm", TILE_SIZE, TILE_SIZE);
+	map.texture[WALL] = mlx_xpm_file_to_image(mlx.mlx, "img/sandCenter.xpm", &img.tyle_size, &img.tyle_size);
+    map.texture[FREE] = mlx_xpm_file_to_image(mlx.mlx, "img/snowCenter.xpm", &img.tyle_size, &img.tyle_size);
 
 	mlx.win = mlx_new_window(mlx.mlx, 1920, 1080, "Hello world!");
 	mlx_key_hook(mlx.win, key_press, mlx.mlx);
+	draw_map(mlx.mlx, mlx.win, &map, img.tyle_size);
 	mlx_loop(mlx.mlx);
 
 		
