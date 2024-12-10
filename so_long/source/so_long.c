@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/10 16:03:21 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/10 16:03:26 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int ac, char **av)
 								&img.endian);
 	my_mlx_pixel_put(&img, 8, 8, 0x00FF0000);
 	mlx_put_image_to_window(mlx.mlx, mlx.win, img.img, 0, 0);
-	mlx_hook(mlx.win, key)
+	mlx_hook(mlx.win, )
 	mlx_loop(mlx.mlx);
 
 		
