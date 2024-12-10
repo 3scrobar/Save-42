@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/09 21:09:43 by groot            ###   ########.fr       */
+/*   Updated: 2024/12/10 14:16:07 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int	ft_init_map(t_map *map, char *path)
 	map->collectible = 0;
 	map->column = 0;
 	map->line = 0;
-	map->xStart = 0;
-	map->yStart = 0;
+	map->xbegin = 0;
+	map->ybegin = 0;
 	close(fd);
 	return (ft_total_check(map));
 }
@@ -40,18 +40,28 @@ int	ft_parsing(t_map *map)
 	while (map->map[map->line])
 	{
 		map->column = 0;
+		len = ft_strlen(map->map[0]);
 		while (map->map[map->line][map->column])
 		{
-			len = ft_strlen(map->map[map->line]);
 			if (map->map[0][map->column] != '1' || map->map[map->line][0] != '1'
 				|| map->map[map->line][len - 1] != '1'
-				|| map->map[map->line][0] != '1')
+				|| map->map[ft_tablen(map->map)][map->column] != '1')
 				return (1);
 			map->column += 1;
 		}
 		map->line += 1;
 	}
 	return (0);
+}
+
+int	ft_tablen(char	**tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+		i++;
+	return (i - 1);
 }
 
 //check if the map is valid with the collectible, player and exit

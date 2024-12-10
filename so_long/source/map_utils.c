@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:31:14 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/09 21:06:27 by groot            ###   ########.fr       */
+/*   Updated: 2024/12/10 14:04:31 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 int	ft_pos_check(t_map *map)
 {
-	while (map->map[map->yStart])
+	while (map->map[map->ybegin])
 	{
-		map->xStart = 0;
-		while (map->map[map->yStart][map->xStart])
+		map->xbegin = 0;
+		while (map->map[map->ybegin][map->xbegin])
 		{
-			if (map->map[map->yStart][map->xStart] == 'P')
+			if (map->map[map->ybegin][map->xbegin] == 'P')
 				return (0);
-			map->xStart += 1;
+			map->xbegin += 1;
 		}
-		map->yStart += 1;
+		map->ybegin += 1;
 	}
 	return (0);
 }
@@ -49,8 +49,8 @@ int	ft_flood_path(t_map *map, size_t ystart, size_t xstart)
 	while (ystart < map->line)
 	{
 		if (ft_strchr(map->map[ystart], 'E') != 0
-			ft_strchr(map->map[ystart], 'C') != 0
-			ft_strchr(map->map[ystart], 'P') != 0)
+			|| ft_strchr(map->map[ystart], 'C') != 0
+			|| ft_strchr(map->map[ystart], 'P') != 0)
 			return (1);
 		ystart++;
 	}
@@ -60,7 +60,7 @@ int	ft_flood_path(t_map *map, size_t ystart, size_t xstart)
 int	ft_path_check(t_map *map)
 {
 	ft_pos_check(*&map);
-	if (ft_flood_path(map, map->yStart, map->xStart) == 1)
+	if (ft_flood_path(map, map->ybegin, map->xbegin) == 1)
 		return (ft_putstr_fd("Error from map, No Path\n", 2), 1);
 	if (map->line == map->column)
 		return (ft_putstr_fd("Error from map, Map is a square\n", 2), 1);

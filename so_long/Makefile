@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: groot <groot@student.42.fr>                +#+  +:+       +#+         #
+#    By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/03 14:34:47 by tle-saut          #+#    #+#              #
-#    Updated: 2024/12/09 19:38:06 by groot            ###   ########.fr        #
+#    Updated: 2024/12/10 14:21:38 by tle-saut         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRC = map.c so_long.c map_utils.c
 OBJ = $(SRC:%.c=$(OBJDIR)%.o)
 
 OBJDIR = object/
+SRCDIR = source/
 
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
