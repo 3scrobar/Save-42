@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/10 17:22:14 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/10 17:27:34 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@
 typedef struct s_map
 {
 	char		**map;
-	int			player;
-	int			exit;
-	int			collectible;
+	size_t		player;
+	size_t		exit;
+	size_t		collectible;
 	size_t		column;
 	size_t		line;
-	int			xbegin;
-	int			ybegin;
+	size_t		xbegin;
+	size_t		ybegin;
 	void		*texture[2];
 }	t_map;
 

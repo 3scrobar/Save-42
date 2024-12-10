@@ -6,14 +6,12 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/10 17:23:06 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/10 17:24:46 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-#define WALL 1
-#define FREE 0
 
 int	main(int ac, char **av)
 {
@@ -30,8 +28,8 @@ int	main(int ac, char **av)
 	else
 		ft_printf("Map Valide, Launch The Game .....\n");
 
-	map.texture[WALL] = mlx_xpm_file_to_image(mlx.mlx, "img/sandCenter.xpm", &img.tyle_size, &img.tyle_size);
-    map.texture[FREE] = mlx_xpm_file_to_image(mlx.mlx, "img/snowCenter.xpm", &img.tyle_size, &img.tyle_size);
+	map.texture[1] = mlx_xpm_file_to_image(mlx.mlx, "img/sandCenter.xpm", &img.tyle_size, &img.tyle_size);
+    map.texture[0] = mlx_xpm_file_to_image(mlx.mlx, "img/snowCenter.xpm", &img.tyle_size, &img.tyle_size);
 
 	mlx.win = mlx_new_window(mlx.mlx, 1920, 1080, "Hello world!");
 	mlx_key_hook(mlx.win, key_press, mlx.mlx);
