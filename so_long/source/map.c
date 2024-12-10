@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/10 17:42:37 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/10 17:48:57 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,18 @@ int	ft_init_map(t_map *map, char *path, t_vars *mlx, t_data *img)
 	map->ybegin = 0;
 	map->texture[0] = mlx_xpm_file_to_image(mlx->mlx, "img/snowCenter.xpm", &img->tyle_size, &img->tyle_size);
 	map->texture[1] = mlx_xpm_file_to_image(mlx->mlx, "img/sandCenter.xpm", &img->tyle_size, &img->tyle_size);
-	
+	int y = 0;
+	int x = 0;
+	while (map->map[y])
+	{
+		x = 0;
+		while (map->map[y][x])
+		{
+			ft_printf(map->map[y])
+			x++;
+		}
+		y++;
+	}
 	close(fd);
 	return (ft_total_check(map));
 }
