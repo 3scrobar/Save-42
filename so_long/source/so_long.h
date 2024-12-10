@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/10 14:49:14 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/10 14:59:11 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include "../libft/source/libft.h"
-# include "../mlx_linux/mlx.h"
+# include "../mlx/mlx.h"
 
 typedef struct s_map
 {
