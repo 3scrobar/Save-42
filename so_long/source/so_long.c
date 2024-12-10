@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/10 17:51:09 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/10 17:58:46 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,19 @@ int	main(int ac, char **av)
 	else
 		ft_printf("Map Valide, Launch The Game .....\n");
 	
-
+	int y = 0;
+	int x = 0;
+	while (map.map[y])
+	{
+		x = 0;
+		while (map.map[y][x])
+		{
+			ft_printf("%c", map.map[y][x]);
+			x++;
+		}
+		write(1,"\n",1);
+		y++;
+	}
 
 	mlx.win = mlx_new_window(mlx.mlx, map.column * 70, map.line * 70, "Hello world!");
 	mlx_key_hook(mlx.win, key_press, mlx.mlx);
