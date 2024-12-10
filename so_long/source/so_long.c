@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/10 14:35:18 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/10 15:23:09 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	main(int ac, char **av)
 	window = mlx_new_window(mlx,800,600,"so_long");
 	if (window == NULL)
 		return 1;
+		img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
+								&img.endian);
 	mlx_loop(mlx);
 
 

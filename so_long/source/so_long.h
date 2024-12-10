@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/10 14:59:11 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/10 15:22:24 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,14 @@ typedef struct s_map
 	int			xbegin;
 	int			ybegin;
 }	t_map;
+
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
 
 int		ft_checkmap_line(t_map *map);
 int		ft_parsing(t_map *map);
