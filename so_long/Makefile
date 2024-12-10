@@ -6,7 +6,7 @@
 #    By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/03 14:34:47 by tle-saut          #+#    #+#              #
-#    Updated: 2024/12/10 14:47:44 by tle-saut         ###   ########.fr        #
+#    Updated: 2024/12/10 14:51:50 by tle-saut         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,11 +26,11 @@ SRCDIR = source/
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
 
-$(NAME): libft/libft.a mlx_linux/libmlx.a $(OBJDIR) $(OBJ)
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) libft/libft.a mlx_linux/libmlx.a
+$(NAME): libft/libft.a mlx_linux/libmlx_Linux.a $(OBJDIR) $(OBJ)
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) libft/libft.a mlx_linux/libmlx_Linux.a
 
-mlx_linux/libmlx.a:
-	@make -C libft
+mlx_linux/libmlx_Linux.a:
+	@make all
 
 
 libft/libft.a:
