@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:31:14 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/10 17:08:45 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/10 17:11:11 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,16 +91,20 @@ char	**ft_init_tab(int fd)
 }
 void draw_map(void *mlx, void *win,t_map *map, int tile_size)
 {
-    int x, y;
+	int	x;
+	int	y;
 
-    for (y = 0; y < 5; y++)
-    {
-        for (x = 0; x < 5; x++)
-        {
-            if (map->map[y][x] == 1)
-                mlx_put_image_to_window(mlx, win, tex1, x * tile_size, y * tile_size);
-            else if (map->map[y][x] == 2)
-                mlx_put_image_to_window(mlx, win, tex2, x * tile_size, y * tile_size);
-        }
-    }
+	while (map->map[y])
+	{
+		x = 0;
+		while (map->map[y][x])
+		{
+			if (map->map[y][x] == 1)
+				mlx_put_image_to_window(mlx, win, map->texture[0], x * tile_size, y * tile_size);
+			else if (map->map[y][x] == 2)
+				mlx_put_image_to_window(mlx, win, map->texture[1], x * tile_size, y * tile_size);
+			x++;
+		}
+		y++;
+	}
 }
