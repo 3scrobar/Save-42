@@ -6,7 +6,7 @@
 #    By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/03 14:34:47 by tle-saut          #+#    #+#              #
-#    Updated: 2024/12/10 14:21:38 by tle-saut         ###   ########.fr        #
+#    Updated: 2024/12/10 14:27:51 by tle-saut         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,10 @@ $(OBJDIR):
 
 $(NAME): libft/libft.a $(OBJDIR) $(OBJ)
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) libft/libft.a
+
+minilib/libmlx.a:
+	@make
+
 
 libft/libft.a:
 	@make -C libft
