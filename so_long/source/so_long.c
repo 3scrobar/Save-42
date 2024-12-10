@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/10 15:47:26 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/10 15:53:20 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,13 @@ int	main(int ac, char **av)
 		ft_printf("Map Valide, Launch The Game .....\n");
 
 		
-	mlx.mlx = mlx_init();
-	mlx.win = mlx_new_window(mlx.mlx, 1920, 1080, "Bomber So Long");
+	mlx.mlx= mlx_init();
+	mlx.win = mlx_new_window(mlx.mlx, 1920, 1080, "Hello world!");
 	img.img = mlx_new_image(mlx.mlx, 1920, 1080);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 								&img.endian);
-	my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
+	my_mlx_pixel_put(&img, 5, 5, #ff2f11);
 	mlx_put_image_to_window(mlx.mlx, mlx.win, img.img, 0, 0);
-	mlx_key_hook(mlx.win, close, &mlx);
-	
 	mlx_loop(mlx.mlx);
 
 		
