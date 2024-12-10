@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/10 17:03:22 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/10 17:06:51 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #define WALL 1
 #define FREE 0
+#define TILE_SIZE 70
 
 int	main(int ac, char **av)
 {
@@ -29,8 +30,8 @@ int	main(int ac, char **av)
 	else
 		ft_printf("Map Valide, Launch The Game .....\n");
 
-	map.texture[WALL] = mlx_xpm_file_to_image(mlx.mlx, "terrain.xpm", 70, 70);
-    map.texture[FREE] = mlx_xpm_file_to_image(mlx.mlx, "water.xpm", 70, 70);
+	map.texture[WALL] = mlx_xpm_file_to_image(mlx.mlx, "terrain.xpm", TILE_SIZE, TILE_SIZE);
+    map.texture[FREE] = mlx_xpm_file_to_image(mlx.mlx, "water.xpm", TILE_SIZE, TILE_SIZE);
 
 	mlx.win = mlx_new_window(mlx.mlx, 1920, 1080, "Hello world!");
 	mlx_key_hook(mlx.win, key_press, mlx.mlx);
