@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/10 16:48:27 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/10 16:49:15 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int ac, char **av)
 		
 	mlx.mlx= mlx_init();
 	mlx.win = mlx_new_window(mlx.mlx, 1920, 1080, "Hello world!");
-	mlx_put_image_to_window(mlx.mlx,mlx.win,)
+	
 	mlx_key_hook(mlx.win, key_press, mlx.mlx);
 	mlx_loop(mlx.mlx);
 
