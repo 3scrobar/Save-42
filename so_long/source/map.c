@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 11:44:23 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 11:49:25 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_init_map(t_map *map, char *path, t_vars *mlx, t_data *img)
 	img->sand = mlx_xpm_file_to_image(mlx->mlx, "img/sandCenter.xpm", &img->tyle_size, &img->tyle_size);
 	
 	close(fd);
-	return (ft_total_check(ft_cpy_map(*map)));
+	return (ft_total_check(&map));
 }
 
 //check if the map is valid with check of border
@@ -99,7 +99,9 @@ int	ft_checkmap_line(t_map *map)
 //check if the map as the right number of player, exit and collectible
 int	ft_total_check(t_map *map)
 {
+	t_map mapcpy;
 
+	mapcpy = ft_
 	if (ft_checkmap_line(map) != 0)
 		return (ft_putstr_fd("Error, Line is not the same size\n", 2), 1);
 	if (ft_parsing(map) == 1)
