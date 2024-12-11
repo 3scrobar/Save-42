@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:31:14 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 11:16:48 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 12:04:31 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 int	ft_pos_check(t_map *map)
 {
-	while (map->map[map->ybegin])
+	while (tab[map->ybegin])
 	{
 		map->xbegin = 0;
-		while (map->map[map->ybegin][map->xbegin])
+		while (tab[map->ybegin][map->xbegin])
 		{
-			if (map->map[map->ybegin][map->xbegin] == 'P')
+			if (tab[map->ybegin][map->xbegin] == 'P')
 				return (0);
 			map->xbegin += 1;
 		}
@@ -28,29 +28,29 @@ int	ft_pos_check(t_map *map)
 	return (0);
 }
 
-int	ft_flood_path(t_map *map, size_t ystart, size_t xstart)
+int	ft_flood_path(t_map *map, size_t ystart, size_t xstart, char **tab)
 {
 	if (ystart >= map->line || xstart >= map->column)
 		return (0);
-	if (map->map[ystart][xstart] == '1')
+	if (tab[ystart][xstart] == '1')
 		return (0);
-	if (map->map[ystart][xstart] == 'E')
+	if (tab[ystart][xstart] == 'E')
 		map->exit -= 1;
-	if (map->map[ystart][xstart] == 'C')
+	if (tab[ystart][xstart] == 'C')
 		map->collectible -= 1;
-	if (map->map[ystart][xstart] == '0' || map->map[ystart][xstart] == 'P' ||
-		map->map[ystart][xstart] == 'E' || map->map[ystart][xstart] == 'C')
-		map->map[ystart][xstart] = '1';
-	ft_flood_path(map, ystart, xstart - 1);
-	ft_flood_path(map, ystart, xstart + 1);
+	if (tab[ystart][xstart] == '0' || tab[ystart][xstart] == 'P' ||
+		tab[ystart][xstart] == 'E' || tab[ystart][xstart] == 'C')
+		tab[ystart][xstart] = '1';
+	ft_flood_path(map, ystart, xstart - 1, tab);
+	ft_flood_path(map, ystart, xstart + 1, tab);
 	ft_flood_path(map, ystart - 1, xstart);
 	ft_flood_path(map, ystart + 1, xstart);
 	ystart = 0;
 	while (ystart < map->line)
 	{
-		if (ft_strchr(map->map[ystart], 'E') != 0
-			|| ft_strchr(map->map[ystart], 'C') != 0
-			|| ft_strchr(map->map[ystart], 'P') != 0)
+		if (ft_strchr(tab[ystart], 'E') != 0
+			|| ft_strchr(tab[ystart], 'C') != 0
+			|| ft_strchr(tab[ystart], 'P') != 0)
 			return (1);
 		ystart++;
 	}
@@ -97,14 +97,14 @@ void draw_map(void *mlx, void *win,t_map *map, t_data *img)
 
 	x = 0;
 	y = 0;
-	while (map->map[y])
+	while (tab[y])
 	{
 		x = 0;
-		while (map->map[y][x])
+		while (tab[y][x])
 		{
-			if (map->map[y][x] == '0')
+			if (tab[y][x] == '0')
 				mlx_put_image_to_window(mlx, win, img->snow, x * img->tyle_size, y * img->tyle_size);
-			else if (map->map[y][x] == '1')
+			else if (tab[y][x] == '1')
 				mlx_put_image_to_window(mlx, win, img->sand, x * img->tyle_size, y * img->tyle_size);
 			else
 				mlx_put_image_to_window(mlx, win, img->snow, x * img->tyle_size, y * img->tyle_size);
