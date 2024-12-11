@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 11:28:29 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 11:34:19 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 int	ft_init_map(t_map *map, char *path, t_vars *mlx, t_data *img)
 {
 	int		fd;
-
+	t_data	mapcpy;
+	
+	
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 		return (ft_putstr_fd("Error from file reading\n", 2), 1);
@@ -31,9 +33,10 @@ int	ft_init_map(t_map *map, char *path, t_vars *mlx, t_data *img)
 	map->ybegin = 0;
 	img->snow = mlx_xpm_file_to_image(mlx->mlx, "img/snowCenter.xpm", &img->tyle_size, &img->tyle_size);
 	img->sand = mlx_xpm_file_to_image(mlx->mlx, "img/sandCenter.xpm", &img->tyle_size, &img->tyle_size);
-
+	mapcpy.map = map->map;
+	
 	close(fd);
-	return (ft_total_check(map));
+	return (ft_total_check(map) + ft_total_check(mapcpy));
 }
 
 //check if the map is valid with check of border

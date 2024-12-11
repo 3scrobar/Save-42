@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 11:29:00 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 11:32:20 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 int	main(int ac, char **av)
 {
 	t_map	map;
-	t_map	mapcpy;
 	t_vars	mlx;
 	t_data	img;
 
@@ -28,7 +27,6 @@ int	main(int ac, char **av)
 		return (1);
 	else
 		ft_printf("Map Valide, Launch The Game .....\n");
-	ft_init_map(&map, av[1], &mlx, &img);
 	int y = 0;
 	int x = 0;
 	while (map.map[y])
