@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 17:04:54 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 17:11:05 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,7 @@
 # include "../libft/source/libft.h"
 # include "../mlx/mlx.h"
 
-typedef struct s_all
-{
-	t_vars *game;
-	t_map  *map;
-	t_data *img;
-} t_all;
+
 
 typedef struct s_map
 {
@@ -63,6 +58,13 @@ typedef struct	s_vars {
 	void	*win;
 }				t_vars;
 
+typedef struct s_all
+{
+	t_vars *game;
+	t_map  *map;
+	t_data *img;
+} t_all;
+
 int		ft_checkmap_line(t_map *map);
 int		ft_parsing(t_map *map);
 int		ft_total_check(t_map *map);
@@ -83,8 +85,10 @@ int		key_press(int keycode, void *param);
 void	draw_map(void *mlx, void *win,t_map *map, t_data *img);
 int		ft_init_map(t_map *map, char *path);
 int		ft_init_img(t_vars *mlx, t_data *img);
-int	game_loop(t_vars *game, t_map *map, t_data *img);
+int		game_loop(t_all *all);
 void	free_tab(char **map);
+int		game_draw(t_all *all);
+
 
 
 #endif
