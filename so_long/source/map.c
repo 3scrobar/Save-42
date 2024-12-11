@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 12:11:34 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 14:26:49 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ int	ft_total_check(t_map *map)
 		return (ft_putstr_fd("Error from map, NO Collectible\n", 2), 1);
 	else if (map->exit != 1)
 		return (ft_putstr_fd("Error from map, NO Exit POS\n", 2), 1);
-	if (ft_path_check(map) != 0)
+	if (ft_path_check(ft_copy_tab(*map)) != 0)
 		return (1);
 	return (0);
 }
