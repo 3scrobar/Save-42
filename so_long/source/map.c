@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 15:57:53 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 16:03:34 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_init_map(t_map *map, char *path)
 	map->exit = 0;
 	map->collectible = 0;
 	map->column = 0;
-	map->line = 0;
+	map->line = ft_tablen(map->map);
 	map->xbegin = 0;
 	map->ybegin = 0;
 	ft_checkmap_line(map);
@@ -35,6 +35,7 @@ int	ft_init_map(t_map *map, char *path)
 }
 
 //check if the map is valid with check of border
+//need column and line
 int	ft_parsing(t_map *map)
 {
 	int	len;
@@ -67,6 +68,7 @@ int	ft_tablen(char	**tab)
 }
 
 //check if the map is valid with the collectible, player and exit
+//give column , C , P, E
 int	ft_checkmap_line(t_map *map)
 {
 	int	i;
