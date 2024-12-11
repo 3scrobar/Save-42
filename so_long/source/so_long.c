@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 15:28:23 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 15:32:08 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@ int	main(int ac, char **av)
 	t_map	map;
 	t_vars	mlx;
 	t_data	img;
-	t_data	mapcpy;
+	t_map	mapcpy;
 
 
 	mlx.mlx = mlx_init();
 	if (ac != 2)
 		return (ft_putstr_fd("Error from Arguments\n", 2), 1);
-	if (ft_init_map(&map, av[1]) == 1 || ft_init_map(&mapcpy))
+	if (ft_init_map(&map, av[1]) == 1 || ft_init_map(&mapcpy, av[1]) == 1)
 		return (1);
-	else if(ft_init_img(&mlx, &img) == 1)
-		return (1);
+	else if(ft_init_img(&mlx, &img) == 1 || ft_total_check(&mapcpy) == 1)
+		return (ft_putstr_fd("Error from Map\n", 2), 1);
 	ft_printf("Map Valide, Launch The Game .....\n");
 
 	mlx.win = mlx_new_window(mlx.mlx, map.column * img.tyle_size,

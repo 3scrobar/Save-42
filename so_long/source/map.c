@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 15:23:45 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 15:33:09 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	ft_init_map(t_map *map, char *path)
 	map->xbegin = 0;
 	map->ybegin = 0;
 	close(fd);
+	ft_parsing(map);
 	return (0);
 }
 
