@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:31:14 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 15:20:05 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 15:52:58 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_pos_check(t_map *map)
 		}
 		map->ybegin += 1;
 	}
-	return (0);
+	return (1);
 }
 //check path of everything
 int	ft_flood_path(t_map *map, size_t ystart, size_t xstart, char **tab)
