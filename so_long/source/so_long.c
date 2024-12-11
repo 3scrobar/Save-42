@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 16:26:33 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 16:58:45 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,25 @@
 int	main(int ac, char **av)
 {
 	t_map	map;
-	t_vars	mlx;
+	t_vars	game;
 	t_data	img;
 	t_map	mapcpy;
 
 
-	mlx.mlx = mlx_init();
+	game.mlx = mlx_init();
 	if (ac != 2)
 		return (ft_putstr_fd("Error from Arguments\n", 2), 1);
 	if (ft_init_map(&map, av[1]) == 1 || ft_init_map(&mapcpy, av[1]) == 1)
 		return (1);
-	else if(ft_init_img(&mlx, &img) == 1 || ft_total_check(&mapcpy) == 1)
+	else if(ft_init_img(&game, &img) == 1 || ft_total_check(&mapcpy) == 1)
 		return (1);
 	ft_printf("Map Valide, Launch The Game .....\n");
-	mlx.win = mlx_new_window(mlx.mlx, map.column * img.tyle_size,
+	game.win = mlx_new_window(game.mlx, map.column * img.tyle_size,
 				map.line * img.tyle_size, "Bomber-long");
-	mlx_key_hook(mlx.win, key_press, mlx.mlx);
-	draw_map(mlx.mlx, mlx.win, &map, &img);
-	mlx_loop(mlx.mlx);
+	mlx_key_hook(game.win, key_press, game.mlx);
+	mlx_key_hook(game.win, game_loop, &game);
+	
+	mlx_loop(game.mlx);
 	return (0);
 }
 	void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
@@ -42,6 +43,11 @@ int	main(int ac, char **av)
 
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
+}
+int	game_loop(t_vars *game)
+{
+	draw_map(game->mlx, game->win, map, img);
+	
 }
 
 int key_press(int keycode, void *param)
