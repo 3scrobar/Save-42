@@ -6,22 +6,15 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 15:08:16 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 15:12:56 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_free_tab(char **tab)
+int	ft_init_copy
 {
-	int	i;
-
-	i = 0;
-	while(tab[i])
-	{
-		free(tab[i]);
-		i++;
-	}
+	
 }
 
 //initialize the map structure with the map file
@@ -43,8 +36,13 @@ int	ft_init_map(t_map *map, char *path, t_vars *mlx, t_data *img)
 	map->ybegin = 0;
 	img->snow = mlx_xpm_file_to_image(mlx->mlx, "img/snowCenter.xpm", &img->tyle_size, &img->tyle_size);
 	img->sand = mlx_xpm_file_to_image(mlx->mlx, "img/sandCenter.xpm", &img->tyle_size, &img->tyle_size);
+	temp = ft_copy_map(map->map, map->column);
 	if (ft_total_check(temp) == 1)
-		return (1);
+		{
+			free_map(temp);
+			return (1);
+		}
+	free_map(temp);
 	close(fd);
 	return (0);
 }

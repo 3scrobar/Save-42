@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 14:19:51 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 15:06:49 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 15:12:19 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char **ft_copy_map(char **src, int rows)
 	return copy;
 }
 
-void free_map(char **map)
+void free_tab(char **map)
 {
 	int	i;
 	
