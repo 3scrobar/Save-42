@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:31:14 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 16:04:42 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 16:32:51 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,8 @@ void draw_map(void *mlx, void *win,t_map *map, t_data *img)
 				mlx_put_image_to_window(mlx, win, img->snow, x * img->tyle_size, y * img->tyle_size);
 			else if (map->map[y][x] == '1')
 				mlx_put_image_to_window(mlx, win, img->sand, x * img->tyle_size, y * img->tyle_size);
-			else
-				mlx_put_image_to_window(mlx, win, img->snow, x * img->tyle_size, y * img->tyle_size);
+			else if(map->map[y][x] == 'E')
+				mlx_put_image_to_window(mlx, win, img->exitdiscover, x * img->tyle_size, y * img->tyle_size);
 			x++;
 		}
 		y++;
