@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:31:14 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 12:09:33 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 12:14:29 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,9 @@ int	ft_flood_path(t_map *map, size_t ystart, size_t xstart, char **tab)
 
 int	ft_path_check(t_map *map)
 {
-	char **tab
+	char	**tab;
+
+	tab = map->map;
 	ft_pos_check(map);
 	if (ft_flood_path(map, map->ybegin, map->xbegin, tab) == 1)
 		return (ft_putstr_fd("Error from map, No Path\n", 2), 1);
