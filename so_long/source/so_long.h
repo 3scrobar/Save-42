@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 11:03:25 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 11:05:13 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int		ft_tablen(char **tab);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		key_hook(int keycode, t_vars *vars);
 int		key_press(int keycode, void *param);
-void	draw_map(void *mlx, void *win,t_map *map, int tile_size);
+void	draw_map(void *mlx, void *win,t_map *map, t_data *img);
 int		ft_init_map(t_map *map, char *path, t_vars *mlx, t_data *img);
 
 #endif
