@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 17:13:11 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 17:18:44 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	main(int ac, char **av)
 
 
 	game.mlx = mlx_init();
-
 	if (ac != 2)
 		return (ft_putstr_fd("Error from Arguments\n", 2), 1);
 	if (ft_init_map(&map, av[1]) == 1 || ft_init_map(&mapcpy, av[1]) == 1)
@@ -37,25 +36,17 @@ int	main(int ac, char **av)
 	all.img = &img;
 	all.map = &map;
 	mlx_key_hook(game.win, key_press, game.mlx);
-	mlx_key_hook(game.win, game_loop, &all);
-	mlx_key_hook(game.win, game_draw, &all);
+	mlx_loop_hook(game.win, game_loop, &all);
+
 	mlx_loop(game.mlx);
 	return (0);
 }
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+int	ft_game_loop(t_all *all)
 {
-	char	*dst;
-
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
-}
-int	game_loop(t_all *all)
-{
-	if(all == NULL)
-		return (1);
+	ft_game_draw(all);
 	return (0);
 }
-int	game_draw(t_all *all)
+int	ft_game_draw(t_all *all)
 {
 	draw_map(all->game->mlx, all->game->win, all->map, all->img);
 	return (0);
