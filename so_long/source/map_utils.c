@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:31:14 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 12:18:59 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 12:24:37 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	ft_flood_path(t_map *map, size_t ystart, size_t xstart, char **tab)
 		map->exit -= 1;
 	if (tab[ystart][xstart] == 'C')
 		map->collectible -= 1;
-	if (tab[ystart][xstart] == '0' || tab[ystart][xstart] == 'P' ||
+	if (*tab[ystart][xstart] == '0' || tab[ystart][xstart] == 'P' ||
 		tab[ystart][xstart] == 'E' || tab[ystart][xstart] == 'C')
 		tab[ystart][xstart] = '1';
 	ft_flood_path(map, ystart, xstart - 1, tab);
