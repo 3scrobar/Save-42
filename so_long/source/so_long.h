@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 15:17:35 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 16:22:25 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_map
 	size_t		line;
 	size_t		xbegin;
 	size_t		ybegin;
+	int			check;
 
 }	t_map;
 
