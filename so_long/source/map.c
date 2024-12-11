@@ -6,12 +6,23 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 11:52:52 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 11:57:40 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+void	ft_free_tab(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while(tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+}
 
 //initialize the map structure with the map file
 int	ft_init_map(t_map *map, char *path, t_vars *mlx, t_data *img)
@@ -33,6 +44,7 @@ int	ft_init_map(t_map *map, char *path, t_vars *mlx, t_data *img)
 	img->sand = mlx_xpm_file_to_image(mlx->mlx, "img/sandCenter.xpm", &img->tyle_size, &img->tyle_size);
 	if (ft_total_check(map) == 1)
 		return (1);
+	ft_free_tab(map->map);
 	map->map = ft_init_tab(fd);
 
 	close(fd);
