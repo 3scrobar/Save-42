@@ -6,19 +6,23 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 14:19:51 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 14:27:21 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 14:33:02 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char *ft_copy_tab(t_map *origin)
+t_map ft_copy_map(t_map *origin)
 {
-	char	**final;
-	int		i;
-
-	i = 0;
-	while(origin->map[i])
-		final[i] = origin->map[i];
+	t_map resut;
+	
+	final.map = origin->map;
+	final.collectible = origin->map;
+	final.column = origin->map;
+	final.exit = origin->map;
+	final.line = origin->map;
+	final.player = origin->map;
+	final.xbegin = origin->map;
+	final.ybegin = origin->map;
 	return(final);
 }
