@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 17:18:44 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 17:24:03 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,22 @@ int	main(int ac, char **av)
 	t_map	mapcpy;
 	t_all	all;
 
-
+	all.game = &game;
+	all.img = &img;
+	all.map = &map;
 	game.mlx = mlx_init();
 	if (ac != 2)
 		return (ft_putstr_fd("Error from Arguments\n", 2), 1);
-	if (ft_init_map(&map, av[1]) == 1 || ft_init_map(&mapcpy, av[1]) == 1)
+	if (ft_init_map(&all, av[1]) == 1 || ft_init_map(&all, av[1]) == 1)
 		return (1);
-	else if(ft_init_img(&game, &img) == 1 || ft_total_check(&mapcpy) == 1)
+	else if(ft_init_img(&all) == 1 || ft_total_check(&all) == 1)
 		return (1);
 	game.win = mlx_new_window(game.mlx, map.column * img.tyle_size,
 				map.line * img.tyle_size, "Bomber-long");
 	ft_printf("Map Valide, Launch The Game .....\n");
-	all.game = &game;
-	all.img = &img;
-	all.map = &map;
+
 	mlx_key_hook(game.win, key_press, game.mlx);
-	mlx_loop_hook(game.win, game_loop, &all);
+	mlx_loop_hook(game.win, ft_game_loop, &all);
 
 	mlx_loop(game.mlx);
 	return (0);

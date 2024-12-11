@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 14:19:51 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 16:40:26 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 17:22:37 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ void free_tab(char **map)
 	free(map);
 }
 //init all the img
-int	ft_init_img(t_vars *mlx, t_data *img)
+int	ft_init_img(t_all *all)
 {
-	img->tyle_size = 70;
-	img->snow = mlx_xpm_file_to_image(mlx->mlx, "img/snowCenter.xpm", &img->tyle_size, &img->tyle_size);
-	img->sand = mlx_xpm_file_to_image(mlx->mlx, "img/sandCenter.xpm", &img->tyle_size, &img->tyle_size);
-	img->exitdiscover = mlx_xpm_file_to_image(mlx->mlx, "img/window.xpm", &img->tyle_size, &img->tyle_size);
-	img->exitcover = mlx_xpm_file_to_image(mlx->mlx, "img/door_closedMid.xpm", &img->tyle_size, &img->tyle_size);
-	if (img->snow == NULL || img->sand == NULL)
+	all->img->tyle_size = 70;
+	all->img->snow = mlx_xpm_file_to_image(all->game->mlx, "img/snowCenter.xpm", &all->img->tyle_size, &all->img->tyle_size);
+	all->img->sand = mlx_xpm_file_to_image(all->game->mlx, "img/sandCenter.xpm", &all->img->tyle_size, &all->img->tyle_size);
+	all->img->exitdiscover = mlx_xpm_file_to_image(all->game->mlx, "img/window.xpm", &all->img->tyle_size, &all->img->tyle_size);
+	all->img->exitcover = mlx_xpm_file_to_image(all->game->mlx, "img/door_closedMid.xpm", &all->img->tyle_size, &all->img->tyle_size);
+	if (all->img->snow == NULL || all->img->sand == NULL)
 		return(ft_putstr_fd("Error load an img\n", 2), 1);
 	return(0);
 }
