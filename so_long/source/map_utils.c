@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:31:14 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/10 18:14:49 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 11:03:39 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ char	**ft_init_tab(int fd)
 	free(line);
 	return (tab);
 }
-void draw_map(void *mlx, void *win,t_map *map, int tile_size)
+void draw_map(void *mlx, void *win,t_map *map, t_data *img)
 {
 	size_t	x;
 	size_t	y;
@@ -105,11 +105,11 @@ void draw_map(void *mlx, void *win,t_map *map, int tile_size)
 		while (map->map[y][x])
 		{
 			if (map->map[y][x] == '0')
-				mlx_put_image_to_window(mlx, win, map->snow, x * tile_size, y * tile_size);
+				mlx_put_image_to_window(mlx, win, img->snow, x * img->tyle_size, y * img->tyle_size);
 			else if (map->map[y][x] == '1')
-				mlx_put_image_to_window(mlx, win, map->sand, x * tile_size, y * tile_size);
+				mlx_put_image_to_window(mlx, win, img->sand, x * img->tyle_size, y * img->tyle_size);
 			else
-				mlx_put_image_to_window(mlx, win, map->snow, x * tile_size, y * tile_size);
+				mlx_put_image_to_window(mlx, win, img->snow, x * img->tyle_size, y * img->tyle_size);
 			x++;
 		}
 		y++;
