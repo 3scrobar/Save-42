@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 17:03:52 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 17:04:54 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,10 @@
 
 typedef struct s_all
 {
-	
-}
+	t_vars *game;
+	t_map  *map;
+	t_data *img;
+} t_all;
 
 typedef struct s_map
 {
