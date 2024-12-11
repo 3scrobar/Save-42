@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 15:20:20 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 15:23:45 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 int	ft_init_map(t_map *map, char *path)
 {
 	int		fd;
-	char	**temp;
 
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
