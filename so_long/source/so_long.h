@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 16:32:08 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 16:40:40 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct	s_data {
 	void	*sand;
 	void	*snow;
 	void	*exitdiscover;
+	void	*exitcover;
 }				t_data;
 
 typedef struct	s_vars {
