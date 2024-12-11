@@ -6,19 +6,20 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 15:12:56 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 15:18:19 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ft_init_copy
+int	ft_init_img(t_vars *mlx, t_data *img)
 {
-	
+	img->snow = mlx_xpm_file_to_image(mlx->mlx, "img/snowCenter.xpm", &img->tyle_size, &img->tyle_size);
+	img->sand = mlx_xpm_file_to_image(mlx->mlx, "img/sandCenter.xpm", &img->tyle_size, &img->tyle_size);
 }
 
 //initialize the map structure with the map file
-int	ft_init_map(t_map *map, char *path, t_vars *mlx, t_data *img)
+int	ft_init_map(t_map *map, char *path)
 {
 	int		fd;
 	char	**temp;
@@ -34,15 +35,6 @@ int	ft_init_map(t_map *map, char *path, t_vars *mlx, t_data *img)
 	map->line = 0;
 	map->xbegin = 0;
 	map->ybegin = 0;
-	img->snow = mlx_xpm_file_to_image(mlx->mlx, "img/snowCenter.xpm", &img->tyle_size, &img->tyle_size);
-	img->sand = mlx_xpm_file_to_image(mlx->mlx, "img/sandCenter.xpm", &img->tyle_size, &img->tyle_size);
-	temp = ft_copy_map(map->map, map->column);
-	if (ft_total_check(temp) == 1)
-		{
-			free_map(temp);
-			return (1);
-		}
-	free_map(temp);
 	close(fd);
 	return (0);
 }
@@ -121,7 +113,7 @@ int	ft_total_check(t_map *map)
 		return (ft_putstr_fd("Error from map, NO Collectible\n", 2), 1);
 	else if (map->exit != 1)
 		return (ft_putstr_fd("Error from map, NO Exit POS\n", 2), 1);
-	if (ft_path_check(ft_copy_tab(*map)) != 0)
+	if (ft_path_check(map) != 0)
 		return (1);
 	return (0);
 }
