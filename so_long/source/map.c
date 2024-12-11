@@ -6,17 +6,11 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 15:18:19 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 15:20:20 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-int	ft_init_img(t_vars *mlx, t_data *img)
-{
-	img->snow = mlx_xpm_file_to_image(mlx->mlx, "img/snowCenter.xpm", &img->tyle_size, &img->tyle_size);
-	img->sand = mlx_xpm_file_to_image(mlx->mlx, "img/sandCenter.xpm", &img->tyle_size, &img->tyle_size);
-}
 
 //initialize the map structure with the map file
 int	ft_init_map(t_map *map, char *path)
@@ -60,7 +54,7 @@ int	ft_parsing(t_map *map)
 	}
 	return (0);
 }
-
+//check size of tab
 int	ft_tablen(char	**tab)
 {
 	int	i;
@@ -99,7 +93,7 @@ int	ft_checkmap_line(t_map *map)
 	return (0);
 }
 
-//check if the map as the right number of player, exit and collectible
+//all the check for the map
 int	ft_total_check(t_map *map)
 {
 

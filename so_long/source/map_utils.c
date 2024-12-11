@@ -6,12 +6,12 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:31:14 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 14:19:18 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 15:20:05 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
+//check depart Pos
 int	ft_pos_check(t_map *map)
 {
 	while (map->map[map->ybegin])
@@ -27,7 +27,7 @@ int	ft_pos_check(t_map *map)
 	}
 	return (0);
 }
-
+//check path of everything
 int	ft_flood_path(t_map *map, size_t ystart, size_t xstart, char **tab)
 {
 	if (ystart >= map->line || xstart >= map->column)
@@ -67,7 +67,7 @@ int	ft_path_check(t_map *map)
 		return (ft_putstr_fd("Error from map, Map is a square\n", 2), 1);
 	return (0);
 }
-
+//fill map tab
 char	**ft_init_tab(int fd)
 {
 	int		a;
@@ -90,6 +90,7 @@ char	**ft_init_tab(int fd)
 	free(line);
 	return (tab);
 }
+//draw map
 void draw_map(void *mlx, void *win,t_map *map, t_data *img)
 {
 	size_t	x;
