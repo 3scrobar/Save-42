@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:31:14 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 12:26:33 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 14:19:18 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,30 +30,27 @@ int	ft_pos_check(t_map *map)
 
 int	ft_flood_path(t_map *map, size_t ystart, size_t xstart, char **tab)
 {
-	char **tableaux;
-	
-	tableaux = tab;
 	if (ystart >= map->line || xstart >= map->column)
 		return (0);
-	if (tableaux[ystart][xstart] == '1')
+	if (tab[ystart][xstart] == '1')
 		return (0);
-	if (tableaux[ystart][xstart] == 'E')
+	if (tab[ystart][xstart] == 'E')
 		map->exit -= 1;
-	if (tableaux[ystart][xstart] == 'C')
+	if (tab[ystart][xstart] == 'C')
 		map->collectible -= 1;
-	if (tableaux[ystart][xstart] == '0' || tableaux[ystart][xstart] == 'P' ||
-		tableaux[ystart][xstart] == 'E' || tableaux[ystart][xstart] == 'C')
-		tableaux[ystart][xstart] = '1';
-	ft_flood_path(map, ystart, xstart - 1, tableaux);
-	ft_flood_path(map, ystart, xstart + 1, tableaux);
-	ft_flood_path(map, ystart - 1, xstart, tableaux);
-	ft_flood_path(map, ystart + 1, xstart, tableaux);
+	if (tab[ystart][xstart] == '0' || tab[ystart][xstart] == 'P' ||
+		tab[ystart][xstart] == 'E' || tab[ystart][xstart] == 'C')
+		tab[ystart][xstart] = '1';
+	ft_flood_path(map, ystart, xstart - 1, tab);
+	ft_flood_path(map, ystart, xstart + 1, tab);
+	ft_flood_path(map, ystart - 1, xstart, tab);
+	ft_flood_path(map, ystart + 1, xstart, tab);
 	ystart = 0;
 	while (ystart < map->line)
 	{
-		if (ft_strchr(tableaux[ystart], 'E') != 0
-			|| ft_strchr(tableaux[ystart], 'C') != 0
-			|| ft_strchr(tableaux[ystart], 'P') != 0)
+		if (ft_strchr(tab[ystart], 'E') != 0
+			|| ft_strchr(tab[ystart], 'C') != 0
+			|| ft_strchr(tab[ystart], 'P') != 0)
 			return (1);
 		ystart++;
 	}
