@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 15:53:21 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 15:57:53 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,10 @@ int	ft_init_map(t_map *map, char *path)
 	map->line = 0;
 	map->xbegin = 0;
 	map->ybegin = 0;
-	close(fd);
+	ft_checkmap_line(map);
 	ft_parsing(map);
 	ft_pos_check(map);
-	ft_checkmap_line(map);
-	return (0);
+	return (close(fd), 0);
 }
 
 //check if the map is valid with check of border
@@ -104,11 +103,11 @@ int	ft_total_check(t_map *map)
 	if (ft_parsing(map) == 1)
 		return (ft_putstr_fd("Error from border\n", 2), 1);
 	if (map->player != 1)
-		return (ft_putstr_fd("Error from map, NO Starting POS\n", 2), 1);
-	else if (map->collectible == 0)
-		return (ft_putstr_fd("Error from map, NO Collectible\n", 2), 1);
+		return (ft_putstr_fd("Error from map, Starting POS\n", 2), 1);
+	else if (map->collectible <= 0)
+		return (ft_putstr_fd("Error from map, Collectible\n", 2), 1);
 	else if (map->exit != 1)
-		return (ft_putstr_fd("Error from map, NO Exit POS\n", 2), 1);
+		return (ft_putstr_fd("Error from map, Exit POS\n", 2), 1);
 	if (ft_path_check(map) != 0)
 		return (1);
 	return (0);
