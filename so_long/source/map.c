@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 11:23:55 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 11:28:29 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,11 +97,9 @@ int	ft_checkmap_line(t_map *map)
 }
 
 //check if the map as the right number of player, exit and collectible
-int	ft_total_check(t_map *map)
+int	ft_total_check(t_map *map, t_map *mapcpy)
 {
-	t_map mapcpy;
-	
-	mapcpy = (t_map *)map;
+
 	if (ft_checkmap_line(map) != 0)
 		return (ft_putstr_fd("Error, Line is not the same size\n", 2), 1);
 	if (ft_parsing(map) == 1)

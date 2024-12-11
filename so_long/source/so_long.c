@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 11:05:55 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 11:29:00 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 int	main(int ac, char **av)
 {
 	t_map	map;
+	t_map	mapcpy;
 	t_vars	mlx;
 	t_data	img;
 
@@ -47,7 +48,6 @@ int	main(int ac, char **av)
 	draw_map(mlx.mlx, mlx.win, &map, &img);
 	mlx_loop(mlx.mlx);
 
-		
 	return (0);
 }
 	void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
