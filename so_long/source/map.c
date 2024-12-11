@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 16:23:31 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 16:24:27 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,21 +86,21 @@ int	ft_checkmap_line(t_map *map)
 	while (map->map[i])
 	{
 		if (ft_strlen(map->map[i]) != map->column)
-			return (1);
+			return (map->check = 1, 1);
 		j = 0;
 		while (map->map[i][j])
 		{
-			if (map->map[i][j] == 'P')
+			if (map->map[i][j] == 'P' && map->check == 0)
 				map->player += 1;
-			else if (map->map[i][j] == 'E')
+			else if (map->map[i][j] == 'E' && map->check == 0)
 				map->exit += 1;
-			else if (map->map[i][j] == 'C')
+			else if (map->map[i][j] == 'C' && map->check == 0)
 				map->collectible += 1;
 			j++;
 		}
 		i++;
 	}
-	return (0);
+	return (map->check = 1, 0);
 }
 
 //all the check for the map
