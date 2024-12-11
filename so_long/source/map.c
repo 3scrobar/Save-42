@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 11:34:19 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 11:37:45 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@
 int	ft_init_map(t_map *map, char *path, t_vars *mlx, t_data *img)
 {
 	int		fd;
-	t_data	mapcpy;
-	
-	
+
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 		return (ft_putstr_fd("Error from file reading\n", 2), 1);
@@ -33,10 +31,9 @@ int	ft_init_map(t_map *map, char *path, t_vars *mlx, t_data *img)
 	map->ybegin = 0;
 	img->snow = mlx_xpm_file_to_image(mlx->mlx, "img/snowCenter.xpm", &img->tyle_size, &img->tyle_size);
 	img->sand = mlx_xpm_file_to_image(mlx->mlx, "img/sandCenter.xpm", &img->tyle_size, &img->tyle_size);
-	mapcpy.map = map->map;
 	
 	close(fd);
-	return (ft_total_check(map) + ft_total_check(mapcpy));
+	return (ft_total_check(map));
 }
 
 //check if the map is valid with check of border
@@ -100,7 +97,7 @@ int	ft_checkmap_line(t_map *map)
 }
 
 //check if the map as the right number of player, exit and collectible
-int	ft_total_check(t_map *map, t_map *mapcpy)
+int	ft_total_check(t_map *map)
 {
 
 	if (ft_checkmap_line(map) != 0)
@@ -113,7 +110,7 @@ int	ft_total_check(t_map *map, t_map *mapcpy)
 		return (ft_putstr_fd("Error from map, NO Collectible\n", 2), 1);
 	else if (map->exit != 1)
 		return (ft_putstr_fd("Error from map, NO Exit POS\n", 2), 1);
-	if (ft_path_check(&mapcpy) != 0)
+	if (ft_path_check(&map) != 0)
 		return (1);
 	return (0);
 }
