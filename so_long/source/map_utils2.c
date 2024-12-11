@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 14:19:51 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 14:33:02 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 14:33:14 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_map ft_copy_map(t_map *origin)
 {
-	t_map resut;
+	t_map final;
 	
 	final.map = origin->map;
 	final.collectible = origin->map;
