@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 16:58:45 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 17:01:08 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int ac, char **av)
 	game.win = mlx_new_window(game.mlx, map.column * img.tyle_size,
 				map.line * img.tyle_size, "Bomber-long");
 	mlx_key_hook(game.win, key_press, game.mlx);
-	mlx_key_hook(game.win, game_loop, &game);
+	mlx_key_hook(game.win, game_loop, &game, &map, &img);
 	
 	mlx_loop(game.mlx);
 	return (0);
@@ -44,7 +44,7 @@ int	main(int ac, char **av)
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
 }
-int	game_loop(t_vars *game)
+int	game_loop(t_vars *game, t_map *map, t_data *img)
 {
 	draw_map(game->mlx, game->win, map, img);
 	
