@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 11:37:45 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 11:44:23 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_init_map(t_map *map, char *path, t_vars *mlx, t_data *img)
 	img->sand = mlx_xpm_file_to_image(mlx->mlx, "img/sandCenter.xpm", &img->tyle_size, &img->tyle_size);
 	
 	close(fd);
-	return (ft_total_check(map));
+	return (ft_total_check(ft_cpy_map(*map)));
 }
 
 //check if the map is valid with check of border
