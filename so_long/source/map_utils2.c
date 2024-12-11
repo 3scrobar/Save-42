@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 14:19:51 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 15:02:59 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 15:06:49 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 
 // Copie un tableau 2D
-char **copy_map(char **src, int rows)
+char **ft_copy_map(char **src, int rows)
 {
 	int	i;
 	int	j;
@@ -41,35 +41,16 @@ char **copy_map(char **src, int rows)
 	return copy;
 }
 
-t_map *copy_t_map(t_map *src)
-{
-	t_map *copy = malloc(sizeof(t_map));
-	if (!copy)
-		return NULL;
-
-	*copy = *src;
-
-	if (src->map)
-		copy->map = copy_map(src->map, src->line);
-	else
-		copy->map = NULL;
-	return copy;
-}
-
-void free_t_map(t_map *map)
+void free_map(char **map)
 {
 	int	i;
 	
 	i = 0;
 	if (!map)
 		return;
-	if (map->map)
-	{
-		whil(int i = 0; map->map[i]; i++)
-			free(map->map[i]);
-		free(map->map);
-	}
-
+	if (map)
+		while(map[i])
+			free(map[i++]);
 	free(map);
 }
 
