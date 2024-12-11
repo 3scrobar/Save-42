@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:31:14 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 11:08:14 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/11 11:14:13 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ int	ft_path_check(t_map *map)
 {
 	t_map map2;
 	
-	ft_pos_check(*&map);
 	map2 = *map;
+	ft_pos_check(map);
 	if (ft_flood_path(&map2, map2.ybegin, map2.xbegin) == 1)
 		return (ft_putstr_fd("Error from map, No Path\n", 2), 1);
 	if (map->line == map->column)
