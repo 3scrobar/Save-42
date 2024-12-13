@@ -6,7 +6,7 @@
 /*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/13 18:01:08 by groot            ###   ########.fr       */
+/*   Updated: 2024/12/13 18:02:34 by groot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	main(int ac, char **av)
 	mlx_loop_hook(game.win, ft_game_loop, &all);
 	mlx_loop(game.mlx);
 	return (0);
+	
 }
 int	ft_game_loop(t_all *all)
 {
