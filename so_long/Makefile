@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+         #
+#    By: groot <groot@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/03 14:34:47 by tle-saut          #+#    #+#              #
-#    Updated: 2024/12/11 14:20:05 by tle-saut         ###   ########.fr        #
+#    Updated: 2024/12/13 16:40:25 by groot            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-CC = cc
+CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra -g
 
@@ -22,11 +22,11 @@ OBJ = $(SRC:%.c=$(OBJDIR)%.o)
 OBJDIR = object/
 SRCDIR = source/
 
-MLX_NAME	= libmlx.a
-MLX_FLAGS	= -l mlx -l Xext -l X11
-MLX_DIR	= ./mlx/
+MLX_NAME = libmlx.a
+MLX_FLAGS = -l mlx -l Xext -l X11
+MLX_DIR = ./mlx/
 
-LIBSX		=	$(addprefix $(MLX_DIR),$(MLX_NAME))
+LIBSX = $(addprefix $(MLX_DIR),$(MLX_NAME))
 
 $(OBJDIR):
 	mkdir -p $(OBJDIR)

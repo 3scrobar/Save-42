@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
+/*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 17:22:59 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/13 16:32:13 by groot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,9 @@ int		key_hook(int keycode, t_vars *vars);
 int		key_press(int keycode, void *param);
 void	draw_map(void *mlx, void *win,t_map *map, t_data *img);
 int		ft_init_map(t_map *map, char *path);
-int		ft_init_img(t_all all);
+int		ft_init_img(t_data *img, t_vars *game);
 int		ft_game_loop(t_all *all);
 void	free_tab(char **map);
 int		ft_game_draw(t_all *all);
-
-
 
 #endif
