@@ -6,7 +6,7 @@
 /*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/13 16:43:59 by groot            ###   ########.fr       */
+/*   Updated: 2024/12/13 18:01:08 by groot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	main(int ac, char **av)
 
 
 	game.mlx = mlx_init();
+	if (game.mlx == NULL)
+		return(ft_putstr_fd("Error load windows\n", 2), 1);
 	if (ac != 2)
 		return (ft_putstr_fd("Error from Arguments\n", 2), 1);
 	if (ft_init_map(&map, av[1]) == 1 || ft_init_map(&mapcpy, av[1]) == 1)
@@ -32,9 +34,10 @@ int	main(int ac, char **av)
 	game.win = mlx_new_window(game.mlx, map.column * img.tyle_size,
 				map.line * img.tyle_size, "Bomber-long");
 	ft_printf("Map Valide, Launch The Game .....\n");
-	all.img = &img;
-	all.game = &game;
 	all.map = &map;
+	all.game = &game;
+	all.img = &img;
+	mlx_put_image_to_window(game.mlx, game.win, img.player, map.xbegin * img.tyle_size, map.ybegin * img.tyle_size);
 	mlx_key_hook(game.win, key_press, game.mlx);
 	mlx_loop_hook(game.win, ft_game_loop, &all);
 	mlx_loop(game.mlx);
@@ -42,21 +45,31 @@ int	main(int ac, char **av)
 }
 int	ft_game_loop(t_all *all)
 {
-	ft_game_draw(all);
+	draw_map(all->game, all->map, all->img);
+	ft_game_draw(all->game, all->map, all->img);
 	return (0);
 }
-int	ft_game_draw(t_all *all)
+int	ft_game_draw(t_vars *game, t_map *map, t_data *img)
 {
-	draw_map(all->game->mlx, all->game->win, all->map, all->img);
+	(void)game;
+	(void)map;
+	(void)img;
+
+
 	return (0);
 }
 
 
 int key_press(int keycode, void *param)
 {
-	if (keycode == 65307)  // Code de la touche 'Esc'
-		mlx_loop_end(param);  // Quitte la boucle d'événements
-	else
-		ft_printf("Touche pressée: %d\n", keycode);
-	return (0);
+    if (keycode == 65307)  // Code de la touche 'Esc'
+    {
+        ft_printf("Touche ESC capturée !\n");
+        mlx_loop_end(param);  // Quitte la boucle d'événements
+    }
+    else
+    {
+        ft_printf("Touche pressée: %d\n", keycode);
+    }
+    return (0);
 }

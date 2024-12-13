@@ -6,7 +6,7 @@
 /*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/13 16:32:13 by groot            ###   ########.fr       */
+/*   Updated: 2024/12/13 17:59:25 by groot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ typedef struct	s_data {
 	void	*snow;
 	void	*exitdiscover;
 	void	*exitcover;
+	void	*collectible;
+	void	*player;
 }				t_data;
 
 typedef struct	s_vars {
@@ -77,11 +79,11 @@ int		ft_tablen(char **tab);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		key_hook(int keycode, t_vars *vars);
 int		key_press(int keycode, void *param);
-void	draw_map(void *mlx, void *win,t_map *map, t_data *img);
+void	draw_map(t_vars *game,t_map *map, t_data *img);
 int		ft_init_map(t_map *map, char *path);
 int		ft_init_img(t_data *img, t_vars *game);
 int		ft_game_loop(t_all *all);
 void	free_tab(char **map);
-int		ft_game_draw(t_all *all);
+int		ft_game_draw(t_vars *game, t_map *map, t_data *img);
 
 #endif

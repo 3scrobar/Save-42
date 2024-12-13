@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
+/*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:31:14 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/11 16:42:35 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/13 17:51:46 by groot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ char	**ft_init_tab(int fd)
 	return (tab);
 }
 //draw map
-void draw_map(void *mlx, void *win,t_map *map, t_data *img)
+void draw_map(t_vars *game,t_map *map, t_data *img)
 {
 	size_t	x;
 	size_t	y;
@@ -104,17 +104,19 @@ void draw_map(void *mlx, void *win,t_map *map, t_data *img)
 		x = 0;
 		while (map->map[y][x])
 		{
-			if (map->map[y][x] == '0')
-				mlx_put_image_to_window(mlx, win, img->snow, x * img->tyle_size, y * img->tyle_size);
+			if (map->map[y][x] == '0' || map->map[y][x] == 'P')
+				mlx_put_image_to_window(game->mlx, game->win, img->snow, x * img->tyle_size, y * img->tyle_size);
 			else if (map->map[y][x] == '1')
-				mlx_put_image_to_window(mlx, win, img->sand, x * img->tyle_size, y * img->tyle_size);
+				mlx_put_image_to_window(game->mlx, game->win, img->sand, x * img->tyle_size, y * img->tyle_size);
 			else if(map->map[y][x] == 'E')
 			{
-				if(map->collectible == 0)
-					mlx_put_image_to_window(mlx, win, img->exitcover, x * img->tyle_size, y * img->tyle_size);
+				if(map->collectible != 0)
+					mlx_put_image_to_window(game->mlx, game->win, img->exitcover, x * img->tyle_size, y * img->tyle_size);
 				else
-					mlx_put_image_to_window(mlx, win, img->exitdiscover, x * img->tyle_size, y * img->tyle_size);
+					mlx_put_image_to_window(game->mlx, game->win, img->exitdiscover, x * img->tyle_size, y * img->tyle_size);
 			}
+			else if (map->map[y][x] == 'C')
+				mlx_put_image_to_window(game->mlx, game->win, img->collectible, x * img->tyle_size, y * img->tyle_size);
 			x++;
 		}
 		y++;
