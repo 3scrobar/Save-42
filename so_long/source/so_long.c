@@ -6,7 +6,7 @@
 /*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/13 18:02:34 by groot            ###   ########.fr       */
+/*   Updated: 2024/12/13 18:26:52 by groot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,28 +37,23 @@ int	main(int ac, char **av)
 	all.map = &map;
 	all.game = &game;
 	all.img = &img;
+	draw_map(all.game, all.map, all.img);
 	mlx_put_image_to_window(game.mlx, game.win, img.player, map.xbegin * img.tyle_size, map.ybegin * img.tyle_size);
 	mlx_key_hook(game.win, key_press, game.mlx);
 	mlx_loop_hook(game.win, ft_game_loop, &all);
 	mlx_loop(game.mlx);
+
+
+
 	return (0);
 	
 }
 int	ft_game_loop(t_all *all)
 {
 	draw_map(all->game, all->map, all->img);
-	ft_game_draw(all->game, all->map, all->img);
 	return (0);
 }
-int	ft_game_draw(t_vars *game, t_map *map, t_data *img)
-{
-	(void)game;
-	(void)map;
-	(void)img;
 
-
-	return (0);
-}
 
 
 int key_press(int keycode, void *param)
