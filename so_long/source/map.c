@@ -6,7 +6,7 @@
 /*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/13 17:38:46 by groot            ###   ########.fr       */
+/*   Updated: 2024/12/14 17:39:16 by groot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	ft_parsing(t_map *map)
 			if (map->map[0][map->column] != '1' || map->map[map->line][0] != '1'
 				|| map->map[map->line][len - 1] != '1'
 				|| map->map[ft_tablen(map->map)][map->column] != '1')
-				return (1);
+				return (ft_putstr_fd("Error from map border\n", 2), 1);
 			map->column += 1;
 		}
 		map->line += 1;
