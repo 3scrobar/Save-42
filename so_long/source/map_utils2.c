@@ -6,7 +6,7 @@
 /*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 14:19:51 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/15 17:42:03 by groot            ###   ########.fr       */
+/*   Updated: 2024/12/15 18:21:19 by groot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void free_tab(char **map)
 //init all the img
 int	ft_init_img(t_all *all)
 {
-	all->img.tyle_size = 64;
+	all->map.tile_size = 64;
 	all->img.font = mlx_xpm_file_to_image(all->game.mlx, "img/font.xpm", &all->img.tyle_size, &all->img.tyle_size);
 	all->img.wall = mlx_xpm_file_to_image(all->game.mlx, "img/wall.xpm", &all->img.tyle_size, &all->img.tyle_size);
 	//all->img.exitdiscover = mlx_xpm_file_to_image(all->game.mlx, "img/window.xpm", &all->img.tyle_size, &all->img.tyle_size);

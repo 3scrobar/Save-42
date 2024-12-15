@@ -6,7 +6,7 @@
 /*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/15 17:51:48 by groot            ###   ########.fr       */
+/*   Updated: 2024/12/15 18:21:03 by groot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_map
 	size_t		xbegin;
 	size_t		ybegin;
 	int			check;
+	int			tile_size;
 
 }	t_map;
 
@@ -85,5 +86,8 @@ int		ft_init_img(t_all *all);
 int		ft_game_loop(t_all *all);
 void	free_tab(char **map);
 int		ft_game_draw(t_vars *game, t_map *map, t_data *img);
+void	gravity(t_all *all);
+int	check_coll(t_all *all, char *str);
+
 
 #endif
