@@ -6,7 +6,7 @@
 /*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/14 17:41:28 by groot            ###   ########.fr       */
+/*   Updated: 2024/12/15 18:16:08 by groot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,52 +15,71 @@
 
 int	main(int ac, char **av)
 {
-	t_map	map;
-	t_vars	game;
-	t_data	img;
 	t_map	mapcpy;
 	t_all	all;
 
-	game.mlx = mlx_init();
-	if (game.mlx == NULL)
+	all.game.mlx = mlx_init();
+	if (all.game.mlx == NULL)
 		return(ft_putstr_fd("Error load windows\n", 2), 1);
 	if (ac != 2)
 		return (ft_putstr_fd("Error from Arguments\n", 2), 1);
-	if (ft_init_map(&map, av[1]) == 1 || ft_init_map(&mapcpy, av[1]) == 1)
+	if (ft_init_map(&all.map, av[1]) == 1 || ft_init_map(&mapcpy, av[1]) == 1)
 		return (1);
-	if(ft_init_img(&img, &game) == 1 || ft_total_check(&mapcpy) == 1)
+	if(ft_init_img(&all) == 1 || ft_total_check(&mapcpy) == 1)
 		return (1);
-	game.win = mlx_new_window(game.mlx, map.column * img.tyle_size,
-				map.line * img.tyle_size, "Bomber-long");
+	all.game.win = mlx_new_window(all.game.mlx, all.map.column * all.img.tyle_size,
+				all.map.line * all.img.tyle_size, "Bomber-long");
 	ft_printf("Map Valide, Launch The Game .....\n");
-	all.map = &map;
-	all.game = &game;
-	all.img = &img;
-	draw_map(all.game, all.map, all.img);
-	mlx_put_image_to_window(game.mlx, game.win, img.player, map.xbegin * img.tyle_size, map.ybegin * img.tyle_size);
-	mlx_key_hook(game.win, key_press, game.mlx);
-	mlx_loop_hook(game.win, ft_game_loop, &all);
-	mlx_loop(game.mlx);
+	draw_map(&all);
+	mlx_put_image_to_window(all.game.mlx, all.game.win, all.img.player, all.map.xbegin * all.img.tyle_size, all.map.ybegin * all.img.tyle_size);
+	mlx_key_hook(all.game.win, key_press, &all);
+	mlx_loop_hook(all.game.win, ft_game_loop, &all);
+	mlx_loop(all.game.mlx);
 	return (0);
 }
 int	ft_game_loop(t_all *all)
 {
-	draw_map(all->game, all->map, all->img);
+	(void)all;
 	return (0);
 }
 
-
-
-int key_press(int keycode, void *param)
+int	check_coll(t_all *all, char *str)
 {
-    if (keycode == 65307)  // Code de la touche 'Esc'
-    {
-        ft_printf("Touche ESC capturée !\n");
-        mlx_loop_end(param);  // Quitte la boucle d'événements
-    }
-    else
-    {
-        ft_printf("Touche pressée: %d\n", keycode);
-    }
-    return (0);
+	int	tile_x;
+	int	tile_y;
+
+	tile_x = all->game.xbegin / all->game.tile_size;
+	tile_y = all->game.ybegin / all->game.tile_size;
+
+	if ((tile_x >= 0 && tile_x < all->map.columns && tile_y - 1 > 0 && tile_y + 1 < all->map.line) && str == "down")
+		return (0);
+	return (1);
+}
+
+void	gravity(t_all *all)
+{	
+	if(check_coll(all, "down") != 1)
+		all->map.ybegin -= 1;
+}
+
+int	key_press(int keycode, t_all *all)
+{
+	mlx_clear_window(all->game.mlx, all->game.win);
+	if (keycode == 65307)  // Code de la touche 'Esc'
+		mlx_loop_end(all->game.mlx);  // Quitte la boucle d'événements
+	else if (keycode == 100)
+		all->map.xbegin += 1;
+	else if (keycode == 113)
+		all->map.xbegin -= 1;
+	else if (keycode == 122 && check_col(all, "down")) != 1
+		all->map.ybegin -= 1;
+	else if (keycode == 115)
+		all->map.ybegin += 1;
+	else
+	{
+		ft_printf("Touche pressée: %d\n", keycode);
+	}
+	draw_map(all);
+	mlx_put_image_to_window(all->game.mlx, all->game.win, all->img.player, all->map.xbegin * all->img.tyle_size, all->map.ybegin * all->img.tyle_size);
+	return (0);
 }

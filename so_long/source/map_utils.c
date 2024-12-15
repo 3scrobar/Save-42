@@ -6,7 +6,7 @@
 /*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:31:14 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/13 17:51:46 by groot            ###   ########.fr       */
+/*   Updated: 2024/12/15 17:34:38 by groot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,31 +92,31 @@ char	**ft_init_tab(int fd)
 	return (tab);
 }
 //draw map
-void draw_map(t_vars *game,t_map *map, t_data *img)
+void draw_map(t_all *all)
 {
 	size_t	x;
 	size_t	y;
 
 	x = 0;
 	y = 0;
-	while (map->map[y])
+	while (all->map.map[y])
 	{
 		x = 0;
-		while (map->map[y][x])
+		while (all->map.map[y][x])
 		{
-			if (map->map[y][x] == '0' || map->map[y][x] == 'P')
-				mlx_put_image_to_window(game->mlx, game->win, img->snow, x * img->tyle_size, y * img->tyle_size);
-			else if (map->map[y][x] == '1')
-				mlx_put_image_to_window(game->mlx, game->win, img->sand, x * img->tyle_size, y * img->tyle_size);
-			else if(map->map[y][x] == 'E')
-			{
-				if(map->collectible != 0)
-					mlx_put_image_to_window(game->mlx, game->win, img->exitcover, x * img->tyle_size, y * img->tyle_size);
-				else
-					mlx_put_image_to_window(game->mlx, game->win, img->exitdiscover, x * img->tyle_size, y * img->tyle_size);
-			}
-			else if (map->map[y][x] == 'C')
-				mlx_put_image_to_window(game->mlx, game->win, img->collectible, x * img->tyle_size, y * img->tyle_size);
+			if (all->map.map[y][x] == '0' || all->map.map[y][x] == 'P')
+				mlx_put_image_to_window(all->game.mlx, all->game.win, all->img.font, x * all->img.tyle_size, y * all->img.tyle_size);
+			else if (all->map.map[y][x] == '1')
+				mlx_put_image_to_window(all->game.mlx, all->game.win, all->img.wall, x * all->img.tyle_size, y * all->img.tyle_size);
+			//else if(all->map.map[y][x] == 'E')
+			//{
+				//if(all->map.collectible != 0)
+					//mlx_put_image_to_window(all->game.mlx, all->game.win, all->img.exitcover, x * all->img.tyle_size, y * all->img.tyle_size);
+				//else
+					//mlx_put_image_to_window(all->game.mlx, all->game.win, all->img.exitdiscover, x * all->img.tyle_size, y * all->img.tyle_size);
+			//}
+			//else if (all->map.map[y][x] == 'C')
+				//mlx_put_image_to_window(all->game.mlx, all->game.win, all->img.collectible, x * all->img.tyle_size, y * all->img.tyle_size);
 			x++;
 		}
 		y++;

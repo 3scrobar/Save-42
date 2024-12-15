@@ -6,7 +6,7 @@
 /*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 14:19:51 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/14 17:19:22 by groot            ###   ########.fr       */
+/*   Updated: 2024/12/15 17:42:03 by groot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,17 @@ void free_tab(char **map)
 	free(map);
 }
 //init all the img
-int	ft_init_img(t_data *img, t_vars *game)
+int	ft_init_img(t_all *all)
 {
-	img->tyle_size = 70;
-	img->snow = mlx_xpm_file_to_image(game->mlx, "img/snowCenter.xpm", &img->tyle_size, &img->tyle_size);
-	img->sand = mlx_xpm_file_to_image(game->mlx, "img/sandCenter.xpm", &img->tyle_size, &img->tyle_size);
-	img->exitdiscover = mlx_xpm_file_to_image(game->mlx, "img/window.xpm", &img->tyle_size, &img->tyle_size);
-	img->exitcover = mlx_xpm_file_to_image(game->mlx, "img/door_closedMid.xpm", &img->tyle_size, &img->tyle_size);
-	img->collectible = mlx_xpm_file_to_image(game->mlx, "img/Gold_1.xpm", &img->tyle_size, &img->tyle_size);
-	img->player = mlx_xpm_file_to_image(game->mlx, "img/scifiUnit_01.xpm", &img->tyle_size, &img->tyle_size);
+	all->img.tyle_size = 64;
+	all->img.font = mlx_xpm_file_to_image(all->game.mlx, "img/font.xpm", &all->img.tyle_size, &all->img.tyle_size);
+	all->img.wall = mlx_xpm_file_to_image(all->game.mlx, "img/wall.xpm", &all->img.tyle_size, &all->img.tyle_size);
+	//all->img.exitdiscover = mlx_xpm_file_to_image(all->game.mlx, "img/window.xpm", &all->img.tyle_size, &all->img.tyle_size);
+	//all->img.exitcover = mlx_xpm_file_to_image(all->game.mlx, "img/door_closedMid.xpm", &all->img.tyle_size, &all->img.tyle_size);
+	//all->img.collectible = mlx_xpm_file_to_image(all->game.mlx, "img/coins.xpm", &all->img.tyle_size, &all->img.tyle_size);
+	all->img.player = mlx_xpm_file_to_image(all->game.mlx, "img/player.xpm", &all->img.tyle_size, &all->img.tyle_size);
 
-	if (img->snow == NULL || img->sand == NULL)
+	if (all->img.font == NULL || all->img.wall == NULL)
 		return(ft_putstr_fd("Error load an img\n", 2), 1);
 	return(0);
 }

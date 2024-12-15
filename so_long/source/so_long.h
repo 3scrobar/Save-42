@@ -6,7 +6,7 @@
 /*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/13 17:59:25 by groot            ###   ########.fr       */
+/*   Updated: 2024/12/15 17:51:48 by groot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ typedef struct s_map
 
 typedef struct	s_data {
 	int		tyle_size;
-	void	*sand;
-	void	*snow;
+	void	*wall;
+	void	*font;
 	void	*exitdiscover;
 	void	*exitcover;
 	void	*collectible;
@@ -57,9 +57,9 @@ typedef struct	s_vars {
 
 typedef struct s_all
 {
-	t_vars *game;
-	t_map  *map;
-	t_data *img;
+	t_vars	game;
+	t_map	map;
+	t_data	img;
 } t_all;
 
 int		ft_checkmap_line(t_map *map);
@@ -78,10 +78,10 @@ int		ft_flood_path(t_map *map, size_t ystart, size_t xstart, char **tab);
 int		ft_tablen(char **tab);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		key_hook(int keycode, t_vars *vars);
-int		key_press(int keycode, void *param);
-void	draw_map(t_vars *game,t_map *map, t_data *img);
+int		key_press(int keycode, t_all *all);
+void	draw_map(t_all *all);
 int		ft_init_map(t_map *map, char *path);
-int		ft_init_img(t_data *img, t_vars *game);
+int		ft_init_img(t_all *all);
 int		ft_game_loop(t_all *all);
 void	free_tab(char **map);
 int		ft_game_draw(t_vars *game, t_map *map, t_data *img);
