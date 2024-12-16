@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: groot <groot@student.42.fr>                +#+  +:+       +#+         #
+#    By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/03 14:34:47 by tle-saut          #+#    #+#              #
-#    Updated: 2024/12/13 16:40:25 by groot            ###   ########.fr        #
+#    Updated: 2024/12/16 14:51:00 by tle-saut         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-CC = gcc
+CC = cc
 
 CFLAGS = -Wall -Werror -Wextra -g
 
@@ -23,7 +23,7 @@ OBJDIR = object/
 SRCDIR = source/
 
 MLX_NAME = libmlx.a
-MLX_FLAGS = -l mlx -l Xext -l X11
+MLX_FLAGS = -L./minilibx-linux -lmlx -L/usr/lib -I./minilibx-linux -lXext -lX11 -lm -lz
 MLX_DIR = ./mlx/
 
 LIBSX = $(addprefix $(MLX_DIR),$(MLX_NAME))
@@ -31,8 +31,8 @@ LIBSX = $(addprefix $(MLX_DIR),$(MLX_NAME))
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
 
-$(NAME): libft/libft.a mlx/libmlx_Linux.a $(OBJDIR) $(OBJ)
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) libft/libft.a mlx/libmlx_Linux.a -L$(LIBFT_DIR) -lft -L$(MLX_DIR) $(MLX_FLAGS) -lm
+$(NAME): libft/libft.a minilibx-linux/libmlx_Linux.a $(OBJDIR) $(OBJ)
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) libft/libft.a minilibx-linux/libmlx_Linux.a -L$(LIBFT_DIR) -lft -L$(MLX_DIR) $(MLX_FLAGS) -lm
 
 mlx/libmlx_Linux.a:
 	@make all

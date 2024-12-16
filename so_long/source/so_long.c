@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/15 19:03:10 by groot            ###   ########.fr       */
+/*   Updated: 2024/12/16 15:13:40 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,35 +15,34 @@
 
 int	main(int ac, char **av)
 {
-	t_map	mapcpy;
-	t_all	all;
+	t_all	game;
+	t_all	mapcpy;
 
-	all.game.mlx = mlx_init();
-	if (all.game.mlx == NULL)
+	game.mlx = mlx_init();
+	if (game.mlx == NULL)
 		return(ft_putstr_fd("Error load windows\n", 2), 1);
 	if (ac != 2)
 		return (ft_putstr_fd("Error from Arguments\n", 2), 1);
-	if (ft_init_map(&all.map, av[1]) == 1 || ft_init_map(&mapcpy, av[1]) == 1)
+	if (ft_init_map(&game.map, av[1]) == 1 || ft_init_map(&mapcpy, av[1]) == 1)
 		return (1);
-	if(ft_init_img(&all) == 1 || ft_total_check(&mapcpy) == 1)
+	if(ft_init_img(&game) == 1 || ft_total_check(&mapcpy) == 1)
 		return (1);
-	all.game.win = mlx_new_window(all.game.mlx, all.map.column * all.img.tyle_size,
-				all.map.line * all.img.tyle_size, "Bomber-long");
+	game.win = mlx_new_window(game.mlx, game.column * game.tile_size,
+				game.line * game.tile_size, "Bomber-long");
 	ft_printf("Map Valide, Launch The Game .....\n");
-	draw_map(&all);
-	mlx_put_image_to_window(all.game.mlx, all.game.win, all.img.player, all.map.xbegin * all.img.tyle_size, all.map.ybegin * all.img.tyle_size);
-	mlx_key_hook(all.game.win, key_press, &all);
-	mlx_loop_hook(all.game.win, ft_game_loop, &all);
-	mlx_loop(all.game.mlx);
+	mlx_key_hook(game.win, key_press, &game);
+	mlx_loop_hook(game.win, ft_game_loop, &game);
+	mlx_loop(game.mlx);
 	return (0);
 }
-int	ft_game_loop(t_all *all)
+int	ft_game_loop(t_all *game)
 {
-	(void)all;
+	draw_map(game);
+	mlx_put_image_to_window(game->mlx, game->win, game->player, game->xbegin * game->tile_size, game->ybegin * game->tile_size);
 	return (0);
 }
 
-int	check_coll(t_all *all, char *str)
+int	check_coll(t_all *game, char *str)
 {
 
 	char *down;
@@ -57,47 +56,47 @@ int	check_coll(t_all *all, char *str)
 	left = "left";
 	right = "right";
 
-	printf("ton player  x \n %c \n", all->map.map[all->map.ybegin + 1][all->map.xbegin]);
-	printf("ton player  ybegin ::: %li \n", all->map.ybegin);
-	printf("ton player  xbegin ::: %li \n", all->map.xbegin);
+	printf("ton player  x \n %c \n", game->map[game->ybegin + 1][game->xbegin]);
+	printf("ton player  ybegin ::: %li \n", game->ybegin);
+	printf("ton player  xbegin ::: %li \n", game->xbegin);
 
 
-	if ((all->map.map[all->map.ybegin + 1][all->map.xbegin] != '1' ) && str == down)
+	if ((game->map[game->ybegin + 1][game->xbegin] != '1' ) && str == down)
 		return (0);
-	else if ((all->map.map[all->map.ybegin - 1][all->map.xbegin] != '1' ) && str == up)
+	else if ((game->map[game->ybegin - 1][game->xbegin] != '1' ) && str == up)
 		return (0);
-	else if ((all->map.map[all->map.ybegin][all->map.xbegin + 1] != '1' ) && str == right)
+	else if ((game->map[game->ybegin][game->xbegin + 1] != '1' ) && str == right)
 		return (0);
-	else if ((all->map.map[all->map.ybegin][all->map.xbegin - 1] != '1' ) && str == left)
+	else if ((game->map[game->ybegin][game->xbegin - 1] != '1' ) && str == left)
 		return (0);
 	return (1);
 }
 
-void	gravity(t_all *all)
+void	gravity(t_all *game)
 {	
-	if(check_coll(all, "down") != 1)
-		all->map.ybegin += 1;
+	if(check_coll(game, "down") != 1)
+		game->ybegin += 0;
 }
 
-int	key_press(int keycode, t_all *all)
+int	key_press(int keycode, t_all *game)
 {
-	mlx_clear_window(all->game.mlx, all->game.win);
+	mlx_clear_window(game->mlx, game->win);
 	if (keycode == 65307)  // Code de la touche 'Esc'
-		mlx_loop_end(all->game.mlx);  // Quitte la boucle d'événements
-	else if (keycode == 100&& check_coll(all, "right") != 1)
-		all->map.xbegin += 1;
-	else if (keycode == 113&& check_coll(all, "left") != 1)
-		all->map.xbegin -= 1;
-	else if (keycode == 122 && check_coll(all, "up") != 1)
-		all->map.ybegin -= 1;
-	else if (keycode == 115 && check_coll(all, "down") != 1)
-		all->map.ybegin += 1;
+		mlx_loop_end(game->mlx);  // Quitte la boucle d'événements
+	else if (keycode == 100&& check_coll(game, "right") != 1)
+		game->xbegin += 1;
+	else if (keycode == 97&& check_coll(game, "left") != 1)
+		game->xbegin -= 1;
+	else if (keycode == 119 && check_coll(game, "up") != 1)
+		game->ybegin -= 1;
+	else if (keycode == 115 && check_coll(game, "down") != 1)
+		game->ybegin += 1;
 	else
 	{
 		ft_printf("Touche pressée: %d\n", keycode);
 	}
-	gravity(all);
-	draw_map(all);
-	mlx_put_image_to_window(all->game.mlx, all->game.win, all->img.player, all->map.xbegin * all->img.tyle_size, all->map.ybegin * all->img.tyle_size);
+	gravity(game);
+	draw_map(game);
+	mlx_put_image_to_window(game->mlx, game->win, game->player, game->xbegin * game->tile_size, game->ybegin * game->tile_size);
 	return (0);
 }

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:31:14 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/15 17:34:38 by groot            ###   ########.fr       */
+/*   Updated: 2024/12/16 15:05:01 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 //check depart Pos
 //give xbegin , ybegin
-int	ft_pos_check(t_map *map)
+int	ft_pos_check(t_all *map)
 {
 	while (map->map[map->ybegin])
 	{
@@ -29,7 +29,7 @@ int	ft_pos_check(t_map *map)
 	return (0);
 }
 //check path of everything
-int	ft_flood_path(t_map *map, size_t ystart, size_t xstart, char **tab)
+int	ft_flood_path(t_all *map, size_t ystart, size_t xstart, char **tab)
 {
 	if (ystart >= map->line || xstart >= map->column)
 		return (0);
@@ -58,7 +58,7 @@ int	ft_flood_path(t_map *map, size_t ystart, size_t xstart, char **tab)
 	return (0);
 }
 
-int	ft_path_check(t_map *map)
+int	ft_path_check(t_all *map)
 {
 
 	ft_pos_check(map);
@@ -99,24 +99,24 @@ void draw_map(t_all *all)
 
 	x = 0;
 	y = 0;
-	while (all->map.map[y])
+	while (all->map[y])
 	{
 		x = 0;
-		while (all->map.map[y][x])
+		while (all->map[y][x])
 		{
-			if (all->map.map[y][x] == '0' || all->map.map[y][x] == 'P')
-				mlx_put_image_to_window(all->game.mlx, all->game.win, all->img.font, x * all->img.tyle_size, y * all->img.tyle_size);
-			else if (all->map.map[y][x] == '1')
-				mlx_put_image_to_window(all->game.mlx, all->game.win, all->img.wall, x * all->img.tyle_size, y * all->img.tyle_size);
+			if (all->map[y][x] == '0' || all->map[y][x] == 'P')
+				mlx_put_image_to_window(all->mlx, all->win, all->font, x * all->tile_size, y * all->tile_size);
+			else if (all->map[y][x] == '1')
+				mlx_put_image_to_window(all->mlx, all->win, all->wall, x * all->tile_size, y * all->tile_size);
 			//else if(all->map.map[y][x] == 'E')
 			//{
 				//if(all->map.collectible != 0)
-					//mlx_put_image_to_window(all->game.mlx, all->game.win, all->img.exitcover, x * all->img.tyle_size, y * all->img.tyle_size);
+					//mlx_put_image_to_window(all->mlx, all->win, all->exitcover, x * all->tyle_size, y * all->tyle_size);
 				//else
-					//mlx_put_image_to_window(all->game.mlx, all->game.win, all->img.exitdiscover, x * all->img.tyle_size, y * all->img.tyle_size);
+					//mlx_put_image_to_window(all->mlx, all->win, all->exitdiscover, x * all->tyle_size, y * all->tyle_size);
 			//}
 			//else if (all->map.map[y][x] == 'C')
-				//mlx_put_image_to_window(all->game.mlx, all->game.win, all->img.collectible, x * all->img.tyle_size, y * all->img.tyle_size);
+				//mlx_put_image_to_window(all->mlx, all->win, all->collectible, x * all->tyle_size, y * all->tyle_size);
 			x++;
 		}
 		y++;

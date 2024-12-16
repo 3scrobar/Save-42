@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/14 17:39:16 by groot            ###   ########.fr       */
+/*   Updated: 2024/12/16 15:06:54 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 //initialize the map structure with the map file
-int	ft_init_map(t_map *map, char *path)
+int	ft_init_map(t_all *map, char *path)
 {
 	int		fd;
 	int		a;
@@ -43,7 +43,7 @@ int	ft_init_map(t_map *map, char *path)
 
 //check if the map is valid with check of border
 //need column and line
-int	ft_parsing(t_map *map)
+int	ft_parsing(t_all *map)
 {
 	int	len;
 
@@ -76,7 +76,7 @@ int	ft_tablen(char	**tab)
 
 //check if the map is valid with the collectible, player and exit
 //give column , C , P, E
-int	ft_checkmap_line(t_map *map)
+int	ft_checkmap_line(t_all *map)
 {
 	int	i;
 	int	j;
@@ -104,7 +104,7 @@ int	ft_checkmap_line(t_map *map)
 }
 
 //all the check for the map
-int	ft_total_check(t_map *map)
+int	ft_total_check(t_all *map)
 {
 
 	if (ft_checkmap_line(map) != 0)
