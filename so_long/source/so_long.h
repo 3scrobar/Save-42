@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/16 15:14:16 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/16 16:32:43 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ typedef struct s_all
 	size_t	ybegin;
 	size_t	xplayer;
 	size_t	yplayer;
-	int		check;
 	int		tile_size;
+	int		check;
 	void	*imgwall;
 	void	*imgfont;
 	void	*imgexitdiscover;
@@ -50,6 +50,23 @@ typedef struct s_all
 	void	*win;
 }				t_all;
 
+int		ft_init_map(t_all *map, char *path);
+int		ft_tablen(char	**tab);
+int		ft_checkmap_line(t_all *map);
+int		ft_total_check(t_all *map);
+int		ft_parsing(t_all *map);
+int		ft_pos_check(t_all *map);
+int		ft_flood_path(t_all *map, size_t ystart, size_t xstart, char **tab);
+int		ft_path_check(t_all *map);
+void	free_tab(char **map);
+char	**ft_init_tab(int fd);
+int		ft_init_img(t_all *all);
+void	draw_map(t_all *all);
+int		key_press(int keycode, t_all *all);
+int		ft_game_loop(t_all *all);
+int		ft_game_draw(t_all *all);
+int		check_coll(t_all *game, char *str);
+void	gravity(t_all *game);
 
 
 

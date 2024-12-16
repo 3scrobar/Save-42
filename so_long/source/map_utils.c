@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:31:14 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/16 15:05:01 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/16 16:31:14 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,9 +105,9 @@ void draw_map(t_all *all)
 		while (all->map[y][x])
 		{
 			if (all->map[y][x] == '0' || all->map[y][x] == 'P')
-				mlx_put_image_to_window(all->mlx, all->win, all->font, x * all->tile_size, y * all->tile_size);
+				mlx_put_image_to_window(all->mlx, all->win, all->imgfont, x * all->tile_size, y * all->tile_size);
 			else if (all->map[y][x] == '1')
-				mlx_put_image_to_window(all->mlx, all->win, all->wall, x * all->tile_size, y * all->tile_size);
+				mlx_put_image_to_window(all->mlx, all->win, all->imgwall, x * all->tile_size, y * all->tile_size);
 			//else if(all->map.map[y][x] == 'E')
 			//{
 				//if(all->map.collectible != 0)

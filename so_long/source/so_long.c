@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/16 15:13:40 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/16 16:45:59 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,22 @@ int	main(int ac, char **av)
 		return(ft_putstr_fd("Error load windows\n", 2), 1);
 	if (ac != 2)
 		return (ft_putstr_fd("Error from Arguments\n", 2), 1);
-	if (ft_init_map(&game.map, av[1]) == 1 || ft_init_map(&mapcpy, av[1]) == 1)
+	if (ft_init_map(&game, av[1]) == 1 || ft_init_map(&mapcpy, av[1]) == 1)
 		return (1);
 	if(ft_init_img(&game) == 1 || ft_total_check(&mapcpy) == 1)
 		return (1);
 	game.win = mlx_new_window(game.mlx, game.column * game.tile_size,
 				game.line * game.tile_size, "Bomber-long");
 	ft_printf("Map Valide, Launch The Game .....\n");
+	mlx_loop_hook(game.mlx, ft_game_loop, &game);
 	mlx_key_hook(game.win, key_press, &game);
-	mlx_loop_hook(game.win, ft_game_loop, &game);
 	mlx_loop(game.mlx);
 	return (0);
 }
 int	ft_game_loop(t_all *game)
 {
 	draw_map(game);
-	mlx_put_image_to_window(game->mlx, game->win, game->player, game->xbegin * game->tile_size, game->ybegin * game->tile_size);
+	mlx_put_image_to_window(game->mlx, game->win, game->imgplayer, game->xbegin * game->tile_size, game->ybegin * game->tile_size);
 	return (0);
 }
 
@@ -97,6 +97,6 @@ int	key_press(int keycode, t_all *game)
 	}
 	gravity(game);
 	draw_map(game);
-	mlx_put_image_to_window(game->mlx, game->win, game->player, game->xbegin * game->tile_size, game->ybegin * game->tile_size);
+	mlx_put_image_to_window(game->mlx, game->win, game->imgplayer, game->xbegin * game->tile_size, game->ybegin * game->tile_size);
 	return (0);
 }
