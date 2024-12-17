@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sirocco <sirocco@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/16 16:32:43 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/17 10:17:14 by sirocco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ int		ft_game_loop(t_all *all);
 int		ft_game_draw(t_all *all);
 int		check_coll(t_all *game, char *str);
 void	gravity(t_all *game);
-
-
+void	start_xy(t_all *game);
+int		get_tile_at(t_all *game);
 
 
 #endif
