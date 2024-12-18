@@ -6,7 +6,7 @@
 /*   By: sirocco <sirocco@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/17 10:17:14 by sirocco          ###   ########.fr       */
+/*   Updated: 2024/12/17 11:27:58 by sirocco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_all
 	void	*imgplayer;
 	void	*mlx;
 	void	*win;
+	int		keys[256];
 }				t_all;
 
 int		ft_init_map(t_all *map, char *path);
@@ -69,6 +70,10 @@ int		check_coll(t_all *game, char *str);
 void	gravity(t_all *game);
 void	start_xy(t_all *game);
 int		get_tile_at(t_all *game);
+int		ft_move(t_all *game);
+int 	key_press(int keycode, t_all *data);
+int		key_release(int keycode, t_all*data);
+
 
 
 #endif
