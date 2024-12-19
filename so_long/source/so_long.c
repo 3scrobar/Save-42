@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/19 17:34:53 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/19 17:46:58 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	main(int ac, char **av)
 	game.win = mlx_new_window(game.mlx, game.column * game.tile_size,
 				game.line * game.tile_size, "Bomber-long");
 	ft_printf("Map Valide, Launch The Game .....\n");
+	mlx_put_image_to_window(game->mlx, game->win, game->imgplayer, game->xbegin, game->ybegin);
 	mlx_loop_hook(game.mlx, ft_game_loop, &game);
 	mlx_key_hook(game.win, key_press, &game);
 	mlx_loop(game.mlx);
@@ -38,7 +39,6 @@ int	main(int ac, char **av)
 int	ft_game_loop(t_all *game)
 {
 	draw_map(game);
-	mlx_put_image_to_window(game->mlx, game->win, game->imgplayer, game->xplayer, game->yplayer);
 	mlx_do_sync(game->mlx);
 	return (0);
 }
@@ -74,13 +74,13 @@ int key_press(int keycode, t_all *data)
 	if (keycode == 65307) // Touche Échap (code macOS MiniLibX, remplacez par 65307 pour Linux)
 		close_window(data);
 	else if (keycode == 13  && check_coll(data, "haut") != 1) // W
-		data->yplayer -= 1;
+		data->ybegin -= 1;
 	else if (keycode == 1  && check_coll(data, "bas") != 1) // S
-		data->yplayer += 1;
+		data->ybegin += 1;
 	else if (keycode == 0  && check_coll(data, "left") != 1) // A
-		data->xplayer -= 1;
+		data->xbegin -= 1;
 	else if (keycode == 2 && check_coll(data, "right") != 1) // D
-		data->xplayer += 1;
+		data->xbegin += 1;
 	return (0);
 }
 int close_window(t_all *data)
