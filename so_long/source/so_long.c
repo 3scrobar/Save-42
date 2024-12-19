@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/19 17:11:51 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/19 17:16:46 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,8 @@ int	main(int ac, char **av)
 	game.win = mlx_new_window(game.mlx, game.column * game.tile_size,
 				game.line * game.tile_size, "Bomber-long");
 	ft_printf("Map Valide, Launch The Game .....\n");
-	start_xy(&game);
-	init_keys(&game);
 	mlx_loop_hook(game.mlx, ft_game_loop, &game);
-    mlx_hook(game.win, 2, 1L << 0, key_press, &game);      // Hook pour KeyPress
-    mlx_hook(game.win, 3, 1L << 1, key_release, &game);    // Hook pour KeyRelease
+    mlx_key_hook(game.win, key_press, &game);
 	mlx_loop(game.mlx);
 	return (0);
 }
@@ -61,13 +58,13 @@ int	check_coll(t_all *game, char *str)
 	left = "left";
 	right = "right";
 
-	if ((game->map[game->y + 1][game->xbegin] != '1' ) && str == down)
+	if ((game->map[game->yplayer + 1][game->xplayer] != '1' ) && str == down)
 		return (0);
-	else if ((game->map[game->ybegin - 1][game->xbegin] != '1' ) && str == up)
+	else if ((game->map[game->yplayer - 1][game->xplayer] != '1' ) && str == up)
 		return (0);
-	else if ((game->map[game->ybegin][game->xbegin + 1] != '1' ) && str == right)
+	else if ((game->map[game->yplayer][game->xplayer + 1] != '1' ) && str == right)
 		return (0);
-	else if ((game->map[game->ybegin][game->xbegin - 1] != '1' ) && str == left)
+	else if ((game->map[game->yplayer][game->xplayer - 1] != '1' ) && str == left)
 		return (0);
 	return (1);
 }
@@ -84,4 +81,19 @@ int	ft_move(t_all *game)
 	if (game->keys[115] && check_coll(game, "down") != 1)
 		game->yplayer += 1;
 	return (0);
+}
+int keypress(int keycode, t_all *data)
+{
+    if (keycode == 65307) // Touche Échap (code macOS MiniLibX, remplacez par 65307 pour Linux)
+        close_window(data);
+    else if (keycode == 13) // W
+        data->yplayer -= 10;
+    else if (keycode == 1) // S
+        data->yplayer += 10;
+    else if (keycode == 0) // A
+        data->xplayer -= 10;
+    else if (keycode == 2) // D
+        data->xplayer += 10;
+    printf("Personnage: x = %d, y = %d\n", data->x, data->y);
+    return (0);
 }
