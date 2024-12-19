@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sirocco <sirocco@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/19 13:16:58 by sirocco          ###   ########.fr       */
+/*   Updated: 2024/12/19 15:57:11 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	ft_game_loop(t_all *game)
 {
 	ft_move(game);
 	gravity(game);
-	mlx_clear_window(game->mlx, game->win);
 	draw_map(game);
 	mlx_put_image_to_window(game->mlx, game->win, game->imgplayer, game->xplayer, game->yplayer);
 	return (0);

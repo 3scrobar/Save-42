@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sirocco <sirocco@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/17 11:27:58 by sirocco          ###   ########.fr       */
+/*   Updated: 2024/12/19 16:01:28 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_all
 	void	*imgplayer;
 	void	*mlx;
 	void	*win;
+	void	*imgwind;
 	int		keys[256];
 }				t_all;
 
