@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/19 16:11:13 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/19 16:21:30 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,4 +115,8 @@ int key_release(int keycode, t_all*data)
 	if (keycode < 256)
 		data->keys[keycode] = 0; // Marquer la touche comme relâchée
 	return (0);
+}
+void	init_keys(t_all *all)
+{
+	while(all->keys[i])
 }
