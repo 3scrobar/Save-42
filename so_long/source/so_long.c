@@ -6,7 +6,7 @@
 /*   By: sirocco <sirocco@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/17 11:35:43 by sirocco          ###   ########.fr       */
+/*   Updated: 2024/12/19 13:16:58 by sirocco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ int	ft_game_loop(t_all *game)
 	gravity(game);
 	mlx_clear_window(game->mlx, game->win);
 	draw_map(game);
-	mlx_destroy_image(game->mlx, game->imgplayer);
 	mlx_put_image_to_window(game->mlx, game->win, game->imgplayer, game->xplayer, game->yplayer);
 	return (0);
 }
@@ -81,15 +80,14 @@ void	gravity(t_all *game)
 
 int	ft_move(t_all *game)
 {
-	mlx_clear_window(game->mlx, game->win);
 	if (game->keys[100] && check_coll(game, "right") != 1)
-		game->xplayer += 2;
+		game->xplayer += 1;
 	else if (game->keys[97] && check_coll(game, "left") != 1)
-		game->xplayer -= 2;
+		game->xplayer -= 1;
 	else if (game->keys[119] && check_coll(game, "up") != 1)
-		game->yplayer -= 4;
+		game->yplayer -= 1;
 	else if (game->keys[115] && check_coll(game, "down") != 1)
-		game->yplayer += 2;
+		game->yplayer += 1;
 	return (0);
 }
 
