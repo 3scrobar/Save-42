@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/19 16:21:30 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/19 16:25:36 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	main(int ac, char **av)
 				game.line * game.tile_size, "Bomber-long");
 	ft_printf("Map Valide, Launch The Game .....\n");
 	start_xy(&game);
+	init_keys(&game);
 	mlx_loop_hook(game.mlx, ft_game_loop, &game);
     mlx_hook(game.win, 2, 1L << 0, key_press, &game);      // Hook pour KeyPress
     mlx_hook(game.win, 3, 1L << 1, key_release, &game);    // Hook pour KeyRelease
@@ -40,7 +41,7 @@ int	main(int ac, char **av)
 int	ft_game_loop(t_all *game)
 {
 	ft_move(game);
-	gravity(game);
+	//gravity(game);
 	draw_map(game);
 	mlx_put_image_to_window(game->mlx, game->win, game->imgplayer, game->xplayer, game->yplayer);
 	mlx_do_sync(game->mlx);
@@ -60,7 +61,8 @@ int	check_coll(t_all *game, char *str)
 	up = "up";
 	left = "left";
 	right = "right";
-
+	game->xbegin = game->xplayer / game->tile_size;
+	game->ybegin = game->yplayer / game->tile_size;
 	if ((game->map[game->ybegin + 1][game->xbegin] != '1' ) && str == down)
 		return (0);
 	else if ((game->map[game->ybegin - 1][game->xbegin] != '1' ) && str == up)
@@ -118,5 +120,9 @@ int key_release(int keycode, t_all*data)
 }
 void	init_keys(t_all *all)
 {
+	int i;
+
+	i = 0;
 	while(all->keys[i])
+		all->keys[i] = 0;
 }
