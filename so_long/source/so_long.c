@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/19 16:41:41 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/19 17:11:51 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,8 @@ int	check_coll(t_all *game, char *str)
 	up = "up";
 	left = "left";
 	right = "right";
-	game->xbegin = game->xplayer / game->tile_size;
-	game->ybegin = game->yplayer / game->tile_size;
-	if ((game->map[game->ybegin + 1][game->xbegin] != '1' ) && str == down)
+
+	if ((game->map[game->y + 1][game->xbegin] != '1' ) && str == down)
 		return (0);
 	else if ((game->map[game->ybegin - 1][game->xbegin] != '1' ) && str == up)
 		return (0);
@@ -85,38 +84,4 @@ int	ft_move(t_all *game)
 	if (game->keys[115] && check_coll(game, "down") != 1)
 		game->yplayer += 1;
 	return (0);
-}
-
-int	get_tile_at(t_all *game)
-{
-	return(game->map[game->yplayer * game->tile_size][game->xplayer * game->tile_size]);
-}
-void	start_xy(t_all *game)
-{
-	game->xplayer = game->xbegin * game->tile_size;
-	game->yplayer = game->ybegin * game->tile_size;
-}
-int key_press(int keycode, t_all *data)
-{
-	if (keycode == 65307)  // Code de la touche 'Esc'
-		mlx_loop_end(data->mlx);
-	if (keycode < 256)
-		data->keys[keycode] = 1; // Marquer la touche comme appuyée
-	return (0);
-}
-
-// Fonction appelée lorsqu'une touche est relâchée
-int key_release(int keycode, t_all*data)
-{
-	if (keycode < 256)
-		data->keys[keycode] = 0; // Marquer la touche comme relâchée
-	return (0);
-}
-void	init_keys(t_all *all)
-{
-	int i;
-
-	i = 0;
-	while(all->keys[i])
-		all->keys[i] = 0;
 }
