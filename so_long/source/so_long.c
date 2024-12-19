@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/19 17:46:58 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/19 17:51:55 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int	main(int ac, char **av)
 	game.win = mlx_new_window(game.mlx, game.column * game.tile_size,
 				game.line * game.tile_size, "Bomber-long");
 	ft_printf("Map Valide, Launch The Game .....\n");
-	mlx_put_image_to_window(game->mlx, game->win, game->imgplayer, game->xbegin, game->ybegin);
 	mlx_loop_hook(game.mlx, ft_game_loop, &game);
 	mlx_key_hook(game.win, key_press, &game);
 	mlx_loop(game.mlx);
@@ -39,6 +38,7 @@ int	main(int ac, char **av)
 int	ft_game_loop(t_all *game)
 {
 	draw_map(game);
+	mlx_put_image_to_window(game->mlx, game->win, game->imgplayer, game->xbegin, game->ybegin);
 	mlx_do_sync(game->mlx);
 	return (0);
 }
