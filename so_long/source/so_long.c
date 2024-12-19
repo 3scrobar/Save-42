@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/19 16:29:25 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/19 16:41:41 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	main(int ac, char **av)
 int	ft_game_loop(t_all *game)
 {
 	ft_move(game);
-	gravity(game);
 	draw_map(game);
 	mlx_put_image_to_window(game->mlx, game->win, game->imgplayer, game->xplayer, game->yplayer);
 	mlx_do_sync(game->mlx);
@@ -74,11 +73,6 @@ int	check_coll(t_all *game, char *str)
 	return (1);
 }
 
-void	gravity(t_all *game)
-{	
-	if(check_coll(game, "down") != 1)
-		game->yplayer += 1;
-}
 
 int	ft_move(t_all *game)
 {
