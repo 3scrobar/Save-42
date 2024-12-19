@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/19 17:16:46 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/19 17:20:27 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int ac, char **av)
 				game.line * game.tile_size, "Bomber-long");
 	ft_printf("Map Valide, Launch The Game .....\n");
 	mlx_loop_hook(game.mlx, ft_game_loop, &game);
-    mlx_key_hook(game.win, key_press, &game);
+	mlx_key_hook(game.win, key_press, &game);
 	mlx_loop(game.mlx);
 	return (0);
 }
@@ -84,16 +84,22 @@ int	ft_move(t_all *game)
 }
 int keypress(int keycode, t_all *data)
 {
-    if (keycode == 65307) // Touche Échap (code macOS MiniLibX, remplacez par 65307 pour Linux)
-        close_window(data);
-    else if (keycode == 13) // W
-        data->yplayer -= 10;
-    else if (keycode == 1) // S
-        data->yplayer += 10;
-    else if (keycode == 0) // A
-        data->xplayer -= 10;
-    else if (keycode == 2) // D
-        data->xplayer += 10;
-    printf("Personnage: x = %d, y = %d\n", data->x, data->y);
-    return (0);
+	if (keycode == 65307) // Touche Échap (code macOS MiniLibX, remplacez par 65307 pour Linux)
+		close_window(data);
+	else if (keycode == 13  && check_coll(data, "haut") != 1) // W
+		data->yplayer -= 1;
+	else if (keycode == 1  && check_coll(data, "bas") != 1) // S
+		data->yplayer += 1;
+	else if (keycode == 0  && check_coll(data, "left") != 1) // A
+		data->xplayer -= 1;
+	else if (keycode == 2 && check_coll(data, "right") != 1) // D
+		data->xplayer += 1;
+	printf("Personnage: x = %d, y = %d\n", data->xplayer, data->yplayer);
+	return (0);
+}
+int close_window(t_all *data)
+{
+	mlx_destroy_window(data->mlx, data->win);
+	exit(0);
+	return (0);
 }
