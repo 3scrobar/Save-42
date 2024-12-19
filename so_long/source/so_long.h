@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/19 17:20:42 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/19 17:34:58 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,12 @@ int		ft_game_draw(t_all *all);
 int		check_coll(t_all *game, char *str);
 void	start_xy(t_all *game);
 int		get_tile_at(t_all *game);
-int		ft_move(t_all *game);
 int 	key_press(int keycode, t_all *data);
 int		key_release(int keycode, t_all*data);
 void	init_keys(t_all *all);
-int close_window(t_all *data);
-int keypress(int keycode, t_all *data);
+int		close_window(t_all *data);
+int		key_press(int keycode, t_all *data);
+
 
 
 #endif

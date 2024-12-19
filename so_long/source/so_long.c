@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/19 17:20:27 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/19 17:34:53 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int	main(int ac, char **av)
 }
 int	ft_game_loop(t_all *game)
 {
-	ft_move(game);
 	draw_map(game);
 	mlx_put_image_to_window(game->mlx, game->win, game->imgplayer, game->xplayer, game->yplayer);
 	mlx_do_sync(game->mlx);
@@ -70,19 +69,7 @@ int	check_coll(t_all *game, char *str)
 }
 
 
-int	ft_move(t_all *game)
-{
-	if (game->keys[100] && check_coll(game, "right") != 1)
-		game->xplayer += 1;
-	if (game->keys[97] && check_coll(game, "left") != 1)
-		game->xplayer -= 1;
-	if (game->keys[119] && check_coll(game, "up") != 1)
-		game->yplayer -= 1;
-	if (game->keys[115] && check_coll(game, "down") != 1)
-		game->yplayer += 1;
-	return (0);
-}
-int keypress(int keycode, t_all *data)
+int key_press(int keycode, t_all *data)
 {
 	if (keycode == 65307) // Touche Échap (code macOS MiniLibX, remplacez par 65307 pour Linux)
 		close_window(data);
@@ -94,7 +81,6 @@ int keypress(int keycode, t_all *data)
 		data->xplayer -= 1;
 	else if (keycode == 2 && check_coll(data, "right") != 1) // D
 		data->xplayer += 1;
-	printf("Personnage: x = %d, y = %d\n", data->xplayer, data->yplayer);
 	return (0);
 }
 int close_window(t_all *data)

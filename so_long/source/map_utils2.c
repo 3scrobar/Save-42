@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 14:19:51 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/19 16:03:10 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/19 17:36:24 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void free_tab(char **map)
 //init all the img
 int	ft_init_img(t_all *all)
 {
+	all->xplayer = all->xbegin;
+	all->yplayer = all->ybegin;
 	all->imgwind = mlx_new_image(all->mlx, all->column * all->tile_size, all->line * all->tile_size);
 	all->tile_size = 64;
 	all->imgfont = mlx_xpm_file_to_image(all->mlx, "img/font.xpm", &all->tile_size, &all->tile_size);
