@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/19 17:51:55 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/19 17:57:00 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ int	check_coll(t_all *game, char *str)
 
 int key_press(int keycode, t_all *data)
 {
-	if (keycode == 65307) // Touche Échap (code macOS MiniLibX, remplacez par 65307 pour Linux)
+	ft_putnbr_fd(keycode, 2);
+	if (keycode == 65307)
 		close_window(data);
 	else if (keycode == 13  && check_coll(data, "haut") != 1) // W
 		data->ybegin -= 1;
