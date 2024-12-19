@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/19 16:22:14 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/19 16:41:46 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ int		key_press(int keycode, t_all *all);
 int		ft_game_loop(t_all *all);
 int		ft_game_draw(t_all *all);
 int		check_coll(t_all *game, char *str);
-void	gravity(t_all *game);
 void	start_xy(t_all *game);
 int		get_tile_at(t_all *game);
 int		ft_move(t_all *game);
