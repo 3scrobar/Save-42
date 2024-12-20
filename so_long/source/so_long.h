@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/19 17:34:58 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/20 16:10:04 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,42 +39,31 @@ typedef struct s_all
 	size_t	xplayer;
 	size_t	yplayer;
 	int		tile_size;
-	int		check;
-	void	*imgwall;
-	void	*imgfont;
-	void	*imgexitdiscover;
-	void	*imgexitcover;
-	void	*imgcollectible;
-	void	*imgplayer;
 	void	*mlx;
 	void	*win;
-	void	*imgwind;
-	int		keys[256];
 }				t_all;
 
-int		ft_init_map(t_all *map, char *path);
-int		ft_tablen(char	**tab);
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
+
+int		ft_tablen(char **tab);
 int		ft_checkmap_line(t_all *map);
-int		ft_total_check(t_all *map);
-int		ft_parsing(t_all *map);
-int		ft_pos_check(t_all *map);
+int		ft_total_check(char *path);
 int		ft_flood_path(t_all *map, size_t ystart, size_t xstart, char **tab);
 int		ft_path_check(t_all *map);
-void	free_tab(char **map);
-char	**ft_init_tab(int fd);
+int		ft_init_map(t_all *map, char *path);
+int		ft_parsing(t_all *map);
+int		ft_pos_check(t_all *map);
 int		ft_init_img(t_all *all);
+char	**ft_init_tab(int fd);
 void	draw_map(t_all *all);
-int		key_press(int keycode, t_all *all);
-int		ft_game_loop(t_all *all);
-int		ft_game_draw(t_all *all);
-int		check_coll(t_all *game, char *str);
-void	start_xy(t_all *game);
-int		get_tile_at(t_all *game);
-int 	key_press(int keycode, t_all *data);
-int		key_release(int keycode, t_all*data);
-void	init_keys(t_all *all);
-int		close_window(t_all *data);
-int		key_press(int keycode, t_all *data);
+void	free_tab(char **map);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 
 

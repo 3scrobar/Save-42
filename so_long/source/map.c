@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:44 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/19 17:40:51 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/20 16:12:43 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int	ft_init_map(t_all *map, char *path)
 	map->line = ft_tablen(map->map);
 	map->xbegin = 0;
 	map->ybegin = 0;
-	map->check = 0;
 	a += ft_checkmap_line(map);
 	a += ft_pos_check(map);
 	a += ft_parsing(map);
@@ -86,38 +85,40 @@ int	ft_checkmap_line(t_all *map)
 	while (map->map[i])
 	{
 		if (ft_strlen(map->map[i]) != map->column)
-			return (map->check = 1, 1);
+			return (1);
 		j = 0;
 		while (map->map[i][j])
 		{
-			if (map->map[i][j] == 'P' && map->check == 0)
+			if (map->map[i][j] == 'P')
 				map->player += 1;
-			else if (map->map[i][j] == 'E' && map->check == 0)
+			else if (map->map[i][j] == 'E')
 				map->exit += 1;
-			else if (map->map[i][j] == 'C' && map->check == 0)
+			else if (map->map[i][j] == 'C')
 				map->collectible += 1;
 			j++;
 		}
 		i++;
 	}
-	return (map->check = 1, 0);
+	return (0);
 }
 
 //all the check for the map
-int	ft_total_check(t_all *map)
+int	ft_total_check(char *path)
 {
-
-	if (ft_checkmap_line(map) != 0)
+	t_all	map;
+	
+	ft_init_map(&map, path);
+	if (ft_checkmap_line(&map) != 0)
 		return (ft_putstr_fd("Error, Line is not the same size\n", 2), 1);
-	if (ft_parsing(map) == 1)
+	if (ft_parsing(&map) == 1)
 		return (ft_putstr_fd("Error from border\n", 2), 1);
-	if (map->player != 1)
+	if (map.player != 2)
 		return (ft_putstr_fd("Error from map, Starting POS\n", 2), 1);
-	else if (map->collectible <= 0)
+	else if (map.collectible <= 0)
 		return (ft_putstr_fd("Error from map, Collectible\n", 2), 1);
-	else if (map->exit != 1)
+	else if (map.exit != 2)
 		return (ft_putstr_fd("Error from map, Exit POS\n", 2), 1);
-	if (ft_path_check(map) != 0)
+	if (ft_path_check(&map) != 0)
 		return (1);
 	return (0);
 }
