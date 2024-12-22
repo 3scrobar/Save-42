@@ -6,19 +6,18 @@
 /*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/22 16:33:53 by groot            ###   ########.fr       */
+/*   Updated: 2024/12/22 16:39:03 by groot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <stdio.h>
 
 int	main(int ac, char **av)
 {
 	t_all	game;
 	(void)av;
 	game.mlx = mlx_init();
-	if (ft_total_check(ac, &game) || game.mlx == NULL)
+	if (ft_total_check(ac, &game, av) || game.mlx == NULL)
 		return (1);
 	return (0);
 }
@@ -54,13 +53,24 @@ int	ft_init_map(t_all *map, char *path)
 	map->map = ft_init_tab(fd);
 	return (0);
 }
-int ft_total_check(int ac, t_all *game)
+int ft_total_check(int ac, t_all *game, char **av)
 {
 	(void)game;
 	if (ac != 2)
 		return (ft_putstr_fd("Wrong Arguments\n", 2), 1);
-	if (ft_init_map(game, "map.ber") != 0)
+	if (ft_init_map(game, av[1]) != 0)
 		return (ft_putstr_fd("Problem from Map init\n", 2), 1);
-	return (ft_printf("Everything is Good, Launch the Game ...",0));
+
+	return (ft_printf("Everything is Good, Launch the Game ...\n",0));
 }
+int	ft_tablen(char	**tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+		i++;
+	return (i - 1);
+}
+
 

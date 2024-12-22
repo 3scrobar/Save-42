@@ -6,7 +6,7 @@
 /*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/22 16:26:19 by groot            ###   ########.fr       */
+/*   Updated: 2024/12/22 16:36:11 by groot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # endif
 
 # include <stdlib.h>
+# include <stdio.h>
 # include <string.h>
 # include <unistd.h>
 # include <fcntl.h>
@@ -33,6 +34,9 @@ typedef struct s_all
 	char	**map;
 }				t_all;
 
-int ft_total_check(int ac, t_all *game);
+int ft_total_check(int ac, t_all *game, char **av);
+char	**ft_init_tab(int fd);
+int	ft_init_map(t_all *map, char *path);
+
 
 #endif
