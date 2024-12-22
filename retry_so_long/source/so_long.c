@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
+/*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/23 17:12:00 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/22 17:36:25 by groot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,16 +209,14 @@ int	ft_check_border(t_all *map)
 	i = 0;
 	while (i < map->column)
 	{
-		if ((map->map[0][i] != '1' || map->map[map->line][i] != '1') && (i == 0 
-			|| i == map->line))
+		if (map->map[0][i] != '1' || map->map[map->line][i] != '1')
 			return (ft_putstr_fd("Error from map border\n", 2), 1);
 		i++;
 	}
 	i = 0;
 	while (i <= map->line)
 	{
-		if ((map->map[i][0] != '1' || map->map[i][map->column] != '1') 
-			&& (i == 0 || i == map->column - 1))
+		if (map->map[i][0] != '1' || map->map[i][map->column - 1] != '1')
 			return (ft_putstr_fd("Error from map border\n", 2), 1);
 		i++;
 	}
