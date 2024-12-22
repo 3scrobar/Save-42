@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+         #
+#    By: groot <groot@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/03 14:34:47 by tle-saut          #+#    #+#              #
-#    Updated: 2024/12/16 14:51:00 by tle-saut         ###   ########.fr        #
+#    Updated: 2024/12/22 16:15:03 by groot            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = cc
 
 CFLAGS = -Wall -Werror -Wextra -g
 
-SRC = map.c so_long.c map_utils.c map_utils2.c
+SRC = so_long.c
 
 OBJ = $(SRC:%.c=$(OBJDIR)%.o)
 OBJDIR = object/
