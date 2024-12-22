@@ -6,7 +6,7 @@
 /*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/22 16:29:16 by groot            ###   ########.fr       */
+/*   Updated: 2024/12/22 16:33:53 by groot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,15 @@ int	ft_init_map(t_all *map, char *path)
 	if (fd == -1)
 		return (ft_putstr_fd("Error from file reading\n", 2), 1);
 	map->map = ft_init_tab(fd);
-
+	return (0);
 }
 int ft_total_check(int ac, t_all *game)
 {
 	(void)game;
 	if (ac != 2)
 		return (ft_putstr_fd("Wrong Arguments\n", 2), 1);
-
-	return (0);
+	if (ft_init_map(game, "map.ber") != 0)
+		return (ft_putstr_fd("Problem from Map init\n", 2), 1);
+	return (ft_printf("Everything is Good, Launch the Game ...",0));
 }
 
