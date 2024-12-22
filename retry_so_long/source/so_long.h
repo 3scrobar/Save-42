@@ -6,7 +6,7 @@
 /*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/22 16:04:12 by groot            ###   ########.fr       */
+/*   Updated: 2024/12/22 16:23:59 by groot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@
 
 typedef struct s_all
 {
-
+	void	*mlx;
+	void	*win;
 }				t_all;
 
+int ft_total_check(int ac, t_all *game);
 
 #endif
