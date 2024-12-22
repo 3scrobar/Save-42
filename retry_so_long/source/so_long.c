@@ -6,7 +6,7 @@
 /*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/22 17:00:53 by groot            ###   ########.fr       */
+/*   Updated: 2024/12/22 17:09:22 by groot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,38 @@ int	ft_give_start_POS(t_all *game)
 			game->xstart++;
 		}
 		game->ystart++;
+	}
+	return (0);
+}
+int	ft_flood_path(size_t ystart, size_t xstart, char **tab)
+{
+	if (tab[ystart][xstart] == '1')
+		return (0);
+	if (tab[ystart][xstart] == '0' || tab[ystart][xstart] == 'P' ||
+		tab[ystart][xstart] == 'E' || tab[ystart][xstart] == 'C')
+		tab[ystart][xstart] = '1';
+	ft_flood_path(ystart, xstart - 1, tab);
+	ft_flood_path(ystart, xstart + 1, tab);
+	ft_flood_path(ystart - 1, xstart, tab);
+	ft_flood_path(ystart + 1, xstart, tab);
+	return (ft_check_after_flood(tab));
+}
+int	ft_check_after_flood(char ** tab)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	while (tab[i])
+	{
+		j = 0;
+		while (tab[i][j])
+		{
+			if (tab[i][j] == '1')
+				return (ft_putstr_fd("Path is invalid\n", 2), 1);
+			j++;
+		}
+		i++;
 	}
 	return (0);
 }
