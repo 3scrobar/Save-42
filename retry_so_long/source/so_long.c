@@ -6,7 +6,7 @@
 /*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/22 16:49:54 by groot            ###   ########.fr       */
+/*   Updated: 2024/12/22 16:54:36 by groot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,13 @@ int ft_total_check(int ac, t_all *game, char **av)
 		return (ft_putstr_fd("Wrong Arguments\n", 2), 1);
 	if (ft_init_map(game, av[1]) != 0)
 		return (ft_putstr_fd("Problem from Map init\n", 2), 1);
-	if (ft_give_all_nbpoint(game) != 0)
+	if (ft_give_all_nbpoint(game) != 0 || ft_check_square(game) != 0)
 		return (ft_putstr_fd("Error from map design\n", 2), 1);
-	if (game.player != 1)
+	if (game->player != 1)
 		return (ft_putstr_fd("Problem from Start POS\n", 2), 1);
-	if (game.exit != 1)
+	if (game->exit != 1)
 		return (ft_putstr_fd("Problem from Exit POS\n", 2), 1);
-	if (game.collectible = 0)
+	if (game->collectible == 0)
 		return (ft_putstr_fd("No Collectible\n", 2), 1);
 	return (ft_printf("Everything is Good, Launch the Game ...\n",0));
 }
@@ -109,6 +109,23 @@ int	ft_give_all_nbpoint(t_all *map)
 				map->collectible += 1;
 			j++;
 		}
+		i++;
+	}
+	return (0);
+}
+int	ft_check_square(t_all *map)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	while (map->map[i])
+	{
+		j = 0;
+		while (map->map[i][j])
+			j++;
+		if (j != map->column)
+			return (ft_putstr_fd("Map is not a square\n", 2), 1);
 		i++;
 	}
 	return (0);
