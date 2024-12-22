@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
+/*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:31:14 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/20 16:02:22 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/22 15:58:58 by groot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 //check depart Pos
 //give xbegin , ybegin
-int	ft_pos_check(t_all *map)
+int	ft_pos_check(t_map *map)
 {
 	while (map->map[map->ybegin])
 	{
@@ -29,7 +29,7 @@ int	ft_pos_check(t_all *map)
 	return (0);
 }
 //check path of everything
-int	ft_flood_path(t_all *map, size_t ystart, size_t xstart, char **tab)
+int	ft_flood_path(t_map *map, size_t ystart, size_t xstart, char **tab)
 {
 	if (ystart >= map->line || xstart >= map->column)
 		return (0);
@@ -58,7 +58,7 @@ int	ft_flood_path(t_all *map, size_t ystart, size_t xstart, char **tab)
 	return (0);
 }
 
-int	ft_path_check(t_all *map)
+int	ft_path_check(t_map *map)
 {
 
 	ft_pos_check(map);
@@ -92,33 +92,25 @@ char	**ft_init_tab(int fd)
 	return (tab);
 }
 //draw map
-// void draw_map(t_all *all)
-// {
-// 	size_t	x;
-// 	size_t	y;
+int draw_map(t_all *all)
+{
+	size_t	x;
+	size_t	y;
 
-// 	x = 0;
-// 	y = 0;
-// 	while (all->map[y])
-// 	{
-// 		x = 0;
-// 		while (all->map[y][x])
-// 		{
-// 			if (all->map[y][x] == '0' || all->map[y][x] == 'P')
-// 				mlx_put_image_to_window(all->mlx, all->win, all->imgfont, x * all->tile_size, y * all->tile_size);
-// 			else if (all->map[y][x] == '1')
-// 				mlx_put_image_to_window(all->mlx, all->win, all->imgwall, x * all->tile_size, y * all->tile_size);
-// 			//else if(all->map.map[y][x] == 'E')
-// 			//{
-// 				//if(all->map.collectible != 0)
-// 					//mlx_put_image_to_window(all->mlx, all->win, all->exitcover, x * all->tyle_size, y * all->tyle_size);
-// 				//else
-// 					//mlx_put_image_to_window(all->mlx, all->win, all->exitdiscover, x * all->tyle_size, y * all->tyle_size);
-// 			//}
-// 			//else if (all->map.map[y][x] == 'C')
-// 				//mlx_put_image_to_window(all->mlx, all->win, all->collectible, x * all->tyle_size, y * all->tyle_size);
-// 			x++;
-// 		}
-// 		y++;
-// 	}
-// }
+	x = 0;
+	y = 0;
+	while (all->map[y])
+	{
+		x = 0;
+		while (all->map[y][x])
+		{
+			if (all->map[y][x] == '0' || all->map[y][x] == 'P')
+				mlx_put_image_to_window(all->mlx, all->win, all->font, x * all->tile_size, y * all->tile_size);
+			else if (all[y][x] == '1')
+				mlx_put_image_to_window(all->mlx, all->win, all->wall, x * all->tile_size, y * all->tile_size);
+			x++;
+		}
+		y++;
+	}
+	return (0);
+}
