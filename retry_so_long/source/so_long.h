@@ -6,7 +6,7 @@
 /*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/22 16:54:54 by groot            ###   ########.fr       */
+/*   Updated: 2024/12/22 16:59:52 by groot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int ft_total_check(int ac, t_all *game, char **av);
 int	ft_tablen(char	**tab);
 int	ft_give_all_nbpoint(t_all *map);
 int	ft_check_square(t_all *map);
+int	ft_give_start_POS(t_all *game);
 
 
 #endif

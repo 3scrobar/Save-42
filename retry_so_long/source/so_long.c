@@ -6,7 +6,7 @@
 /*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/22 16:54:36 by groot            ###   ########.fr       */
+/*   Updated: 2024/12/22 16:59:45 by groot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,8 +125,23 @@ int	ft_check_square(t_all *map)
 		while (map->map[i][j])
 			j++;
 		if (j != map->column)
-			return (ft_putstr_fd("Map is not a square\n", 2), 1);
+			return (ft_putstr_fd("Line as not the same size\n", 2), 1);
 		i++;
+	}
+	return (0);
+}
+int	ft_give_start_POS(t_all *game)
+{
+	while (game->map[game->ystart])
+	{
+		game->xstart = 0;
+		while (game->map[game->ystart][game->xstart])
+		{
+			if (game->map[game->ystart][game->xstart] == 'P')
+				return (0);
+			game->xstart++;
+		}
+		game->ystart++;
 	}
 	return (0);
 }
