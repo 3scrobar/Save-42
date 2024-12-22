@@ -6,7 +6,7 @@
 /*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/22 16:36:11 by groot            ###   ########.fr       */
+/*   Updated: 2024/12/22 16:44:52 by groot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,19 @@ typedef struct s_all
 	void	*mlx;
 	void	*win;
 	char	**map;
+	size_t	line;
+	size_t	column;
+	size_t	player;
+	size_t	exit;
+	size_t	collectible;
+	size_t	xstart;
+	size_t	ystart;
 }				t_all;
 
-int ft_total_check(int ac, t_all *game, char **av);
-char	**ft_init_tab(int fd);
-int	ft_init_map(t_all *map, char *path);
+char	**ft_init_tab(int fd)
+int	ft_init_map(t_all *map, char *path)
+int ft_total_check(int ac, t_all *game, char **av)
+
 
 
 #endif

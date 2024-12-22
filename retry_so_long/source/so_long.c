@@ -6,7 +6,7 @@
 /*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/22 16:39:03 by groot            ###   ########.fr       */
+/*   Updated: 2024/12/22 16:42:30 by groot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,31 @@ int	ft_tablen(char	**tab)
 		i++;
 	return (i - 1);
 }
+int	ft_give_all_nbpoint(t_all *map)
+{
+	int	i;
+	int	j;
 
+	i = 0;
+	map->line = ft_tablen(map->map);
+	map->column = ft_strlen(map->map[i]);
+	while (map->map[i])
+	{
+		if (ft_strlen(map->map[i]) != map->column)
+			return (ft_putstr_fd("Line is not the same size\n", 2), 1);
+		j = 0;
+		while (map->map[i][j])
+		{
+			if (map->map[i][j] == 'P')
+				map->player += 1;
+			else if (map->map[i][j] == 'E')
+				map->exit += 1;
+			else if (map->map[i][j] == 'C')
+				map->collectible += 1;
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
 
