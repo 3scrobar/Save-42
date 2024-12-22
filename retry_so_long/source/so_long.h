@@ -6,7 +6,7 @@
 /*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/22 16:44:52 by groot            ###   ########.fr       */
+/*   Updated: 2024/12/22 16:45:08 by groot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,11 @@ typedef struct s_all
 	size_t	ystart;
 }				t_all;
 
-char	**ft_init_tab(int fd)
-int	ft_init_map(t_all *map, char *path)
-int ft_total_check(int ac, t_all *game, char **av)
+char	**ft_init_tab(int fd);
+int	ft_init_map(t_all *map, char *path);
+int ft_total_check(int ac, t_all *game, char **av);
+int	ft_tablen(char	**tab);
+int	ft_give_all_nbpoint(t_all *map);
 
 
 

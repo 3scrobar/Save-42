@@ -6,7 +6,7 @@
 /*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/22 16:42:30 by groot            ###   ########.fr       */
+/*   Updated: 2024/12/22 16:49:54 by groot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,13 @@ int	ft_init_map(t_all *map, char *path)
 	if (fd == -1)
 		return (ft_putstr_fd("Error from file reading\n", 2), 1);
 	map->map = ft_init_tab(fd);
+	map->player = 0;
+	map->exit = 0;
+	map->collectible = 0;
+	map->column = 0;
+	map->line = 0;
+
+	close(fd);
 	return (0);
 }
 int ft_total_check(int ac, t_all *game, char **av)
@@ -60,7 +67,14 @@ int ft_total_check(int ac, t_all *game, char **av)
 		return (ft_putstr_fd("Wrong Arguments\n", 2), 1);
 	if (ft_init_map(game, av[1]) != 0)
 		return (ft_putstr_fd("Problem from Map init\n", 2), 1);
-
+	if (ft_give_all_nbpoint(game) != 0)
+		return (ft_putstr_fd("Error from map design\n", 2), 1);
+	if (game.player != 1)
+		return (ft_putstr_fd("Problem from Start POS\n", 2), 1);
+	if (game.exit != 1)
+		return (ft_putstr_fd("Problem from Exit POS\n", 2), 1);
+	if (game.collectible = 0)
+		return (ft_putstr_fd("No Collectible\n", 2), 1);
 	return (ft_printf("Everything is Good, Launch the Game ...\n",0));
 }
 int	ft_tablen(char	**tab)
