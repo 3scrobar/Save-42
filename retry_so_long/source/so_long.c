@@ -6,7 +6,7 @@
 /*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/22 16:59:45 by groot            ###   ########.fr       */
+/*   Updated: 2024/12/22 17:00:53 by groot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int ft_total_check(int ac, t_all *game, char **av)
 		return (ft_putstr_fd("Problem from Exit POS\n", 2), 1);
 	if (game->collectible == 0)
 		return (ft_putstr_fd("No Collectible\n", 2), 1);
+	ft_give_start_POS(game);
 	return (ft_printf("Everything is Good, Launch the Game ...\n",0));
 }
 int	ft_tablen(char	**tab)
