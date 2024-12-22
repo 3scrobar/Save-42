@@ -6,7 +6,7 @@
 /*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/22 17:20:17 by groot            ###   ########.fr       */
+/*   Updated: 2024/12/22 17:29:59 by groot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	main(int ac, char **av)
 	(void)av;
 	game.mlx = mlx_init();
 	if (ft_total_check(ac, &game, av) || game.mlx == NULL 
-		|| ft_flood_path(game.ystart, game.xstart,game.map) != 1 
-		|| ft_check_after_flood(game.map) != 0)
+		|| ft_flood_path((size_t)game->ystart, (size_t)game->xstart,
+			 (char **)game->map) != 1)
 		return (1);
 	return (0);
 }
@@ -78,7 +78,9 @@ int ft_total_check(int ac, t_all *game, char **av)
 	if (game->collectible == 0)
 		return (ft_putstr_fd("No Collectible\n", 2), 1);
 	ft_give_start_POS(game);
-
+	
+	if (ft_check_after_flood(*game->map) != 0)
+		return (1);
 	return (ft_printf("Everything is Good, Launch the Game ...\n",0));
 }
 int	ft_tablen(char	**tab)
