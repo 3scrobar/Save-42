@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/23 16:32:16 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/23 16:46:30 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,7 +209,7 @@ int	ft_check_border(t_all *map)
 	i = 0;
 	while (i <= map->line)
 	{
-		if (ft_strchr(map->map[i], '1') != 0)
+		if (ft_strchr(map->map[i], '1') != 0 && (i == 0 || i == map->line))
 			return (ft_putstr_fd("Error from map border\n", 2), 1);
 		i++;
 	}
