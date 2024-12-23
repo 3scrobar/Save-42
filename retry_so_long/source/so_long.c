@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: groot <groot@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/22 17:29:59 by groot            ###   ########.fr       */
+/*   Updated: 2024/12/23 15:28:33 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	main(int ac, char **av)
 	(void)av;
 	game.mlx = mlx_init();
 	if (ft_total_check(ac, &game, av) || game.mlx == NULL 
-		|| ft_flood_path((size_t)game->ystart, (size_t)game->xstart,
-			 (char **)game->map) != 1)
+		|| ft_flood_path(game.ystart, game.xstart,
+			 game.map) != 1)
 		return (1);
 	return (0);
 }
