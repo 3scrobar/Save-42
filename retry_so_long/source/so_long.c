@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/23 15:58:22 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/23 16:00:00 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ int	main(int ac, char **av)
 	t_all	cpy;
 
 	game.mlx = mlx_init();
-	if (ft_total_check(ac, &game, av) != 0|| ft_total_check(ac, &cpy, av) != 0 
-		|| game.mlx == NULL)
+	if (ft_total_check(ac, &game, av, &cpy) != 0 || game.mlx == NULL)
 		return (1);
 	if (ft_flood_path(&cpy, cpy.ystart, cpy.xstart) != 0 
 		|| ft_check_after_flood(&cpy) != 0)
