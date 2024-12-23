@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/23 16:06:14 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/23 16:09:51 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,7 @@ int	ft_check_square(t_all *map)
 }
 int	ft_give_start_POS(t_all *game)
 {
+	game->ystart = 0;
 	while (game->map[game->ystart])
 	{
 		game->xstart = 0;
