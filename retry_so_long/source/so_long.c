@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/23 16:00:00 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/23 16:06:14 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,7 +165,7 @@ int	ft_give_start_POS(t_all *game)
 		}
 		game->ystart++;
 	}
-	return (0);
+	return (ft_putstr_fd("Starting POS Missing\n", 2), 1);
 }
 int	ft_flood_path(t_all *game, size_t ystart, size_t xstart)
 {
