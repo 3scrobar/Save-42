@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/23 15:53:13 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/23 15:58:22 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,24 @@ int ft_total_check(int ac, t_all *game, char **av, t_all *cpy)
 	if (game->collectible == 0)
 		return (ft_putstr_fd("No Collectible\n", 2), 1);
 	ft_give_start_POS(game);
-	
+	ft_copy_struct(game, cpy);
+	if(ft_flood_path(cpy, cpy->ystart, cpy->xstart) != 0 
+		|| ft_check_after_flood(cpy) != 0)
+		return (ft_putstr_fd("Error from Path\n", 2), 1);
 	return (ft_printf("Everything is Good, Launch the Game ...\n",0));
+}
+void	ft_copy_struct(t_all *game, t_all *cpy)
+{
+	cpy->mlx = game->mlx;
+	cpy->win = game->win;
+	cpy->map = game->map;
+	cpy->line = game->line;
+	cpy->column = game->column;
+	cpy->player = game->player;
+	cpy->exit = game->exit;
+	cpy->collectible = game->collectible;
+	cpy->xstart = game->xstart;
+	cpy->ystart = game->ystart;
 }
 int	ft_tablen(char	**tab)
 {

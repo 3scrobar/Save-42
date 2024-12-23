@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/23 15:44:56 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/23 15:58:51 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,11 @@ int		ft_tablen(char	**tab);
 int		ft_give_all_nbpoint(t_all *map);
 int		ft_check_square(t_all *map);
 int		ft_give_start_POS(t_all *game);
-int		ft_total_check(int ac, t_all *game, char **av);
 int		ft_flood_path(t_all *game, size_t y, size_t x);
 int		ft_check_after_flood(t_all *game);
 char	**ft_init_tab(int fd);
 int		ft_init_map(t_all *map, char *path);
+void	ft_copy_struct(t_all *game, t_all *cpy);
+int		ft_total_check(int ac, t_all *game, char **av);
 
 #endif
