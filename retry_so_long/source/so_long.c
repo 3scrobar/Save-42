@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/23 15:38:57 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/23 15:43:01 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ int	main(int ac, char **av)
 		|| game.mlx == NULL || ft_flood_path(game.ystart, game.xstart,
 			 game.map) != 1)
 		return (1);
-	if ()
+	if (ft_flood_path(&cpy, cpy.ystart, cpy.xstart) != 0 
+		|| ft_check_after_flood(&cpy) != 0)
+		return (ft_putstr_fd("Error from Path\n", 2), 1);
 	return (0);
 }
 char	**ft_init_tab(int fd)
@@ -159,24 +161,24 @@ int	ft_flood_path(t_all *game, size_t ystart, size_t xstart)
 	if (game->map[ystart][xstart] == '0' || game->map[ystart][xstart] == 'P' ||
 		game->map[ystart][xstart] == 'E' || game->map[ystart][xstart] == 'C')
 		game->map[ystart][xstart] = '1';
-	ft_flood_path(ystart, xstart - 1, tab);
-	ft_flood_path(ystart, xstart + 1, tab);
-	ft_flood_path(ystart - 1, xstart, tab);
-	ft_flood_path(ystart + 1, xstart, tab);
+	ft_flood_path(game, ystart + 1, xstart);
+	ft_flood_path(game, ystart - 1, xstart);
+	ft_flood_path(game, ystart, xstart + 1);
+	ft_flood_path(game, ystart, xstart - 1);
 	return (0);
 }
-int	ft_check_after_flood(char **tab)
+int	ft_check_after_flood(t_all *game)
 {
 	size_t	i;
 	size_t	j;
 
 	i = 0;
-	while (tab[i])
+	while (game->map[i])
 	{
 		j = 0;
-		while (tab[i][j])
+		while (game->map[i][j])
 		{
-			if (tab[i][j] != '1')
+			if (game->map[i][j] != '1')
 				return (ft_putstr_fd("Path is invalid\n", 2), 1);
 			j++;
 		}
