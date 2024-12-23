@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/23 16:09:51 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/23 16:15:42 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ int ft_total_check(int ac, t_all *game, char **av, t_all *cpy)
 		return (ft_putstr_fd("No Collectible\n", 2), 1);
 	ft_give_start_POS(game);
 	ft_copy_struct(game, cpy);
+	if(ft_check_border(cpy) != 0)
+		return (ft_putstr_fd("Error from map border\n", 2), 1);
 	if(ft_flood_path(cpy, cpy->ystart, cpy->xstart) != 0 
 		|| ft_check_after_flood(cpy) != 0)
 		return (ft_putstr_fd("Error from Path\n", 2), 1);
@@ -200,4 +202,23 @@ int	ft_check_after_flood(t_all *game)
 	}
 	return (0);
 }
+int	ft_check_border(t_all *map)
+{
+	size_t	len;
 
+	while (map->map[map->line])
+	{
+		map->column = 0;
+		len = ft_strlen(map->map[0]);
+		while (map->map[map->line][map->column])
+		{
+			if (map->map[0][map->column] != '1' || map->map[map->line][0] != '1'
+				|| map->map[map->line][len - 1] != '1'
+				|| map->map[ft_tablen(map->map)][map->column] != '1')
+				return (ft_putstr_fd("Error from map border\n", 2), 1);
+			map->column += 1;
+		}
+		map->line += 1;
+	}
+	return (0);
+}
