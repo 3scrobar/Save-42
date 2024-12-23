@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/23 15:28:33 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/23 15:32:26 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,6 @@ int ft_total_check(int ac, t_all *game, char **av)
 		return (ft_putstr_fd("No Collectible\n", 2), 1);
 	ft_give_start_POS(game);
 	
-	if (ft_check_after_flood(*game->map) != 0)
-		return (1);
 	return (ft_printf("Everything is Good, Launch the Game ...\n",0));
 }
 int	ft_tablen(char	**tab)
@@ -164,7 +162,7 @@ int	ft_flood_path(size_t ystart, size_t xstart, char **tab)
 	ft_flood_path(ystart + 1, xstart, tab);
 	return (0);
 }
-int	ft_check_after_flood(char ** tab)
+int	ft_check_after_flood(char **tab)
 {
 	size_t	i;
 	size_t	j;
