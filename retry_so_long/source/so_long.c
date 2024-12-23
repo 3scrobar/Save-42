@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2024/12/23 15:32:26 by tle-saut         ###   ########.fr       */
+/*   Updated: 2024/12/23 15:38:57 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,15 @@
 int	main(int ac, char **av)
 {
 	t_all	game;
+	t_all	cpy;
+	char	**tab;
 	(void)av;
 	game.mlx = mlx_init();
-	if (ft_total_check(ac, &game, av) || game.mlx == NULL 
-		|| ft_flood_path(game.ystart, game.xstart,
+	if (ft_total_check(ac, &game, av) || ft_total_check(ac, &cpy, av) 
+		|| game.mlx == NULL || ft_flood_path(game.ystart, game.xstart,
 			 game.map) != 1)
 		return (1);
+	if ()
 	return (0);
 }
 char	**ft_init_tab(int fd)
@@ -149,13 +152,13 @@ int	ft_give_start_POS(t_all *game)
 	}
 	return (0);
 }
-int	ft_flood_path(size_t ystart, size_t xstart, char **tab)
+int	ft_flood_path(t_all *game, size_t ystart, size_t xstart)
 {
-	if (tab[ystart][xstart] == '1')
+	if (game->map[ystart][xstart] == '1')
 		return (0);
-	if (tab[ystart][xstart] == '0' || tab[ystart][xstart] == 'P' ||
-		tab[ystart][xstart] == 'E' || tab[ystart][xstart] == 'C')
-		tab[ystart][xstart] = '1';
+	if (game->map[ystart][xstart] == '0' || game->map[ystart][xstart] == 'P' ||
+		game->map[ystart][xstart] == 'E' || game->map[ystart][xstart] == 'C')
+		game->map[ystart][xstart] = '1';
 	ft_flood_path(ystart, xstart - 1, tab);
 	ft_flood_path(ystart, xstart + 1, tab);
 	ft_flood_path(ystart - 1, xstart, tab);
