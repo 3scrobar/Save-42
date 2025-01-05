@@ -1,9 +1,9 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 while true; do
 	echo "Auto save a $(date "+%Y-%m-%d %H:%M:%S")"
 	echo "Accee au dossier Personelle"
-	cd /home/tle-saut/Gitperso
+	# cd /home/tle-saut/Gitperso
 	git add .  # Ajoute tous les fichiers modifiés au staging area
 	echo "Tout a ete add "
 	# Utilisation de 'date' pour formater l'heure et la date
