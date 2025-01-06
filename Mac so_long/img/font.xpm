@@ -3,7 +3,7 @@ static char *snow_resized[] = {
 /* columns rows colors chars-per-pixel */
 "64 64 34 1 ",
 "  c None",
-". c#e9fcff",
+". c #E9FCFF",
 "X c #DEFBFF",
 "o c #DFFBFF",
 "O c #E0FBFF",

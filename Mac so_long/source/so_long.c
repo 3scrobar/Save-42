@@ -6,7 +6,7 @@
 /*   By: sirocco <sirocco@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/05 20:34:09 by sirocco          ###   ########.fr       */
+/*   Updated: 2025/01/06 15:37:52 by sirocco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ int	main(int ac, char **av)
 	if (ft_flood_path(&cpy, cpy.ystart, cpy.xstart) != 0 
 		|| ft_check_after_flood(&cpy) != 0 || ft_init_img(&game) != 0)
 		return (ft_putstr_fd("Error from Path\n", 2), 1);
-	game.win = mlx_new_window(game.mlx, game.column * 64, game.line * 64, "so_long");
-	draw_map(&game);
+	game.win = mlx_new_window(game.mlx, game.column * 64, (game.line + 1) * 64, "so_long");
+	game.xstart = game.xstart * game.tile_size;
+	game.ystart = game.ystart * game.tile_size;
 	mlx_hook(game.win, 2, 1L << 0, ft_key_hook, &game);
 	mlx_hook(game.win, 17, 1L << 17, ft_close, &game);
 	mlx_loop_hook(game.mlx, ft_game_loop, &game);
@@ -76,9 +77,10 @@ int ft_total_check(int ac, t_all *game, char **av, t_all *cpy)
 	(void)game;
 	if (ac != 2)
 		return (ft_putstr_fd("Wrong Arguments\n", 2), 1);
-	if (ft_init_map(game, av[1]) != 0)
+	if (ft_init_map(game, av[1]) != 0 || ft_init_map(cpy, av[1]) != 0)
 		return (ft_putstr_fd("Problem from Map init\n", 2), 1);
-	if (ft_give_all_nbpoint(game) != 0 || ft_check_square(game) != 0)
+	if (ft_give_all_nbpoint(game) != 0 || ft_check_square(game) != 0 
+		|| ft_give_all_nbpoint(cpy) != 0 || ft_check_square(cpy) != 0)
 		return (ft_putstr_fd("Error from map design\n", 2), 1);
 	if (game->player != 1)
 		return (ft_putstr_fd("Problem from Start POS\n", 2), 1);
@@ -87,26 +89,13 @@ int ft_total_check(int ac, t_all *game, char **av, t_all *cpy)
 	if (game->collectible == 0)
 		return (ft_putstr_fd("No Collectible\n", 2), 1);
 	ft_give_start_POS(game);
-	ft_copy_struct(game, cpy);
+	ft_give_start_POS(cpy);
 	if(ft_check_border(cpy) != 0)
 		return (1);
 	if(ft_flood_path(cpy, cpy->ystart, cpy->xstart) != 0 
 		|| ft_check_after_flood(cpy) != 0)
 		return (ft_putstr_fd("Error from Path\n", 2), 1);
 	return (ft_printf("Everything is Good, Launch the Game ...\n",0), 0);
-}
-void	ft_copy_struct(t_all *game, t_all *cpy)
-{
-	cpy->mlx = game->mlx;
-	cpy->win = game->win;
-	cpy->map = game->map;
-	cpy->line = game->line;
-	cpy->column = game->column;
-	cpy->player = game->player;
-	cpy->exit = game->exit;
-	cpy->collectible = game->collectible;
-	cpy->xstart = game->xstart;
-	cpy->ystart = game->ystart;
 }
 int	ft_tablen(char	**tab)
 {
@@ -181,8 +170,8 @@ int	ft_flood_path(t_all *game, size_t ystart, size_t xstart)
 {
 	if (game->map[ystart][xstart] == '1')
 		return (0);
-	if (game->map[ystart][xstart] == '0' || game->map[ystart][xstart] == 'P' ||
-		game->map[ystart][xstart] == 'E' || game->map[ystart][xstart] == 'C')
+
+	if (game->map[ystart][xstart] != '1')
 		game->map[ystart][xstart] = '1';
 	ft_flood_path(game, ystart + 1, xstart);
 	ft_flood_path(game, ystart - 1, xstart);
@@ -236,13 +225,24 @@ int	ft_key_hook(int keycode, t_all *game)
 		mlx_destroy_window(game->mlx, game->win);
 		exit(0);
 	}
+	if (keycode == 2 && ft_collision_check(game, 'R') == 0)
+		game->xstart += 10;
+	if (keycode == 0 && ft_collision_check(game, 'L') == 0)
+		game->xstart -= 10;
+	if (keycode == 13 && ft_collision_check(game, 'U') == 0)
+		game->ystart -= 50;
+	if (keycode == 1 && ft_collision_check(game, 'D') == 0)
+		game->ystart += 10;
 	ft_printf("Keycode : %d\n", keycode);
 	return (0);
 }
 
 int	ft_game_loop(t_all *game)
 {
-	(void)game;
+	mlx_clear_window(game->mlx, game->win);
+	draw_map(game);
+	ft_gravity_apply(game);
+	mlx_put_image_to_window(game->mlx, game->win, game->imgplayer, game->xstart, game->ystart);	
 	return (0);
 }
 int	ft_close(t_all *game)
@@ -264,10 +264,14 @@ int draw_map(t_all *all)
 		x = 0;
 		while (all->map[y][x])
 		{
-			if (all->map[y][x] == '0' || all->map[y][x] == 'P')
+			if (all->map[y][x] == '0')
 				mlx_put_image_to_window(all->mlx, all->win, all->imgfont, x * all->tile_size, y * all->tile_size);
 			else if (all->map[y][x] == '1')
 				mlx_put_image_to_window(all->mlx, all->win, all->imgwall, x * all->tile_size, y * all->tile_size);
+			else if (all->map[y][x] == 'E')
+				mlx_put_image_to_window(all->mlx, all->win, all->imgexit, x * all->tile_size, y * all->tile_size);
+			else if (all->map[y][x] == 'C')
+				mlx_put_image_to_window(all->mlx, all->win, all->imgcollectible, x * all->tile_size, y * all->tile_size);
 			x++;
 		}
 		y++;
@@ -278,12 +282,42 @@ int draw_map(t_all *all)
 {
 	all->imgfont = mlx_xpm_file_to_image(all->mlx, "img/font.xpm", &all->tile_size, &all->tile_size);
 	all->imgwall = mlx_xpm_file_to_image(all->mlx, "img/wall.xpm", &all->tile_size, &all->tile_size);
-	//all->exitdiscover = mlx_xpm_file_to_image(all->mlx, "img/window.xpm", &all->tile_size, &all->tile_size);
+	all->imgexit = mlx_xpm_file_to_image(all->mlx, "img/platform.xpm", &all->tile_size, &all->tile_size);
 	//all->exitcover = mlx_xpm_file_to_image(all->mlx, "img/door_closedMid.xpm", &all->tile_size, &all->tile_size);
-	//all->collectible = mlx_xpm_file_to_image(all->mlx, "img/coins.xpm", &all->tile_size, &all->tile_size);
-	//all->imgplayer = mlx_xpm_file_to_image(all->mlx, "img/player.xpm", &all->tile_size, &all->tile_size);
+	all->imgcollectible = mlx_xpm_file_to_image(all->mlx, "img/coins.xpm", &all->tile_size, &all->tile_size);
+	all->imgplayer = mlx_xpm_file_to_image(all->mlx, "img/player.xpm", &all->tile_size, &all->tile_size);
 
-	if (all->imgfont == NULL || all->imgwall == NULL)
+	if (all->imgfont == NULL || all->imgwall == NULL || all->imgexit == NULL || all->imgcollectible == NULL 
+		|| all->imgplayer == NULL)
 		return(ft_putstr_fd("Error load an img\n", 2), 1);
 	return(0);
+}
+int	ft_collision_check(t_all *all, char way)
+{
+	if (way == 'U')
+	{
+		if (all->map[(all->ystart / all->tile_size ) - 1][(all->xstart / all->tile_size )] == '1')
+			return (1);
+	}
+	if (way == 'D')
+	{
+		if (all->map[(all->ystart / all->tile_size ) + 1][(all->xstart / all->tile_size )] == '1')
+			return (1);
+	}
+	if (way == 'L')
+	{
+		if (all->map[(all->ystart / all->tile_size )][(all->xstart / all->tile_size) - 1] == '1')
+			return (1);
+	}
+	if (way == 'R')
+	{
+		if (all->map[(all->ystart / all->tile_size )][(all->xstart / all->tile_size) + 1] == '1')
+			return (1);
+	}
+	return (0);
+}
+void 	ft_gravity_apply(t_all *all)
+{
+	if (ft_collision_check(all, 'D') == 0)
+		all->ystart += 5;
 }
