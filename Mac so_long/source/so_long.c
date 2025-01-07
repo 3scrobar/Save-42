@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sirocco <sirocco@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/06 15:37:52 by sirocco          ###   ########.fr       */
+/*   Updated: 2025/01/07 15:03:35 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ int ft_total_check(int ac, t_all *game, char **av, t_all *cpy)
 	if(ft_flood_path(cpy, cpy->ystart, cpy->xstart) != 0 
 		|| ft_check_after_flood(cpy) != 0)
 		return (ft_putstr_fd("Error from Path\n", 2), 1);
+	game->xvelocity = 0;
+	game->yvelocity = 0;
 	return (ft_printf("Everything is Good, Launch the Game ...\n",0), 0);
 }
 int	ft_tablen(char	**tab)
@@ -116,7 +118,7 @@ int	ft_give_all_nbpoint(t_all *map)
 	map->column = ft_strlen(map->map[i]);
 	while (map->map[i])
 	{
-		if (ft_strlen(map->map[i]) != map->column)
+		if ((int)ft_strlen(map->map[i]) != map->column)
 			return (ft_putstr_fd("Line is not the same size\n", 2), 1);
 		j = 0;
 		while (map->map[i][j])
@@ -135,8 +137,8 @@ int	ft_give_all_nbpoint(t_all *map)
 }
 int	ft_check_square(t_all *map)
 {
-	size_t	i;
-	size_t	j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (map->map[i])
@@ -200,7 +202,7 @@ int	ft_check_after_flood(t_all *game)
 }
 int	ft_check_border(t_all *map)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (i < map->column)
@@ -225,14 +227,17 @@ int	ft_key_hook(int keycode, t_all *game)
 		mlx_destroy_window(game->mlx, game->win);
 		exit(0);
 	}
-	if (keycode == 2 && ft_collision_check(game, 'R') == 0)
-		game->xstart += 10;
-	if (keycode == 0 && ft_collision_check(game, 'L') == 0)
-		game->xstart -= 10;
-	if (keycode == 13 && ft_collision_check(game, 'U') == 0)
-		game->ystart -= 50;
-	if (keycode == 1 && ft_collision_check(game, 'D') == 0)
-		game->ystart += 10;
+	else if (keycode == 2 && game->map[(game->ystart / game->tile_size)][(game->xstart / game->tile_size) + 1] != '1')
+		game->xvelocity += 5;
+	else if (keycode == 0 && game->map[(game->ystart / game->tile_size)][(game->xstart / game->tile_size) - 2] != '1')
+		game->xvelocity -= 5;
+	else if (keycode == 13 && game->ystart - 50 > 0 && game->map[(game->ystart / game->tile_size) - 1][(game->xstart / game->tile_size)] != '1')
+		game->yvelocity -= 50;
+	else if(keycode == 13 && game->ystart - 50 <= 1 * game->tile_size)
+		{
+			game->yvelocity = 0;
+			game->ystart = 1 * game->tile_size;
+		}
 	ft_printf("Keycode : %d\n", keycode);
 	return (0);
 }
@@ -241,7 +246,9 @@ int	ft_game_loop(t_all *game)
 {
 	mlx_clear_window(game->mlx, game->win);
 	draw_map(game);
-	ft_gravity_apply(game);
+	ft_velocity_apply(game);
+	ft_collision_check(game);
+	ft_security_check(game);
 	mlx_put_image_to_window(game->mlx, game->win, game->imgplayer, game->xstart, game->ystart);	
 	return (0);
 }
@@ -292,32 +299,58 @@ int draw_map(t_all *all)
 		return(ft_putstr_fd("Error load an img\n", 2), 1);
 	return(0);
 }
-int	ft_collision_check(t_all *all, char way)
+int	ft_collision_check(t_all *all)
 {
-	if (way == 'U')
-	{
+
 		if (all->map[(all->ystart / all->tile_size ) - 1][(all->xstart / all->tile_size )] == '1')
-			return (1);
-	}
-	if (way == 'D')
-	{
-		if (all->map[(all->ystart / all->tile_size ) + 1][(all->xstart / all->tile_size )] == '1')
-			return (1);
-	}
-	if (way == 'L')
-	{
-		if (all->map[(all->ystart / all->tile_size )][(all->xstart / all->tile_size) - 1] == '1')
-			return (1);
-	}
-	if (way == 'R')
-	{
+			all->yvelocity = 0;
+		if (all->map[(all->ystart / 64 ) + 1][(all->xstart / 64 )] == '1')
+			all->yvelocity = 0;
+		if (all->map[(all->ystart / all->tile_size )][(all->xstart / all->tile_size)] == '1')
+			all->xvelocity = 0;
 		if (all->map[(all->ystart / all->tile_size )][(all->xstart / all->tile_size) + 1] == '1')
-			return (1);
-	}
+			all->xvelocity = 0;
+		if(all->map[(all->ystart / all->tile_size + 1)][(all->xstart / all->tile_size)] != '1')
+			all->yvelocity += 5;
 	return (0);
 }
-void 	ft_gravity_apply(t_all *all)
+void 	ft_velocity_apply(t_all *all)
 {
-	if (ft_collision_check(all, 'D') == 0)
-		all->ystart += 5;
+
+	if(all->xvelocity < 0)
+		all->xvelocity += 1;
+	else if(all->xvelocity > 0)
+		all->xvelocity -= 1;
+	else if(all->yvelocity > 10)
+		all->yvelocity = 10;
+	else if(all->xvelocity > 10)
+		all->xvelocity = 10;
+	else if(all->ystart * all->tile_size < (1 * all->tile_size))
+		all->yvelocity = 0;
+	else if(all->ystart * all->tile_size > (all->line - 1) * all->tile_size)
+		all->yvelocity = 0;
+	else if(all->ystart * all->tile_size < (all->line - 1) * all->tile_size)
+		all->yvelocity += 5;
+	all->xstart += all->xvelocity;
+	all->ystart += all->yvelocity;
+}
+void	ft_security_check(t_all *all)
+{
+	if ((all->xstart / all->tile_size) < 1)
+		all->xstart = 1 * all->tile_size;
+	if ((all->ystart / all->tile_size )< 1)
+		all->ystart = 1 * all->tile_size;
+	if (all->xstart > all->column * 64)
+		all->xstart = ((all->column) * 64);
+	if (all->ystart > all->line * 64)
+		all->ystart = ((all->line - 1) * 64);
+	if(all->map[(all->ystart / all->tile_size)][(all->xstart / all->tile_size)] == 'C')
+	{
+		all->map[(all->ystart / all->tile_size)][(all->xstart / all->tile_size)] = '0';
+		all->collectible -= 1;
+	}
+	if(all->map[(all->ystart / all->tile_size)][(all->xstart / all->tile_size) + 1] == '1' && all->xvelocity > 0)
+		all->xstart = (all->xstart / all->tile_size) * all->tile_size;
+	if(all->map[(all->ystart / all->tile_size)][(all->xstart / all->tile_size)] == '1' && all->xvelocity < 0)
+		all->xstart = (all->xstart / all->tile_size + 1) * all->tile_size;
 }

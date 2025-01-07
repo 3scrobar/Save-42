@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sirocco <sirocco@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/06 15:22:23 by sirocco          ###   ########.fr       */
+/*   Updated: 2025/01/07 14:24:41 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,21 @@ typedef struct s_all
 	void	*mlx;
 	void	*win;
 	char	**map;
-	size_t	line;
-	size_t	column;
+	int		line;
+	int		column;
 	size_t	player;
 	size_t	exit;
 	size_t	collectible;
-	size_t	xstart;
-	size_t	ystart;
-	int	tile_size;
+	int		xstart;
+	int		ystart;
+	int		tile_size;
 	void	*imgfont;
 	void	*imgwall;
 	void	*imgexit;
 	void	*imgcollectible;
 	void	*imgplayer;
+	int 	xvelocity;
+	int 	yvelocity;
 }				t_all;
 
 int		ft_tablen(char	**tab);
@@ -65,7 +67,8 @@ int		draw_map(t_all *all);
 int		ft_init_img(t_all *game);
 void	ft_print_tab(char **tab);
 int		ft_malloc_map(t_all *game, t_all *cpy);
-int		ft_collision_check(t_all *game, char c);
-void	ft_gravity_apply(t_all *all);
+void	ft_velocity_apply(t_all *game);
+int		ft_collision_check(t_all *game);
+void	ft_security_check(t_all *game);
 
 #endif
