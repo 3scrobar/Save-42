@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/07 15:03:35 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/01/08 10:42:01 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -249,6 +249,7 @@ int	ft_game_loop(t_all *game)
 	ft_velocity_apply(game);
 	ft_collision_check(game);
 	ft_security_check(game);
+	ft_put_str(game);
 	mlx_put_image_to_window(game->mlx, game->win, game->imgplayer, game->xstart, game->ystart);	
 	return (0);
 }
@@ -353,4 +354,8 @@ void	ft_security_check(t_all *all)
 		all->xstart = (all->xstart / all->tile_size) * all->tile_size;
 	if(all->map[(all->ystart / all->tile_size)][(all->xstart / all->tile_size)] == '1' && all->xvelocity < 0)
 		all->xstart = (all->xstart / all->tile_size + 1) * all->tile_size;
+}
+void ft_put_str(t_all *all)
+{
+	mlx_string_put(all->mlx, all->win, 10, 10, 0x00FF0000, "Collectible : ");
 }
