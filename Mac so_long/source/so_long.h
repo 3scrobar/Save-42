@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/07 14:24:41 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/01/08 18:42:22 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_all
 	void	*imgexit;
 	void	*imgcollectible;
 	void	*imgplayer;
+	void	*exitcover;
 	int 	xvelocity;
 	int 	yvelocity;
 }				t_all;
@@ -70,5 +71,10 @@ int		ft_malloc_map(t_all *game, t_all *cpy);
 void	ft_velocity_apply(t_all *game);
 int		ft_collision_check(t_all *game);
 void	ft_security_check(t_all *game);
+int		ft_col_check(t_all *game);
+int		ft_colision_right(t_all *all);
+int		ft_colision_left(t_all *all);
+int		ft_colision_up(t_all *all);
+int		ft_colision_down(t_all *all);
 
 #endif

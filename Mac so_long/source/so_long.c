@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/08 10:42:01 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/01/08 19:00:24 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,29 +227,31 @@ int	ft_key_hook(int keycode, t_all *game)
 		mlx_destroy_window(game->mlx, game->win);
 		exit(0);
 	}
-	else if (keycode == 2 && game->map[(game->ystart / game->tile_size)][(game->xstart / game->tile_size) + 1] != '1')
+	else if (keycode == 2)
 		game->xvelocity += 5;
-	else if (keycode == 0 && game->map[(game->ystart / game->tile_size)][(game->xstart / game->tile_size) - 2] != '1')
+	else if (keycode == 0)
 		game->xvelocity -= 5;
-	else if (keycode == 13 && game->ystart - 50 > 0 && game->map[(game->ystart / game->tile_size) - 1][(game->xstart / game->tile_size)] != '1')
-		game->yvelocity -= 50;
-	else if(keycode == 13 && game->ystart - 50 <= 1 * game->tile_size)
-		{
-			game->yvelocity = 0;
-			game->ystart = 1 * game->tile_size;
-		}
+	else if (keycode == 13)
+		game->yvelocity = -50;
 	ft_printf("Keycode : %d\n", keycode);
 	return (0);
 }
 
 int	ft_game_loop(t_all *game)
 {
+	char *str;
+	char *str2;
+	str = ft_itoa(game->xstart);
+	str2 = ft_itoa(game->ystart);
 	mlx_clear_window(game->mlx, game->win);
 	draw_map(game);
 	ft_velocity_apply(game);
 	ft_collision_check(game);
 	ft_security_check(game);
-	ft_put_str(game);
+	mlx_string_put(game->mlx, game->win, 20, 20, 0xFF0000, "Player Position X :");
+	mlx_string_put(game->mlx, game->win, 200, 20, 0xFF0000, str);
+	mlx_string_put(game->mlx, game->win, 20, 40, 0xFF0000, "Player Position Y :");
+	mlx_string_put(game->mlx, game->win, 200, 40, 0xFF0000, str2);
 	mlx_put_image_to_window(game->mlx, game->win, game->imgplayer, game->xstart, game->ystart);	
 	return (0);
 }
@@ -276,8 +278,10 @@ int draw_map(t_all *all)
 				mlx_put_image_to_window(all->mlx, all->win, all->imgfont, x * all->tile_size, y * all->tile_size);
 			else if (all->map[y][x] == '1')
 				mlx_put_image_to_window(all->mlx, all->win, all->imgwall, x * all->tile_size, y * all->tile_size);
-			else if (all->map[y][x] == 'E')
+			else if (all->map[y][x] == 'E' && all->collectible == 0)
 				mlx_put_image_to_window(all->mlx, all->win, all->imgexit, x * all->tile_size, y * all->tile_size);
+			else if (all->map[y][x] == 'E' && all->collectible != 0)
+				mlx_put_image_to_window(all->mlx, all->win, all->exitcover, x * all->tile_size, y * all->tile_size);
 			else if (all->map[y][x] == 'C')
 				mlx_put_image_to_window(all->mlx, all->win, all->imgcollectible, x * all->tile_size, y * all->tile_size);
 			x++;
@@ -290,9 +294,9 @@ int draw_map(t_all *all)
 {
 	all->imgfont = mlx_xpm_file_to_image(all->mlx, "img/font.xpm", &all->tile_size, &all->tile_size);
 	all->imgwall = mlx_xpm_file_to_image(all->mlx, "img/wall.xpm", &all->tile_size, &all->tile_size);
-	all->imgexit = mlx_xpm_file_to_image(all->mlx, "img/platform.xpm", &all->tile_size, &all->tile_size);
-	//all->exitcover = mlx_xpm_file_to_image(all->mlx, "img/door_closedMid.xpm", &all->tile_size, &all->tile_size);
-	all->imgcollectible = mlx_xpm_file_to_image(all->mlx, "img/coins.xpm", &all->tile_size, &all->tile_size);
+	all->imgexit = mlx_xpm_file_to_image(all->mlx, "img/window.xpm", &all->tile_size, &all->tile_size);
+	all->exitcover = mlx_xpm_file_to_image(all->mlx, "img/door_closedMid.xpm", &all->tile_size, &all->tile_size);
+	all->imgcollectible = mlx_xpm_file_to_image(all->mlx, "img/coinGold.xpm", &all->tile_size, &all->tile_size);
 	all->imgplayer = mlx_xpm_file_to_image(all->mlx, "img/player.xpm", &all->tile_size, &all->tile_size);
 
 	if (all->imgfont == NULL || all->imgwall == NULL || all->imgexit == NULL || all->imgcollectible == NULL 
@@ -300,62 +304,99 @@ int draw_map(t_all *all)
 		return(ft_putstr_fd("Error load an img\n", 2), 1);
 	return(0);
 }
-int	ft_collision_check(t_all *all)
+int ft_collision_check(t_all *all)
 {
+	if (ft_colision_right(all) == 1)
+	{
+		all->xstart = ((all->xstart / all->tile_size) * all->tile_size);
+		all->xvelocity = 0;
+	}
+	if (ft_colision_left(all) == 1)
+	{
+		all->xstart = ((all->xstart / all->tile_size) * all->tile_size) + 64;
+		all->xvelocity = 0;
+	}
+	if (ft_colision_up(all) == 1)
+	{
+		all->ystart = all->ystart;
+		all->yvelocity = 0;
+	}
+	if (ft_colision_down(all) == 1)
+	{
+		all->ystart = all->ystart;
+		all->yvelocity = 0;
+	}
+	return(0);
+}
+int ft_colision_right(t_all *all)
+{
+	int right;
 
-		if (all->map[(all->ystart / all->tile_size ) - 1][(all->xstart / all->tile_size )] == '1')
-			all->yvelocity = 0;
-		if (all->map[(all->ystart / 64 ) + 1][(all->xstart / 64 )] == '1')
-			all->yvelocity = 0;
-		if (all->map[(all->ystart / all->tile_size )][(all->xstart / all->tile_size)] == '1')
-			all->xvelocity = 0;
-		if (all->map[(all->ystart / all->tile_size )][(all->xstart / all->tile_size) + 1] == '1')
-			all->xvelocity = 0;
-		if(all->map[(all->ystart / all->tile_size + 1)][(all->xstart / all->tile_size)] != '1')
-			all->yvelocity += 5;
-	return (0);
+    right  = (all->xstart + all->tile_size + 1) / all->tile_size;
+	if (all->map[all->ystart / all->tile_size][right] == '1')
+		return(1);
+	return(0);
+}
+int ft_colision_left(t_all *all)
+{
+	int left;
+
+	left   = (all->xstart / all->tile_size) + 1;
+	if (all->map[all->ystart / all->tile_size][left] == '1')
+		return(1);
+	return(0);
+}
+int ft_colision_up(t_all *all)
+{
+	int top;
+
+	top    = (all->ystart + 64 )/ all->tile_size;
+	if (all->map[top][all->xstart / all->tile_size] == '1')
+		return(1);
+	return(0);
+}
+int ft_colision_down(t_all *all)
+{
+	int bottom;
+
+	bottom = (all->ystart + all->tile_size) / all->tile_size;
+	if (all->map[bottom][all->xstart / all->tile_size] == '1')
+		return(1);
+	return(0);
 }
 void 	ft_velocity_apply(t_all *all)
 {
 
 	if(all->xvelocity < 0)
 		all->xvelocity += 1;
-	else if(all->xvelocity > 0)
+	if(all->xvelocity > 0)
 		all->xvelocity -= 1;
-	else if(all->yvelocity > 10)
-		all->yvelocity = 10;
-	else if(all->xvelocity > 10)
-		all->xvelocity = 10;
-	else if(all->ystart * all->tile_size < (1 * all->tile_size))
-		all->yvelocity = 0;
-	else if(all->ystart * all->tile_size > (all->line - 1) * all->tile_size)
-		all->yvelocity = 0;
-	else if(all->ystart * all->tile_size < (all->line - 1) * all->tile_size)
-		all->yvelocity += 5;
+	if(all->yvelocity > 20)
+		all->yvelocity = 20;
+	if(all->xvelocity > 20)
+		all->xvelocity = 20;
+	if(all->xvelocity < -20)
+		all->xvelocity = -20;
+	all->yvelocity += 3;
 	all->xstart += all->xvelocity;
 	all->ystart += all->yvelocity;
 }
 void	ft_security_check(t_all *all)
 {
-	if ((all->xstart / all->tile_size) < 1)
+	if (((all->xstart - 1) / all->tile_size) < 1)
 		all->xstart = 1 * all->tile_size;
-	if ((all->ystart / all->tile_size )< 1)
-		all->ystart = 1 * all->tile_size;
-	if (all->xstart > all->column * 64)
-		all->xstart = ((all->column) * 64);
-	if (all->ystart > all->line * 64)
-		all->ystart = ((all->line - 1) * 64);
-	if(all->map[(all->ystart / all->tile_size)][(all->xstart / all->tile_size)] == 'C')
+	if (((all->ystart - 1) < all->tile_size / 2))
 	{
-		all->map[(all->ystart / all->tile_size)][(all->xstart / all->tile_size)] = '0';
+		all->ystart =all->tile_size - 30;
+		all->yvelocity = 0;
+	}
+	if ((all->xstart + 1) > ((all->column - 2) * 64))
+		all->xstart = (all->column - 2 )* 64;
+	if (all->ystart > (all->line - 1) * 64)
+		all->ystart = (all->line - 1) * 64;
+	if(all->map[((all->ystart - 32 )/ all->tile_size)][((all->xstart) / all->tile_size)] == 'C')
+	{
+		all->map[((all->ystart - 32) / all->tile_size)][(all->xstart / all->tile_size)] = '0';
 		all->collectible -= 1;
 	}
-	if(all->map[(all->ystart / all->tile_size)][(all->xstart / all->tile_size) + 1] == '1' && all->xvelocity > 0)
-		all->xstart = (all->xstart / all->tile_size) * all->tile_size;
-	if(all->map[(all->ystart / all->tile_size)][(all->xstart / all->tile_size)] == '1' && all->xvelocity < 0)
-		all->xstart = (all->xstart / all->tile_size + 1) * all->tile_size;
-}
-void ft_put_str(t_all *all)
-{
-	mlx_string_put(all->mlx, all->win, 10, 10, 0x00FF0000, "Collectible : ");
 }
