@@ -6,11 +6,17 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/08 19:00:24 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/01/14 16:57:02 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+#define RIGHT 2
+#define LEFT 0
+#define UP 13
+#define DOWN 1
+#define SPEED 2
 
 int	main(int ac, char **av)
 {
@@ -27,8 +33,10 @@ int	main(int ac, char **av)
 	game.win = mlx_new_window(game.mlx, game.column * 64, (game.line + 1) * 64, "so_long");
 	game.xstart = game.xstart * game.tile_size;
 	game.ystart = game.ystart * game.tile_size;
-	mlx_hook(game.win, 2, 1L << 0, ft_key_hook, &game);
 	mlx_hook(game.win, 17, 1L << 17, ft_close, &game);
+	mlx_hook(game.win, 2, 1L << 0, ft_handle_key_press, &game);
+	mlx_hook(game.win, 3, 1L << 1, ft_handle_key_release, &game);
+
 	mlx_loop_hook(game.mlx, ft_game_loop, &game);
 	mlx_loop(game.mlx);
 	return (0);
@@ -74,7 +82,6 @@ int	ft_init_map(t_all *map, char *path)
 }
 int ft_total_check(int ac, t_all *game, char **av, t_all *cpy)
 {
-	(void)game;
 	if (ac != 2)
 		return (ft_putstr_fd("Wrong Arguments\n", 2), 1);
 	if (ft_init_map(game, av[1]) != 0 || ft_init_map(cpy, av[1]) != 0)
@@ -154,7 +161,18 @@ int	ft_check_square(t_all *map)
 }
 int	ft_give_start_POS(t_all *game)
 {
+	game->mvleft = 0;
+	game->mvright = 0;
 	game->ystart = 0;
+	game->is_jumpimg = 0;
+	game->nb_move = 0;
+	game->mvleft = 0;
+	game->mvright = 0;
+	game->enemyvelocity = -2;
+	game->xenemy = (game->column - 2) * 64;
+	game->yenemy = (game->line - 1) * 64;
+	game->destroyenemy = 0;
+	game->hp = 5;
 	while (game->map[game->ystart])
 	{
 		game->xstart = 0;
@@ -220,39 +238,35 @@ int	ft_check_border(t_all *map)
 	}
 	return (0);
 }
-int	ft_key_hook(int keycode, t_all *game)
-{
-	if (keycode == 53)
-	{
-		mlx_destroy_window(game->mlx, game->win);
-		exit(0);
-	}
-	else if (keycode == 2)
-		game->xvelocity += 5;
-	else if (keycode == 0)
-		game->xvelocity -= 5;
-	else if (keycode == 13)
-		game->yvelocity = -50;
-	ft_printf("Keycode : %d\n", keycode);
-	return (0);
-}
+
 
 int	ft_game_loop(t_all *game)
 {
-	char *str;
-	char *str2;
-	str = ft_itoa(game->xstart);
-	str2 = ft_itoa(game->ystart);
+	
 	mlx_clear_window(game->mlx, game->win);
 	draw_map(game);
 	ft_velocity_apply(game);
 	ft_collision_check(game);
 	ft_security_check(game);
-	mlx_string_put(game->mlx, game->win, 20, 20, 0xFF0000, "Player Position X :");
-	mlx_string_put(game->mlx, game->win, 200, 20, 0xFF0000, str);
-	mlx_string_put(game->mlx, game->win, 20, 40, 0xFF0000, "Player Position Y :");
-	mlx_string_put(game->mlx, game->win, 200, 40, 0xFF0000, str2);
-	mlx_put_image_to_window(game->mlx, game->win, game->imgplayer, game->xstart, game->ystart);	
+	game->gravity = 1;
+	mlx_string_put(game->mlx, game->win, 880, 20, 0xFF0000, "Nbr PDV : ");
+	mlx_string_put(game->mlx, game->win, 980, 20, 0xFF0000, ft_itoa(game->hp));
+
+	ft_col_enemy(game);
+	ft_manage_enemy(game);
+	if (game->xvelocity < 0)
+		mlx_put_image_to_window(game->mlx, game->win, game->imgplayerleft, game->xstart, game->ystart);
+	if (game->xvelocity > 0)
+		mlx_put_image_to_window(game->mlx, game->win, game->imgplayerright, game->xstart, game->ystart);
+	if (game->xvelocity == 0)
+		mlx_put_image_to_window(game->mlx, game->win, game->imgplayercenter, game->xstart, game->ystart);
+	if (game->enemyvelocity < 0 && game->destroyenemy == 0)
+		mlx_put_image_to_window(game->mlx, game->win, game->imgenemyleft, game->xenemy, game->yenemy);
+	if (game->enemyvelocity > 0 && game->destroyenemy == 0)
+		mlx_put_image_to_window(game->mlx, game->win, game->imgenemyright, game->xenemy, game->yenemy);
+	if(game->hp == 0)
+			ft_close(game);
+	
 	return (0);
 }
 int	ft_close(t_all *game)
@@ -297,10 +311,13 @@ int draw_map(t_all *all)
 	all->imgexit = mlx_xpm_file_to_image(all->mlx, "img/window.xpm", &all->tile_size, &all->tile_size);
 	all->exitcover = mlx_xpm_file_to_image(all->mlx, "img/door_closedMid.xpm", &all->tile_size, &all->tile_size);
 	all->imgcollectible = mlx_xpm_file_to_image(all->mlx, "img/coinGold.xpm", &all->tile_size, &all->tile_size);
-	all->imgplayer = mlx_xpm_file_to_image(all->mlx, "img/player.xpm", &all->tile_size, &all->tile_size);
-
+	all->imgplayerright = mlx_xpm_file_to_image(all->mlx, "img/playerright.xpm", &all->tile_size, &all->tile_size);
+	all->imgplayerleft = mlx_xpm_file_to_image(all->mlx, "img/playerleft.xpm", &all->tile_size, &all->tile_size);
+	all->imgplayercenter = mlx_xpm_file_to_image(all->mlx, "img/playercenter.xpm", &all->tile_size, &all->tile_size);
+	all->imgenemyright = mlx_xpm_file_to_image(all->mlx, "img/enemyright.xpm", &all->tile_size, &all->tile_size);
+	all->imgenemyleft = mlx_xpm_file_to_image(all->mlx, "img/enemyleft.xpm", &all->tile_size, &all->tile_size);
 	if (all->imgfont == NULL || all->imgwall == NULL || all->imgexit == NULL || all->imgcollectible == NULL 
-		|| all->imgplayer == NULL)
+		|| all->imgplayerright == NULL || all->imgplayerleft == NULL)
 		return(ft_putstr_fd("Error load an img\n", 2), 1);
 	return(0);
 }
@@ -308,32 +325,31 @@ int ft_collision_check(t_all *all)
 {
 	if (ft_colision_right(all) == 1)
 	{
-		all->xstart = ((all->xstart / all->tile_size) * all->tile_size);
 		all->xvelocity = 0;
 	}
 	if (ft_colision_left(all) == 1)
 	{
-		all->xstart = ((all->xstart / all->tile_size) * all->tile_size) + 64;
 		all->xvelocity = 0;
 	}
 	if (ft_colision_up(all) == 1)
 	{
-		all->ystart = all->ystart;
 		all->yvelocity = 0;
 	}
 	if (ft_colision_down(all) == 1)
 	{
-		all->ystart = all->ystart;
 		all->yvelocity = 0;
+		all->ystart= (all->ystart / all->tile_size) * all->tile_size;
+		all->is_jumpimg = 0;
 	}
 	return(0);
 }
+
 int ft_colision_right(t_all *all)
 {
 	int right;
 
-    right  = (all->xstart + all->tile_size + 1) / all->tile_size;
-	if (all->map[all->ystart / all->tile_size][right] == '1')
+    right  = (all->xstart + 58) / all->tile_size;
+	if (all->map[((all->ystart + 32) / all->tile_size)][right] == '1')
 		return(1);
 	return(0);
 }
@@ -341,8 +357,8 @@ int ft_colision_left(t_all *all)
 {
 	int left;
 
-	left   = (all->xstart / all->tile_size) + 1;
-	if (all->map[all->ystart / all->tile_size][left] == '1')
+	left   = ((all->xstart + 10)/ all->tile_size);
+	if (all->map[(all->ystart + 48) / all->tile_size][left] == '1')
 		return(1);
 	return(0);
 }
@@ -350,8 +366,8 @@ int ft_colision_up(t_all *all)
 {
 	int top;
 
-	top    = (all->ystart + 64 )/ all->tile_size;
-	if (all->map[top][all->xstart / all->tile_size] == '1')
+	top    = ((all->ystart + 31)/ all->tile_size);
+	if (all->map[top][(all->xstart + 32) / all->tile_size] == '1' || top == 0)
 		return(1);
 	return(0);
 }
@@ -359,8 +375,8 @@ int ft_colision_down(t_all *all)
 {
 	int bottom;
 
-	bottom = (all->ystart + all->tile_size) / all->tile_size;
-	if (all->map[bottom][all->xstart / all->tile_size] == '1')
+	bottom = ((all->ystart + 65) / 64 );
+	if (all->map[bottom][(all->xstart + 32) / all->tile_size] == '1')
 		return(1);
 	return(0);
 }
@@ -373,11 +389,22 @@ void 	ft_velocity_apply(t_all *all)
 		all->xvelocity -= 1;
 	if(all->yvelocity > 20)
 		all->yvelocity = 20;
+	if(all->yvelocity < -32)
+		all->yvelocity = -32;
 	if(all->xvelocity > 20)
 		all->xvelocity = 20;
 	if(all->xvelocity < -20)
 		all->xvelocity = -20;
-	all->yvelocity += 3;
+	if(ft_colision_down(all) == 0)
+		all->yvelocity += 5;
+	if(all->mvright == 1 && ft_colision_right(all) == 0)
+		all->xvelocity += SPEED;
+	if(all->mvleft == 1 && ft_colision_left(all) == 0)
+		all->xvelocity -= SPEED;
+	if(all->xvelocity < 0)
+		all->nb_move -= all->xvelocity;
+	else
+		all->nb_move += all->xvelocity;
 	all->xstart += all->xvelocity;
 	all->ystart += all->yvelocity;
 }
@@ -385,18 +412,107 @@ void	ft_security_check(t_all *all)
 {
 	if (((all->xstart - 1) / all->tile_size) < 1)
 		all->xstart = 1 * all->tile_size;
-	if (((all->ystart - 1) < all->tile_size / 2))
+	if ((all->ystart) < 31)
 	{
-		all->ystart =all->tile_size - 30;
-		all->yvelocity = 0;
+		all->ystart = 32 ;
 	}
 	if ((all->xstart + 1) > ((all->column - 2) * 64))
 		all->xstart = (all->column - 2 )* 64;
 	if (all->ystart > (all->line - 1) * 64)
 		all->ystart = (all->line - 1) * 64;
-	if(all->map[((all->ystart - 32 )/ all->tile_size)][((all->xstart) / all->tile_size)] == 'C')
+	if(all->map[((all->ystart)/ all->tile_size)][((all->xstart + 32) / all->tile_size)] == 'C')
 	{
-		all->map[((all->ystart - 32) / all->tile_size)][(all->xstart / all->tile_size)] = '0';
+		all->map[((all->ystart) / all->tile_size)][((all->xstart + 32) / all->tile_size)] = '0';
 		all->collectible -= 1;
+	}
+	if(all->map[((all->ystart) / all->tile_size)][((all->xstart + 32) / all->tile_size)] == 'E' && all->collectible == 0)
+	{
+		mlx_destroy_window(all->mlx, all->win);
+		ft_printf("You Win in %d move\n", all->nb_move / 64);
+		exit(0);
+	}
+}
+int 	ft_handle_key_press(int keycode, t_all *all)
+{
+	if(keycode == 2)
+	{
+		all->mvright = 1;
+		all->mvleft = 0;
+	}
+	if(keycode == 0)
+	{
+		all->mvleft = 1;
+		all->mvright = 0;
+	}
+	if (keycode == 53)
+	{
+		mlx_destroy_window(all->mlx, all->win);
+		exit(0);
+	}
+	if(keycode == 13 && ft_colision_up(all) == 0 && all->is_jumpimg < 2)
+	{
+		all->yvelocity = -40;
+		all->is_jumpimg += 1;
+	}
+	//ft_printf("Keycode : %d\n", keycode);
+	return (0);
+}
+int	ft_handle_key_release(int keycode, t_all *all)
+{
+	if(keycode == RIGHT)
+	{
+		all->mvright = 0;
+	}
+	if(keycode == LEFT)
+	{
+		all->mvleft = 0;
+	}
+	return (0);
+}
+void	ft_manage_enemy(t_all *all)
+{
+	if (all->enemyvelocity < 0 && all->map[(all->yenemy - 32)/ 64][((all->xenemy )/ 64) - 1] == '1')
+		all->enemyvelocity = 4;
+	if (all->enemyvelocity > 0 && all->map[(all->yenemy - 32)/ 64][((all->xenemy)/ 64) + 1] == '1')
+		all->enemyvelocity = -4;
+	all->xenemy += all->enemyvelocity;
+	
+	if (((all->xstart < all->xenemy + 44 && all->xstart + 44 > all->xenemy) || (all->xstart + 44 < all->xenemy && all->xstart > all->xenemy + 44)) && all->ystart + 64 == all->yenemy + 64 && all->destroyenemy == 0)
+		{
+			all->hp -= 1;
+		}
+	
+}
+void	ft_col_enemy(t_all *all)
+{
+	if(all->xenemy < all->xstart + 32 && all->xenemy + 64 > all->xstart + 32 && all->yenemy == all->ystart + 32)
+	{
+		all->destroyenemy = 1;
+		mlx_destroy_image(all->mlx, all->imgenemyleft);
+		mlx_destroy_image(all->mlx, all->imgenemyright);
+		all->xenemy = 0;
+		all->yenemy = 0;
+		ft_putstr_fd("Enemy Destroyed\n", 1);
+	}
+}
+void	ft_get_enemy_pos(t_all *all)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (all->map[i])
+	{
+		j = 0;
+		while (all->map[i][j])
+		{
+			if (all->map[i][j] == 'E')
+			{
+				all->xenemy = j * 64;
+				all->yenemy = i * 64;
+			}
+			j++;
+		}
+		i++;
 	}
 }

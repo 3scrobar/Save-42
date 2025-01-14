@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/08 18:42:22 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/01/14 15:46:58 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,24 @@ typedef struct s_all
 	void	*imgwall;
 	void	*imgexit;
 	void	*imgcollectible;
-	void	*imgplayer;
+	void	*imgplayerright;
+	void	*imgplayerleft;
+	void	*imgplayercenter;
+	void	*imgenemyright;
+	void	*imgenemyleft;
 	void	*exitcover;
 	int 	xvelocity;
 	int 	yvelocity;
+	int 	gravity;
+	int		mvleft;
+	int		mvright;
+	int 	is_jumpimg;
+	int		nb_move;
+	int		enemyvelocity;
+	int		xenemy;
+	int		yenemy;
+	int		destroyenemy;
+	int		hp;
 }				t_all;
 
 int		ft_tablen(char	**tab);
@@ -61,7 +75,6 @@ int		ft_init_map(t_all *map, char *path);
 int		ft_copy_struct(t_all *game, t_all *cpy);
 int		ft_total_check(int ac, t_all *game, char **av, t_all *cpy);
 int		ft_check_border(t_all *map);
-int		ft_key_hook(int keycode, t_all *game);
 int		ft_close(t_all *game);
 int		ft_game_loop(t_all *game);
 int		draw_map(t_all *all);
@@ -76,5 +89,8 @@ int		ft_colision_right(t_all *all);
 int		ft_colision_left(t_all *all);
 int		ft_colision_up(t_all *all);
 int		ft_colision_down(t_all *all);
-
+int		ft_handle_key_press(int keycode, t_all *all);
+int		ft_handle_key_release(int keycode, t_all *all);
+void	ft_manage_enemy(t_all *game);
+void	ft_col_enemy(t_all *game);
 #endif
