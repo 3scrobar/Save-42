@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 16:42:51 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/15 17:00:11 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/01/15 17:09:44 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	ft_check_after_flood(t_all *game)
 	}
 	return (0);
 }
+
 int	ft_check_border(t_all *map)
 {
 	int	i;
@@ -51,7 +52,8 @@ int	ft_check_border(t_all *map)
 	}
 	return (0);
 }
-int	ft_check_square(t_all *map)
+
+int ft_check_square(t_all *map)
 {
 	int	i;
 	int	j;
@@ -68,18 +70,9 @@ int	ft_check_square(t_all *map)
 	}
 	return (0);
 }
+
 void ft_security_check(t_all *all)
 {
-	// if (((all->xstart - 1) / all->tile_size) < 1)
-	// 	all->xstart = 1 * all->tile_size;
-	// if ((all->ystart) < 31)
-	// {
-	// 	all->ystart = 32 ;
-	// }
-	// if ((all->xstart + 1) > ((all->column - 2) * 64))
-	// 	all->xstart = (all->column - 2 )* 64;
-	// if (all->ystart > (all->line - 1) * 64)
-	//	all->ystart = (all->line - 1) * 64;
 	if(all->map[((all->ystart)/ all->tile_size)][((all->xstart + 32) / all->tile_size)] == 'C')
 	{
 		all->map[((all->ystart) / all->tile_size)][((all->xstart + 32) / all->tile_size)] = '0';
