@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/14 15:46:58 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/01/15 16:50:23 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@
 # include "../libft/source/libft.h"
 # include "../mlx/mlx.h"
 
+# define RIGHT 2
+# define LEFT 0
+# define UP 13
+# define DOWN 1
+# define SPEED 2
 
 
 typedef struct s_all
@@ -62,6 +67,7 @@ typedef struct s_all
 	int		yenemy;
 	int		destroyenemy;
 	int		hp;
+	int		counttimer;
 }				t_all;
 
 int		ft_tablen(char	**tab);
@@ -93,4 +99,11 @@ int		ft_handle_key_press(int keycode, t_all *all);
 int		ft_handle_key_release(int keycode, t_all *all);
 void	ft_manage_enemy(t_all *game);
 void	ft_col_enemy(t_all *game);
+void	ft_init_var(t_all *game);
+void	ft_double_jump(int keycode, t_all *all);
+void	ft_enemy_patrol(t_all *all);
+void	ft_enemy(t_all *all);
+void	ft_col_enemy(t_all *game);
+void	ft_enemy_patrol(t_all *all);
+void	ft_get_enemy_pos(t_all *game);
 #endif
