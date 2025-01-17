@@ -53,7 +53,7 @@ int	ft_check_border(t_all *map)
 	return (0);
 }
 
-int ft_check_square(t_all *map)
+int	ft_check_square(t_all *map)
 {
 	int	i;
 	int	j;
@@ -71,14 +71,17 @@ int ft_check_square(t_all *map)
 	return (0);
 }
 
-void ft_security_check(t_all *all)
+void	ft_security_check(t_all *all)
 {
-	if(all->map[((all->ystart)/ all->tile_size)][((all->xstart + 32) / all->tile_size)] == 'C')
+	if (all->map[((all->ystart) / all->tile_size)][((all->xstart + 32)
+			/ all->tile_size)] == 'C')
 	{
-		all->map[((all->ystart) / all->tile_size)][((all->xstart + 32) / all->tile_size)] = '0';
+		all->map[((all->ystart) / all->tile_size)][((all->xstart + 32)
+				/ all->tile_size)] = '0';
 		all->collectible -= 1;
 	}
-	if(all->map[((all->ystart) / all->tile_size)][((all->xstart + 32) / all->tile_size)] == 'E' && all->collectible == 0)
+	if (all->map[((all->ystart) / all->tile_size)][((all->xstart + 32)
+			/ all->tile_size)] == 'E' && all->collectible == 0)
 	{
 		mlx_destroy_window(all->mlx, all->win);
 		ft_printf("You Win in %d move\n", all->nb_move / 64);
