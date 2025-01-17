@@ -16,7 +16,6 @@ int	ft_flood_path(t_all *game, size_t ystart, size_t xstart)
 {
 	if (game->map[ystart][xstart] == '1')
 		return (0);
-
 	if (game->map[ystart][xstart] != '1')
 		game->map[ystart][xstart] = '1';
 	ft_flood_path(game, ystart + 1, xstart);
@@ -25,6 +24,7 @@ int	ft_flood_path(t_all *game, size_t ystart, size_t xstart)
 	ft_flood_path(game, ystart, xstart - 1);
 	return (0);
 }
+
 int	ft_tablen(char	**tab)
 {
 	int	i;
@@ -34,6 +34,7 @@ int	ft_tablen(char	**tab)
 		i++;
 	return (i - 1);
 }
+
 void	ft_init_var(t_all *game)
 {
 	game->mvleft = 0;
@@ -50,31 +51,32 @@ void	ft_init_var(t_all *game)
 	game->hp = 5;
 	game->counttimer = 0;
 }
-void 	ft_velocity_apply(t_all *all)
-{
 
-	if(all->xvelocity < 0)
+void	ft_velocity_apply(t_all *all)
+{
+	if (all->xvelocity < 0)
 		all->xvelocity += 1;
-	if(all->xvelocity > 0)
+	if (all->xvelocity > 0)
 		all->xvelocity -= 1;
-	if(all->yvelocity > 30)
+	if (all->yvelocity > 30)
 		all->yvelocity = 30;
-	if(all->yvelocity < -32)
+	if (all->yvelocity < -32)
 		all->yvelocity = -32;
-	if(all->xvelocity > 20)
+	if (all->xvelocity > 20)
 		all->xvelocity = 20;
-	if(all->xvelocity < -30)
+	if (all->xvelocity < -30)
 		all->xvelocity = -30;
-	if(ft_colision_down(all) == 0)
+	if (ft_colision_down(all) == 0)
 		all->yvelocity += 5;
-	if(all->mvright == 1 && ft_colision_right(all) == 0)
+	if (all->mvright == 1 && ft_colision_right(all) == 0)
 		all->xvelocity += SPEED;
-	if(all->mvleft == 1 && ft_colision_left(all) == 0)
+	if (all->mvleft == 1 && ft_colision_left(all) == 0)
 		all->xvelocity -= SPEED;
 	all->nb_move += all->xvelocity / 64;
 	all->xstart += all->xvelocity;
 	all->ystart += all->yvelocity;
 }
+
 void	ft_free_tab(t_all *all)
 {
 	int	i;

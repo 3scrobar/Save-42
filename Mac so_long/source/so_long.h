@@ -31,7 +31,6 @@
 # define DOWN 1
 # define SPEED 2
 
-
 typedef struct s_all
 {
 	void	*mlx;
@@ -55,12 +54,12 @@ typedef struct s_all
 	void	*imgenemyright;
 	void	*imgenemyleft;
 	void	*exitcover;
-	int 	xvelocity;
-	int 	yvelocity;
-	int 	gravity;
+	int		xvelocity;
+	int		yvelocity;
+	int		gravity;
 	int		mvleft;
 	int		mvright;
-	int 	is_jumpimg;
+	int		is_jumpimg;
 	int		nb_move;
 	int		enemyvelocity;
 	int		xenemy;
@@ -107,5 +106,6 @@ void	ft_col_enemy(t_all *game);
 void	ft_enemy_patrol(t_all *all);
 void	ft_get_enemy_pos(t_all *game);
 void	ft_if_draw(t_all *all, int y, int x);
+void	ft_if_gameloop(t_all *game);
 
 #endif

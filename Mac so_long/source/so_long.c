@@ -21,21 +21,22 @@ int	main(int ac, char **av)
 	if (ft_total_check(ac, &game, av, &cpy) != 0 || game.mlx == NULL)
 		return (1);
 	ft_printf("Check for the flood\n");
-	if (ft_flood_path(&cpy, cpy.ystart, cpy.xstart) != 0 
+	if (ft_flood_path(&cpy, cpy.ystart, cpy.xstart) != 0
 		|| ft_check_after_flood(&cpy) != 0 || ft_init_img(&game) != 0)
 		return (ft_putstr_fd("Error\n", 2), 1);
-	game.win = mlx_new_window(game.mlx, game.column * 64, (game.line + 1) * 64, "so_long");
+	game.win = mlx_new_window(game.mlx, game.column * 64,
+			(game.line + 1) * 64, "so_long");
 	game.xstart = game.xstart * game.tile_size;
 	game.ystart = game.ystart * game.tile_size;
 	ft_init_var(&game);
 	mlx_hook(game.win, 17, 1L << 17, ft_close, &game);
 	mlx_hook(game.win, 2, 1L << 0, ft_handle_key_press, &game);
 	mlx_hook(game.win, 3, 1L << 1, ft_handle_key_release, &game);
-
 	mlx_loop_hook(game.mlx, ft_game_loop, &game);
 	mlx_loop(game.mlx);
 	return (0);
 }
+
 int	ft_game_loop(t_all *game)
 {
 	mlx_clear_window(game->mlx, game->win);
@@ -46,20 +47,30 @@ int	ft_game_loop(t_all *game)
 	mlx_string_put(game->mlx, game->win, 880, 20, 0xFF0000, "Nbr PDV : ");
 	mlx_string_put(game->mlx, game->win, 980, 20, 0xFF0000, ft_itoa(game->hp));
 	ft_enemy(game);
-	if (game->xvelocity < 0)
-		mlx_put_image_to_window(game->mlx, game->win, game->imgplayerleft, game->xstart, game->ystart);
-	if (game->xvelocity > 0)
-		mlx_put_image_to_window(game->mlx, game->win, game->imgplayerright, game->xstart, game->ystart);
-	if (game->xvelocity == 0)
-		mlx_put_image_to_window(game->mlx, game->win, game->imgplayercenter, game->xstart, game->ystart);
-	if (game->enemyvelocity < 0 && game->destroyenemy == 0)
-		mlx_put_image_to_window(game->mlx, game->win, game->imgenemyleft, game->xenemy, game->yenemy);
-	if (game->enemyvelocity > 0 && game->destroyenemy == 0)
-		mlx_put_image_to_window(game->mlx, game->win, game->imgenemyright, game->xenemy, game->yenemy);
-	if(game->hp == 0)
-			ft_close(game);
 	return (0);
 }
+
+void	ft_if_gameloop(t_all *game)
+{
+	if (game->xvelocity < 0)
+		mlx_put_image_to_window(game->mlx, game->win, game->imgplayerleft,
+			game->xstart, game->ystart);
+	if (game->xvelocity > 0)
+		mlx_put_image_to_window(game->mlx, game->win, game->imgplayerright,
+			game->xstart, game->ystart);
+	if (game->xvelocity == 0)
+		mlx_put_image_to_window(game->mlx, game->win, game->imgplayercenter,
+			game->xstart, game->ystart);
+	if (game->enemyvelocity < 0 && game->destroyenemy == 0)
+		mlx_put_image_to_window(game->mlx, game->win, game->imgenemyleft,
+			game->xenemy, game->yenemy);
+	if (game->enemyvelocity > 0 && game->destroyenemy == 0)
+		mlx_put_image_to_window(game->mlx, game->win, game->imgenemyright,
+			game->xenemy, game->yenemy);
+	if (game->hp == 0)
+		ft_close(game);
+}
+
 int	ft_close(t_all *game)
 {
 	mlx_destroy_window(game->mlx, game->win);
