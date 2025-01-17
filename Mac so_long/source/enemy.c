@@ -14,33 +14,41 @@
 
 void	ft_enemy_patrol(t_all *all)
 {
-	if (all->enemyvelocity < 0 && all->map[(all->yenemy - 32)/ 64][((all->xenemy )/ 64) - 1] == '1')
+	if (all->enemyvelocity < 0 && all->map[(all->yenemy - 32)
+			/ 64][((all->xenemy) / 64) - 1] == '1')
 		all->enemyvelocity = 4;
-	if (all->enemyvelocity > 0 && all->map[(all->yenemy - 32)/ 64][((all->xenemy)/ 64) + 1] == '1')
+	if (all->enemyvelocity > 0 && all->map[(all->yenemy - 32)
+			/ 64][((all->xenemy) / 64) + 1] == '1')
 		all->enemyvelocity = -4;
 	all->xenemy += all->enemyvelocity;
 }
+
 void	ft_enemy(t_all *all)
 {
 	ft_enemy_patrol(all);
 	ft_col_enemy(all);
 	ft_manage_enemy(all);
 }
+
 void	ft_manage_enemy(t_all *all)
 {
 	all->xenemy += all->enemyvelocity;
-	
-	if (all->xstart + 64 >= all->xenemy && all->xstart <= all->xenemy + 64 && all->ystart + 64 >= all->yenemy + 64)
+	if (all->xstart + 64 >= all->xenemy
+		&& all->xstart <= all->xenemy + 64
+		&& all->ystart + 64 >= all->yenemy + 64)
 	{
 		all->hp -= 1;
 		all->xstart = 64;
 		all->ystart = 64;
 	}
-	
 }
+
 void	ft_col_enemy(t_all *all)
 {
-	if((all->xstart + 32 ) >= all->xenemy && (all->xstart + 32 ) <= all->xenemy + 64 && all->ystart + 64 >= all->yenemy && all->ystart + 64 <= all->yenemy + 32)
+	if ((all->xstart + 32) >= all->xenemy
+		&& (all->xstart + 32) <= all->xenemy + 64
+		&& all->ystart + 64 >= all->yenemy
+		&& all->ystart + 64 <= all->yenemy + 32)
 	{
 		all->destroyenemy = 1;
 		mlx_destroy_image(all->mlx, all->imgenemyleft);
@@ -50,10 +58,11 @@ void	ft_col_enemy(t_all *all)
 		ft_putstr_fd("Enemy Destroyed\n", 1);
 	}
 }
+
 void	ft_get_enemy_pos(t_all *all)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (all->map[i])
