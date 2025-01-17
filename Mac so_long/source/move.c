@@ -14,28 +14,29 @@
 
 void	ft_double_jump(int keycode, t_all *all)
 {
-	if(keycode == LEFT && ft_colision_left(all) == 1 && all->is_jumpimg != 0)
+	if (keycode == LEFT && ft_colision_left(all) == 1 && all->is_jumpimg != 0)
 	{
 		all->xvelocity += 50;
 		all->is_jumpimg = 1;
 		all->yvelocity = -40;
 	}
-	if(keycode == RIGHT && ft_colision_right(all) == 1 && all->is_jumpimg != 0)
+	if (keycode == RIGHT && ft_colision_right(all) == 1 && all->is_jumpimg != 0)
 	{
 		all->xvelocity -= 50;
 		all->is_jumpimg = 1;
 		all->yvelocity = -40;
 	}
 }
-int 	ft_handle_key_press(int keycode, t_all *all)
+
+int	ft_handle_key_press(int keycode, t_all *all)
 {
 	ft_double_jump(keycode, all);
-	if(keycode == 2)
+	if (keycode == 2)
 	{
 		all->mvright = 1;
 		all->mvleft = 0;
 	}
-	if(keycode == 0)
+	if (keycode == 0)
 	{
 		all->mvleft = 1;
 		all->mvright = 0;
@@ -45,21 +46,22 @@ int 	ft_handle_key_press(int keycode, t_all *all)
 		mlx_destroy_window(all->mlx, all->win);
 		exit(0);
 	}
-	if(keycode == 13 && ft_colision_up(all) == 0 && all->is_jumpimg < 2)
+	if (keycode == 13 && ft_colision_up(all) == 0 && all->is_jumpimg < 2)
 	{
 		all->yvelocity = -40;
 		all->is_jumpimg += 1;
 	}
-	//ft_printf("Keycode : %d\n", keycode);
+	ft_printf("Keycode : %d\n", keycode);
 	return (0);
 }
+
 int	ft_handle_key_release(int keycode, t_all *all)
 {
-	if(keycode == RIGHT)
+	if (keycode == RIGHT)
 	{
 		all->mvright = 0;
 	}
-	if(keycode == LEFT)
+	if (keycode == LEFT)
 	{
 		all->mvleft = 0;
 	}
