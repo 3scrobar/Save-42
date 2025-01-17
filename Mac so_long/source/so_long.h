@@ -106,4 +106,6 @@ void	ft_enemy(t_all *all);
 void	ft_col_enemy(t_all *game);
 void	ft_enemy_patrol(t_all *all);
 void	ft_get_enemy_pos(t_all *game);
+void	ft_if_draw(t_all *all, int y, int x);
+
 #endif
