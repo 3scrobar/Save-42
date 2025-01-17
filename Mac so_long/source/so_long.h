@@ -73,7 +73,7 @@ typedef struct s_all
 int		ft_tablen(char	**tab);
 int		ft_give_all_nbpoint(t_all *map);
 int		ft_check_square(t_all *map);
-int		ft_give_start_POS(t_all *game);
+int		ft_give_start_pos(t_all *game);
 int		ft_flood_path(t_all *game, size_t y, size_t x);
 int		ft_check_after_flood(t_all *game);
 char	**ft_init_tab(int fd);
