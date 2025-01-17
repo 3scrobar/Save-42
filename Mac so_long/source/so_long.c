@@ -41,6 +41,7 @@ int	ft_game_loop(t_all *game)
 {
 	mlx_clear_window(game->mlx, game->win);
 	draw_map(game);
+	ft_if_gameloop(game);
 	ft_velocity_apply(game);
 	ft_collision_check(game);
 	ft_security_check(game);
