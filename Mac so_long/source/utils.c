@@ -81,6 +81,7 @@ void	ft_free_tab(t_all *all)
 {
 	int	i;
 
+	i = 0;
 	while (all->map[i])
 	{
 		free(all->map[i]);
