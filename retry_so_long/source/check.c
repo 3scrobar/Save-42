@@ -3,27 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
+/*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 16:42:51 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/20 15:00:04 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/01/20 17:16:58 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../source/so_long.h"
 
-int	ft_check_after_flood(t_all *game)
+int	ft_check_after_flood(char **map)
 {
 	size_t	i;
 	size_t	j;
 
 	i = 0;
-	while (game->map[i])
+	while (map[i])
 	{
 		j = 0;
-		while (game->map[i][j])
+		while (map[i][j])
 		{
-			if (game->map[i][j] != '1')
+			if (map[i][j] != '1')
 				return (ft_putstr_fd("Path is invalid\n", 2), 1);
 			j++;
 		}

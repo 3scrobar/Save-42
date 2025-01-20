@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/20 17:11:09 by toto             ###   ########.fr       */
+/*   Updated: 2025/01/20 19:20:15 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,15 @@
 int	main(int ac, char **av)
 {
 	t_all	game;
-	t_all	cpy;
+	char **map;
 
-	game.mlx = mlx_init();
-	if (ft_total_check(ac, &game, av, &cpy) != 0 || game.mlx == NULL)
-		return (1);
+	map = NULL;
+	if (ft_total_check(ac, &game, av, map) != 0 || game.mlx == NULL)
+		return (free(game.mlx), 1);
 	ft_printf("Check for the flood\n");
-	if (ft_flood_path(&cpy, cpy.ystart, cpy.xstart) != 0
-		|| ft_check_after_flood(&cpy) != 0 || ft_init_img(&game) != 0)
-		return (ft_putstr_fd("Error\n", 2), 1);
-	ft_free_map(&cpy);
+	game.mlx = mlx_init();
+	if (ft_init_img(&game) != 0)
+		return (ft_close(&game, 2), ft_putstr_fd("Error\n", 2), 1);
 	game.win = mlx_new_window(game.mlx, game.column * 64,
 			(game.line + 1) * 64, "so_long");
 	game.xstart = game.xstart * game.tile_size;
@@ -40,7 +39,7 @@ int	main(int ac, char **av)
 
 int	ft_game_loop(t_all *game)
 {
-	ft_actualise_image(game);
+	ft_actualise_image(game, 0);
 	mlx_clear_window(game->mlx, game->win);
 	draw_map(game);
 	ft_if_gameloop(game);
@@ -75,19 +74,26 @@ void	ft_if_gameloop(t_all *game)
 			game->xenemy, game->yenemy);
 	if (game->hp == 0)
 		{
-			ft_close(game);
+			ft_close(game, 3);
 		}
 }
 
-int	ft_close(t_all *game)
+int	ft_close(t_all *game, int nb)
 {
-
-	
-	mlx_destroy_window(game->mlx, game->win);
-
-	// mlx_destroy_display(game->mlx);
-	free(game->mlx);
-	
-	ft_free_map(game);
+	if (nb == 3)
+		{
+			ft_actualise_image(game, 1);
+			mlx_destroy_window(game->mlx, game->win);
+			free(game->mlx);
+			ft_free_map(game);
+		}
+	if (nb == 1)
+		{
+			if (game->map == NULL)
+				ft_free_map(game);
+			free(game->mlx);
+		}
+	if (nb == 2)
+		free(game->mlx);
 	exit(0);
 }

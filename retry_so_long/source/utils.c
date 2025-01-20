@@ -6,23 +6,23 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 16:43:02 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/20 17:12:24 by toto             ###   ########.fr       */
+/*   Updated: 2025/01/20 18:30:13 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../source/so_long.h"
 
-int	ft_flood_path(t_all *game, size_t ystart, size_t xstart)
+char	**ft_flood_path(char **map, size_t ystart, size_t xstart)
 {
-	if (game->map[ystart][xstart] == '1')
+	if (map[ystart][xstart] == '1')
 		return (0);
-	if (game->map[ystart][xstart] != '1')
-		game->map[ystart][xstart] = '1';
-	ft_flood_path(game, ystart + 1, xstart);
-	ft_flood_path(game, ystart - 1, xstart);
-	ft_flood_path(game, ystart, xstart + 1);
-	ft_flood_path(game, ystart, xstart - 1);
-	return (0);
+	if (map[ystart][xstart] != '1')
+		map[ystart][xstart] = '1';
+	ft_flood_path(map, ystart + 1, xstart);
+	ft_flood_path(map, ystart - 1, xstart);
+	ft_flood_path(map, ystart, xstart + 1);
+	ft_flood_path(map, ystart, xstart - 1);
+	return (map);
 }
 
 int	ft_tablen(char	**tab)

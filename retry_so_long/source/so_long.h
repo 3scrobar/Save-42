@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/20 17:07:42 by toto             ###   ########.fr       */
+/*   Updated: 2025/01/20 19:09:36 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,14 +73,14 @@ int		ft_tablen(char	**tab);
 int		ft_give_all_nbpoint(t_all *map);
 int		ft_check_square(t_all *map);
 int		ft_give_start_pos(t_all *game);
-int		ft_flood_path(t_all *game, size_t y, size_t x);
-int		ft_check_after_flood(t_all *game);
+char	**ft_flood_path(char **map, size_t y, size_t x);
+int		ft_check_after_flood(char **map);
 char	**ft_init_tab(int fd);
 int		ft_init_map(t_all *map, char *path);
 int		ft_copy_struct(t_all *game, t_all *cpy);
-int		ft_total_check(int ac, t_all *game, char **av, t_all *cpy);
+int		ft_total_check(int ac, t_all *game, char **av, char **map);
 int		ft_check_border(t_all *map);
-int		ft_close(t_all *game);
+int		ft_close(t_all *game, int nb);
 int		ft_game_loop(t_all *game);
 int		draw_map(t_all *all);
 int		ft_init_img(t_all *game);
@@ -109,6 +109,9 @@ void	ft_if_draw(t_all *all, int y, int x);
 void	ft_if_gameloop(t_all *game);
 int		ft_fps(t_all *all);
 void	ft_free_map(t_all *map);
-void	ft_actualise_image(t_all *all);
+void	ft_actualise_image(t_all *all, int exit);
+char	**ft_copy_map(char **map, char *path);
+void	ft_free_tab(char **tab);
+
 
 #endif
