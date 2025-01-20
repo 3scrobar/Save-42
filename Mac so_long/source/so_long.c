@@ -50,7 +50,7 @@ int	ft_game_loop(t_all *game)
 	ft_enemy(game);
 	return (0);
 }
-
+//ceci est un test
 void	ft_if_gameloop(t_all *game)
 {
 	if (game->xvelocity < 0)
