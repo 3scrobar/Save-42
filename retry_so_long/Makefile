@@ -16,7 +16,7 @@ CC = cc
 
 CFLAGS = -Wall -Werror -Wextra -g
 
-SRC = so_long.c
+SRC = so_long.c utils.c move.c init.c draw.c colision.c check.c enemy.c
 
 OBJ = $(SRC:%.c=$(OBJDIR)%.o)
 OBJDIR = object/

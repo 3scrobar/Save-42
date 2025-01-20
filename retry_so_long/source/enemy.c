@@ -16,10 +16,10 @@ void	ft_enemy_patrol(t_all *all)
 {
 	if (all->enemyvelocity < 0 && all->map[(all->yenemy - 32)
 			/ 64][((all->xenemy) / 64) - 1] == '1')
-		all->enemyvelocity = 4;
+		all->enemyvelocity = 2;
 	if (all->enemyvelocity > 0 && all->map[(all->yenemy - 32)
 			/ 64][((all->xenemy) / 64) + 1] == '1')
-		all->enemyvelocity = -4;
+		all->enemyvelocity = -2;
 	all->xenemy += all->enemyvelocity;
 }
 

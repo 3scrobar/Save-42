@@ -25,10 +25,10 @@
 # include "../libft/source/libft.h"
 # include "../mlx/mlx.h"
 
-# define RIGHT 2
-# define LEFT 0
-# define UP 13
-# define DOWN 1
+# define RIGHT 100
+# define LEFT 97
+# define UP 119
+# define DOWN 115
 # define SPEED 2
 
 typedef struct s_all
