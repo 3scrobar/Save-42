@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/20 14:39:46 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/01/20 14:52:47 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,11 @@ int	ft_game_loop(t_all *game)
 	ft_velocity_apply(game);
 	ft_collision_check(game);
 	ft_security_check(game);
-	mlx_string_put(game->mlx, game->win, 880, 20, 0xFF0000, "Nbr PDV : ");
+	mlx_string_put(game->mlx, game->win, 900, 20, 0xFF0000, "Nbr PDV : ");
 	mlx_string_put(game->mlx, game->win, 980, 20, 0xFF0000, ft_itoa(game->hp));
+	mlx_string_put(game->mlx, game->win, 10, 20, 0xFF0000, "Nbr mouvements");
+	mlx_string_put(game->mlx, game->win, 100, 20, 0xFF0000,
+		ft_itoa(game->nb_move / 64));
 	ft_enemy(game);
 	return (0);
 }

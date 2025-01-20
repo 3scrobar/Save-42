@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 16:42:51 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/15 17:09:44 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/01/20 15:00:04 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void	ft_security_check(t_all *all)
 			/ all->tile_size)] == 'E' && all->collectible == 0)
 	{
 		mlx_destroy_window(all->mlx, all->win);
+		ft_free_map(all);
 		ft_printf("You Win in %d move\n", all->nb_move / 64);
 		exit(0);
 	}
