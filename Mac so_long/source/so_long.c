@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/15 16:59:25 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/01/20 14:10:56 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ft_game_loop(t_all *game)
 	ft_enemy(game);
 	return (0);
 }
-//ceci est un test
+
 void	ft_if_gameloop(t_all *game)
 {
 	if (game->xvelocity < 0)
