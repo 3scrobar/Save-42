@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/20 14:10:56 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/01/20 14:39:46 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int ac, char **av)
 	mlx_hook(game.win, 17, 1L << 17, ft_close, &game);
 	mlx_hook(game.win, 2, 1L << 0, ft_handle_key_press, &game);
 	mlx_hook(game.win, 3, 1L << 1, ft_handle_key_release, &game);
-	mlx_loop_hook(game.mlx, ft_game_loop, &game);
+	mlx_loop_hook(game.mlx, ft_fps, &game);
 	mlx_loop(game.mlx);
 	return (0);
 }

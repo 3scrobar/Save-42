@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: groot <groot@student.42.fr>                +#+  +:+       +#+         #
+#    By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/03 14:34:47 by tle-saut          #+#    #+#              #
-#    Updated: 2024/12/22 16:15:03 by groot            ###   ########.fr        #
+#    Updated: 2025/01/20 14:40:54 by tle-saut         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = cc
 
 CFLAGS = -Wall -Werror -Wextra -g
 
-SRC = so_long.c utils.c move.c init.c draw.c colision.c check.c enemy.c
+SRC = so_long.c utils.c move.c init.c draw.c colision.c check.c enemy.c utils2.c
 
 OBJ = $(SRC:%.c=$(OBJDIR)%.o)
 OBJDIR = object/
