@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 16:43:02 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/16 14:33:31 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/01/20 16:13:35 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,10 @@ void	ft_velocity_apply(t_all *all)
 		all->xvelocity += SPEED;
 	if (all->mvleft == 1 && ft_colision_left(all) == 0)
 		all->xvelocity -= SPEED;
-	all->nb_move += all->xvelocity / 64;
+	if (all->xvelocity > 0)
+		all->nb_move += all->xvelocity;
+	if (all->xvelocity < 0)
+		all->nb_move -= all->xvelocity;
 	all->xstart += all->xvelocity;
 	all->ystart += all->yvelocity;
 }

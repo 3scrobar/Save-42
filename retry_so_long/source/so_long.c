@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/20 14:52:47 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/01/20 16:11:18 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,6 @@ void	ft_if_gameloop(t_all *game)
 int	ft_close(t_all *game)
 {
 	mlx_destroy_window(game->mlx, game->win);
+	ft_free_map(game);
 	exit(0);
 }
