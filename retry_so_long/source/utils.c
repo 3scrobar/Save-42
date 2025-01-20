@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
+/*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 16:43:02 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/20 14:59:42 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/01/20 17:12:24 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	ft_free_map(t_all *all)
 	int	i;
 
 	i = 0;
-	while (all->map[i])
+	while (i <= all->line)
 	{
 		free(all->map[i]);
 	}

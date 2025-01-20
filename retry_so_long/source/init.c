@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
+/*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 16:39:19 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/20 16:08:46 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/01/20 16:18:36 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ int	ft_total_check(int ac, t_all *game, char **av, t_all *cpy)
 		return (ft_putstr_fd("Error from Path\n", 2), 1);
 	game->xvelocity = 0;
 	game->yvelocity = 0;
-	ft_free_map(&cpy);
 	return (ft_printf("Everything is Good, Launch the Game ...\n", 0), 0);
 }
 

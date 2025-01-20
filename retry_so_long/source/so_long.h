@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
+/*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/20 14:59:36 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/01/20 17:07:42 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,5 +109,6 @@ void	ft_if_draw(t_all *all, int y, int x);
 void	ft_if_gameloop(t_all *game);
 int		ft_fps(t_all *all);
 void	ft_free_map(t_all *map);
+void	ft_actualise_image(t_all *all);
 
 #endif

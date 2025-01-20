@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
+/*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 14:35:59 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/20 16:07:32 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/01/20 17:03:47 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,3 +26,16 @@ int	ft_fps(t_all *all)
 	return (0);
 }
 
+void	ft_actualise_image(t_all *all)
+{
+	mlx_destroy_image(all->mlx, all->imgcollectible);
+	mlx_destroy_image(all->mlx, all->imgenemyleft);
+	mlx_destroy_image(all->mlx, all->imgenemyright);
+	mlx_destroy_image(all->mlx, all->imgexit);
+	mlx_destroy_image(all->mlx, all->imgfont);
+	mlx_destroy_image(all->mlx, all->imgplayercenter);
+	mlx_destroy_image(all->mlx, all->imgplayerleft);
+	mlx_destroy_image(all->mlx, all->imgplayerright);
+	mlx_destroy_image(all->mlx, all->imgwall);
+	ft_init_img(all);
+}

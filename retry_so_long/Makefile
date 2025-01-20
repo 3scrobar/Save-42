@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+         #
+#    By: toto <toto@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/03 14:34:47 by tle-saut          #+#    #+#              #
-#    Updated: 2025/01/20 14:40:54 by tle-saut         ###   ########.fr        #
+#    Updated: 2025/01/20 16:15:48 by toto             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ OBJDIR = object/
 SRCDIR = source/
 
 MLX_NAME = libmlx.a
-MLX_FLAGS = -L./minilibx-linux -lmlx -L/usr/lib -I./minilibx-linux -lXext -lX11 -lm -lz
+MLX_FLAGS = -L./minilibx-linux -lmlx -L/usr/lib -I./minilibx-linux -lXext -lX11 -lm
 MLX_DIR = ./mlx/
 
 LIBSX = $(addprefix $(MLX_DIR),$(MLX_NAME))
