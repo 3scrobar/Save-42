@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/20 19:20:15 by toto             ###   ########.fr       */
+/*   Updated: 2025/01/22 18:20:43 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,21 @@
 int	main(int ac, char **av)
 {
 	t_all	game;
-	char **map;
+	char **mapcpy;
 
-	map = NULL;
-	if (ft_total_check(ac, &game, av, map) != 0 || game.mlx == NULL)
+	mapcpy = NULL;
+	game.mlx = mlx_init();
+	if (ft_total_check(ac, &game, av, mapcpy) != 0 || game.mlx == NULL)
 		return (free(game.mlx), 1);
 	ft_printf("Check for the flood\n");
-	game.mlx = mlx_init();
 	if (ft_init_img(&game) != 0)
-		return (ft_close(&game, 2), ft_putstr_fd("Error\n", 2), 1);
+		return (free(game.mlx), ft_putstr_fd("Error\n", 2), 1);
 	game.win = mlx_new_window(game.mlx, game.column * 64,
 			(game.line + 1) * 64, "so_long");
 	game.xstart = game.xstart * game.tile_size;
 	game.ystart = game.ystart * game.tile_size;
 	ft_init_var(&game);
-	mlx_hook(game.win, 17, 1L << 17, ft_close, &game);
+	//mlx_hook(game.win, 17, 1L << 17, ft_close_game, &game);
 	mlx_hook(game.win, 2, 1L << 0, ft_handle_key_press, &game);
 	mlx_hook(game.win, 3, 1L << 1, ft_handle_key_release, &game);
 	mlx_loop_hook(game.mlx, ft_fps, &game);
@@ -39,7 +39,8 @@ int	main(int ac, char **av)
 
 int	ft_game_loop(t_all *game)
 {
-	ft_actualise_image(game, 0);
+	game->nbx64_move = ft_itoa(game->hp / 64);
+	game->lf = ft_itoa(game->hp);
 	mlx_clear_window(game->mlx, game->win);
 	draw_map(game);
 	ft_if_gameloop(game);
@@ -47,10 +48,10 @@ int	ft_game_loop(t_all *game)
 	ft_collision_check(game);
 	ft_security_check(game);
 	mlx_string_put(game->mlx, game->win, 900, 20, 0xFF0000, "Nbr PDV : ");
-	mlx_string_put(game->mlx, game->win, 980, 20, 0xFF0000, ft_itoa(game->hp));
+	mlx_string_put(game->mlx, game->win, 980, 20, 0xFF0000, game->lf);
 	mlx_string_put(game->mlx, game->win, 10, 20, 0xFF0000, "Nbr mouvements");
 	mlx_string_put(game->mlx, game->win, 100, 20, 0xFF0000,
-		ft_itoa(game->nb_move / 64));
+		game->nbx64_move);
 	ft_enemy(game);
 	return (0);
 }
@@ -74,26 +75,6 @@ void	ft_if_gameloop(t_all *game)
 			game->xenemy, game->yenemy);
 	if (game->hp == 0)
 		{
-			ft_close(game, 3);
+			ft_close_game(game);
 		}
-}
-
-int	ft_close(t_all *game, int nb)
-{
-	if (nb == 3)
-		{
-			ft_actualise_image(game, 1);
-			mlx_destroy_window(game->mlx, game->win);
-			free(game->mlx);
-			ft_free_map(game);
-		}
-	if (nb == 1)
-		{
-			if (game->map == NULL)
-				ft_free_map(game);
-			free(game->mlx);
-		}
-	if (nb == 2)
-		free(game->mlx);
-	exit(0);
 }

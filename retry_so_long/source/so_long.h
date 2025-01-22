@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/20 19:09:36 by toto             ###   ########.fr       */
+/*   Updated: 2025/01/22 18:18:50 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include "../libft/source/libft.h"
-# include "../mlx/mlx.h"
+# include "../minilibx-linux/mlx.h"
+# include "../minilibx-linux/mlx_int.h"
 
 # define RIGHT 100
 # define LEFT 97
@@ -36,6 +37,7 @@ typedef struct s_all
 	void	*mlx;
 	void	*win;
 	char	**map;
+	char	**mapcpy;
 	int		line;
 	int		column;
 	size_t	player;
@@ -67,13 +69,15 @@ typedef struct s_all
 	int		destroyenemy;
 	int		hp;
 	int		counttimer;
+	char	*nbx64_move;
+	char	*lf;
 }				t_all;
 
 int		ft_tablen(char	**tab);
 int		ft_give_all_nbpoint(t_all *map);
 int		ft_check_square(t_all *map);
 int		ft_give_start_pos(t_all *game);
-char	**ft_flood_path(char **map, size_t y, size_t x);
+char	**ft_flood_path(char **map, int y, int x, t_all *all);
 int		ft_check_after_flood(char **map);
 char	**ft_init_tab(int fd);
 int		ft_init_map(t_all *map, char *path);
@@ -109,9 +113,10 @@ void	ft_if_draw(t_all *all, int y, int x);
 void	ft_if_gameloop(t_all *game);
 int		ft_fps(t_all *all);
 void	ft_free_map(t_all *map);
-void	ft_actualise_image(t_all *all, int exit);
+void	ft_free_image(t_all *all);
 char	**ft_copy_map(char **map, char *path);
 void	ft_free_tab(char **tab);
-
+void	ft_count_move(t_all *all);
+int		ft_close_game(t_all *all);
 
 #endif

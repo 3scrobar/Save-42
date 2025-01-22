@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
+/*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 16:49:30 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/15 16:52:13 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/01/22 18:20:17 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	ft_handle_key_press(int keycode, t_all *all)
 	}
 	if (keycode == 53 || keycode == 65307)
 	{
-		mlx_destroy_window(all->mlx, all->win);
+		ft_close_game(all);
 		exit(0);
 	}
 	if (keycode == UP && ft_colision_up(all) == 0 && all->is_jumpimg < 2)

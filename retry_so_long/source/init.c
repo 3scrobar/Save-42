@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 16:39:19 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/20 19:21:19 by toto             ###   ########.fr       */
+/*   Updated: 2025/01/22 18:07:13 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,14 @@ char	**ft_init_tab(int fd)
 	char	*line;
 
 	line = NULL;
+	tab = NULL;
+	a = 0;
 	while (1)
 	{
 		a = read(fd, buffer, BUFFER_SIZE);
 		if (a < 1)
 			break ;
+		buffer[a] = '\0';
 		if (line == NULL)
 			line = ft_strdup(buffer);
 		else
@@ -42,12 +45,13 @@ int	ft_init_map(t_all *map, char *path)
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 		return (ft_putstr_fd("Error from file reading\n", 2), 1);
-	map->map = ft_init_tab(fd);
+	map->map = NULL;
 	map->player = 0;
 	map->exit = 0;
 	map->collectible = 0;
 	map->column = 0;
 	map->line = 0;
+	map->map = ft_init_tab(fd);
 	close(fd);
 	return (0);
 }
@@ -68,7 +72,8 @@ int	ft_total_check(int ac, t_all *game, char **av, char **map)
 		return (ft_putstr_fd("No Collectible\n", 2), 1);
 	ft_give_start_pos(game);
 	map = ft_copy_map(map, av[1]);
-	if (ft_check_after_flood(ft_flood_path(map, game->ystart, game->xstart)) != 0)
+	if (ft_check_after_flood(ft_flood_path(map, game->ystart, game->xstart,
+			game)) != 0)
 		return (ft_putstr_fd("Error from Path\n", 2), 1);
 	game->xvelocity = 0;
 	game->yvelocity = 0;
@@ -107,6 +112,7 @@ int	ft_give_all_nbpoint(t_all *map)
 
 int	ft_give_start_pos(t_all *game)
 {
+	game->ystart = 0;
 	while (game->map[game->ystart])
 	{
 		game->xstart = 0;

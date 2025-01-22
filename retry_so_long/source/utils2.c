@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 14:35:59 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/20 18:54:04 by toto             ###   ########.fr       */
+/*   Updated: 2025/01/22 18:08:24 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,26 @@ int	ft_fps(t_all *all)
 	return (0);
 }
 
-void	ft_actualise_image(t_all *all, int exit)
+void	ft_free_image(t_all *all)
 {
-	mlx_destroy_image(all->mlx, all->imgcollectible);
-	mlx_destroy_image(all->mlx, all->imgenemyleft);
-	mlx_destroy_image(all->mlx, all->imgenemyright);
-	mlx_destroy_image(all->mlx, all->imgexit);
-	mlx_destroy_image(all->mlx, all->imgfont);
-	mlx_destroy_image(all->mlx, all->imgplayercenter);
-	mlx_destroy_image(all->mlx, all->imgplayerleft);
-	mlx_destroy_image(all->mlx, all->imgplayerright);
-	mlx_destroy_image(all->mlx, all->imgwall);
-	if (exit == 0)
-		ft_init_img(all);
+	if(all->imgcollectible != NULL)
+		mlx_destroy_image(all->mlx, all->imgcollectible);
+	if(all->imgenemyleft != NULL)
+		mlx_destroy_image(all->mlx, all->imgenemyleft);
+	if(all->imgenemyright != NULL)
+		mlx_destroy_image(all->mlx, all->imgenemyright);
+	if(all->imgexit != NULL)
+		mlx_destroy_image(all->mlx, all->imgexit);
+	if(all->imgfont != NULL)
+		mlx_destroy_image(all->mlx, all->imgfont);
+	if(all->imgplayercenter != NULL)
+		mlx_destroy_image(all->mlx, all->imgplayercenter);
+	if(all->imgplayerleft != NULL)
+		mlx_destroy_image(all->mlx, all->imgplayerleft);
+	if(all->imgplayerright != NULL)
+		mlx_destroy_image(all->mlx, all->imgplayerright);
+	if(all->imgwall != NULL)
+		mlx_destroy_image(all->mlx, all->imgwall);
 }
 
 char **	ft_copy_map(char **map, char *path)
@@ -48,6 +55,7 @@ char **	ft_copy_map(char **map, char *path)
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 		return (ft_putstr_fd("Error from file reading\n", 2), NULL);
+	map = NULL;
 	map = ft_init_tab(fd);
 	close(fd);
 	return (map);
@@ -55,11 +63,25 @@ char **	ft_copy_map(char **map, char *path)
 void	ft_free_tab(char **tab)
 {
 	int	i;
+	int	len;
 
 	i = 0;
-	while (i <= ft_tablen(tab))
+	len = ft_tablen(tab);
+	while (i <= len)
 	{
 		free(tab[i]);
+		i++;
 	}
 	free(tab);
+}
+void	ft_count_move(t_all *all)
+{
+	if (all->xvelocity < 0)
+		all->nb_move -= all->xvelocity;
+	if (all->xvelocity > 0)
+		all->nb_move += all->xvelocity;
+	if (all->yvelocity < 0)
+		all->nb_move -= all->yvelocity;
+	if (all->yvelocity > 0)
+		all->nb_move += all->yvelocity;
 }

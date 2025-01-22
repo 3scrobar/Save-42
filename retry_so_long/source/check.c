@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 16:42:51 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/20 17:16:58 by toto             ###   ########.fr       */
+/*   Updated: 2025/01/22 18:18:20 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ int	ft_check_after_flood(char **map)
 		{
 			if (map[i][j] != '1')
 				return (ft_putstr_fd("Path is invalid\n", 2), 1);
+			printf("%c",map[i][j]);
 			j++;
 		}
+		printf("\n");
 		i++;
 	}
 	return (0);
@@ -83,9 +85,20 @@ void	ft_security_check(t_all *all)
 	if (all->map[((all->ystart) / all->tile_size)][((all->xstart + 32)
 			/ all->tile_size)] == 'E' && all->collectible == 0)
 	{
-		mlx_destroy_window(all->mlx, all->win);
-		ft_free_map(all);
+		ft_close_game(all);
 		ft_printf("You Win in %d move\n", all->nb_move / 64);
 		exit(0);
 	}
+}
+
+int	ft_close_game(t_all *all)
+{
+	mlx_destroy_window(all->mlx, all->win);
+	ft_free_image(all);
+	mlx_destroy_display(all->mlx);
+	free(all->mlx);
+	ft_free_tab(all->map);
+	free(all->lf);
+	free(all->nbx64_move);
+	exit(0);
 }

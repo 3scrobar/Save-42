@@ -6,22 +6,33 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 16:43:02 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/20 18:30:13 by toto             ###   ########.fr       */
+/*   Updated: 2025/01/22 17:29:21 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../source/so_long.h"
 
-char	**ft_flood_path(char **map, size_t ystart, size_t xstart)
+char	**ft_flood_path(char **map, int ystart, int xstart, t_all *all)
 {
 	if (map[ystart][xstart] == '1')
 		return (0);
-	if (map[ystart][xstart] != '1')
-		map[ystart][xstart] = '1';
-	ft_flood_path(map, ystart + 1, xstart);
-	ft_flood_path(map, ystart - 1, xstart);
-	ft_flood_path(map, ystart, xstart + 1);
-	ft_flood_path(map, ystart, xstart - 1);
+	map[ystart][xstart] = '1';
+	all->line = ft_tablen(map);
+	all->column = ft_strlen(map[0]);
+
+    if (ystart + 1 < all->line && map[ystart + 1][xstart] != '1')
+    	ft_flood_path(map, ystart + 1, xstart, all);
+
+    if (ystart - 1 > 0 && map[ystart - 1][xstart] != '1')
+    	ft_flood_path(map, ystart - 1, xstart, all);
+
+    if (xstart + 1 < all->column - 1 && map[ystart][xstart + 1] != '1')
+    	ft_flood_path(map, ystart, xstart + 1, all);
+
+    if (xstart - 1 > 0 && map[ystart][xstart - 1] != '1')
+		ft_flood_path(map, ystart, xstart - 1, all);
+
+	
 	return (map);
 }
 
@@ -72,10 +83,7 @@ void	ft_velocity_apply(t_all *all)
 		all->xvelocity += SPEED;
 	if (all->mvleft == 1 && ft_colision_left(all) == 0)
 		all->xvelocity -= SPEED;
-	if (all->xvelocity < 0)
-		all->nb_move -= all->xvelocity;
-	if (all->xvelocity > 0)
-		all->nb_move += all->xvelocity;
+	ft_count_move(all);
 	all->xstart += all->xvelocity;
 	all->ystart += all->yvelocity;
 }
