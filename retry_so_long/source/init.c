@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 16:39:19 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/22 18:07:13 by toto             ###   ########.fr       */
+/*   Updated: 2025/01/23 14:39:36 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@ int	ft_init_map(t_all *map, char *path)
 	map->column = 0;
 	map->line = 0;
 	map->map = ft_init_tab(fd);
+	map->isfree = 0;
+	map->nbx64_move = NULL;
+	map->lf = NULL;
 	close(fd);
 	return (0);
 }

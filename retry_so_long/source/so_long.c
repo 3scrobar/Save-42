@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/22 18:20:43 by toto             ###   ########.fr       */
+/*   Updated: 2025/01/23 14:40:05 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int ac, char **av)
 	game.xstart = game.xstart * game.tile_size;
 	game.ystart = game.ystart * game.tile_size;
 	ft_init_var(&game);
-	//mlx_hook(game.win, 17, 1L << 17, ft_close_game, &game);
+	mlx_hook(game.win, 17, 1L << 17, ft_close_game, &game);
 	mlx_hook(game.win, 2, 1L << 0, ft_handle_key_press, &game);
 	mlx_hook(game.win, 3, 1L << 1, ft_handle_key_release, &game);
 	mlx_loop_hook(game.mlx, ft_fps, &game);
@@ -39,6 +39,10 @@ int	main(int ac, char **av)
 
 int	ft_game_loop(t_all *game)
 {
+	if (game->nbx64_move != NULL)
+		free(game->nbx64_move);
+	if (game->lf != NULL)
+		free(game->lf);
 	game->nbx64_move = ft_itoa(game->hp / 64);
 	game->lf = ft_itoa(game->hp);
 	mlx_clear_window(game->mlx, game->win);

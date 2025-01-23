@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 14:35:59 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/22 18:08:24 by toto             ###   ########.fr       */
+/*   Updated: 2025/01/23 16:34:45 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ void	ft_free_image(t_all *all)
 {
 	if(all->imgcollectible != NULL)
 		mlx_destroy_image(all->mlx, all->imgcollectible);
-	if(all->imgenemyleft != NULL)
-		mlx_destroy_image(all->mlx, all->imgenemyleft);
-	if(all->imgenemyright != NULL)
+	if(all->imgenemyleft != NULL && all->destroyenemy == 0)
+			mlx_destroy_image(all->mlx, all->imgenemyleft);
+	if(all->imgenemyright != NULL && all->destroyenemy == 0)
 		mlx_destroy_image(all->mlx, all->imgenemyright);
 	if(all->imgexit != NULL)
 		mlx_destroy_image(all->mlx, all->imgexit);
@@ -46,6 +46,8 @@ void	ft_free_image(t_all *all)
 		mlx_destroy_image(all->mlx, all->imgplayerright);
 	if(all->imgwall != NULL)
 		mlx_destroy_image(all->mlx, all->imgwall);
+	if(all->exitcover != NULL)
+		mlx_destroy_image(all->mlx, all->exitcover);
 }
 
 char **	ft_copy_map(char **map, char *path)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   enemy.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
+/*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 16:45:16 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/15 16:51:43 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/01/22 18:38:27 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,13 @@ void	ft_enemy_patrol(t_all *all)
 }
 
 void	ft_enemy(t_all *all)
-{
-	ft_enemy_patrol(all);
-	ft_col_enemy(all);
-	ft_manage_enemy(all);
+{	
+	if (all->destroyenemy == 0)
+	{
+		ft_enemy_patrol(all);
+		ft_col_enemy(all);
+		ft_manage_enemy(all);
+	}
 }
 
 void	ft_manage_enemy(t_all *all)

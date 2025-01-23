@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/22 18:18:50 by toto             ###   ########.fr       */
+/*   Updated: 2025/01/22 18:36:23 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ typedef struct s_all
 	int		counttimer;
 	char	*nbx64_move;
 	char	*lf;
+	int		isfree;
 }				t_all;
 
 int		ft_tablen(char	**tab);
