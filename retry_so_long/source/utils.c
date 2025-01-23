@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 16:43:02 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/22 17:29:21 by toto             ###   ########.fr       */
+/*   Updated: 2025/01/23 17:45:24 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,14 @@ char	**ft_flood_path(char **map, int ystart, int xstart, t_all *all)
 	map[ystart][xstart] = '1';
 	all->line = ft_tablen(map);
 	all->column = ft_strlen(map[0]);
-
-    if (ystart + 1 < all->line && map[ystart + 1][xstart] != '1')
-    	ft_flood_path(map, ystart + 1, xstart, all);
-
-    if (ystart - 1 > 0 && map[ystart - 1][xstart] != '1')
-    	ft_flood_path(map, ystart - 1, xstart, all);
-
-    if (xstart + 1 < all->column - 1 && map[ystart][xstart + 1] != '1')
-    	ft_flood_path(map, ystart, xstart + 1, all);
-
-    if (xstart - 1 > 0 && map[ystart][xstart - 1] != '1')
+	if (ystart + 1 < all->line && map[ystart + 1][xstart] != '1')
+		ft_flood_path(map, ystart + 1, xstart, all);
+	if (ystart - 1 > 0 && map[ystart - 1][xstart] != '1')
+		ft_flood_path(map, ystart - 1, xstart, all);
+	if (xstart + 1 < all->column - 1 && map[ystart][xstart + 1] != '1')
+		ft_flood_path(map, ystart, xstart + 1, all);
+	if (xstart - 1 > 0 && map[ystart][xstart - 1] != '1')
 		ft_flood_path(map, ystart, xstart - 1, all);
-
-	
 	return (map);
 }
 
@@ -50,7 +44,6 @@ void	ft_init_var(t_all *game)
 {
 	game->mvleft = 0;
 	game->mvright = 0;
-	game->ystart = 0;
 	game->is_jumpimg = 0;
 	game->nb_move = 0;
 	game->mvleft = 0;

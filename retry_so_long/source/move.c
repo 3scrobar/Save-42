@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 16:49:30 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/22 18:20:17 by toto             ###   ########.fr       */
+/*   Updated: 2025/01/23 18:04:12 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,14 @@ int	ft_handle_key_press(int keycode, t_all *all)
 		ft_close_game(all);
 		exit(0);
 	}
-	if (keycode == UP && ft_colision_up(all) == 0 && all->is_jumpimg < 2)
+	if (keycode == UP && ft_colision_up(all) == 0
+		&& (all->is_jumpimg < 2 || all->cheat == 1))
 	{
 		all->yvelocity = -40;
 		all->is_jumpimg += 1;
 	}
-	ft_printf("Keycode : %d\n", keycode);
+	if (keycode == 32)
+		all->cheat = 1;
 	return (0);
 }
 
@@ -65,5 +67,7 @@ int	ft_handle_key_release(int keycode, t_all *all)
 	{
 		all->mvleft = 0;
 	}
+	if (keycode == 32 && all->cheat == 1)
+		all->cheat = 0;
 	return (0);
 }

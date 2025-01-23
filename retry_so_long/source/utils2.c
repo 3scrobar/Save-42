@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 14:35:59 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/23 16:34:45 by toto             ###   ########.fr       */
+/*   Updated: 2025/01/23 17:18:54 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 int	ft_fps(t_all *all)
 {
-	if (all->counttimer >= 1000)
-		{
-			ft_game_loop(all);
-			all->counttimer = 0;
-		}
-	else if (all->counttimer < 1000)
+	if (all->counttimer >= 1500)
+	{
+		ft_game_loop(all);
+		all->counttimer = 0;
+	}
+	else if (all->counttimer < 1500)
 	{
 		all->counttimer++;
 	}
@@ -28,29 +28,29 @@ int	ft_fps(t_all *all)
 
 void	ft_free_image(t_all *all)
 {
-	if(all->imgcollectible != NULL)
+	if (all->imgcollectible != NULL)
 		mlx_destroy_image(all->mlx, all->imgcollectible);
-	if(all->imgenemyleft != NULL && all->destroyenemy == 0)
-			mlx_destroy_image(all->mlx, all->imgenemyleft);
-	if(all->imgenemyright != NULL && all->destroyenemy == 0)
+	if (all->imgenemyleft != NULL && all->destroyenemy == 0)
+		mlx_destroy_image(all->mlx, all->imgenemyleft);
+	if (all->imgenemyright != NULL && all->destroyenemy == 0)
 		mlx_destroy_image(all->mlx, all->imgenemyright);
-	if(all->imgexit != NULL)
+	if (all->imgexit != NULL)
 		mlx_destroy_image(all->mlx, all->imgexit);
-	if(all->imgfont != NULL)
+	if (all->imgfont != NULL)
 		mlx_destroy_image(all->mlx, all->imgfont);
-	if(all->imgplayercenter != NULL)
+	if (all->imgplayercenter != NULL)
 		mlx_destroy_image(all->mlx, all->imgplayercenter);
-	if(all->imgplayerleft != NULL)
+	if (all->imgplayerleft != NULL)
 		mlx_destroy_image(all->mlx, all->imgplayerleft);
-	if(all->imgplayerright != NULL)
+	if (all->imgplayerright != NULL)
 		mlx_destroy_image(all->mlx, all->imgplayerright);
-	if(all->imgwall != NULL)
+	if (all->imgwall != NULL)
 		mlx_destroy_image(all->mlx, all->imgwall);
-	if(all->exitcover != NULL)
+	if (all->exitcover != NULL)
 		mlx_destroy_image(all->mlx, all->exitcover);
 }
 
-char **	ft_copy_map(char **map, char *path)
+char	**ft_copy_map(char **map, char *path)
 {
 	int		fd;
 
@@ -62,6 +62,7 @@ char **	ft_copy_map(char **map, char *path)
 	close(fd);
 	return (map);
 }
+
 void	ft_free_tab(char **tab)
 {
 	int	i;
@@ -76,6 +77,7 @@ void	ft_free_tab(char **tab)
 	}
 	free(tab);
 }
+
 void	ft_count_move(t_all *all)
 {
 	if (all->xvelocity < 0)

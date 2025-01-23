@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 16:42:51 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/22 18:18:20 by toto             ###   ########.fr       */
+/*   Updated: 2025/01/23 17:59:47 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	ft_check_after_flood(char **map)
 		{
 			if (map[i][j] != '1')
 				return (ft_putstr_fd("Path is invalid\n", 2), 1);
-			printf("%c",map[i][j]);
 			j++;
 		}
 		printf("\n");
@@ -85,8 +84,8 @@ void	ft_security_check(t_all *all)
 	if (all->map[((all->ystart) / all->tile_size)][((all->xstart + 32)
 			/ all->tile_size)] == 'E' && all->collectible == 0)
 	{
-		ft_close_game(all);
 		ft_printf("You Win in %d move\n", all->nb_move / 64);
+		ft_close_game(all);
 		exit(0);
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:52 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/22 18:36:23 by toto             ###   ########.fr       */
+/*   Updated: 2025/01/23 17:55:21 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ typedef struct s_all
 	char	*nbx64_move;
 	char	*lf;
 	int		isfree;
+	int		cheat;
+	int		timerprint;
 }				t_all;
 
 int		ft_tablen(char	**tab);
@@ -119,5 +121,6 @@ char	**ft_copy_map(char **map, char *path);
 void	ft_free_tab(char **tab);
 void	ft_count_move(t_all *all);
 int		ft_close_game(t_all *all);
+void	ft_print_nummv(t_all *all);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   enemy.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 16:45:16 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/22 18:38:27 by toto             ###   ########.fr       */
+/*   Updated: 2025/01/23 17:37:05 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 void	ft_enemy_patrol(t_all *all)
 {
 	if (all->enemyvelocity < 0 && all->map[(all->yenemy - 32)
-			/ 64][((all->xenemy) / 64) - 1] == '1')
-		all->enemyvelocity = 2;
+			/ 64][((all->xenemy) / 64)] == '1')
+		all->enemyvelocity = 4;
 	if (all->enemyvelocity > 0 && all->map[(all->yenemy - 32)
-			/ 64][((all->xenemy) / 64) + 1] == '1')
-		all->enemyvelocity = -2;
+			/ 64][((all->xenemy + 65) / 64)] == '1')
+		all->enemyvelocity = -4;
 	all->xenemy += all->enemyvelocity;
 }
 
 void	ft_enemy(t_all *all)
-{	
+{
 	if (all->destroyenemy == 0)
 	{
 		ft_enemy_patrol(all);
@@ -35,14 +35,14 @@ void	ft_enemy(t_all *all)
 
 void	ft_manage_enemy(t_all *all)
 {
-	all->xenemy += all->enemyvelocity;
 	if (all->xstart + 64 >= all->xenemy
 		&& all->xstart <= all->xenemy + 64
 		&& all->ystart + 64 >= all->yenemy + 64)
 	{
 		all->hp -= 1;
-		all->xstart = 64;
-		all->ystart = 64;
+		ft_give_start_pos(all);
+		all->xstart *= 64;
+		all->ystart *= 64;
 	}
 }
 
