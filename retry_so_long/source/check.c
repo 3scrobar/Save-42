@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 16:42:51 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/23 17:59:47 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/01/23 18:12:58 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_check_after_flood(char **map)
 		while (map[i][j])
 		{
 			if (map[i][j] != '1')
-				return (ft_putstr_fd("Path is invalid\n", 2), 1);
+				return (ft_putstr_fd("Error\nPath is invalid\n", 2), 1);
 			j++;
 		}
 		printf("\n");
@@ -41,14 +41,14 @@ int	ft_check_border(t_all *map)
 	while (i < map->column)
 	{
 		if (map->map[0][i] != '1' || map->map[map->line][i] != '1')
-			return (ft_putstr_fd("Error from map border\n", 2), 1);
+			return (ft_putstr_fd("Error\nfrom map border\n", 2), 1);
 		i++;
 	}
 	i = 0;
 	while (i <= map->line)
 	{
 		if (map->map[i][0] != '1' || map->map[i][map->column - 1] != '1')
-			return (ft_putstr_fd("Error from map border\n", 2), 1);
+			return (ft_putstr_fd("Error\nfrom map border\n", 2), 1);
 		i++;
 	}
 	return (0);
@@ -66,7 +66,7 @@ int	ft_check_square(t_all *map)
 		while (map->map[i][j])
 			j++;
 		if (j != map->column)
-			return (ft_putstr_fd("Line as not the same size\n", 2), 1);
+			return (ft_putstr_fd("Error\nLine as not the same size\n", 2), 1);
 		i++;
 	}
 	return (0);

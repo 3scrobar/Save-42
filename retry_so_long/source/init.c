@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 16:39:19 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/23 17:40:50 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/01/23 18:13:56 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,22 +62,22 @@ int	ft_init_map(t_all *map, char *path)
 int	ft_total_check(int ac, t_all *game, char **av, char **map)
 {
 	if (ac != 2)
-		return (ft_putstr_fd("Wrong Arguments\n", 2), 1);
+		return (ft_putstr_fd("Error\nWrong Arguments\n", 2), 1);
 	if (ft_init_map(game, av[1]) != 0)
-		return (ft_putstr_fd("Problem from Map init\n", 2), 1);
+		return (ft_putstr_fd("Error\nProblem from Map init\n", 2), 1);
 	if (ft_give_all_nbpoint(game) != 0 || ft_check_square(game) != 0)
 		return (ft_putstr_fd("Error from map design\n", 2), 1);
 	if (game->player != 1)
-		return (ft_putstr_fd("Problem from Start POS\n", 2), 1);
+		return (ft_putstr_fd("Error\nProblem from Start POS\n", 2), 1);
 	if (game->exit != 1)
-		return (ft_putstr_fd("Problem from Exit POS\n", 2), 1);
+		return (ft_putstr_fd("Error\nProblem from Exit POS\n", 2), 1);
 	if (game->collectible == 0)
-		return (ft_putstr_fd("No Collectible\n", 2), 1);
+		return (ft_putstr_fd("Error\nNo Collectible\n", 2), 1);
 	ft_give_start_pos(game);
 	map = ft_copy_map(map, av[1]);
 	if (ft_check_after_flood(ft_flood_path(map, game->ystart, game->xstart,
 				game)) != 0)
-		return (ft_putstr_fd("Error from Path\n", 2), 1);
+		return (ft_putstr_fd("Error\nfrom Path\n", 2), 1);
 	game->xvelocity = 0;
 	game->yvelocity = 0;
 	game->cheat = 0;

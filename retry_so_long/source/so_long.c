@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:34:49 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/23 18:03:48 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/01/23 18:13:13 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	main(int ac, char **av)
 	game.mlx = mlx_init();
 	if (ft_total_check(ac, &game, av, mapcpy) != 0 || game.mlx == NULL)
 		return (free(game.mlx), 1);
-	ft_printf("Check for the flood\n");
 	if (ft_init_img(&game) != 0)
 		return (free(game.mlx), ft_putstr_fd("Error\n", 2), 1);
 	game.win = mlx_new_window(game.mlx, game.column * 64,
