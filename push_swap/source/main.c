@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 14:54:07 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/24 17:12:48 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/01/24 22:26:14 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ int	main(int ac, char **av)
 	t_list lsta;
 	t_list lstb;
 
-	(void)lstb;
+	lsta.content = NULL;
+	lsta.next = NULL;
+	lstb.content = NULL;
+	lstb.next = NULL;
 	if (ac != 2)
 		ft_putstr_fd("Error from argument\n",2);
 	check_args(av[1]);
@@ -43,7 +46,6 @@ int	check_args(char *str)
 }
 int	give_nb(char *str, t_list *lst)
 {
-	t_list *tmp;
 	int i;
 
 	while (*str)
@@ -53,11 +55,9 @@ int	give_nb(char *str, t_list *lst)
 			else
 			{
 				i = ft_atoi(str);
-				tmp = ft_lstnew(&i);
-				ft_lstadd_back(&lst, tmp);
-				while (*str && *str != ' ')
-					str++;
+				ft_lstadd_back(&lst, ft_lstnew(&i));
 			}
+			str++;
 		}
 	return (0);
 }
