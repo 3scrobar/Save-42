@@ -1,38 +1,51 @@
-NAME = so_long
+# Nom de l'exécutable
+NAME = push_swap
+
+# Compilateur et flags
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g
 
-#************************************SOURCE***********************************#
-SRC = main.c
-
-#************************************OBJET************************************#
-OBJ = $(SRC:%.c=$(OBJDIR)%.o)
-OBJDIR = object/
+# Répertoires
 SRCDIR = source/
+OBJDIR = object/
+LIBDIR = libft/
 
-#************************************COMPIL***********************************#
-$(OBJDIR):
-	mkdir -p $(OBJDIR)
+# Fichiers source et objets
+SRC = main.c
+OBJ = $(addprefix $(OBJDIR), $(SRC:.c=.o))
 
-$(NAME): libft/libft.a $(OBJDIR) $(OBJ)
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) libft/libft.a
-
-#************************************RULES************************************#
-
-libft/libft.a:
-	@make -C libft
-
+# Règle principale
 all: $(NAME)
 
+# Création de l'exécutable
+$(NAME): libft/libft.a $(OBJDIR) $(OBJ)
+	@echo "Compiling $(NAME)..."
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) libft/libft.a
+	@echo "$(NAME) compiled successfully!"
+
+# Création des fichiers objets
 $(OBJDIR)%.o: $(SRCDIR)%.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	@mkdir -p $(OBJDIR)
+	@echo "Compiling $<..."
+	@$(CC) $(CFLAGS) -c $< -o $@
 
+# Compilation de la libft
+libft/libft.a:
+	@echo "Building libft..."
+	@make -C $(LIBDIR)
+
+# Nettoyage des fichiers objets
 clean:
-	rm -f $(OBJ)
+	@echo "Cleaning object files..."
+	@rm -fr $(OBJDIR)
 
+# Nettoyage complet
 fclean: clean
-	rm -f $(NAME)
+	@echo "Removing $(NAME)..."
+	@rm -f $(NAME)
 
+# Récompilation complète
 re: fclean all
 
+# Déclaration des règles comme "phony"
 .PHONY: all clean fclean re

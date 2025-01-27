@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 14:54:07 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/27 19:19:40 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/01/27 19:41:22 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ int	main(int ac, char **av)
 	listb = NULL;
 	if (ac != 2)
 		return (ft_putstr_fd("Error from argument\n",2), 1);
-	check_args(av[1], lista);
+	check_args(av[1], &lista);
 	ra(&lista);
 	lstiter(lista, ft_printfnumb);
 	
 	return (0);
 }
-int	check_args(char *str, p_swap *lst)
+int	check_args(char *str, p_swap **lst)
 {
 	long int	i;
 
@@ -41,9 +41,9 @@ int	check_args(char *str, p_swap *lst)
 				i = atoi_long(str);
 				if (i > INT_MAX || i < INT_MIN)
 					return (ft_putstr_fd("Error int\n",2),1);
-				if(lstcomp(lst, i) != 0)
+				if(lstcomp(*lst, i) != 0)
 					return (ft_putstr_fd("Error dup\n", 2), 1);
-				lstadd_back(&lst, lstnew((int)i));
+				lstadd_back(lst, lstnew((int)i));
 			}
 			
 		 while (*str && *str != ' ')
@@ -51,21 +51,20 @@ int	check_args(char *str, p_swap *lst)
 		if (*str != '\0')
 			str++;
 	}
-	lstiter(lst, ft_printfnumb);
-	
+	lstiter(*lst, ft_printfnumb);
 	return (0);
 }
 
 void	ra(p_swap **lst)
 {
 	p_swap *temp;
-	
+
 	ft_printf("%d\n", (*lst)->value);
 	temp = *lst;
-	ft_printf("%d", temp->value);
+	*lst = (*lst)->chain;
 	temp->chain = NULL;
 	lstadd_back(lst, temp);
-	*lst = (*lst)->chain;
+	ft_printf("%d\n", (*lst)->value);
 }
 
 void	lstadd_back(p_swap **lst, p_swap *new)
