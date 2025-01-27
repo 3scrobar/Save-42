@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 14:54:07 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/27 19:41:22 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/01/27 19:46:52 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,10 @@ void	ra(p_swap **lst)
 {
 	p_swap *temp;
 
-	ft_printf("%d\n", (*lst)->value);
 	temp = *lst;
 	*lst = (*lst)->chain;
 	temp->chain = NULL;
 	lstadd_back(lst, temp);
-	ft_printf("%d\n", (*lst)->value);
 }
 
 void	lstadd_back(p_swap **lst, p_swap *new)
