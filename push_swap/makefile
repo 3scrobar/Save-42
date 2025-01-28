@@ -11,23 +11,26 @@ OBJDIR = object/
 LIBDIR = libft/
 
 # Fichiers source et objets
-SRC = main.c
+SRC = main.c utils_1.c lst_1.c lst_2.c rotate.c swap.c push.c reverse_rotate.c
 OBJ = $(addprefix $(OBJDIR), $(SRC:.c=.o))
 
 # Règle principale
 all: $(NAME)
 
 # Création de l'exécutable
-$(NAME): libft/libft.a $(OBJDIR) $(OBJ)
+$(NAME): libft/libft.a $(OBJ)
 	@echo "Compiling $(NAME)..."
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) libft/libft.a
 	@echo "$(NAME) compiled successfully!"
 
 # Création des fichiers objets
-$(OBJDIR)%.o: $(SRCDIR)%.c
-	@mkdir -p $(OBJDIR)
+$(OBJDIR)%.o: $(SRCDIR)%.c | $(OBJDIR)
 	@echo "Compiling $<..."
 	@$(CC) $(CFLAGS) -c $< -o $@
+
+# Création du répertoire pour les fichiers objets
+$(OBJDIR):
+	@mkdir -p $(OBJDIR)
 
 # Compilation de la libft
 libft/libft.a:
@@ -37,7 +40,7 @@ libft/libft.a:
 # Nettoyage des fichiers objets
 clean:
 	@echo "Cleaning object files..."
-	@rm -fr $(OBJDIR)
+	@rm -rf $(OBJDIR)
 
 # Nettoyage complet
 fclean: clean
