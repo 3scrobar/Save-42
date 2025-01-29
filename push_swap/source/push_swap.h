@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
+/*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 14:55:42 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/29 13:59:39 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/01/29 15:22:01 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_all
 	int		count;
 	int		min;
 	int		max;
+    int     sorted;
 }				t_all;
 /*****************************************************************************/
 /*******************************FUNCTION**************************************/
@@ -48,17 +49,21 @@ void		lstclear(p_swap **lst, void (*del)(int));
 void		lstadd_front(p_swap **lst, p_swap *new);
 void		lstadd_back(p_swap **lst, p_swap *new);
 /*------------------------------UTILS----------------------------------------*/
-int			check_args(char **str, p_swap **lst);
-long int	atoi_long(const char *nptr);
+long int	atoi_long(const char *nptr, int j);
 int			lstcomp(p_swap *lst, int nbr);
 int			ft_printfnumb_nl(int n);
 void		print_lst(t_all *all);
 /*------------------------------CHECK----------------------------------------*/
 int			check_sorted(t_all *all);
 void		count_all(t_all *all);
-int			check_args(char **str, p_swap **lst);
-int		while_check_args(p_swap **lst, int i, int j, char **str);
+int			check_args(char **str, p_swap **lst, int ac);
+int		    while_check_args(p_swap **lst, int i, char **str);
+int         while_check_args_string(p_swap **lst, int i, int j, char **str);
+int         is_valid_args(char *str);
+
 /*------------------------------ALGO----------------------------------------*/
+int			check_sort(t_all *all);
+int			check_list_sort(p_swap *lst);
 void		sort_two(t_all *all);
 void		sort_three(t_all *all);
 /*------------------------------SWAP----------------------------------------*/

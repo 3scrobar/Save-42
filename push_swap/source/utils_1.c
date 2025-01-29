@@ -3,36 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   utils_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
+/*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 12:38:21 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/28 13:04:12 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/01/29 15:13:30 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long int	atoi_long(const char *nptr)
+long int	atoi_long(const char *nptr, int j)
 {
-	int			i;
 	int			neg;
 	long int	c;
 
-	i = 0;
 	c = 0;
 	neg = 1;
-	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
-		i++;
-	if (nptr[i] == '-' || nptr[i] == '+')
+	while (nptr[j] == ' ' || (nptr[j] >= 9 && nptr[j] <= 13))
+		j++;
+	if (nptr[j] == '-' || nptr[j] == '+')
 	{
-		if (nptr[i] == '-')
+		if (nptr[j] == '-')
 			neg = -1;
-		i++;
+		j++;
 	}
-	while (nptr[i] >= '0' && nptr[i] <= '9')
+	while (nptr[j] >= '0' && nptr[j] <= '9')
 	{
-		c = (c * 10) + (nptr[i] - '0');
-		i++;
+		c = (c * 10) + (nptr[j] - '0');
+		j++;
 	}
 	return (c * neg);
 }
@@ -62,4 +60,12 @@ int	ft_printfnumb_nl(int n)
 	}
     ft_printf("\n");
 	return (cpt);
+}
+
+void	print_lst(t_all *all)
+{
+	ft_printf("Liste A\n");
+	lstiter(all->lsta, ft_printfnumb_nl);
+	ft_printf("Liste B\n");
+	lstiter(all->lstb, ft_printfnumb_nl);
 }
