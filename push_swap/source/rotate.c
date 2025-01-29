@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 12:41:54 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/28 22:59:40 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/01/29 13:42:38 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,21 @@ void	rotate(p_swap **lst)
 	lstadd_back(lst, temp);
 }
 
+//move up lista
 void    ra(t_all *all)
 {
     rotate(&all->lsta);
     ft_printf("ra\n");
 }
 
+//move up lisb
 void    rb(t_all *all)
 {
     rotate(&all->lstb);
     ft_printf("rb\n");
 }
 
+//move up lista & listb
 void rr(t_all *all)
 {
     rotate(&all->lsta);

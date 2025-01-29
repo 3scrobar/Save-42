@@ -11,7 +11,7 @@ OBJDIR = object/
 LIBDIR = libft/
 
 # Fichiers source et objets
-SRC = main.c utils_1.c lst_1.c lst_2.c rotate.c swap.c push.c reverse_rotate.c
+SRC = main.c utils_1.c lst_1.c lst_2.c rotate.c swap.c push.c reverse_rotate.c algo.c check.c
 OBJ = $(addprefix $(OBJDIR), $(SRC:.c=.o))
 
 # Règle principale

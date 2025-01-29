@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:10:11 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/28 23:01:33 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/01/29 13:41:38 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,16 @@ void    push(p_swap **lst1, p_swap **lst2)
 	*lst2 = temp;
 }
 
+//push b -> a
 void	pa(t_all *all)
 {
 	push(&all->lstb, &all->lsta);
 	ft_printf("pa\n");
 }
 
+//push a -> b
 void	pb(t_all *all)
 {
 	push(&all->lsta, &all->lstb);
 	ft_printf("pb\n");
-}
-
-void	pp(t_all *all)
-{
-	push(&all->lsta, &all->lstb);
-	push(&all->lstb, &all->lsta);
-	ft_printf("pp\n");
 }

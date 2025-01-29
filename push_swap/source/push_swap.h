@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 14:55:42 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/28 13:49:06 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/01/29 13:59:39 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ typedef struct s_all
 {
 	p_swap	*lsta;
 	p_swap	*lstb;
+	int		count;
+	int		min;
+	int		max;
 }				t_all;
 /*****************************************************************************/
 /*******************************FUNCTION**************************************/
@@ -49,6 +52,15 @@ int			check_args(char **str, p_swap **lst);
 long int	atoi_long(const char *nptr);
 int			lstcomp(p_swap *lst, int nbr);
 int			ft_printfnumb_nl(int n);
+void		print_lst(t_all *all);
+/*------------------------------CHECK----------------------------------------*/
+int			check_sorted(t_all *all);
+void		count_all(t_all *all);
+int			check_args(char **str, p_swap **lst);
+int		while_check_args(p_swap **lst, int i, int j, char **str);
+/*------------------------------ALGO----------------------------------------*/
+void		sort_two(t_all *all);
+void		sort_three(t_all *all);
 /*------------------------------SWAP----------------------------------------*/
 void    	swap(p_swap **lst);
 void		sa(t_all *all);
@@ -58,7 +70,6 @@ void		ss(t_all *all);
 void    	push(p_swap **lst1, p_swap **lst2);
 void		pa(t_all *all);
 void		pb(t_all *all);
-void		pp(t_all *all);
 
 /*------------------------------ROTATE--------------------------------------*/
 void		rotate(p_swap **lst);

@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 12:38:00 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/28 12:40:13 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:03:08 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,14 @@ p_swap	*lstnew(int value)
 
 int	lstcomp(p_swap *lst, int nbr)
 {
-	while (lst != NULL)
+    p_swap *temp;
+    
+    temp = lst;
+	while (temp != NULL)
 	{
-		if(nbr == lst->value)
+		if(nbr == temp->value)
 			return(1);
-		lst = lst->chain;
+		temp = temp->chain;
 	}
 	return (0);
 }

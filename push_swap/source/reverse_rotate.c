@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:15:56 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/28 23:00:20 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/01/29 13:43:14 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,21 @@ void reverse_rotate(p_swap **lst)
 	*lst = last;
 }
 
+//move down lista
 void	rra(t_all *all)
 {
 	reverse_rotate(&all->lsta);
 	ft_printf("rra\n");
 }
 
+//move down listb
 void	rrb(t_all *all)
 {
 	reverse_rotate(&all->lstb);
 	ft_printf("rrb\n");
 }
 
+//move down lista & listb
 void	rrr(t_all *all)
 {
 	reverse_rotate(&all->lsta);
