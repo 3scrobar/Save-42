@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:45:13 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/29 15:10:32 by toto             ###   ########.fr       */
+/*   Updated: 2025/01/30 16:10:15 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int    check_sorted(t_all *all)
     temp = all->lsta;
     while (temp->chain)
     {
-        if (temp->value > temp->chain->value)
+        if (temp->value > temp->chain->value && count_all_lstb(all, 0) == 1)
             return(0);
         temp = temp->chain;
     }
@@ -27,7 +27,7 @@ int    check_sorted(t_all *all)
     return(1);
 }
 
-void    count_all(t_all *all)
+int    count_all_lsta(t_all *all, int a)
 {
     p_swap *temp;
 
@@ -35,15 +35,42 @@ void    count_all(t_all *all)
     all->min = 0;
     all->max = 0;
     all->sorted = 0;
-    while (temp)
-    {
-        if (temp->value < all->min)
-            all->min = temp->value;
-        if (temp->value > all->max)
-            all->max = temp->value;
-        temp = temp->chain;
-    }
-    all->count = lstsize(all->lsta);
+    if (a == 1)
+        {
+            while (temp)
+            {
+                if (temp->value < all->min)
+                    all->min = temp->value;
+                if (temp->value > all->max)
+                    all->max = temp->value;
+                temp = temp->chain;
+            }
+        }
+    all->counta = lstsize(all->lsta);
+    return (all->counta);
+}
+
+int    count_all_lstb(t_all *all, int a)
+{
+    p_swap *temp;
+
+    temp = all->lstb;
+    all->min = 0;
+    all->max = 0;
+    all->sorted = 0;
+    if (a == 1)
+        {
+            while (temp)
+            {
+                if (temp->value < all->min)
+                    all->min = temp->value;
+                if (temp->value > all->max)
+                    all->max = temp->value;
+                temp = temp->chain;
+            }
+        }
+    all->countb = lstsize(all->lstb);
+    return (all->countb);
 }
 
 int	check_args(char **str, p_swap **lst, int ac)

@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 14:54:07 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/29 15:35:43 by toto             ###   ########.fr       */
+/*   Updated: 2025/01/30 18:02:13 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,22 @@ int	main(int ac, char **av)
 	if (check_args(av, &all.lsta, ac) != 0)
 		return (ft_putstr_fd("Error from check_args\n",2), 1);
 	count_all(&all);
-	print_lst(&all);
-	ft_printf("\n %d \n\n",all.count);
 	check_sort(&all);
-	print_lst(&all);
-	
 	return (0);
 }
 
 int	check_sort(t_all *all)
 {
-	if (check_list_sort(all->lsta) == 0 && all->count == 2)
-		sort_two(all);
-	while (check_list_sort(all->lsta) == 0 && all->count == 3)
-		sort_three(all);
+	while (check_list_sort(all->lsta) != 1)
+		{
+			count_all_lsta(all, 1);
+			if (check_list_sort(all->lsta) == 0 && all->counta == 2)
+				sort_two(all);
+			while (check_list_sort(all->lsta) == 0 && all->counta == 3)
+				sort_three(all);
+			while (check_list_sort(all->lsta) == 0 && all->counta > 3)
+				sort_multiple(all);
+		}
 	
 	return (0);
 }
@@ -53,4 +55,10 @@ int	check_list_sort(p_swap *lst)
 		temp = temp->chain;
 	}
 	return (1);
+}
+
+void	count_all(t_all *all)
+{
+	all->counta = lstsize(all->lsta);
+	all->countb = lstsize(all->lstb);
 }

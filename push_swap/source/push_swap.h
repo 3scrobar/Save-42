@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 14:55:42 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/29 15:22:01 by toto             ###   ########.fr       */
+/*   Updated: 2025/01/30 18:04:04 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ typedef struct s_all
 {
 	p_swap	*lsta;
 	p_swap	*lstb;
-	int		count;
+	int		counta;
+    int		countb;
 	int		min;
 	int		max;
     int     sorted;
@@ -48,14 +49,18 @@ void		lstdelone(p_swap *lst, void (*del)(int));
 void		lstclear(p_swap **lst, void (*del)(int));
 void		lstadd_front(p_swap **lst, p_swap *new);
 void		lstadd_back(p_swap **lst, p_swap *new);
+int         lst_givelast(p_swap *lst);
+
 /*------------------------------UTILS----------------------------------------*/
 long int	atoi_long(const char *nptr, int j);
 int			lstcomp(p_swap *lst, int nbr);
 int			ft_printfnumb_nl(int n);
 void		print_lst(t_all *all);
+void	    count_all(t_all *all);
 /*------------------------------CHECK----------------------------------------*/
 int			check_sorted(t_all *all);
-void		count_all(t_all *all);
+int		    count_all_lsta(t_all *all, int a);
+int         count_all_lstb(t_all *all, int a);
 int			check_args(char **str, p_swap **lst, int ac);
 int		    while_check_args(p_swap **lst, int i, char **str);
 int         while_check_args_string(p_swap **lst, int i, int j, char **str);
@@ -66,6 +71,8 @@ int			check_sort(t_all *all);
 int			check_list_sort(p_swap *lst);
 void		sort_two(t_all *all);
 void		sort_three(t_all *all);
+void        sort_multiple(t_all *all);
+
 /*------------------------------SWAP----------------------------------------*/
 void    	swap(p_swap **lst);
 void		sa(t_all *all);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
+/*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 12:40:22 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/28 12:41:40 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/01/30 18:03:52 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,11 @@ void	lstadd_back(p_swap **lst, p_swap *new)
 	while (new_one->chain != NULL)
 		new_one = new_one->chain;
 	new_one->chain = new;
+}
+
+int lst_givelast(p_swap *lst)
+{
+	while (lst->chain)
+		lst = lst->chain;
+	return (lst->value);
 }
