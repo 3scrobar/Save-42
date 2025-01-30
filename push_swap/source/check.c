@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:45:13 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/30 16:10:15 by toto             ###   ########.fr       */
+/*   Updated: 2025/01/30 18:50:07 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int    check_sorted(t_all *all)
             return(0);
         temp = temp->chain;
     }
-    ft_printf("OK\n");
     return(1);
 }
 
@@ -32,17 +31,18 @@ int    count_all_lsta(t_all *all, int a)
     p_swap *temp;
 
     temp = all->lsta;
-    all->min = 0;
-    all->max = 0;
+    all->mina = 0;
+    all->maxa = 0;
     all->sorted = 0;
+    all->first = 0;
     if (a == 1)
         {
             while (temp)
             {
-                if (temp->value < all->min)
-                    all->min = temp->value;
-                if (temp->value > all->max)
-                    all->max = temp->value;
+                if (temp->value < all->mina)
+                    all->mina = temp->value;
+                if (temp->value > all->maxa)
+                    all->maxa = temp->value;
                 temp = temp->chain;
             }
         }
@@ -55,17 +55,17 @@ int    count_all_lstb(t_all *all, int a)
     p_swap *temp;
 
     temp = all->lstb;
-    all->min = 0;
-    all->max = 0;
+    all->minb = 0;
+    all->maxb = 0;
     all->sorted = 0;
     if (a == 1)
         {
             while (temp)
             {
-                if (temp->value < all->min)
-                    all->min = temp->value;
-                if (temp->value > all->max)
-                    all->max = temp->value;
+                if (temp->value < all->minb)
+                    all->minb = temp->value;
+                if (temp->value > all->maxb)
+                    all->maxb = temp->value;
                 temp = temp->chain;
             }
         }
@@ -89,8 +89,6 @@ int	check_args(char **str, p_swap **lst, int ac)
 	{
 		while_check_args_string(lst, i, j, str);
 	}
-	
-	ft_printf("\n");
 	return (0);
 }
 

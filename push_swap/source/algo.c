@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:37:01 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/30 18:07:33 by toto             ###   ########.fr       */
+/*   Updated: 2025/01/30 18:52:28 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,19 @@ void    sort_three(t_all *all)
 
 void    sort_multiple(t_all *all)
 {
-    while (all->counta > 3)
+    while (all->counta > 3 && all->first == 0)
     {
-        pb(all);
+        push_lstb(all);
         count_all_lsta(all, 1);
+        all->first = 1;
     }
     sort_three(all);
-    count_all_lstb(all, 0);
+    count_all_lstb(all, 1);
     while (all->countb > 0)
     {
-        if (all->lstb->value < all->min)
+        if (all->lstb->value < all->mina)
             pa(all);
-        else if (all->lstb->value < all->max)
+        else if (all->lstb->value < all->maxa)
         {
             pa(all);
             ra(all);
@@ -72,4 +73,31 @@ void    sort_multiple(t_all *all)
     }
     if (count_all_lstb(all, 0) == 1)
         pa(all);
+}
+
+void    push_lstb(t_all *all)
+{
+    if(all->countb == 0)
+        pb(all);
+    count_all_lstb(all, 1);
+    if (all->lsta->value < all->minb)
+        pb(all);
+    else if (all->lsta->value < all->maxb)
+    {
+        pb(all);
+        rb(all);
+    }
+    else if (all->lsta->value > all->lstb->value && all->lsta->value > all->lstb->chain->value)
+        {
+            rb(all);
+            pb(all);
+            rrb(all);
+        }
+    else if (all->lsta->value > all->lstb->value && all->lsta->chain->value > all->lstb->chain->value)
+        {
+            pb(all);
+            sb(all);
+        }
+    else if (count_all_lstb(all, 1) != 1)
+        ra(all);
 }

@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 14:55:42 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/30 18:04:04 by toto             ###   ########.fr       */
+/*   Updated: 2025/01/30 18:52:59 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,12 @@ typedef struct s_all
 	p_swap	*lstb;
 	int		counta;
     int		countb;
-	int		min;
-	int		max;
+	int		mina;
+	int		maxa;
+	int		minb;
+	int		maxb;
     int     sorted;
+	int		first;
 }				t_all;
 /*****************************************************************************/
 /*******************************FUNCTION**************************************/
@@ -57,6 +60,7 @@ int			lstcomp(p_swap *lst, int nbr);
 int			ft_printfnumb_nl(int n);
 void		print_lst(t_all *all);
 void	    count_all(t_all *all);
+void    	push_lstb(t_all *all);
 /*------------------------------CHECK----------------------------------------*/
 int			check_sorted(t_all *all);
 int		    count_all_lsta(t_all *all, int a);

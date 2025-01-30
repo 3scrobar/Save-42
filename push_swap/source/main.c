@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 14:54:07 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/30 18:02:13 by toto             ###   ########.fr       */
+/*   Updated: 2025/01/30 19:03:28 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ int	check_list_sort(p_swap *lst)
 
 	temp = lst;
 	while (temp->chain != NULL)
-	{
-		if (temp->value > temp->chain->value)
-			return (0);
-		temp = temp->chain;
-	}
+		{
+			if (temp->value > temp->chain->value)
+				return (0);
+			temp = temp->chain;
+		}
 	return (1);
 }
 
