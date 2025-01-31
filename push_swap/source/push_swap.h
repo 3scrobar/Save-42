@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 14:55:42 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/30 18:52:59 by toto             ###   ########.fr       */
+/*   Updated: 2025/01/31 13:56:14 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,10 @@ int         is_valid_args(char *str);
 int			check_sort(t_all *all);
 int			check_list_sort(p_swap *lst);
 void		sort_two(t_all *all);
-void		sort_three(t_all *all);
+void		sort_three(p_swap *lst, t_all *all);
 void        sort_multiple(t_all *all);
+void    	sort_three_reverse(p_swap *lst, t_all *all);
+int			check_list_sort_reverse(p_swap *lst);
 
 /*------------------------------SWAP----------------------------------------*/
 void    	swap(p_swap **lst);

@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:37:01 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/30 18:52:28 by toto             ###   ########.fr       */
+/*   Updated: 2025/01/31 14:18:38 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,46 @@ void    sort_two(t_all *all)
         sa(all);
 }
 
-void    sort_three(t_all *all)
+void    sort_three(p_swap *lst, t_all *all)
 {
-    if (all->lsta->value > all->lsta->chain->value && all->lsta->value < all->lsta->chain->chain->value)
-        sa(all);
-    if (all->lsta->value > all->lsta->chain->value && all->lsta->value > all->lsta->chain->chain->value)
+    while (check_list_sort(lst) == 0)
     {
-        sa(all);
-        rra(all);
+        if (lst->value > lst->chain->value && lst->value < lst->chain->chain->value)
+            sa(all);
+        else if (lst->value > lst->chain->value && lst->value > lst->chain->chain->value)
+        {
+            sa(all);
+            rra(all);
+        }
+        else if (lst->value < lst->chain->value && lst->value > lst->chain->chain->value)
+            ra(all);
+        else if (lst->value < lst->chain->value && lst->chain->value > lst->chain->chain->value)
+        {
+            sa(all);
+            ra(all);
+        }
     }
-    if (all->lsta->value < all->lsta->chain->value && all->lsta->value > all->lsta->chain->chain->value)
-        ra(all);
-    if (all->lsta->value < all->lsta->chain->value && all->lsta->chain->value > all->lsta->chain->chain->value)
+    
+}
+
+void    sort_three_reverse(p_swap *lst, t_all *all)
+{
+    while (check_list_sort(lst) == 0)
     {
-        sa(all);
-        ra(all);
+        if (lst->value < lst->chain->value && lst->value > lst->chain->chain->value)
+            sb(all);
+        else if (lst->value < lst->chain->value && lst->value < lst->chain->chain->value)
+        {
+            sb(all);
+            rb(all);
+        }
+        else if (lst->value > lst->chain->value && lst->value < lst->chain->chain->value)
+            rb(all);
+        else if (lst->value > lst->chain->value && lst->chain->value < lst->chain->chain->value)
+        {
+            sb(all);
+            rb(all);
+        }
     }
 }
 
@@ -42,62 +67,56 @@ void    sort_multiple(t_all *all)
     {
         push_lstb(all);
         count_all_lsta(all, 1);
-        all->first = 1;
+        while (all->countb == 3 && check_list_sort_reverse(all->lstb) != 1)
+            sort_three_reverse(all->lstb, all);
     }
-    sort_three(all);
+    while (check_list_sort(all->lsta) == 0)
+        sort_three(all->lsta, all);
     count_all_lstb(all, 1);
     while (all->countb > 0)
     {
-        if (all->lstb->value < all->mina)
-            pa(all);
-        else if (all->lstb->value < all->maxa)
+        if (all->countb == 3 && check_list_sort_reverse(all->lstb) == 0)
+            sort_three_reverse(all->lstb, all);
+        else if (all->lstb->value > lst_givelast(all->lsta))
         {
             pa(all);
             ra(all);
         }
-        else if (all->lstb->value > all->lsta->value && all->lstb->value > all->lsta->chain->value)
+        else if (all->lstb->value < all->lsta->value)
+            pa(all);
+        else if (all->lstb->value < all->lsta->chain->value)
             {
                 ra(all);
                 pa(all);
                 rra(all);
             }
-        else if (all->lstb->value > all->lsta->value && all->lstb->value < all->lsta->chain->value)
+        else
             {
                 pa(all);
-                sa(all);
+                ra(all);
             }
-        else if (count_all_lstb(all, 0) != 1)
-            rb(all);
-        count_all_lstb(all, 0);
-        count_all_lsta(all, 1);
+        count_all_lstb(all,1);
     }
-    if (count_all_lstb(all, 0) == 1)
-        pa(all);
 }
 
 void    push_lstb(t_all *all)
 {
+    count_all_lstb(all, 1);
     if(all->countb == 0)
         pb(all);
-    count_all_lstb(all, 1);
-    if (all->lsta->value < all->minb)
+    else if (all->lsta->value > all->maxb)
         pb(all);
-    else if (all->lsta->value < all->maxb)
+    else if (all->lsta->value < all->minb)
     {
         pb(all);
         rb(all);
     }
-    else if (all->lsta->value > all->lstb->value && all->lsta->value > all->lstb->chain->value)
+    else if (all->lsta->value < lst_givelast(all->lstb))
         {
+            pb(all);
             rb(all);
-            pb(all);
-            rrb(all);
         }
-    else if (all->lsta->value > all->lstb->value && all->lsta->chain->value > all->lstb->chain->value)
-        {
-            pb(all);
-            sb(all);
-        }
-    else if (count_all_lstb(all, 1) != 1)
-        ra(all);
+    else
+        pb(all);
+
 }

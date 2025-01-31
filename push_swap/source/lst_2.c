@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 12:40:22 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/30 18:03:52 by toto             ###   ########.fr       */
+/*   Updated: 2025/01/30 19:16:27 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,10 @@ void	lstadd_back(p_swap **lst, p_swap *new)
 
 int lst_givelast(p_swap *lst)
 {
-	while (lst->chain)
-		lst = lst->chain;
-	return (lst->value);
+	p_swap *temp;
+
+	temp = lst;
+	while (temp->chain)
+		temp = temp->chain;
+	return (temp->value);
 }

@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 14:54:07 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/30 19:03:28 by toto             ###   ########.fr       */
+/*   Updated: 2025/01/31 13:55:59 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	check_sort(t_all *all)
 			if (check_list_sort(all->lsta) == 0 && all->counta == 2)
 				sort_two(all);
 			while (check_list_sort(all->lsta) == 0 && all->counta == 3)
-				sort_three(all);
+				sort_three(all->lsta, all);
 			while (check_list_sort(all->lsta) == 0 && all->counta > 3)
 				sort_multiple(all);
 		}
@@ -51,6 +51,20 @@ int	check_list_sort(p_swap *lst)
 	while (temp->chain != NULL)
 		{
 			if (temp->value > temp->chain->value)
+				return (0);
+			temp = temp->chain;
+		}
+	return (1);
+}
+
+int	check_list_sort_reverse(p_swap *lst)
+{
+	p_swap *temp;
+
+	temp = lst;
+	while (temp->chain != NULL)
+		{
+			if (temp->value < temp->chain->value)
 				return (0);
 			temp = temp->chain;
 		}
