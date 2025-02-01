@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:37:01 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/31 14:18:38 by toto             ###   ########.fr       */
+/*   Updated: 2025/02/01 12:24:41 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,9 @@ void    sort_three_reverse(p_swap *lst, t_all *all)
 
 void    sort_multiple(t_all *all)
 {
+    int i;
+
+    i = 0;
     while (all->counta > 3 && all->first == 0)
     {
         push_lstb(all);
@@ -90,6 +93,19 @@ void    sort_multiple(t_all *all)
                 pa(all);
                 rra(all);
             }
+        else if (check_list_sort_reverse(all->lstb) == 1 )
+        {
+            while (i <= count_all_lstb(all, 1))
+            {
+                    pa(all);
+                    i++;
+            }
+            while (i >= 0)
+                {
+                    ra(all);
+                    i--;
+                }
+        }
         else
             {
                 pa(all);
