@@ -3,26 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
+/*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:06:43 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/29 13:40:39 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:20:21 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    swap(p_swap **lst)
+void swap(p_swap **lst)
 {
     p_swap *temp;
 
     if (*lst == NULL || (*lst)->chain == NULL)
-        return ;
-    temp = *lst;
-    *lst = (*lst)->chain;
-    temp->chain = (*lst)->chain;
-    (*lst)->chain = temp;
+        return;
+
+    temp = (*lst)->chain;   // temp devient le second élément
+    if ((*lst)->chain != NULL)
+        (*lst)->chain->chain = temp->chain;  // Le premier élément pointe vers le troisième
+    temp->chain = *lst;     // Le second élément pointe vers le premier
+    *lst = temp;            // Mise à jour de la tête de liste
 }
+
+
+
 
 //switch 1-2 lista
 void    sa(t_all *all)

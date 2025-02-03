@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:45:13 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/30 18:50:07 by toto             ###   ########.fr       */
+/*   Updated: 2025/02/03 15:05:21 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int    count_all_lsta(t_all *all, int a)
     all->mina = 0;
     all->maxa = 0;
     all->sorted = 0;
-    all->first = 0;
+    all->first = 1;
     if (a == 1)
         {
             while (temp)
