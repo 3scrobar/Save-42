@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:45:13 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/02/03 15:05:21 by toto             ###   ########.fr       */
+/*   Updated: 2025/02/04 17:22:44 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int    check_sorted(t_all *all)
 {
-    p_swap *temp;
+    t_swap *temp;
 
     temp = all->lsta;
     while (temp->chain)
@@ -28,7 +28,7 @@ int    check_sorted(t_all *all)
 
 int    count_all_lsta(t_all *all, int a)
 {
-    p_swap *temp;
+    t_swap *temp;
 
     temp = all->lsta;
     all->mina = 0;
@@ -52,7 +52,7 @@ int    count_all_lsta(t_all *all, int a)
 
 int    count_all_lstb(t_all *all, int a)
 {
-    p_swap *temp;
+    t_swap *temp;
 
     temp = all->lstb;
     all->minb = 0;
@@ -73,7 +73,7 @@ int    count_all_lstb(t_all *all, int a)
     return (all->countb);
 }
 
-int	check_args(char **str, p_swap **lst, int ac)
+int	check_args(char **str, t_swap **lst, int ac)
 {
 	int	i;
 	int	j;
@@ -92,7 +92,7 @@ int	check_args(char **str, p_swap **lst, int ac)
 	return (0);
 }
 
-int    while_check_args_string(p_swap **lst, int i, int j, char **str)
+int    while_check_args_string(t_swap **lst, int i, int j, char **str)
 {
     long int nb;
 
@@ -117,7 +117,7 @@ int    while_check_args_string(p_swap **lst, int i, int j, char **str)
     return(0);
 }
 
-int    while_check_args(p_swap **lst, int i, char **str)
+int    while_check_args(t_swap **lst, int i, char **str)
 {
     long int nb;
 

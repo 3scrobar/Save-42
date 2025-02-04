@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 12:38:21 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/29 15:13:30 by toto             ###   ########.fr       */
+/*   Updated: 2025/02/03 16:39:26 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	ft_printfnumb_nl(int n)
 		n = (n % 10) + 48;
 		cpt += write(1, &n, 1);
 	}
-    ft_printf("\n");
+    ft_printf(" ");
 	return (cpt);
 }
 
@@ -66,6 +66,7 @@ void	print_lst(t_all *all)
 {
 	ft_printf("Liste A\n");
 	lstiter(all->lsta, ft_printfnumb_nl);
-	ft_printf("Liste B\n");
+	ft_printf("\nListe B\n");
 	lstiter(all->lstb, ft_printfnumb_nl);
+	ft_printf("\n");
 }

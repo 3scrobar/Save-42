@@ -6,13 +6,13 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 12:40:22 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/30 19:16:27 by toto             ###   ########.fr       */
+/*   Updated: 2025/02/04 17:23:06 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	lstiter(p_swap *lst, int (*f)(int))
+void	lstiter(t_swap *lst, int (*f)(int))
 {
 	while (lst != NULL)
 	{
@@ -21,7 +21,7 @@ void	lstiter(p_swap *lst, int (*f)(int))
 	}
 }
 
-void	lstdelone(p_swap *lst, void (*del)(int))
+void	lstdelone(t_swap *lst, void (*del)(int))
 {
 	if (lst == NULL)
 		return ;
@@ -29,9 +29,9 @@ void	lstdelone(p_swap *lst, void (*del)(int))
 	free(lst);
 }
 
-void	lstclear(p_swap **lst, void (*del)(int))
+void	lstclear(t_swap **lst, void (*del)(int))
 {
-	p_swap	*temp;
+	t_swap	*temp;
 
 	while (*lst != NULL)
 	{
@@ -41,15 +41,15 @@ void	lstclear(p_swap **lst, void (*del)(int))
 	}
 }
 
-void	lstadd_front(p_swap **lst, p_swap *new)
+void	lstadd_front(t_swap **lst, t_swap *new)
 {
 	new->chain = *lst;
 	*lst = new;
 }
 
-void	lstadd_back(p_swap **lst, p_swap *new)
+void	lstadd_back(t_swap **lst, t_swap *new)
 {
-	p_swap	*new_one;
+	t_swap	*new_one;
 
 	if (*lst == NULL)
 	{
@@ -62,9 +62,9 @@ void	lstadd_back(p_swap **lst, p_swap *new)
 	new_one->chain = new;
 }
 
-int lst_givelast(p_swap *lst)
+int lst_givelast(t_swap *lst)
 {
-	p_swap *temp;
+	t_swap *temp;
 
 	temp = lst;
 	while (temp->chain)

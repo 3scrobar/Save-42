@@ -6,24 +6,22 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:06:43 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/02/03 16:20:21 by toto             ###   ########.fr       */
+/*   Updated: 2025/02/04 17:24:06 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void swap(p_swap **lst)
+void swap(t_swap **lst)
 {
-    p_swap *temp;
+   int  temp;
 
     if (*lst == NULL || (*lst)->chain == NULL)
         return;
 
-    temp = (*lst)->chain;   // temp devient le second élément
-    if ((*lst)->chain != NULL)
-        (*lst)->chain->chain = temp->chain;  // Le premier élément pointe vers le troisième
-    temp->chain = *lst;     // Le second élément pointe vers le premier
-    *lst = temp;            // Mise à jour de la tête de liste
+    temp = (*lst)->value;
+    (*lst)->value = (*lst)->chain->value;
+    (*lst)->chain->value = temp;
 }
 
 

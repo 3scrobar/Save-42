@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
+/*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 12:41:54 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/01/29 13:42:38 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/02/04 17:23:56 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rotate(p_swap **lst)
+void	rotate(t_swap **lst)
 {
-	p_swap *temp;
+	t_swap *temp;
 
 	temp = *lst;
 	*lst = (*lst)->chain;

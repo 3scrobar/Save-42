@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 14:54:07 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/02/03 15:07:20 by toto             ###   ########.fr       */
+/*   Updated: 2025/02/04 17:23:18 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ int	main(int ac, char **av)
 	if (check_args(av, &all.lsta, ac) != 0)
 		return (ft_putstr_fd("Error from check_args\n",2), 1);
 	count_all(&all);
-	check_sort(&all);
+	print_lst(&all);
+	sa(&all);
+	print_lst(&all);
 	return (0);
 }
 
@@ -44,9 +46,9 @@ int	check_sort(t_all *all)
 	return (0);
 }
 
-int	check_list_sort(p_swap *lst)
+int	check_list_sort(t_swap *lst)
 {
-	p_swap *temp;
+	t_swap *temp;
 
 	if (lst == NULL)
 		return (1);
@@ -60,9 +62,9 @@ int	check_list_sort(p_swap *lst)
 	return (1);
 }
 
-int	check_list_sort_reverse(p_swap *lst)
+int	check_list_sort_reverse(t_swap *lst)
 {
-	p_swap *temp;
+	t_swap *temp;
 
 	temp = lst;
 	while (temp->chain != NULL)
