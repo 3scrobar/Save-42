@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 14:54:07 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/02/04 17:23:18 by toto             ###   ########.fr       */
+/*   Updated: 2025/02/13 17:26:39 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,27 +24,12 @@ int	main(int ac, char **av)
 	if (check_args(av, &all.lsta, ac) != 0)
 		return (ft_putstr_fd("Error from check_args\n",2), 1);
 	count_all(&all);
-	print_lst(&all);
-	sa(&all);
-	print_lst(&all);
+	while (check_sorted_lsta(&all) == 0)
+		algo(&all);
+	//print_lst(&all);
 	return (0);
 }
 
-int	check_sort(t_all *all)
-{
-	count_all_lsta(all, 1);
-	while (check_list_sort(all->lsta) != 1 || all->countb != 0)
-		{
-			if (check_list_sort(all->lsta) == 0 && all->counta == 2)
-				sort_two(all);
-			while (check_list_sort(all->lsta) == 0 && all->counta == 3)
-				sort_three(all->lsta, all);
-			while (check_list_sort(all->lsta) == 0 && all->counta > 3)
-				sort_multiple(all);
-		}
-	
-	return (0);
-}
 
 int	check_list_sort(t_swap *lst)
 {

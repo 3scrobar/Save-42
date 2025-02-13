@@ -55,13 +55,23 @@ void		lstclear(t_swap **lst, void (*del)(int));
 void		lstadd_front(t_swap **lst, t_swap *new);
 void		lstadd_back(t_swap **lst, t_swap *new);
 int			lst_givelast(t_swap *lst);
+int    		lst_give_bef_last(t_swap *lst);
+
 /*------------------------------UTILS----------------------------------------*/
 long int	atoi_long(const char *nptr, int j);
 int			ft_printfnumb_nl(int n);
 void		print_lst(t_all *all);
+void    push_back_a(t_all *all);
+
 /*------------------------------SORT-----------------------------------------*/
-void    sort_three_lsta(t_swap *lst);
-void    sort_three_lstb(t_swap *lst);
+void    sort_three_lsta(t_all *all);
+void    sort_three_lstb(t_all *all);
+void    sort_two(t_all *lst);
+
+/*------------------------------ALGO-----------------------------------------*/
+void    algo(t_all *all);
+void    push_b(t_all *all);
+
 /*------------------------------PUSH-----------------------------------------*/
 void		push(t_swap **lst1, t_swap **lst2);
 void		pa(t_all *all);
@@ -82,13 +92,17 @@ void		sa(t_all *all);
 void		sb(t_all *all);
 void		ss(t_all *all);
 /*---------------------------CHECK-------------------------------------------*/
-int			check_sorted(t_all *all);
 int			count_all_lsta(t_all *all, int a);
 int			count_all_lstb(t_all *all, int a);
 int			check_args(char **str, t_swap **lst, int ac);
 int			while_check_args_string(t_swap **lst, int i, int j, char **str);
 int			while_check_args(t_swap **lst, int i, char **str);
 int 		is_valid_args(char *str);
+int			check_list_sort(t_swap *lst);
+int			check_list_sort_reverse(t_swap *lst);
+void		count_all(t_all *all);
+int			check_sorted_lsta(t_all *all);
+int			check_sorted_lstb(t_all *all);
 
 
 

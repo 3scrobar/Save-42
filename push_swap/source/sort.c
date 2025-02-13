@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
+/*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:33:46 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/02/04 17:33:48 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/02/13 18:05:28 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,42 +14,56 @@
 
 #include "push_swap.h"
 
-void    sort_two(t_swap *lst)
+void    sort_two(t_all *all)
 {
-    if (lst->value > lst->chain->value)
-        sa(lst);
+    if (all->lsta->value > all->lsta->chain->value)
+        sa(all);
 }
 
-void    sort_three_lsta(t_swap *lst)
+void    sort_three_lsta(t_all *all)
 {
     int first;
     int second;
     int third;
 
-    first = lst->value;
-    second = lst->chain->value;
-    third = lst->chain->chain->value;
+    first = all->lsta->value;
+    second = all->lsta->chain->value;
+    third = all->lsta->chain->chain->value;
     if (first > second && first > third)
-        ra(lst);
+        ra(all);
     else if (first < second && first > third)
-        rra(lst);
+        rra(all);
+    else if (first > second && first < third)
+        sa(all);
     else if (first < second && first < third && second > third)
-        sa(lst);
+        ra(all);
+    else if (first > second && first < third && second < third)
+        sa(all);
+
+
 }
 
-void    sort_three_lstb(t_swap *lst)
+void    sort_three_lstb(t_all *all)
 {
     int first;
     int second;
     int third;
 
-    first = lst->value;
-    second = lst->chain->value;
-    third = lst->chain->chain->value;
-    if (first > second && first > third)
-        rb(lst);
-    else if (first < second && first > third)
-        rrb(lst);
-    else if (first < second && first < third && second > third)
-        sb(lst);
+    first = all->lstb->value;
+    second = all->lstb->chain->value;
+    third = all->lstb->chain->chain->value;
+    if (first > second && first > third && second < third)
+        {
+            rrb(all);
+            sb(all);
+        }
+    else if (first < second && first > third && second > third)
+            sb(all);
+    else if (first > second && first < third && second < third)
+        rrb(all);
+    else if (first < second && second < third)
+        {
+            rb(all);
+            sb(all);
+        }
 }

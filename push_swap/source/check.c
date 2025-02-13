@@ -6,20 +6,34 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:45:13 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/02/04 17:22:44 by toto             ###   ########.fr       */
+/*   Updated: 2025/02/04 18:03:59 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int    check_sorted(t_all *all)
+int    check_sorted_lsta(t_all *all)
 {
     t_swap *temp;
 
     temp = all->lsta;
     while (temp->chain)
     {
-        if (temp->value > temp->chain->value && count_all_lstb(all, 0) == 1)
+        if (temp->value > temp->chain->value)
+            return(0);
+        temp = temp->chain;
+    }
+    return(1);
+}
+
+int    check_sorted_lstb(t_all *all)
+{
+    t_swap *temp;
+
+    temp = all->lstb;
+    while (temp->chain)
+    {
+        if (temp->value > temp->chain->value)
             return(0);
         temp = temp->chain;
     }
