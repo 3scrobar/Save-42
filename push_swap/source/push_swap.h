@@ -71,6 +71,8 @@ void    sort_two(t_all *lst);
 /*------------------------------ALGO-----------------------------------------*/
 void    algo(t_all *all);
 void    push_b(t_all *all);
+void	sort_more(t_all *all);
+int	get_between(t_all *all, int i);
 
 /*------------------------------PUSH-----------------------------------------*/
 void		push(t_swap **lst1, t_swap **lst2);
@@ -100,7 +102,7 @@ int			while_check_args(t_swap **lst, int i, char **str);
 int 		is_valid_args(char *str);
 int			check_list_sort(t_swap *lst);
 int			check_list_sort_reverse(t_swap *lst);
-void		count_all(t_all *all);
+void		count_all(t_all *all, int i);
 int			check_sorted_lsta(t_all *all);
 int			check_sorted_lstb(t_all *all);
 

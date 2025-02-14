@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:33:34 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/02/13 18:11:03 by toto             ###   ########.fr       */
+/*   Updated: 2025/02/14 18:48:54 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,115 +14,138 @@
 
 void    algo(t_all *all)
 {
-	count_all_lsta(all, 1);
-	while (check_sorted_lsta(all) != 1 || all->countb != 0)
-		{
-	        count_all_lsta(all, 1);
-			if (check_sorted_lsta(all) == 0 && all->counta == 2)
-				sort_two(all);
-			while (check_sorted_lsta(all) == 0 && all->counta == 3)
-				sort_three_lsta(all);
-            while (all->counta > 3 && check_sorted_lsta(all) == 0)
-            {
-                push_b(all);
-                count_all_lsta(all, 1);
-                count_all_lstb(all, 1);
-            }
-            while (all->counta == 3 && check_sorted_lsta(all) == 0)
-                sort_three_lsta(all);
-            while (all->countb > 0)
-                {
-                    if (all->lstb->value < all->lsta->value)
-                        pa(all);
-                    else if (all->lstb->value > lst_givelast(all->lsta))
-                        {
-                            pa(all);
-                            ra(all);
-                        }
-                    else if (all->lstb->value < all->lsta->chain->value)
-                        {
-                            pa(all);
-                            sa(all);
-                        }
-                    else if (all->lstb->value > lst_give_bef_last(all->lsta) && all->lstb->value < lst_givelast(all->lsta))
-                        {
-                            rra(all);
-                            pa(all);
-                            ra(all);
-                            ra(all);
-                        }
-                    else
-                            ra(all);
-                    count_all_lstb(all, 1);
-                    count_all_lsta(all, 1);
-                }
-        }
-}
-void    push_b(t_all *all)
-{
-    count_all_lstb(all, 1);
-    count_all_lsta(all, 1);
-    while (all->counta > 3)
-        {
-            if (all->counta == 3 && check_sorted_lsta(all) == 0)
-                sort_three_lsta(all);
-            if (all->countb == 3 && check_sorted_lstb(all) == 0)
-                sort_three_lstb(all);
-            if (all->countb == 0)
-                pb(all);
-            else if (all->lsta->value > all->lstb->value)
-                pb(all);
-            else if (all->lsta->value < lst_givelast(all->lstb))
-                {
-                    pb(all);
-                    rb(all);
-                }
-            else if (all->lsta->value > lst_givelast(all->lstb) && all->lsta->value < lst_give_bef_last(all->lstb))
-                {
-                    rrb(all);
-                    pb(all);
-                    rb(all);
-                    rb(all);
-                }
-            else
-                pb(all);
-            count_all_lstb(all, 1);
-            count_all_lsta(all, 1);
-        }
-    
+	while (check_sorted_lsta(all) == 0)
+	{
+		count_all(all, 1);
+		if (all->counta == 2)
+			sort_two(all);
+		else if (all->counta == 3)
+			sort_three_lsta(all);
+		else if (all->counta > 3)
+			sort_more(all);
+		count_all(all, 1);
+	}
 }
 
-int    lst_give_bef_last(t_swap *lst)
+void	sort_more(t_all *all)
 {
-    t_swap *temp;
+	push_b(all);
+	while (check_sorted_lsta(all) == 0 || all->countb != 0 )
+	{
+		while (all->counta == 3 && check_list_sort(all->lsta) == 0)
+			sort_three_lsta(all);
+		if (check_list_sort(all->lsta) == 1 && all->countb == 0)
+			return;
+		push_back_a(all);
+		if (check_list_sort(all->lsta) == 0)
+			push_b(all);
+		count_all(all, 1);
 
-    temp = lst;
-    while (temp->chain->chain)
-        temp = temp->chain;
-    return (temp->value);
+	}
+
+}
+
+void	push_b(t_all *all)
+{
+	while (all->counta > 3)
+	{
+		if (all->countb == 0)
+			pb(all);
+		count_all(all, 1);
+		if (all->countb == 3 && check_list_sort(all->lstb) == 0)
+			sort_three_lstb(all);
+		else if (all->counta == 3)
+			break;
+		else if(all->lsta->value > lst_givelast(all->lstb))
+			{
+				pb(all);
+				rb(all);
+			}
+		else if (all->lsta->value < all->lstb->value)
+			pb(all);
+		else
+			pb(all);
+		count_all(all, 1);
+	}
 }
 
 void    push_back_a(t_all *all)
-{   
-    int i;
+{
+	int i;
+	int j;
 
-    count_all_lstb(all, 1);
-    i = all->countb - 1;
-    if (all->countb == 0)
-        return ;
-    if (lst_givelast(all->lstb) < all->lsta->value)
-            return ;
-    while (i > 0)
-        {
-            rrb(all);
-            i--;
-        }
-    while (all->countb > 0)
-        {
-            pa(all);
-            count_all_lstb(all, 1);
-        }
-    
+	j = 0;
+	while (all->countb != 0)
+	{
+		if (get_between(all, all->lstb->value) != 0)
+			{
+				i = get_between(all, all->lsta->value) + 1;
+				j = get_between(all, all->lsta->value) + 1;
+				while (i > 0)
+				{
+					ra(all);
+					i--;
+				}
+				pa(all);
+				if (j > all->counta / 2)
+					j = all->counta - j;
+				while (j > 0)
+				{
+					rra(all);
+					j--;
+				}
 
+			}
+		else if (all->lstb->value < all->lsta->value)
+			pa(all);
+		else
+			ra(all);
+		count_all(all, 1);
+	}
+
+}
+
+int	get_index(t_all *all, int i)
+{
+	t_swap *temp;
+	int j;
+
+	j = 0;
+	temp = all->lsta;
+	while (temp)
+	{
+		if (temp->value == i)
+			return (j);
+		j++;
+		temp = temp->chain;
+	}
+	return (0);
+}
+
+int	get_between(t_all *all, int i)
+{
+	t_swap *temp;
+	int j;
+
+	j = 0;
+	temp = all->lsta;
+	while (temp && j != all->counta - 1)
+	{
+		if((i > temp->value && i < temp->chain->value )||( i < temp->value && i > temp->chain->value))
+			return (j);
+		j++;
+		temp = temp->chain;
+	}
+	return (0);
+}
+
+int	 lst_give_bef_last(t_swap *lst)
+{
+	t_swap *temp;
+
+	temp = lst;
+	while (temp->chain->chain)
+		temp = temp->chain;
+	return (temp->value);
 }
 
