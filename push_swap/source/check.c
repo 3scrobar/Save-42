@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:45:13 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/02/04 18:03:59 by toto             ###   ########.fr       */
+/*   Updated: 2025/02/15 14:58:35 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ int    count_all_lsta(t_all *all, int a)
     t_swap *temp;
 
     temp = all->lsta;
-    all->mina = 0;
-    all->maxa = 0;
+    all->mina = INT_MAX;
+    all->maxa = INT_MIN;
     all->sorted = 0;
     all->first = 1;
     if (a == 1)
@@ -69,8 +69,8 @@ int    count_all_lstb(t_all *all, int a)
     t_swap *temp;
 
     temp = all->lstb;
-    all->minb = 0;
-    all->maxb = 0;
+    all->minb = INT_MAX;
+    all->maxb = INT_MIN;
     all->sorted = 0;
     if (a == 1)
         {

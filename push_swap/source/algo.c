@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:33:34 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/02/14 18:48:54 by toto             ###   ########.fr       */
+/*   Updated: 2025/02/15 15:08:20 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ void    push_back_a(t_all *all)
 	{
 		if (get_between(all, all->lstb->value) != 0)
 			{
-				i = get_between(all, all->lsta->value) + 1;
-				j = get_between(all, all->lsta->value) + 1;
+				i = get_between(all, all->lstb->value);
+				j = get_between(all, all->lstb->value);
 				while (i > 0)
 				{
 					ra(all);
@@ -88,18 +88,19 @@ void    push_back_a(t_all *all)
 				}
 				pa(all);
 				if (j > all->counta / 2)
-					j = all->counta - j;
-				while (j > 0)
-				{
-					rra(all);
-					j--;
-				}
-
+					while (all->lsta->value != all->mina)
+						ra(all);
+				else 
+					while (all->lsta->value != all->mina)
+						rra(all);
 			}
 		else if (all->lstb->value < all->lsta->value)
 			pa(all);
-		else
-			ra(all);
+		else if (all->lstb->value > lst_givelast(all->lsta))
+			{
+				pa(all);
+				ra(all);
+			}
 		count_all(all, 1);
 	}
 
@@ -132,7 +133,7 @@ int	get_between(t_all *all, int i)
 	while (temp && j != all->counta - 1)
 	{
 		if((i > temp->value && i < temp->chain->value )||( i < temp->value && i > temp->chain->value))
-			return (j);
+			return (j + 1);
 		j++;
 		temp = temp->chain;
 	}
