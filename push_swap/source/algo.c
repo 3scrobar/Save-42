@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:33:34 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/02/15 15:08:20 by toto             ###   ########.fr       */
+/*   Updated: 2025/02/17 16:09:46 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	sort_more(t_all *all)
 
 void	push_b(t_all *all)
 {
-	while (all->counta > 3)
+	while (all->counta > 3 && check_list_sort(all->lsta) == 0)
 	{
 		if (all->countb == 0)
 			pb(all);
@@ -56,13 +56,6 @@ void	push_b(t_all *all)
 			sort_three_lstb(all);
 		else if (all->counta == 3)
 			break;
-		else if(all->lsta->value > lst_givelast(all->lstb))
-			{
-				pb(all);
-				rb(all);
-			}
-		else if (all->lsta->value < all->lstb->value)
-			pb(all);
 		else
 			pb(all);
 		count_all(all, 1);
@@ -75,25 +68,30 @@ void    push_back_a(t_all *all)
 	int j;
 
 	j = 0;
+	count_all(all, 1);
 	while (all->countb != 0)
 	{
-		if (get_between(all, all->lstb->value) != 0)
+		if (all->lstb->value > all->maxa)
+		{
+			pa(all);
+			print_lst(all);
+			printf("%d", all->countb);
+			if(all->lstb)
+				if (all->lstb->value > lst_givelast(all->lsta) && all->lstb->value < all->lsta->value)
+					{
+						pa(all);
+						sa(all);
+					}
+		}
+		else if (get_between(all, all->lstb->value) != 0)
 			{
 				i = get_between(all, all->lstb->value);
 				j = get_between(all, all->lstb->value);
-				while (i > 0)
-				{
-					ra(all);
-					i--;
-				}
+				mv_index(all, i);
 				pa(all);
-				if (j > all->counta / 2)
-					while (all->lsta->value != all->mina)
-						ra(all);
-				else 
-					while (all->lsta->value != all->mina)
-						rra(all);
+
 			}
+
 		else if (all->lstb->value < all->lsta->value)
 			pa(all);
 		else if (all->lstb->value > lst_givelast(all->lsta))
@@ -103,7 +101,37 @@ void    push_back_a(t_all *all)
 			}
 		count_all(all, 1);
 	}
+	while (all->lsta->value != all->mina)
+		{
 
+			if (j > all->counta / 2)
+				while (all->lsta->value != all->mina)
+					ra(all);
+			else 
+				while (all->lsta->value != all->mina)
+					rra(all);
+		}
+}
+
+void	mv_index(t_all *all, int i)
+{
+	if ( i > all->counta / 2)
+		{
+			i /= 2;
+			while (i > 0)
+			{
+				rra(all);
+				i--;
+			}
+		}
+	else
+		while (i > 0)
+		{
+			ra(all);
+			i--;
+		}
+	pa(all);
+	count_all(all, 1);
 }
 
 int	get_index(t_all *all, int i)
