@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 14:54:07 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/02/14 15:33:51 by toto             ###   ########.fr       */
+/*   Updated: 2025/02/17 17:50:25 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@ int	check_list_sort(t_swap *lst)
 
 void	count_all(t_all *all, int i)
 {
+	all->minb = INT_MAX;
+    all->maxb = INT_MIN;
+	all->mina = INT_MAX;
+	all->maxa = INT_MIN;
 	count_all_lsta(all, i);
 	count_all_lstb(all, i);
 }

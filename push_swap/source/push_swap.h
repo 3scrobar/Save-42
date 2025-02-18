@@ -75,6 +75,8 @@ void    push_b(t_all *all);
 void	sort_more(t_all *all);
 int	get_between(t_all *all, int i);
 void	mv_index(t_all *all, int i);
+int	get_index(t_all *all, int i);
+
 
 /*------------------------------PUSH-----------------------------------------*/
 void		push(t_swap **lst1, t_swap **lst2);
