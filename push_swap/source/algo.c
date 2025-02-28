@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 12:21:10 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/02/28 18:08:50 by toto             ###   ########.fr       */
+/*   Updated: 2025/02/28 18:10:11 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,46 +64,47 @@ void	push_back_a(t_all *all)
 		firstb = 0;
 	firsta = all->lsta->value;
 	lasta = lst_givelast(all->lsta);
-	if ((firstb > firsta && firstb < all->lsta->chain->value) || (firstb > lasta && firstb < firsta))
-		{
-			if (firstb > firsta && firstb < all->lsta->chain->value)
-				{
-					pa(all);
-					sa(all);
-				}
-			else
+	if ((firstb > firsta && firstb < all->lsta->chain->value)
+		|| (firstb > lasta && firstb < firsta))
+	{
+		if (firstb > firsta && firstb < all->lsta->chain->value)
+			{
 				pa(all);
-		}
+				sa(all);
+			}
+		else
+			pa(all);
+	}
 	else if (firstb > all->maxa)
-		{
-			i = get_index(all, all->maxa);
-			i++;
-		}
+	{
+		i = get_index(all, all->maxa);
+		i++;
+	}
 	else if (firstb < all->mina)
-		{
-			i = get_index(all, all->mina);
-			if (i == 0)
-				i = -1;
-		}
+	{
+		i = get_index(all, all->mina);
+		if (i == 0)
+			i = -1;
+	}
 	else
-		{
-			i = get_between(all, all->lstb->value);
-			if (i == 0)
-				i = -1;
-		}
+	{
+		i = get_between(all, all->lstb->value);
+		if (i == 0)
+			i = -1;
+	}
 	if (i > all->counta / 2)
-		{
-			i = all->counta - i;
-			while (i--)
-				rra(all);
-			pa(all);
-		}
+	{
+		i = all->counta - i;
+		while (i--)
+			rra(all);
+		pa(all);
+	}
 	else if (i != -1 && i <= all->counta / 2 && i != 0)
-		{
-			while (i--)
-				ra(all);
-			pa(all);
-		}
+	{
+		while (i--)
+			ra(all);
+		pa(all);
+	}
 	else if (i == -1)
 		pa(all);
 }
