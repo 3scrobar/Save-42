@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo_2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 18:13:02 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/02/28 18:17:14 by toto             ###   ########.fr       */
+/*   Updated: 2025/02/28 18:22:31 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,21 +27,20 @@ void	push_b(t_all *all)
 
 void	rotate_b(t_all *all)
 {
-	t_swap *temp;
+	t_swap	*temp;
 
 	temp = all->lsta;
 	if (check_tier(all) == 0)
 		pb(all);
 	else if (first_tier(all, temp->value) == 1 && check_tier(all) == 1)
-			move_tier_1(all);
+		move_tier_1(all);
 	else if (second_tier(all, temp->value) == 1 && check_tier(all) == 1)
-			move_tier_2(all);
+		move_tier_2(all);
 	else if (third_tier(all, temp->value) == 1 && check_tier(all) == 1)
-			move_tier_3(all);
+		move_tier_3(all);
 	else
 		pb(all);
 	temp = temp->chain;
-
 }
 
 void	move_tier_1(t_all *all)
@@ -53,12 +52,12 @@ void	move_tier_1(t_all *all)
 	{
 		value = all->lstb->value;
 		if (first_tier(all, value) == 1 && check_tier(all) == 1)
-			break;
+			break ;
 		else if (get_clockwise(all, value) == all->countb)
-			break;
+			break ;
 		else
 			if (get_clockwise(all, value) >= all->countb / 2)
-				while (first_tier(all,all->lstb->value)!= 1)
+				while (first_tier(all,all->lstb->value) != 1)
 					rrb(all);
 			else
 				while (first_tier(all,all->lstb->value)!= 1)

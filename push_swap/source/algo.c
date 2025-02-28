@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 12:21:10 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/02/28 18:16:39 by toto             ###   ########.fr       */
+/*   Updated: 2025/02/28 18:20:51 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int	get_between(t_all *all, int i)
 	temp = all->lsta;
 	while (temp && j != all->counta)
 	{
-		if ((i > temp->value && i < temp->chain->value ))
+		if ((i > temp->value && i < temp->chain->value))
 			return (j + 1);
 		j++;
 		temp = temp->chain;
@@ -142,4 +142,3 @@ int	get_index(t_all *all, int i)
 	}
 	return (0);
 }
-
