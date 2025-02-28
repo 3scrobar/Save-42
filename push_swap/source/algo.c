@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 12:21:10 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/02/28 18:05:15 by toto             ###   ########.fr       */
+/*   Updated: 2025/02/28 18:05:58 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,10 @@ void	push_back_a(t_all *all)
 	if ((firstb > firsta && firstb < all->lsta->chain->value) || (firstb > lasta && firstb < firsta))
 	{
 		if (firstb > firsta && firstb < all->lsta->chain->value)
-		{
-			pa(all);
-			sa(all);
-		}
+			{
+				pa(all);
+				sa(all);
+			}
 		else
 			pa(all);
 	}
