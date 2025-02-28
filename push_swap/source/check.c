@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:45:13 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/02/15 14:58:35 by toto             ###   ########.fr       */
+/*   Updated: 2025/02/24 15:01:41 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int    check_sorted_lstb(t_all *all)
     temp = all->lstb;
     while (temp->chain)
     {
-        if (temp->value > temp->chain->value)
+        if (temp->value < temp->chain->value)
             return(0);
         temp = temp->chain;
     }
@@ -47,7 +47,6 @@ int    count_all_lsta(t_all *all, int a)
     temp = all->lsta;
     all->mina = INT_MAX;
     all->maxa = INT_MIN;
-    all->sorted = 0;
     all->first = 1;
     if (a == 1)
         {
@@ -71,7 +70,6 @@ int    count_all_lstb(t_all *all, int a)
     temp = all->lstb;
     all->minb = INT_MAX;
     all->maxb = INT_MIN;
-    all->sorted = 0;
     if (a == 1)
         {
             while (temp)

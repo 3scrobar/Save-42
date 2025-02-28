@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:33:46 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/02/14 18:13:25 by toto             ###   ########.fr       */
+/*   Updated: 2025/02/21 15:38:52 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,23 @@ void    sort_three_lstb(t_all *all)
     int second;
     int third;
 
-    first = all->lstb->value;
-    second = all->lstb->chain->value;
-    third = all->lstb->chain->chain->value;
-    if (first > second && first > third)
-        rb(all);
-    else if (first < second && first > third)
-        rrb(all);
-    else if (first > second && first < third)
-        sb(all);
-    else if (first < second && first < third && second > third)
-        rb(all);
-    else if (first > second && first < third && second < third)
-        sb(all);
+    while (check_sorted_lstb(all) == 0)
+    {
+        first = all->lstb->value;
+        second = all->lstb->chain->value;
+        third = all->lstb->chain->chain->value;
+        if (first < second)
+            sb(all);
+        else if (first < third)
+            rb(all);
+        else if (second < third)
+            {
+                rb(all);
+                sb(all);
+                rrb(all);
+            }
+        
+    }
+
+
 }

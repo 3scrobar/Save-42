@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 14:54:07 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/02/17 17:50:25 by toto             ###   ########.fr       */
+/*   Updated: 2025/02/26 16:20:45 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	main(int ac, char **av)
 	while (check_sorted_lsta(&all) == 0)
 		algo(&all);
 	//print_lst(&all);
+	lstclear(all.lsta);
 	return (0);
 }
 
@@ -55,4 +56,15 @@ void	count_all(t_all *all, int i)
 	all->maxa = INT_MIN;
 	count_all_lsta(all, i);
 	count_all_lstb(all, i);
+	if (all->mina < all->minb)
+		all->mintot = all->mina;
+	else
+		all->mintot = all->minb;
+	if (all->maxa > all->maxb)
+		all->maxtot = all->maxa;
+	else
+		all->maxtot = all->maxb;
+	all->range = all->maxtot - all->mintot;
+	while (all->range % 3 != 0)
+		all->range++;
 }

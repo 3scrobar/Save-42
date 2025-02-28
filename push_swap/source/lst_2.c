@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 12:40:22 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/02/04 17:23:06 by toto             ###   ########.fr       */
+/*   Updated: 2025/02/24 14:33:37 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,19 @@ void	lstdelone(t_swap *lst, void (*del)(int))
 	free(lst);
 }
 
-void	lstclear(t_swap **lst, void (*del)(int))
+void	lstclear(t_swap *lst)
 {
 	t_swap	*temp;
+	t_swap	*current;
 
-	while (*lst != NULL)
+	if (lst == NULL)
+		return ;
+	current = lst;
+	while (current != NULL)
 	{
-		temp = (*lst)->chain;
-		lstdelone(*lst, del);
-		*lst = temp;
+		temp = current;
+		current = current->chain;
+		free(temp);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 12:21:10 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/02/19 17:25:49 by toto             ###   ########.fr       */
+/*   Updated: 2025/02/28 16:07:48 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,30 +24,12 @@ void    algo(t_all *all)
 
 void	sort_more(t_all *all)
 {
-	int firstb;
-	int lastb;
-	int firsta;
 	int i;
 
 	while (all->counta > 3)
 	{
-		if (all->countb != 0)
-		{
-			firstb = all->lstb->value;
-			lastb = lst_givelast(all->lstb);
-		}
-		firsta = all->lsta->value;
-		if (all->countb == 0)
-			pb(all);
-		else if (firsta > firstb)
-			pb(all);
-		else if (firsta < lastb)
-			{
-				pb(all);
-				rb(all);
-			}
-		else
-			pb(all);
+		count_all(all, 1);
+		push_b(all);
 		count_all(all, 1);
 	}
 	sort_three_lsta(all);
@@ -95,7 +77,6 @@ void	push_back_a(t_all *all)
 	else if (firstb > all->maxa)
 	{
 		i = get_index(all, all->maxa);
-		printf("i = %d\n", i);
 		i++;
 	}
 	else if (firstb < all->mina)
@@ -155,6 +136,191 @@ int	get_index(t_all *all, int i)
 	{
 		if (temp->value == i)
 			return (j);
+		j++;
+		temp = temp->chain;
+	}
+	return (0);
+}
+
+void	push_b(t_all *all)
+{
+	if (all->countb < 3 && all->counta > 3)
+		pb(all);
+	else if (all->countb == 3 && check_sorted_lstb(all) == 0 && all->counta > 3)
+		sort_three_lstb(all);
+	else if (all->countb >= 3 && all->counta > 3)
+		{
+			rotate_b(all);
+		}
+	count_all(all, 1);
+}
+
+
+void rotate_b(t_all *all)
+{
+	t_swap *temp;
+
+	temp = all->lsta;
+				if (check_tier(all) == 0)
+					pb(all);
+				else if (first_tier(all, temp->value) == 1 && check_tier(all) == 1)
+						move_tier_1(all);
+				else if (second_tier(all, temp->value) == 1 && check_tier(all) == 1)
+						move_tier_2(all);
+				else if (third_tier(all, temp->value) == 1 && check_tier(all) == 1)
+						move_tier_3(all);
+				else
+					pb(all);
+			temp = temp->chain;
+
+}
+
+void	move_tier_1(t_all *all)
+{
+	int value;
+
+	value = all->lstb->value;
+	while (first_tier(all, value) != 1)
+		{
+			value = all->lstb->value;
+			if (first_tier(all, value) == 1 && check_tier(all) == 1)
+				break;
+			else if (get_clockwise(all, value) == all->countb)
+				break;
+			else
+				if (get_clockwise(all, value) >= all->countb / 2)
+					while (first_tier(all,all->lstb->value)!= 1)
+						rrb(all);
+				else
+					while (first_tier(all,all->lstb->value)!= 1)
+						rb(all);
+			if (all->counta > 3)
+				pb(all);
+		}
+	if (first_tier(all, all->lstb->value) == 1 && all->counta > 3)
+		pb(all);
+	}
+void	move_tier_2(t_all *all)
+{
+	int value;
+
+	value = all->lstb->value;
+	while (second_tier(all, value) != 1 && check_tier(all) == 1)
+		{
+			value = all->lstb->value;
+
+			if (second_tier(all, value) == 1)
+				break;
+			else if (get_clockwise(all, value) == all->countb)
+				break;
+			else
+				if (get_clockwise(all, value) >= all->countb / 2)
+					while (second_tier(all,all->lstb->value)!= 1)
+						rrb(all);
+				else
+					while (second_tier(all,all->lstb->value)!= 1)
+						rb(all);
+			if (all->counta > 3)
+				pb(all);
+		}
+	if (second_tier(all, all->lstb->value) == 1 && all->counta > 3)
+		pb(all);
+}
+void	move_tier_3(t_all *all)
+{
+	int value;
+
+	value = all->lstb->value;
+	while (third_tier(all, value) != 1 && check_tier(all) == 1)
+		{
+			value = all->lstb->value;
+			if (third_tier(all, value) == 1)
+				break;
+			else if (get_clockwise(all, value) == all->countb)
+				break;
+			else
+				if (get_clockwise(all, value) >= all->countb / 2)	
+					while (third_tier(all,all->lstb->value)!= 1)
+						rrb(all);
+				else
+					while (third_tier(all,all->lstb->value)!= 1)
+						rb(all);
+			if (all->counta > 3)
+				pb(all);
+		}
+	if (third_tier(all, all->lstb->value) == 1 && all->counta > 3)
+		pb(all);
+
+	}
+
+int	first_tier(t_all *all, int i)
+{
+
+	count_all(all, 1);
+	if (i > all->mintot + ((all->range / 3) * 2))
+	{
+		return (1);
+	}
+	return (0);
+	}
+
+int	second_tier(t_all *all, int i)
+{
+	count_all(all, 1);
+	if (i > all->mintot + (all->range / 3) && i <= all->mintot + (all->range / 3) * 2)
+		return (1);
+	else
+		return (0);
+}
+int	third_tier(t_all *all, int i)
+{
+	count_all(all, 1);
+	if (i < all->mintot + (all->range / 3))
+		return (1);
+	else
+		return (0);
+}
+
+int check_tier(t_all *all)
+{
+	t_swap *temp;
+	int i;
+	int j;
+	int k;
+
+	i = 0;
+	j = 0;
+	k = 0;
+	temp = all->lstb;
+	while (temp)
+	{
+		if (first_tier(all, temp->value) == 1)
+			i = 1;
+		else if (second_tier(all, temp->value) == 1)
+			j = 1;
+		else if (third_tier(all, temp->value) == 1)
+			k = 1;
+		temp = temp->chain;
+	}
+	if ( i == 1 && j == 1 && k == 1)
+		return (1);
+	else
+		return (0);
+}
+
+int	get_clockwise(t_all *all, int i)
+{
+	t_swap *temp;
+	int j;
+
+	j = 0;
+	temp = all->lstb;
+	while (temp && j != all->countb)
+	{	
+		if (temp->chain == NULL)
+			return (pb(all), 0);
+		if((i < temp->value && i > temp->chain->value ))
+			return (j + 1);
 		j++;
 		temp = temp->chain;
 	}

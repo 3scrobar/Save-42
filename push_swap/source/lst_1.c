@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 12:38:00 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/02/04 17:22:56 by toto             ###   ########.fr       */
+/*   Updated: 2025/02/24 15:01:01 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ t_swap	*lstmap(t_swap *lst, int (*f)(int), void (*del)(int), void (*delv)(void *
 		if (new_node == NULL)
 		{
 			delv(new_node);
-			lstclear(&result, del);
+			lstclear(result);
 			return (NULL);
 		}
 		lstadd_back(&result, new_node);
