@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 18:18:00 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/02/28 18:18:04 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/02/28 18:48:12 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	first_tier(t_all *all, int i)
 {
-
 	count_all(all, 1);
 	if (i > all->mintot + ((all->range / 3) * 2))
 		return (1);
@@ -24,7 +23,8 @@ int	first_tier(t_all *all, int i)
 int	second_tier(t_all *all, int i)
 {
 	count_all(all, 1);
-	if (i > all->mintot + (all->range / 3) && i <= all->mintot + (all->range / 3) * 2)
+	if (i > all->mintot + (all->range / 3)
+		&& i <= all->mintot + (all->range / 3) * 2)
 		return (1);
 	else
 		return (0);
@@ -60,7 +60,7 @@ int	check_tier(t_all *all)
 			k = 1;
 		temp = temp->chain;
 	}
-	if ( i == 1 && j == 1 && k == 1)
+	if (i == 1 && j == 1 && k == 1)
 		return (1);
 	else
 		return (0);
@@ -69,15 +69,15 @@ int	check_tier(t_all *all)
 int	get_clockwise(t_all *all, int i)
 {
 	t_swap	*temp;
-	int	j;
+	int		j;
 
 	j = 0;
 	temp = all->lstb;
 	while (temp && j != all->countb)
-	{	
+	{
 		if (temp->chain == NULL)
 			return (pb(all), 0);
-		if((i < temp->value && i > temp->chain->value ))
+		if ((i < temp->value && i > temp->chain->value))
 			return (j + 1);
 		j++;
 		temp = temp->chain;

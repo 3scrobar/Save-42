@@ -1,0 +1,24 @@
+   {
+        "editor.tabSize": 4,
+        "editor.insertSpaces": false,
+        "editor.renderWhitespace": "all",
+        "files.trimTrailingWhitespace": false,
+        "files.insertFinalNewline": true,
+        "files.autoSave": "afterDelay",
+        "cmake.showOptionsMovedNotification": false,
+        "codam-norminette-3.highlight-color": "rgba(255,0,0,0.1)",
+        "window.zoomLevel": 2,
+        "explorer.confirmDelete": false,
+        "workbench.colorTheme": "Dracula Theme",
+        "github.copilot.advanced": {
+
+
+        },
+        "github.copilot.chat.localeOverride": "fr",
+        "workbench.editorAssociations": {
+            "*.c": "default"
+        },
+        "git.enableSmartCommit": true,
+        "git.confirmSync": false,
+        "git.autofetch": true,
+    }

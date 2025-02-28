@@ -3,33 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:15:56 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/02/04 17:23:46 by toto             ###   ########.fr       */
+/*   Updated: 2025/02/28 19:02:59 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void reverse_rotate(t_swap **lst)
+void	reverse_rotate(t_swap **lst)
 {
-	t_swap *temp;
-	t_swap *last;
-	t_swap *second_last;
+	t_swap	*temp;
+	t_swap	*last;
+	t_swap	*second_last;
 
 	if (*lst == NULL || (*lst)->chain == NULL)
-		return;
-
+		return ;
 	temp = *lst;
 	while (temp->chain && temp->chain->chain)
 	{
 		temp = temp->chain;
 	}
-
 	second_last = temp;
 	last = temp->chain;
-
 	second_last->chain = NULL;
 	last->chain = *lst;
 	*lst = last;

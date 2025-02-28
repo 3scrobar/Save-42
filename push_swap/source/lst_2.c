@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 12:40:22 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/02/24 14:33:37 by toto             ###   ########.fr       */
+/*   Updated: 2025/02/28 18:56:10 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,6 @@ void	lstiter(t_swap *lst, int (*f)(int))
 		f(lst -> value);
 		lst = lst->chain;
 	}
-}
-
-void	lstdelone(t_swap *lst, void (*del)(int))
-{
-	if (lst == NULL)
-		return ;
-	del(lst -> value);
-	free(lst);
 }
 
 void	lstclear(t_swap *lst)
@@ -66,9 +58,9 @@ void	lstadd_back(t_swap **lst, t_swap *new)
 	new_one->chain = new;
 }
 
-int lst_givelast(t_swap *lst)
+int	lst_givelast(t_swap *lst)
 {
-	t_swap *temp;
+	t_swap	*temp;
 
 	temp = lst;
 	while (temp->chain)

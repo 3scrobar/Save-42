@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:10:11 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/02/04 17:23:29 by toto             ###   ########.fr       */
+/*   Updated: 2025/02/28 19:02:10 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    push(t_swap **lst1, t_swap **lst2)
+void	push(t_swap **lst1, t_swap **lst2)
 {
-	t_swap *temp;
+	t_swap	*temp;
 
 	if (*lst1 == NULL)
 		return ;

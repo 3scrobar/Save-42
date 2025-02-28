@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 18:13:02 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/02/28 18:22:31 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/02/28 18:47:16 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,17 +57,17 @@ void	move_tier_1(t_all *all)
 			break ;
 		else
 			if (get_clockwise(all, value) >= all->countb / 2)
-				while (first_tier(all,all->lstb->value) != 1)
+				while (first_tier(all, all->lstb->value) != 1)
 					rrb(all);
-			else
-				while (first_tier(all,all->lstb->value)!= 1)
-					rb(all);
+		else
+			while (first_tier(all, all->lstb->value) != 1)
+				rb(all);
 		if (all->counta > 3)
 			pb(all);
 	}
 	if (first_tier(all, all->lstb->value) == 1 && all->counta > 3)
 		pb(all);
-	}
+}
 
 void	move_tier_2(t_all *all)
 {
@@ -77,18 +77,17 @@ void	move_tier_2(t_all *all)
 	while (second_tier(all, value) != 1 && check_tier(all) == 1)
 	{
 		value = all->lstb->value;
-
 		if (second_tier(all, value) == 1)
-			break;
+			break ;
 		else if (get_clockwise(all, value) == all->countb)
-			break;
+			break ;
 		else
 			if (get_clockwise(all, value) >= all->countb / 2)
-				while (second_tier(all,all->lstb->value)!= 1)
+				while (second_tier(all, all->lstb->value) != 1)
 					rrb(all);
-			else
-				while (second_tier(all,all->lstb->value)!= 1)
-					rb(all);
+		else
+			while (second_tier(all, all->lstb->value) != 1)
+				rb(all);
 		if (all->counta > 3)
 			pb(all);
 	}
@@ -105,20 +104,19 @@ void	move_tier_3(t_all *all)
 	{
 		value = all->lstb->value;
 		if (third_tier(all, value) == 1)
-			break;
+			break ;
 		else if (get_clockwise(all, value) == all->countb)
-			break;
+			break ;
 		else
-			if (get_clockwise(all, value) >= all->countb / 2)	
-				while (third_tier(all,all->lstb->value)!= 1)
+			if (get_clockwise(all, value) >= all->countb / 2)
+				while (third_tier(all, all->lstb->value) != 1)
 					rrb(all);
-			else
-				while (third_tier(all,all->lstb->value)!= 1)
-					rb(all);
+		else
+			while (third_tier(all, all->lstb->value) != 1)
+				rb(all);
 		if (all->counta > 3)
 			pb(all);
 	}
 	if (third_tier(all, all->lstb->value) == 1 && all->counta > 3)
 		pb(all);
-
 }

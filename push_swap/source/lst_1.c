@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_1.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 12:38:00 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/02/24 15:01:01 by toto             ###   ########.fr       */
+/*   Updated: 2025/02/28 18:55:35 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,41 +39,16 @@ t_swap	*lstnew(int value)
 
 int	lstcomp(t_swap *lst, int nbr)
 {
-    t_swap *temp;
-    
-    temp = lst;
+	t_swap	*temp;
+
+	temp = lst;
 	while (temp != NULL)
 	{
-		if(nbr == temp->value)
-			return(1);
+		if (nbr == temp->value)
+			return (1);
 		temp = temp->chain;
 	}
 	return (0);
-}
-
-t_swap	*lstmap(t_swap *lst, int (*f)(int), void (*del)(int), void (*delv)(void *))
-{
-	t_swap	*current;
-	t_swap	*result;
-	t_swap	*new_node;
-
-	result = NULL;
-	current = lst;
-	if (!lst || !f || !del)
-		return (NULL);
-	while (current != NULL)
-	{
-		new_node = lstnew(f(current->value));
-		if (new_node == NULL)
-		{
-			delv(new_node);
-			lstclear(result);
-			return (NULL);
-		}
-		lstadd_back(&result, new_node);
-		current = current->chain;
-	}
-	return (result);
 }
 
 t_swap	*lstlast(t_swap *lst)
