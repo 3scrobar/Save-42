@@ -6,7 +6,7 @@
 /*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 12:21:10 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/02/28 18:20:51 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/03/03 15:39:29 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,61 +52,17 @@ void	sort_more(t_all *all)
 
 void	push_back_a(t_all *all)
 {
-	int	i;
 	int	firsta;
 	int	firstb;
 	int	lasta;
 
-	i = 0;
+	all->i = 0;
 	if (all->countb != 0)
 		firstb = all->lstb->value;
 	else
 		firstb = 0;
 	firsta = all->lsta->value;
 	lasta = lst_givelast(all->lsta);
-	if ((firstb > firsta && firstb < all->lsta->chain->value)
-		|| (firstb > lasta && firstb < firsta))
-	{
-		if (firstb > firsta && firstb < all->lsta->chain->value)
-		{
-			pa(all);
-			sa(all);
-		}
-		else
-			pa(all);
-	}
-	else if (firstb > all->maxa)
-	{
-		i = get_index(all, all->maxa);
-		i++;
-	}
-	else if (firstb < all->mina)
-	{
-		i = get_index(all, all->mina);
-		if (i == 0)
-			i = -1;
-	}
-	else
-	{
-		i = get_between(all, all->lstb->value);
-		if (i == 0)
-			i = -1;
-	}
-	if (i > all->counta / 2)
-	{
-		i = all->counta - i;
-		while (i--)
-			rra(all);
-		pa(all);
-	}
-	else if (i != -1 && i <= all->counta / 2 && i != 0)
-	{
-		while (i--)
-			ra(all);
-		pa(all);
-	}
-	else if (i == -1)
-		pa(all);
 }
 
 int	get_between(t_all *all, int i)

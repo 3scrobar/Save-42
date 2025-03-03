@@ -42,6 +42,7 @@ typedef struct s_all
 	int		first;
 	int		mintot;
 	int		maxtot;
+	int		i;
 
 }				t_all;
 /*****************************************************************************/
@@ -76,6 +77,9 @@ int			between_b(t_all *all, int i);
 void		move_tier_1(t_all *all);
 void		move_tier_2(t_all *all);
 void		move_tier_3(t_all *all);
+void		if_push_back_a(int firsta, int firstb, int lasta, t_all *all);
+void		else_if_pba(t_all *all);
+void		if_2_push_back_a(t_all *all);
 
 /*------------------------------ALGO-----------------------------------------*/
 void		algo(t_all *all);
