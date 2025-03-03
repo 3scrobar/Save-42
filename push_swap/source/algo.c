@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
+/*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 12:21:10 by tle-saut          #+#    #+#             */
-/*   Updated: 2025/03/03 15:39:29 by tle-saut         ###   ########.fr       */
+/*   Updated: 2025/02/28 18:28:36 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ void	push_back_a(t_all *all)
 		firstb = 0;
 	firsta = all->lsta->value;
 	lasta = lst_givelast(all->lsta);
+	if_push_back_a(firsta, firstb, lasta, all);
+	if_2_push_back_a(all);
 }
 
 int	get_between(t_all *all, int i)
