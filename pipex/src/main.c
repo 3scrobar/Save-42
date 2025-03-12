@@ -3,73 +3,62 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tle-saut <tle-saut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/10 15:03:46 by toto              #+#    #+#             */
-/*   Updated: 2025/03/10 16:13:55 by toto             ###   ########.fr       */
+/*   Created: 2021/08/02 09:54:02 by gcollet           #+#    #+#             */
+/*   Updated: 2025/03/12 16:44:27 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-// Fonction utilitaire pour écrire
-void writestr(int fd, const char *str)
+void	son_process(char **argv, char **envp, int *fd)
 {
- write(fd, str, strlen(str));
+	int		filein;
+
+	filein = open(argv[1], O_RDONLY, 0777);
+	if (filein == -1)
+		error();
+	dup2(fd[1], STDOUT_FILENO);
+	dup2(filein, STDIN_FILENO);
+	close(fd[0]);
+	execute(argv[2], envp);
 }
 
-// Main
-int main(void)
+void	father_process(char **argv, char **envp, int *fd)
 {
- int pipefd[2];  // Stocke les fd du pipe :
-       //  - pipefd[0] : lecture seule
-       //  - pipefd[1] : écriture seule
- pid_t pid; // Stocke le retour de fork
- char buf; // Stocke la lecture de read
+	int		fileout;
 
-// Crée un pipe. En cas d'échec on arrête tout
- if (pipe(pipefd) == -1)
- {
-  perror("pipe");
-  exit(EXIT_FAILURE);
- }
-// Crée un processus fils
- pid = fork();
- if (pid == -1) // Echec, on arrête tout
- {
-  perror("fork");
-  exit(EXIT_FAILURE);
- }
- else if (pid == 0) // Processus fils
- {
- // Ferme le bout d'écriture inutilisé
-  close(pipefd[1]);
-  writestr(STDOUT_FILENO, "Fils : Quel est le secret dans ce pipe ?\n");
-  writestr(STDOUT_FILENO, "Fils : \"");
- // Lit les caractères dans le pipe un à un
-  while (read(pipefd[0], &buf, 1) > 0)
-  {
-   // Écrit le caractère lu dans la sortie standard
-   write(STDOUT_FILENO, &buf, 1);
-  }
-  writestr(STDOUT_FILENO, "\"\n");
-  writestr(STDOUT_FILENO, "Fils : Ohlala ! Je vais voir mon pere.\n");
- // Ferme le bout de lecture
-  close(pipefd[0]);
-  exit(EXIT_SUCCESS);
- }
- else // Processus père
- {
- // Ferme le bout de lecture inutilisé
-  close(pipefd[0]);
-  writestr(STDOUT_FILENO, "Pere : J'ecris un secret dans le pipe...\n");
- // Écrit dans le bout d'écriture du pipe
-  writestr(pipefd[1], "\e[33mJe suis ton pere mwahahaha!\e[0m");
- // Ferme le bout d'ecriture (lecteur verra EOF)
-  close(pipefd[1]);
- // Attend la terminaison du fils
-  wait(NULL);
-  writestr(STDOUT_FILENO, "Pere : Salut mon fils !\n");
-  exit(EXIT_SUCCESS);
- }
+	fileout = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
+	if (fileout == -1)
+		error();
+	dup2(fd[0], STDIN_FILENO);
+	dup2(fileout, STDOUT_FILENO);
+	close(fd[1]);
+	execute(argv[3], envp);
+}
+
+int	main(int argc, char **argv, char **envp)
+{
+	int		fd[2];
+	pid_t	pid1;
+
+	if (argc == 5)
+	{
+		if (pipe(fd) == -1)
+			error();
+		pid1 = fork();
+		if (pid1 == -1)
+			error();
+		if (pid1 == 0)
+			son_process(argv, envp, fd);
+		waitpid(pid1, NULL, 0);
+		father_process(argv, envp, fd);
+	}
+	else
+	{
+		ft_putstr_fd("\033[31mError: Bad arguments\n\e[0m", 2);
+		ft_putstr_fd("Ex: ./pipex <file1> <cmd1> <cmd2> <file2>\n", 1);
+	}
+	return (0);
 }
