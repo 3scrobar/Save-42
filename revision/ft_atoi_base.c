@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asoutaie <asoutaie@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: tle-saut <tle-saut@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 02:05:30 by anporced          #+#    #+#             */
-/*   Updated: 2025/02/25 19:57:57 by asoutaie         ###   ########.fr       */
+/*   Updated: 2025/03/16 16:19:03 by tle-saut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-int is_print(char c)
+int get_value(char c)
 {
 	if (c >= '0' && c <= '9')
 		return (c - '0');
@@ -37,7 +37,7 @@ int	ft_atoi_base(const char *s, int base)
 		signe = -1;
 		i++;
 	}
-	value = is_print(s[i]);
+	value = get_value(s[i]);
 	while (value >= 0 && value < base)
 	{
 		i++;
@@ -47,10 +47,13 @@ int	ft_atoi_base(const char *s, int base)
 	return (signe * result);
 }
 
-// int main()
-// {
-// 	printf("%d\n", ft_atoi_base("-10", 10));
-// 	printf("%d\n", ft_atoi_base("15", 16));
-// 	printf("%d\n", ft_atoi_base("Ceci permet de decouvrir le fonctionnement de ton ft_atoi_base.", 16));
-// 	printf("%d\n", ft_atoi_base("00001010", 2));
-// }
+int main()
+{
+	printf("%d\n", ft_atoi_base("101", 2));    // 5 (binaire)
+	printf("%d\n", ft_atoi_base("1A", 16));    // 26 (hexadécimal)
+	printf("%d\n", ft_atoi_base("-FF", 16));   // -255
+	printf("%d\n", ft_atoi_base("f1ef", 16));     // 35
+	printf("%d\n", ft_atoi_base("100", 10));   // 100
+	printf("%d\n", ft_atoi_base("G", 16));     // 0 (G n'existe pas en base 16)
+	return 0;
+}
